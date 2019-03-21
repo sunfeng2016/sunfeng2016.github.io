@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>SunFeng&#39;s Blog</title>
   
-  <subtitle>ѧϰ�����룬�¶�����!</subtitle>
+  <subtitle>学习，敲码，孤独终老！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>孙峰</name>
     
   </author>
   
