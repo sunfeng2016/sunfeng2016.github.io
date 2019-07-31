@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-03-20T08:14:16.442Z</updated>
+  <updated>2019-07-31T12:54:54.027Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo教程：使用Hexo写博客</title>
+    <link href="http://sunfeng.online/2019/07/31/hello-hexo-markdown/"/>
+    <id>http://sunfeng.online/2019/07/31/hello-hexo-markdown/</id>
+    <published>2019-07-31T12:44:47.000Z</published>
+    <updated>2019-07-31T12:54:54.027Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="新建文档"><a href="#新建文档" class="headerlink" title="新建文档"></a>新建文档</h3><p>假设我们新建的文章名为 “hello hexo markdown”，在命令行键入以下命令即可：</p><blockquote><p>$ hexo new “hello hexo markdown”</p></blockquote><h3 id="文档格式"><a href="#文档格式" class="headerlink" title="文档格式"></a>文档格式</h3><h4 id="文章分类"><a href="#文章分类" class="headerlink" title="文章分类"></a>文章分类</h4><h3 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h3><h3 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h3><h3 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h3><h3 id="示范"><a href="#示范" class="headerlink" title="示范"></a>示范</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;新建文档&quot;&gt;&lt;a href=&quot;#新建文档&quot; class=&quot;headerlink&quot; title=&quot;新建文档&quot;&gt;&lt;/a&gt;新建文档&lt;/h3&gt;&lt;p&gt;假设我们新建的文章名为 “hello hexo markdown”，在命令行键入以下命令即可：&lt;/p&gt;
+&lt;blockquot
+      
+    
+    </summary>
+    
+    
+      <category term="hello" scheme="http://sunfeng.online/tags/hello/"/>
+    
+      <category term="hexo" scheme="http://sunfeng.online/tags/hexo/"/>
+    
+      <category term="markdown" scheme="http://sunfeng.online/tags/markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
