@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-01T04:58:45.740Z</updated>
+  <updated>2019-08-01T08:32:17.381Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset</title>
+    <link href="http://sunfeng.online/2019/08/01/%E8%AF%BE%E7%A8%8B%E4%B8%80(Neural%20Networks%20and%20Deep%20Learning)%EF%BC%8C%E7%AC%AC%E4%BA%8C%E5%91%A8%EF%BC%88Basics%20of%20Neural%20Network%20programming%EF%BC%89%E2%80%94%E2%80%94%204%E3%80%81Logistic%20Regression%20with%20a%20Neural%20Network%20mindset/"/>
+    <id>http://sunfeng.online/2019/08/01/课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset/</id>
+    <published>2019-08-01T08:06:21.000Z</published>
+    <updated>2019-08-01T08:32:17.381Z</updated>
+    
+    <content type="html"><![CDATA[<p>尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。<br><a id="more"></a></p><hr><h3 id="新建文档"><a href="#新建文档" class="headerlink" title="新建文档"></a>新建文档</h3><p>假设我们新建的文章名为 “hello hexo markdown”，在命令行键入以下命令即可：</p><blockquote><p>$ hexo new “hello hexo markdown”</p></blockquote><p>上述命令的结果是在 <code>./hexo/source/_posts</code> 路径下新建了一个 <code>hello-hexo-markdown.md</code> 文件。</p><p>然后，我们就可以打开编辑器尽情地写作了。</p><hr><h3 id="文档格式"><a href="#文档格式" class="headerlink" title="文档格式"></a>文档格式</h3><p>我们使用文本编辑器打开刚刚新建的 <code>hello-hexo-markdown.md</code> 文件，会发现其中已经存在内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello hexo markdown</span><br><span class="line">date: 2019-07-31 20:44:47</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure><p>这些内容是干嘛的呢？事实上，他们就是用于设置 MarkDown 文档在被解析为静态网页文件时的相关配置，这些配置参数一般位于文件中最上方以 <code>---</code> 分隔的区域。其中，</p><p><code>title</code>的值是当前文档名，也是将来在网页中显示的文章标题</p><p><code>date</code>值是我们新建文档时的当时地区时间</p><p><code>tags</code>值是文档的标签，我们可以随意赋值，为文档贴标签，其用法如下：</p><p>aaaaaa</p><p>aaaaaa</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Coursera深度学习笔记" scheme="http://sunfeng.online/categories/Coursera%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Neural Networks" scheme="http://sunfeng.online/tags/Neural-Networks/"/>
+    
+      <category term="Deep Learning" scheme="http://sunfeng.online/tags/Deep-Learning/"/>
+    
+      <category term="Logistic Regression" scheme="http://sunfeng.online/tags/Logistic-Regression/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo教程：使用Hexo写博客</title>

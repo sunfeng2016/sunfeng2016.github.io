@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Neural Networks,Deep Learning,Logistic Regression,">
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SunFeng&#39;s Blog">
-<meta property="og:url" content="http://sunfeng.online/archives/2019/index.html">
+<meta name="description" content="尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。">
+<meta name="keywords" content="Neural Networks,Deep Learning,Logistic Regression">
+<meta property="og:type" content="article">
+<meta property="og:title" content="课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset">
+<meta property="og:url" content="http://sunfeng.online/2019/08/01/课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset/index.html">
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
-<meta property="og:description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta property="og:description" content="尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-01T08:32:17.381Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SunFeng&#39;s Blog">
-<meta name="twitter:description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta name="twitter:title" content="课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset">
+<meta name="twitter:description" content="尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://sunfeng.online/archives/2019/">
+  <link rel="canonical" href="http://sunfeng.online/2019/08/01/课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset/">
 
 
 
 
 
-  <title>归档 | SunFeng's Blog</title>
+  <title>课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset | SunFeng's Blog</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,107 +251,189 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 2 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sunfeng.online/2019/08/01/课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SunFeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sun.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SunFeng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/08/01/课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset/" itemprop="url">
-              
-                <span itemprop="name">课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-01T16:06:21+08:00" content="2019-08-01">
-          08-01
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-01T16:06:21+08:00">
+                2019-08-01
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coursera深度学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Coursera深度学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/31/hello-hexo-markdown/" itemprop="url">
-              
-                <span itemprop="name">Hexo教程：使用Hexo写博客</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-31T20:44:47+08:00" content="2019-07-31">
-          07-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。<br><a id="more"></a></p>
+<hr>
+<h3 id="新建文档"><a href="#新建文档" class="headerlink" title="新建文档"></a>新建文档</h3><p>假设我们新建的文章名为 “hello hexo markdown”，在命令行键入以下命令即可：</p>
+<blockquote>
+<p>$ hexo new “hello hexo markdown”</p>
+</blockquote>
+<p>上述命令的结果是在 <code>./hexo/source/_posts</code> 路径下新建了一个 <code>hello-hexo-markdown.md</code> 文件。</p>
+<p>然后，我们就可以打开编辑器尽情地写作了。</p>
+<hr>
+<h3 id="文档格式"><a href="#文档格式" class="headerlink" title="文档格式"></a>文档格式</h3><p>我们使用文本编辑器打开刚刚新建的 <code>hello-hexo-markdown.md</code> 文件，会发现其中已经存在内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello hexo markdown</span><br><span class="line">date: 2019-07-31 20:44:47</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>这些内容是干嘛的呢？事实上，他们就是用于设置 MarkDown 文档在被解析为静态网页文件时的相关配置，这些配置参数一般位于文件中最上方以 <code>---</code> 分隔的区域。其中，</p>
+<p><code>title</code>的值是当前文档名，也是将来在网页中显示的文章标题</p>
+<p><code>date</code>值是我们新建文档时的当时地区时间</p>
+<p><code>tags</code>值是文档的标签，我们可以随意赋值，为文档贴标签，其用法如下：</p>
+<p>aaaaaa</p>
+<p>aaaaaa</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Neural-Networks/" rel="tag"># Neural Networks</a>
+          
+            <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+          
+            <a href="/tags/Logistic-Regression/" rel="tag"># Logistic Regression</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/31/hello-hexo-markdown/" rel="next" title="Hexo教程：使用Hexo写博客">
+                <i class="fa fa-chevron-left"></i> Hexo教程：使用Hexo写博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -357,6 +441,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -377,8 +465,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -447,6 +544,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建文档"><span class="nav-number">1.</span> <span class="nav-text">新建文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档格式"><span class="nav-number">2.</span> <span class="nav-text">文档格式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -587,6 +700,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
