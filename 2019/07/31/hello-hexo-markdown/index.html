@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="新建文档假设我们新建的文章名为 “hello hexo markdown”，在命令行键入以下命令即可：  $ hexo new “hello hexo markdown”  上述命令的结果是在 ./hexo/source/_posts 路径下新建了一个 hello-hexo-markdown.md 文件。 然后，我们就可以打开编辑器尽情地写作了。  文档格式我们使用文本编辑器打开刚刚新建的 he">
+<meta name="description" content="我是短小精悍的文章摘要(๑•̀ㅂ•́)و✧">
 <meta name="keywords" content="hello,hexo,markdown">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo教程：使用Hexo写博客">
 <meta property="og:url" content="http://sunfeng.online/2019/07/31/hello-hexo-markdown/index.html">
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
-<meta property="og:description" content="新建文档假设我们新建的文章名为 “hello hexo markdown”，在命令行键入以下命令即可：  $ hexo new “hello hexo markdown”  上述命令的结果是在 ./hexo/source/_posts 路径下新建了一个 hello-hexo-markdown.md 文件。 然后，我们就可以打开编辑器尽情地写作了。  文档格式我们使用文本编辑器打开刚刚新建的 he">
+<meta property="og:description" content="我是短小精悍的文章摘要(๑•̀ㅂ•́)و✧">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T02:07:38.496Z">
+<meta property="og:updated_time" content="2019-08-01T02:33:21.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo教程：使用Hexo写博客">
-<meta name="twitter:description" content="新建文档假设我们新建的文章名为 “hello hexo markdown”，在命令行键入以下命令即可：  $ hexo new “hello hexo markdown”  上述命令的结果是在 ./hexo/source/_posts 路径下新建了一个 hello-hexo-markdown.md 文件。 然后，我们就可以打开编辑器尽情地写作了。  文档格式我们使用文本编辑器打开刚刚新建的 he">
+<meta name="twitter:description" content="我是短小精悍的文章摘要(๑•̀ㅂ•́)و✧">
 
 
 
@@ -332,7 +332,8 @@
       
 
       
-        <hr>
+        <p>我是短小精悍的文章摘要(๑•̀ㅂ•́)و✧<br><a id="more"></a></p>
+<hr>
 <h3 id="新建文档"><a href="#新建文档" class="headerlink" title="新建文档"></a>新建文档</h3><p>假设我们新建的文章名为 “hello hexo markdown”，在命令行键入以下命令即可：</p>
 <blockquote>
 <p>$ hexo new “hello hexo markdown”</p>
@@ -353,7 +354,29 @@
 <p>例如，我们写一篇关于 CSS3 动画的文章，我们可能会为其打标签 ”CSS3“、”动画“等，但是我们却会将其分在 CSS/CSS3 类别下，这个是有一定的相关性、顺序性和层次性。简单来说，<code>categories</code> 有点儿像新建文件夹对文档进行分门别类的归置。</p>
 <p><code>categories</code> 的用法同 <code>tags</code> 一样，只不过斗个 categories 值是分先后顺序的。</p>
 <hr>
-<h3 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h3><h3 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h3><h3 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h3><h3 id="示范"><a href="#示范" class="headerlink" title="示范"></a>示范</h3>
+<h3 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h3><p>写个博客，有时候我们会想添加个图片啦 O.O，或者其他形式的资源，等等。</p>
+<p>这时，有两种解决办法：</p>
+<ol>
+<li>使用绝对路径引用资源，在 Web 世界中就是资源的 URL</li>
+<li>使用相对路径引用资源</li>
+</ol>
+<h4 id="文章资料文件夹"><a href="#文章资料文件夹" class="headerlink" title="文章资料文件夹"></a>文章资料文件夹</h4><p>如果是使用相对路径引用资源，那么我们可以使用 Hexo 提供的资源文件夹功能。</p>
+<p>使用文本编辑器打开站点根目录下的 <code>_ config.yml</code> 文件，将 <code>post_asset_folder</code> 值设置为 <code>true</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>上面的操作会开启 Hexo 的文章资源文件管理功能。Hexo 将会在我们每一次通过 <code>hexo new &lt;title&gt;</code> 命令创建新文章时自动创建一个同名文件夹，于是我们便可以将文章所引用的相关资源放到这个同名文件夹下，然后通过相对路径引用。</p>
+<h4 id="相对路径引用的标签插件"><a href="#相对路径引用的标签插件" class="headerlink" title="相对路径引用的标签插件"></a>相对路径引用的标签插件</h4><p>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。我们可以通过使用 Hexo 提供的标签插件来解决这个问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
+<p>比如说：当你打开文章资源文件夹功能后，你把一个 <code>example.jpg</code> 图片放在了你的资源文件夹中，如果通过使用相对路径的常规 markdown 语法 <code>![](/example.jpg)</code> ，它将 <em>不会</em> 出现在首页上。（但是它会在文章中按你期待的方式工作）</p>
+<p><strong>！！！注意：</strong> 如果已经开启了文章的资源文件夹功能，当使用 MarkDown 语法引用相对路径下的资源时，只需 <code>./资源名称</code>，不用在引用路径中添加同名文件夹目录层级。</p>
+<p>正确的引用图片方式是使用下列的标签插件而不是 markdown ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+<p>通过这种方式，图片将会同时出现在文章和主页以及归档页中。</p>
+<hr>
+<h3 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h3><p>有的时候，主题模板配置的不够好的话，Hexo 最终生成的静态站点是不会自动生成文章摘要的。</p>
+<p>所以，为了保险起见，我们也自己手动设置文章摘要，这样也方便避免自动生成的摘要不优雅的情况。</p>
+<p>设置文章摘要，我们只需在想显示为摘要的内容之后添 <code>&lt;!-- more --&gt;</code> 即可。像下面这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello hexo markdown</span><br><span class="line">date: 2016-11-16 18:11:25</span><br><span class="line">tags:</span><br><span class="line">- hello</span><br><span class="line">- hexo</span><br><span class="line">- markdown</span><br><span class="line">---</span><br><span class="line">我是短小精悍的文章摘要(๑•̀ㅂ•́)و✧</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">紧接着文章摘要的正文内容</span><br></pre></td></tr></table></figure>
+<h3 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h3><h3 id="示范"><a href="#示范" class="headerlink" title="示范"></a>示范</h3>
       
     </div>
     
@@ -527,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建文档"><span class="nav-number">1.</span> <span class="nav-text">新建文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档格式"><span class="nav-number">2.</span> <span class="nav-text">文档格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章分类"><span class="nav-number">2.1.</span> <span class="nav-text">文章分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用资源"><span class="nav-number">3.</span> <span class="nav-text">引用资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章摘要"><span class="nav-number">4.</span> <span class="nav-text">文章摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成文件"><span class="nav-number">5.</span> <span class="nav-text">生成文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示范"><span class="nav-number">6.</span> <span class="nav-text">示范</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建文档"><span class="nav-number">1.</span> <span class="nav-text">新建文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档格式"><span class="nav-number">2.</span> <span class="nav-text">文档格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章分类"><span class="nav-number">2.1.</span> <span class="nav-text">文章分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用资源"><span class="nav-number">3.</span> <span class="nav-text">引用资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章资料文件夹"><span class="nav-number">3.1.</span> <span class="nav-text">文章资料文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对路径引用的标签插件"><span class="nav-number">3.2.</span> <span class="nav-text">相对路径引用的标签插件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章摘要"><span class="nav-number">4.</span> <span class="nav-text">文章摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成文件"><span class="nav-number">5.</span> <span class="nav-text">生成文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示范"><span class="nav-number">6.</span> <span class="nav-text">示范</span></a></li></ol></div>
             
 
           </div>
