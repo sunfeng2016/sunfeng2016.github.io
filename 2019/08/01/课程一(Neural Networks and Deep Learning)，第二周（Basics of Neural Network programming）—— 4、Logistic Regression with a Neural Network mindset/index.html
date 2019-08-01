@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。">
+<meta name="description" content="Logistic Regression with a Neural Network mindsetWelcome to your first (required) programming assignment! You will build a logistic regression classifier to recognize cats. This assignment will step y">
 <meta name="keywords" content="Neural Networks,Deep Learning,Logistic Regression">
 <meta property="og:type" content="article">
 <meta property="og:title" content="课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset">
 <meta property="og:url" content="http://sunfeng.online/2019/08/01/课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset/index.html">
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
-<meta property="og:description" content="尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。">
+<meta property="og:description" content="Logistic Regression with a Neural Network mindsetWelcome to your first (required) programming assignment! You will build a logistic regression classifier to recognize cats. This assignment will step y">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T08:32:17.381Z">
+<meta property="og:updated_time" content="2019-08-01T10:48:45.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— 4、Logistic Regression with a Neural Network mindset">
-<meta name="twitter:description" content="尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。">
+<meta name="twitter:description" content="Logistic Regression with a Neural Network mindsetWelcome to your first (required) programming assignment! You will build a logistic regression classifier to recognize cats. This assignment will step y">
 
 
 
@@ -354,24 +354,35 @@
       
 
       
-        <p>尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。<br><a id="more"></a></p>
+        <h3 id="Logistic-Regression-with-a-Neural-Network-mindset"><a href="#Logistic-Regression-with-a-Neural-Network-mindset" class="headerlink" title="Logistic Regression with a Neural Network mindset"></a><strong>Logistic Regression with a Neural Network mindset</strong></h3><p>Welcome to your first (required) programming assignment! You will build a logistic regression classifier to recognize cats. This assignment will step you through how to do this with a Neural Network mindset, and so will also hone your intuitions about deep learning.</p>
+<a id="more"></a>
+<p><strong>Instructions:</strong></p>
+<ul>
+<li>Do not use loops (for/while) in your code, unless the instructions explicitly ask you to do so.</li>
+</ul>
+<p><strong>You will learn to:</strong></p>
+<ul>
+<li><p>Build the general architecture of a learning algorithm, including:</p>
+<ul>
+<li>Initializing parameters</li>
+<li>Calculating the cost function and its gradient</li>
+<li>Using an optimization algorithm (gradient descent)</li>
+</ul>
+</li>
+<li><p>Gather all three functions above into a main function, in the right order.</p>
+</li>
+</ul>
 <hr>
-<h3 id="新建文档"><a href="#新建文档" class="headerlink" title="新建文档"></a>新建文档</h3><p>假设我们新建的文章名为 “hello hexo markdown”，在命令行键入以下命令即可：</p>
-<blockquote>
-<p>$ hexo new “hello hexo markdown”</p>
-</blockquote>
-<p>上述命令的结果是在 <code>./hexo/source/_posts</code> 路径下新建了一个 <code>hello-hexo-markdown.md</code> 文件。</p>
-<p>然后，我们就可以打开编辑器尽情地写作了。</p>
-<hr>
-<h3 id="文档格式"><a href="#文档格式" class="headerlink" title="文档格式"></a>文档格式</h3><p>我们使用文本编辑器打开刚刚新建的 <code>hello-hexo-markdown.md</code> 文件，会发现其中已经存在内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello hexo markdown</span><br><span class="line">date: 2019-07-31 20:44:47</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>这些内容是干嘛的呢？事实上，他们就是用于设置 MarkDown 文档在被解析为静态网页文件时的相关配置，这些配置参数一般位于文件中最上方以 <code>---</code> 分隔的区域。其中，</p>
-<p><code>title</code>的值是当前文档名，也是将来在网页中显示的文章标题</p>
-<p><code>date</code>值是我们新建文档时的当时地区时间</p>
-<p><code>tags</code>值是文档的标签，我们可以随意赋值，为文档贴标签，其用法如下：</p>
-<p>aaaaaa</p>
-<p>aaaaaa</p>
-
+<h3 id="1-Packages"><a href="#1-Packages" class="headerlink" title="1 - Packages"></a>1 - Packages</h3><p>First, let’s run the cell below to import all the packages that you will need during this assignment.</p>
+<ul>
+<li><a href="https://hub.coursera-notebooks.org/user/rdzflaokljifhqibzgygqq/notebooks/Week%202/Logistic%20Regression%20as%20a%20Neural%20Network/www.numpy.org" target="_blank" rel="noopener">numpy</a> is the fundamental package for scientific computing with Python.</li>
+<li><a href="http://www.h5py.org/" target="_blank" rel="noopener">h5py</a> is a common package to interact with a dataset that is stored on an H5 file.</li>
+<li><a href="http://matplotlib.org/" target="_blank" rel="noopener">matplotlib</a> is a famous library to plot graphs in Python.</li>
+<li><a href="http://www.pythonware.com/products/pil/" target="_blank" rel="noopener">PIL</a> and <a href="https://www.scipy.org/" target="_blank" rel="noopener">scipy</a> are used here to test your model with your own picture at the end.</li>
+</ul>
+<p>code ———&gt;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> ndimage</span><br><span class="line"><span class="keyword">from</span> lr_utils <span class="keyword">import</span> load_dataset</span><br></pre></td></tr></table></figure>
+<h3 id="2-Overview-of-the-Problem-set"><a href="#2-Overview-of-the-Problem-set" class="headerlink" title="2 - Overview of the Problem set"></a>2 - Overview of the Problem set</h3>
       
     </div>
     
@@ -554,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建文档"><span class="nav-number">1.</span> <span class="nav-text">新建文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档格式"><span class="nav-number">2.</span> <span class="nav-text">文档格式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression-with-a-Neural-Network-mindset"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression with a Neural Network mindset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Packages"><span class="nav-number">2.</span> <span class="nav-text">1 - Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Overview-of-the-Problem-set"><span class="nav-number">3.</span> <span class="nav-text">2 - Overview of the Problem set</span></a></li></ol></div>
             
 
           </div>
