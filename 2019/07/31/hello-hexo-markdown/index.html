@@ -89,10 +89,12 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T02:35:50.702Z">
+<meta property="og:image" content="d:/Blog/blog/source/_posts/hello-hexo-markdown/example.png">
+<meta property="og:updated_time" content="2019-08-01T02:51:59.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo教程：使用Hexo写博客">
 <meta name="twitter:description" content="尽管 Hexo 支持 MarkDown，但是我们却不能像写单独的 MarkDown 文档时那样肆无忌惮。由于我们所写的文档是需要被解析为静态网页文件的，所以我们必须严格遵从 Hexo 的规范，这样才能解析出条理清晰的静态网页文件。">
+<meta name="twitter:image" content="d:/Blog/blog/source/_posts/hello-hexo-markdown/example.png">
 
 
 
@@ -376,7 +378,18 @@
 <p>所以，为了保险起见，我们也自己手动设置文章摘要，这样也方便避免自动生成的摘要不优雅的情况。</p>
 <p>设置文章摘要，我们只需在想显示为摘要的内容之后添 <code>&lt;!-- more --&gt;</code> 即可。像下面这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello hexo markdown</span><br><span class="line">date: 2016-11-16 18:11:25</span><br><span class="line">tags:</span><br><span class="line">- hello</span><br><span class="line">- hexo</span><br><span class="line">- markdown</span><br><span class="line">---</span><br><span class="line">我是短小精悍的文章摘要(๑•̀ㅂ•́)و✧</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">紧接着文章摘要的正文内容</span><br></pre></td></tr></table></figure>
-<h3 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h3><h3 id="示范"><a href="#示范" class="headerlink" title="示范"></a>示范</h3>
+<p>这样，<code>&lt;!-- more --&gt;</code> 之前、文档配置参数之后中的内容便会被渲染为站点中的文章摘要。</p>
+<p>注意！文章摘要在文章详情页是正文中最前面的内容。</p>
+<hr>
+<h3 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h3><h4 id="清除缓存文件"><a href="#清除缓存文件" class="headerlink" title="清除缓存文件"></a>清除缓存文件</h4><p>为了避免不必要的错误，在生成静态文件前，强烈建议先运行一下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<p>上述命令会清除在本地站点文件下的缓存文件(<code>db.json</code>)和已有的静态文件(<code>public</code>).</p>
+<h4 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h4><p>写好MarkDown文档之后，我们就可以使用以下命令生成静态文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>然后我们就可以启动 Hexo 服务器，使用浏览器打开 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000</a> 查看效果了。</p>
+<h3 id="示范"><a href="#示范" class="headerlink" title="示范"></a>示范</h3><p>下图是一篇经过配置的简单文档，生成静态文件后在网站首页显示的结果。我们可以看到手动设置的摘要，以及打的标签生效了。</p>
+<p><img src="D:\Blog\blog\source\_posts\hello-hexo-markdown\example.png" alt></p>
+
       
     </div>
     
@@ -550,7 +563,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建文档"><span class="nav-number">1.</span> <span class="nav-text">新建文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档格式"><span class="nav-number">2.</span> <span class="nav-text">文档格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章分类"><span class="nav-number">2.1.</span> <span class="nav-text">文章分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用资源"><span class="nav-number">3.</span> <span class="nav-text">引用资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章资料文件夹"><span class="nav-number">3.1.</span> <span class="nav-text">文章资料文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对路径引用的标签插件"><span class="nav-number">3.2.</span> <span class="nav-text">相对路径引用的标签插件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章摘要"><span class="nav-number">4.</span> <span class="nav-text">文章摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成文件"><span class="nav-number">5.</span> <span class="nav-text">生成文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示范"><span class="nav-number">6.</span> <span class="nav-text">示范</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建文档"><span class="nav-number">1.</span> <span class="nav-text">新建文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档格式"><span class="nav-number">2.</span> <span class="nav-text">文档格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章分类"><span class="nav-number">2.1.</span> <span class="nav-text">文章分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用资源"><span class="nav-number">3.</span> <span class="nav-text">引用资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章资料文件夹"><span class="nav-number">3.1.</span> <span class="nav-text">文章资料文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对路径引用的标签插件"><span class="nav-number">3.2.</span> <span class="nav-text">相对路径引用的标签插件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章摘要"><span class="nav-number">4.</span> <span class="nav-text">文章摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成文件"><span class="nav-number">5.</span> <span class="nav-text">生成文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#清除缓存文件"><span class="nav-number">5.1.</span> <span class="nav-text">清除缓存文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成静态文件"><span class="nav-number">5.2.</span> <span class="nav-text">生成静态文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示范"><span class="nav-number">6.</span> <span class="nav-text">示范</span></a></li></ol></div>
             
 
           </div>
