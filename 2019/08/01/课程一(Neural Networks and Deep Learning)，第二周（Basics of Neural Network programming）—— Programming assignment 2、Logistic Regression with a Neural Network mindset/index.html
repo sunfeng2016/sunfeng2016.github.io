@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/01/课程一(Neural%20Networks%20and%20Deep%20Learning)，第二周（Basics%20of%20Neural%20Network%20programming）——%20Programming%20assignment%202、Logistic%20Regression%20with%20a%20Neural%20Network%20mindset/figure4.png">
 <meta property="og:image" content="http://sunfeng.online/2019/08/01/课程一(Neural%20Networks%20and%20Deep%20Learning)，第二周（Basics%20of%20Neural%20Network%20programming）——%20Programming%20assignment%202、Logistic%20Regression%20with%20a%20Neural%20Network%20mindset/figure5.png">
 <meta property="og:image" content="http://sunfeng.online/2019/08/01/课程一(Neural%20Networks%20and%20Deep%20Learning)，第二周（Basics%20of%20Neural%20Network%20programming）——%20Programming%20assignment%202、Logistic%20Regression%20with%20a%20Neural%20Network%20mindset/figure6.png">
-<meta property="og:updated_time" content="2019-08-02T04:59:27.211Z">
+<meta property="og:updated_time" content="2019-08-02T07:14:12.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— Programming assignment 2、Logistic Regression with a Neural Network mindset">
 <meta name="twitter:description" content="Logistic Regression with a Neural Network mindset">
@@ -457,9 +457,13 @@
 <font color="#0099ff">Forward Propagation:</font>
 
 <ul>
-<li>You get x</li>
-<li>You compute $ A = \sigma(w^TX + b) = (a^{(0)},a^{(1)},…a^{(m-1)},a^{(m)})$</li>
-<li>You calculate the cost function: $J = - \frac{1}{m}\sum_{i = 1}^{m}{y^{(i)}log(a^{(i)}) +(1 -  y^{(i)})log(1 - a^{(i)}) }$</li>
+<li><p>You get x</p>
+</li>
+<li><p>You compute $ A = \sigma(w^TX + b) = (a^{(0)},a^{(1)},…a^{(m-1)},a^{(m)})$</p>
+</li>
+<li><p>You calculate the cost function: </p>
+<p>$J = - \frac{1}{m}\sum_{i = 1}^{m}{y^{(i)}log(a^{(i)}) +(1 -  y^{(i)})log(1 - a^{(i)}) }$</p>
+</li>
 </ul>
 <p>Here are the two formulas you will be using:</p>
 <p><img src="/2019/08/01/课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— Programming assignment 2、Logistic Regression with a Neural Network mindset/figure4.png" alt="Figure4"></p>
@@ -514,6 +518,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot learning curve (with costs)</span></span><br><span class="line">costs = np.squeeze(d[<span class="string">'costs'</span>])</span><br><span class="line">plt.plot(costs)</span><br><span class="line">plt.ylabel(<span class="string">'cost'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'iterations (per hundreds)'</span>)</span><br><span class="line">plt.title(<span class="string">"Learning rate ="</span> + str(d[<span class="string">"learning_rate"</span>]))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/08/01/课程一(Neural Networks and Deep Learning)，第二周（Basics of Neural Network programming）—— Programming assignment 2、Logistic Regression with a Neural Network mindset/figure5.png" alt="Figure5"></p>
 <p><strong>Interpretation</strong>: You can see the cost decreasing. It shows that the parameters are being learned. However, you see that you could train the model even more on the training set. Try to increase the number of iterations in the cell above and rerun the cells. You might see that the training set accuracy goes up, but the test set accuracy goes down. This is called overfitting.</p>
+<hr>
 <h3 id="Further-analysis"><a href="#Further-analysis" class="headerlink" title="Further analysis"></a>Further analysis</h3><p>Congratulations on building your first image classification model. Let’s analyze it further, and examine possible choices for the learning rate α.</p>
 <h4 id="Choice-of-learning-rate"><a href="#Choice-of-learning-rate" class="headerlink" title="Choice of learning rate"></a>Choice of learning rate</h4><p><strong>Reminder</strong>: In order for Gradient Descent to work you must choose the learning rate wisely. The learning rate α determines how rapidly we update the parameters. If the learning rate is too large we may “overshoot” the optimal value. Similarly, if it is too small we will need too many iterations to converge to the best values. That’s why it is crucial to use a well-tuned learning rate.</p>
 <p>Let’s compare the learning curve of our model with several choices of learning rates. Run the cell below. This should take about 1 minute. Feel free also to try different values than the three we have initialized the <code>learning_rates</code> variable to contain, and see what happens.</p>
@@ -533,6 +538,7 @@
 </ul>
 </li>
 </ul>
+<hr>
 
       
     </div>
