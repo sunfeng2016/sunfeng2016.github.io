@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Coursera,Neural Network,Deep learning,">
 
 
 
@@ -81,17 +81,20 @@
 
 
 
-<meta name="description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta name="description" content="Planar data classification with a hidden layer">
+<meta name="keywords" content="Coursera,Neural Network,Deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classfication with a hidden layer">
 <meta property="og:url" content="http://sunfeng.online/2019/08/03/课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classfication with a hidden layer/index.html">
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
-<meta property="og:description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta property="og:description" content="Planar data classification with a hidden layer">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-03T09:09:54.143Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/03/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第三周(Shallow%20neural%20networks)——Programming%20assignment%203、Planar%20data%20classfication%20with%20a%20hidden%20layer/Figure1.png">
+<meta property="og:updated_time" content="2019-08-03T10:17:52.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classfication with a hidden layer">
-<meta name="twitter:description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta name="twitter:description" content="Planar data classification with a hidden layer">
+<meta name="twitter:image" content="http://sunfeng.online/2019/08/03/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第三周(Shallow%20neural%20networks)——Programming%20assignment%203、Planar%20data%20classfication%20with%20a%20hidden%20layer/Figure1.png">
 
 
 
@@ -353,7 +356,50 @@
       
 
       
-        
+        <h3 id="Planar-data-classification-with-a-hidden-layer"><a href="#Planar-data-classification-with-a-hidden-layer" class="headerlink" title="Planar data classification with a hidden layer"></a>Planar data classification with a hidden layer</h3><a id="more"></a>
+<p>Welcome to your week 3 programming assignment. It’s time to build your first neural network, which will have a hidden layer. You will see a big difference between this model and the one you implemented using logistic regression.</p>
+<p><strong>You will learn how to:</strong></p>
+<ul>
+<li>Implement a 2-class classification neural network with a signal hidden layer</li>
+<li>Use units with a non-linear activation function, such as tanh</li>
+<li>Compute the cross entropy loss</li>
+<li>Implement forward and backward propagation</li>
+</ul>
+<hr>
+<h3 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h3><p>Let’s first import all the packages that you will need during this assignment.</p>
+<ul>
+<li><a href="https://hub.coursera-notebooks.org/user/rdzflaokljifhqibzgygqq/notebooks/Week%203/Planar%20data%20classification%20with%20one%20hidden%20layer/www.numpy.org" target="_blank" rel="noopener">numpy</a> is the fundamental packages for scientific computing with Python.</li>
+<li><a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">sklearn</a> provides simple and efficient tools for data mining and data and analysis.</li>
+<li><a href="http://matplotlib.org/" target="_blank" rel="noopener">matplotlib</a> is a library for plotting graphs in Python.</li>
+<li>testCases provides some test examples to assess the correctness of your functions</li>
+<li>planar_utils provide various useful functions used in this assignment</li>
+</ul>
+<p><strong>Code:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Package imports</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> testCases_v2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sklearn</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets</span><br><span class="line"><span class="keyword">import</span> sklearn.linear_model</span><br><span class="line"><span class="keyword">from</span> planar_utils <span class="keyword">import</span> plot_decision_boundary, sigmoid, load_planar_dataset, load_extra_datasets</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>) <span class="comment"># set a seed so that the results are consistent</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="DataSet"><a href="#DataSet" class="headerlink" title="DataSet"></a>DataSet</h3><p>First, let’s get the dataset you will work on. The following code will load a “flower” 2-class dataset into variables <code>X</code> and <code>Y</code>.</p>
+<p><strong>Code:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># load dataset</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_dataset</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    load planar dataset</span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        @X: your dataset features</span></span><br><span class="line"><span class="string">        @Y: your dataset labels</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    X, Y = load_planar_dataset()    <span class="comment"># load dataset</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> X, Y</span><br></pre></td></tr></table></figure>
+<p>Visualize the dataset using matplotlib. The data looks like a “flower” with some red (label y=0) and some blue (y=1) points. Your goal is to build a model to fit this data.</p>
+<p><strong>Code:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Visualize the data:</span></span><br><span class="line">plt.scatter(X[<span class="number">0</span>, :], X[<span class="number">1</span>, :], c=Y, s=<span class="number">40</span>, cmap=plt.cm.Spectral);</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><strong>Result:</strong></p>
+<p><img src="/2019/08/03/课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classfication with a hidden layer/Figure1.png" alt="Figure1"></p>
+<p>You have:</p>
+<blockquote>
+<ul>
+<li>a numpy array (matrix) X that contains your features (x1, x2)</li>
+<li>a numpy array (vector) Y that contains your labels (red: 0, blue: 1)</li>
+</ul>
+</blockquote>
+<p>Let’s first get a better sense of what our data is like.</p>
+<p><strong>Exercise:</strong> How many training examples do you have? In addition, what is the <code>shape</code> of the variables <code>X</code>and <code>Y</code> ?</p>
+<p><strong>Code: </strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shape_X = X.shape</span><br><span class="line">shape_Y = Y.shape</span><br><span class="line">m = X.shape[<span class="number">1</span>]  <span class="comment"># training set size</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">'The shape of X is: '</span> + str(shape_X))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'The shape of Y is: '</span> + str(shape_Y))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'I have m = %d training examples!'</span> % (m))</span><br></pre></td></tr></table></figure>
+<p><strong>Result:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The shape of X <span class="keyword">is</span>: (<span class="number">2</span>, <span class="number">400</span>)</span><br><span class="line">The shape of Y <span class="keyword">is</span>: (<span class="number">1</span>, <span class="number">400</span>)</span><br><span class="line">I have m = <span class="number">400</span> training examples!</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -367,6 +413,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Coursera/" rel="tag"># Coursera</a>
+          
+            <a href="/tags/Neural-Network/" rel="tag"># Neural Network</a>
+          
+            <a href="/tags/Deep-learning/" rel="tag"># Deep learning</a>
+          
+        </div>
       
 
       
@@ -437,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -477,7 +542,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -507,6 +572,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Planar-data-classification-with-a-hidden-layer"><span class="nav-number">1.</span> <span class="nav-text">Planar data classification with a hidden layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Packages"><span class="nav-number">2.</span> <span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataSet"><span class="nav-number">3.</span> <span class="nav-text">DataSet</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
