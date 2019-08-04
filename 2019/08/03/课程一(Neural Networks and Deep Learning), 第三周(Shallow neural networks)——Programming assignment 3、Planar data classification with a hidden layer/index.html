@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Coursera,Neural Network,Deep learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="SunFeng's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Planar data classification with a hidden layer">
+<meta name="keywords" content="Coursera,Neural Network,Deep learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer">
+<meta property="og:url" content="http://sunfeng.online/2019/08/03/课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer/index.html">
+<meta property="og:site_name" content="SunFeng&#39;s Blog">
+<meta property="og:description" content="Planar data classification with a hidden layer">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://sunfeng.online/2019/08/03/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第三周(Shallow%20neural%20networks)——Programming%20assignment%203、Planar%20data%20classification%20with%20a%20hidden%20layer/Figure1.png">
+<meta property="og:image" content="http://sunfeng.online/2019/08/03/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第三周(Shallow%20neural%20networks)——Programming%20assignment%203、Planar%20data%20classification%20with%20a%20hidden%20layer/Figure2.png">
+<meta property="og:image" content="http://sunfeng.online/2019/08/03/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第三周(Shallow%20neural%20networks)——Programming%20assignment%203、Planar%20data%20classification%20with%20a%20hidden%20layer/Figure3.png">
+<meta property="og:image" content="http://sunfeng.online/2019/08/03/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第三周(Shallow%20neural%20networks)——Programming%20assignment%203、Planar%20data%20classification%20with%20a%20hidden%20layer/Figure4.png">
+<meta property="og:updated_time" content="2019-08-04T05:15:09.848Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer">
+<meta name="twitter:description" content="Planar data classification with a hidden layer">
+<meta name="twitter:image" content="http://sunfeng.online/2019/08/03/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第三周(Shallow%20neural%20networks)——Programming%20assignment%203、Planar%20data%20classification%20with%20a%20hidden%20layer/Figure1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://sunfeng.online/2019/08/03/课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer/">
+
+
+
+
+
+  <title>课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer | SunFeng's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SunFeng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学习，敲码，孤独终老！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sunfeng.online/2019/08/03/课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SunFeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sun.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SunFeng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-03T17:06:43+08:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coursera深度学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Coursera深度学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Planar-data-classification-with-a-hidden-layer"><a href="#Planar-data-classification-with-a-hidden-layer" class="headerlink" title="Planar data classification with a hidden layer"></a>Planar data classification with a hidden layer</h3><a id="more"></a>
+<p>Welcome to your week 3 programming assignment. It’s time to build your first neural network, which will have a hidden layer. You will see a big difference between this model and the one you implemented using logistic regression.</p>
+<p><strong>You will learn how to:</strong></p>
+<ul>
+<li>Implement a 2-class classification neural network with a signal hidden layer</li>
+<li>Use units with a non-linear activation function, such as tanh</li>
+<li>Compute the cross entropy loss</li>
+<li>Implement forward and backward propagation</li>
+</ul>
+<hr>
+<h3 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h3><p>Let’s first import all the packages that you will need during this assignment.</p>
+<ul>
+<li><a href="https://hub.coursera-notebooks.org/user/rdzflaokljifhqibzgygqq/notebooks/Week%203/Planar%20data%20classification%20with%20one%20hidden%20layer/www.numpy.org" target="_blank" rel="noopener">numpy</a> is the fundamental packages for scientific computing with Python.</li>
+<li><a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">sklearn</a> provides simple and efficient tools for data mining and data and analysis.</li>
+<li><a href="http://matplotlib.org/" target="_blank" rel="noopener">matplotlib</a> is a library for plotting graphs in Python.</li>
+<li>testCases provides some test examples to assess the correctness of your functions</li>
+<li>planar_utils provide various useful functions used in this assignment</li>
+</ul>
+<p><strong>Code:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Package imports</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> testCases_v2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sklearn</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets</span><br><span class="line"><span class="keyword">import</span> sklearn.linear_model</span><br><span class="line"><span class="keyword">from</span> planar_utils <span class="keyword">import</span> plot_decision_boundary, sigmoid, load_planar_dataset, load_extra_datasets</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>) <span class="comment"># set a seed so that the results are consistent</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p>First, let’s get the dataset you will work on. The following code will load a “flower” 2-class dataset into variables <code>X</code> and <code>Y</code>.</p>
+<p><strong>Code:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># load dataset</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_dataset</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    load planar dataset</span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        @X: your dataset features</span></span><br><span class="line"><span class="string">        @Y: your dataset labels</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    X, Y = load_planar_dataset()    <span class="comment"># load dataset</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> X, Y</span><br></pre></td></tr></table></figure>
+<p>Visualize the dataset using matplotlib. The data looks like a “flower” with some red (label y=0) and some blue (y=1) points. Your goal is to build a model to fit this data.</p>
+<p><strong>Code:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Visualize the data:</span></span><br><span class="line">plt.scatter(X[<span class="number">0</span>, :], X[<span class="number">1</span>, :], c=Y, s=<span class="number">40</span>, cmap=plt.cm.Spectral);</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><strong>Result:</strong></p>
+<p><img src="/2019/08/03/课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer/Figure1.png" alt="Figure1"></p>
+<p>You have:</p>
+<blockquote>
+<ul>
+<li>a numpy array (matrix) X that contains your features (x1, x2)</li>
+<li>a numpy array (vector) Y that contains your labels (red: 0, blue: 1)</li>
+</ul>
+</blockquote>
+<p>Let’s first get a better sense of what our data is like.</p>
+<p><strong>Exercise:</strong> How many training examples do you have? In addition, what is the <code>shape</code> of the variables <code>X</code>and <code>Y</code> ?</p>
+<p><strong>Code: </strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shape_X = X.shape</span><br><span class="line">shape_Y = Y.shape</span><br><span class="line">m = X.shape[<span class="number">1</span>]  <span class="comment"># training set size</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">'The shape of X is: '</span> + str(shape_X))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'The shape of Y is: '</span> + str(shape_Y))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'I have m = %d training examples!'</span> % (m))</span><br></pre></td></tr></table></figure>
+<p><strong>Result:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The shape of X <span class="keyword">is</span>: (<span class="number">2</span>, <span class="number">400</span>)</span><br><span class="line">The shape of Y <span class="keyword">is</span>: (<span class="number">1</span>, <span class="number">400</span>)</span><br><span class="line">I have m = <span class="number">400</span> training examples!</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Simple-Logistic-Regression"><a href="#Simple-Logistic-Regression" class="headerlink" title="Simple Logistic Regression"></a>Simple Logistic Regression</h3><p>Before building a full neural network, let’s first see how logistic regression performs on this problem. You can use sklearn’s built-in functions to do that. Run the code below to train a logistic regression classifier on the dataset.</p>
+<p><strong>Code:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Train the logistic regression classifier</span></span><br><span class="line">clf = sklearn.linear_model.LogisticRegressionCV();</span><br><span class="line">clf.fit(X.T, Y.T);</span><br></pre></td></tr></table></figure>
+<p>You can now plot the decision boundary  of these models. Run the code below.</p>
+<p><strong>Code:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot the decision boundary for logistic regression</span></span><br><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: clf.predict(x), X, Y)</span><br><span class="line">plt.title(<span class="string">"Logistic Regression"</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># Print accuracy</span></span><br><span class="line">LR_predictions = clf.predict(X.T)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'Accuracy of logistic regression: %d '</span> % float((np.dot(Y,LR_predictions) + np.dot(<span class="number">1</span>-Y,<span class="number">1</span>-LR_predictions))/float(Y.size)*<span class="number">100</span>) +</span><br><span class="line">       <span class="string">'% '</span> + <span class="string">"(percentage of correctly labelled datapoints)"</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>Result:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Accuracy of logistic regression: 47 % (percentage of correctly labelled datapoints)</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/08/03/课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer/Figure2.png" alt="Figure2"></p>
+<p><strong>Interpretation:</strong> The dataset is not linearly separable, so logistic regression doesn’t perform well. Hopefully a neural network  will do better. Let’s try this now.</p>
+<hr>
+<h3 id="Neural-Network-model"><a href="#Neural-Network-model" class="headerlink" title="Neural Network model"></a>Neural Network model</h3><p>Logistic regression did not work well on the “flower dataset”. You are going to train a Neural Network with a single hidden layer.</p>
+<p><strong>Here is our model:</strong></p>
+<p><img src="/2019/08/03/课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer/Figure3.png" alt="Figure3"></p>
+<p><strong>Mathematically:</strong></p>
+<p>For one example x(i):</p>
+<p><img src="/2019/08/03/课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer/Figure4.png" alt="Figure4"></p>
+<p>Given the predictions on all the examples, you can also compute the cost J as follows:</p>
+<p>$ J = -\frac{1}{m}\sum_{i = 1}^{m}{(y^{(i)}log(a^{<a href="i">2</a>}) + (1 - y^{(i)})log(1 - a^{<a href="i">2</a>}))}    $                            (6)</p>
+<p><strong>Reminder:</strong> The general methodology to build a Neural Network is to:</p>
+<blockquote>
+<ol>
+<li>Define the neural network structure (# of input units, # of hidden units, etc).</li>
+<li>Initialize the model’s parameters</li>
+<li><font color="#0099ff"><strong>Loop:</strong></font><br>- <font color="#0099ff">Implement forward propagation</font><br>- <font color="#0099ff">Compute loss</font><br>- <font color="#0099ff">Implement backward propagation to get the gradients</font><br>- <font color="#0099ff">Update parameters (gradient descent)</font>
+</li>
+</ol>
+</blockquote>
+<p>You often build helper functions to compute steps 1-3 and then merge them into one function we call <code>nn_model()</code>. Once you’ve built <code>nn_model()</code> and learned the right parameters, you can make predictions on new data.</p>
+<h4 id="Defining-the-neural-network-structure"><a href="#Defining-the-neural-network-structure" class="headerlink" title="Defining the neural network structure"></a>Defining the neural network structure</h4><h4 id="Initialize-the-model’s-parameters"><a href="#Initialize-the-model’s-parameters" class="headerlink" title="Initialize the model’s parameters"></a>Initialize the model’s parameters</h4><h4 id="The-Loop"><a href="#The-Loop" class="headerlink" title="The Loop"></a>The Loop</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Coursera/" rel="tag"># Coursera</a>
+          
+            <a href="/tags/Neural-Network/" rel="tag"># Neural Network</a>
+          
+            <a href="/tags/Deep-learning/" rel="tag"># Deep learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/02/如何上传本地代码到github/" rel="next" title="如何上传本地代码到github">
+                <i class="fa fa-chevron-left"></i> 如何上传本地代码到github
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/sun.jpg" alt="SunFeng">
+            
+              <p class="site-author-name" itemprop="name">SunFeng</p>
+              <p class="site-description motion-element" itemprop="description">南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Planar-data-classification-with-a-hidden-layer"><span class="nav-number">1.</span> <span class="nav-text">Planar data classification with a hidden layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Packages"><span class="nav-number">2.</span> <span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dataset"><span class="nav-number">3.</span> <span class="nav-text">Dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Logistic-Regression"><span class="nav-number">4.</span> <span class="nav-text">Simple Logistic Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-Network-model"><span class="nav-number">5.</span> <span class="nav-text">Neural Network model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Defining-the-neural-network-structure"><span class="nav-number">5.1.</span> <span class="nav-text">Defining the neural network structure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Initialize-the-model’s-parameters"><span class="nav-number">5.2.</span> <span class="nav-text">Initialize the model’s parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-Loop"><span class="nav-number">5.3.</span> <span class="nav-text">The Loop</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SunFeng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
