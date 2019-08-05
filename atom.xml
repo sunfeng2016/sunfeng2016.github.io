@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-05T12:23:07.018Z</updated>
+  <updated>2019-08-05T12:50:23.040Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -17,16 +17,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>chapter_2</title>
-    <link href="http://sunfeng.online/2019/08/05/chapter_2/"/>
-    <id>http://sunfeng.online/2019/08/05/chapter_2/</id>
+    <title>《机器学习》西瓜书学习笔记（二）-- 模型评估与选择</title>
+    <link href="http://sunfeng.online/2019/08/05/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89--%20%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9/"/>
+    <id>http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/</id>
     <published>2019-08-05T12:23:06.000Z</published>
-    <updated>2019-08-05T12:23:07.018Z</updated>
+    <updated>2019-08-05T12:50:23.040Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（二）模型评估与选择"><a href="#《机器学习》西瓜书学习笔记（二）模型评估与选择" class="headerlink" title="《机器学习》西瓜书学习笔记（二）模型评估与选择"></a>《机器学习》西瓜书学习笔记（二）模型评估与选择</h2><a id="more"></a><h3 id="经验误差与过拟合"><a href="#经验误差与过拟合" class="headerlink" title="经验误差与过拟合"></a>经验误差与过拟合</h3><ul><li><strong>错误率 (error rate)：</strong> 分类错误样本数占总样本数的比例</li><li><strong>准确率 (accuracy)：</strong> 分类正确样本数占总样本数的比例</li><li><strong>误差 (error)：</strong> 学习器的实际预测输出与真实输出之间的差异</li><li><strong><font color="#0099ff">训练误差 (training error)/经验误差(empirical error)：</font></strong> 学习器在训练集上的误差</li><li><strong>泛化误差(generalization error):</strong> 学习器在新样本上的误差</li><li><strong><font color="#0099ff">过拟合(overfitting):</font></strong> 学习能力过于强大。学习器把训练样本学得太好，导致将训练样本中自身含有的特点当成所有潜在样本都会具有的一般性质，从而训练后使得泛化性能下降</li><li><strong>欠拟合(underfitting):</strong> 学习能力底下。对训练样本的一般性质尚未学好</li></ul><p><img src="/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure1.PNG" alt="Figure1"></p><h3 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h3><h3 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h3>]]></content>
     
     <summary type="html">
     
+      &lt;h2 id=&quot;《机器学习》西瓜书学习笔记（二）模型评估与选择&quot;&gt;&lt;a href=&quot;#《机器学习》西瓜书学习笔记（二）模型评估与选择&quot; class=&quot;headerlink&quot; title=&quot;《机器学习》西瓜书学习笔记（二）模型评估与选择&quot;&gt;&lt;/a&gt;《机器学习》西瓜书学习笔记（二）模型评估与选择&lt;/h2&gt;
+    
     </summary>
     
+      <category term="《机器学习》西瓜书学习笔记" scheme="http://sunfeng.online/categories/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="machine learning" scheme="http://sunfeng.online/tags/machine-learning/"/>
     
   </entry>
   

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[chapter_2]]></title>
-    <url>%2F2019%2F08%2F05%2Fchapter_2%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[《机器学习》西瓜书学习笔记（二）-- 模型评估与选择]]></title>
+    <url>%2F2019%2F08%2F05%2F%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89--%20%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9%2F</url>
+    <content type="text"><![CDATA[《机器学习》西瓜书学习笔记（二）模型评估与选择 经验误差与过拟合 错误率 (error rate)： 分类错误样本数占总样本数的比例 准确率 (accuracy)： 分类正确样本数占总样本数的比例 误差 (error)： 学习器的实际预测输出与真实输出之间的差异 训练误差 (training error)/经验误差(empirical error)： 学习器在训练集上的误差 泛化误差(generalization error): 学习器在新样本上的误差 过拟合(overfitting): 学习能力过于强大。学习器把训练样本学得太好，导致将训练样本中自身含有的特点当成所有潜在样本都会具有的一般性质，从而训练后使得泛化性能下降 欠拟合(underfitting): 学习能力底下。对训练样本的一般性质尚未学好 评估方法性能度量]]></content>
+      <categories>
+        <category>《机器学习》西瓜书学习笔记</category>
+      </categories>
+      <tags>
+        <tag>machine learning</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[《机器学习》西瓜书学习笔记（一）-- 绪论]]></title>

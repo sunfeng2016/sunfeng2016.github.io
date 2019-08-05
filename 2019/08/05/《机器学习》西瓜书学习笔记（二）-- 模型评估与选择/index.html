@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="machine learning,">
 
 
 
@@ -88,17 +88,20 @@
 
 
 
-<meta name="description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta name="description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
+<meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="chapter_2">
-<meta property="og:url" content="http://sunfeng.online/2019/08/05/chapter_2/index.html">
+<meta property="og:title" content="《机器学习》西瓜书学习笔记（二）-- 模型评估与选择">
+<meta property="og:url" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/index.html">
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
-<meta property="og:description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta property="og:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T12:23:07.018Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure1.PNG">
+<meta property="og:updated_time" content="2019-08-05T12:50:23.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chapter_2">
-<meta name="twitter:description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta name="twitter:title" content="《机器学习》西瓜书学习笔记（二）-- 模型评估与选择">
+<meta name="twitter:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
+<meta name="twitter:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure1.PNG">
 
 
 
@@ -128,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://sunfeng.online/2019/08/05/chapter_2/">
+  <link rel="canonical" href="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/">
 
 
 
 
 
-  <title>chapter_2 | SunFeng's Blog</title>
+  <title>《机器学习》西瓜书学习笔记（二）-- 模型评估与选择 | SunFeng's Blog</title>
   
 
 
@@ -271,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sunfeng.online/2019/08/05/chapter_2/">
+    <link itemprop="mainEntityOfPage" href="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SunFeng">
@@ -288,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">chapter_2</h1>
+          <h1 class="post-title" itemprop="name headline">《机器学习》西瓜书学习笔记（二）-- 模型评估与选择</h1>
         
 
         <div class="post-meta">
@@ -311,6 +314,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/《机器学习》西瓜书学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">《机器学习》西瓜书学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -332,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  230
                 </span>
               
 
@@ -369,7 +394,18 @@
       
 
       
-        
+        <h2 id="《机器学习》西瓜书学习笔记（二）模型评估与选择"><a href="#《机器学习》西瓜书学习笔记（二）模型评估与选择" class="headerlink" title="《机器学习》西瓜书学习笔记（二）模型评估与选择"></a>《机器学习》西瓜书学习笔记（二）模型评估与选择</h2><a id="more"></a>
+<h3 id="经验误差与过拟合"><a href="#经验误差与过拟合" class="headerlink" title="经验误差与过拟合"></a>经验误差与过拟合</h3><ul>
+<li><strong>错误率 (error rate)：</strong> 分类错误样本数占总样本数的比例</li>
+<li><strong>准确率 (accuracy)：</strong> 分类正确样本数占总样本数的比例</li>
+<li><strong>误差 (error)：</strong> 学习器的实际预测输出与真实输出之间的差异</li>
+<li><strong><font color="#0099ff">训练误差 (training error)/经验误差(empirical error)：</font></strong> 学习器在训练集上的误差</li>
+<li><strong>泛化误差(generalization error):</strong> 学习器在新样本上的误差</li>
+<li><strong><font color="#0099ff">过拟合(overfitting):</font></strong> 学习能力过于强大。学习器把训练样本学得太好，导致将训练样本中自身含有的特点当成所有潜在样本都会具有的一般性质，从而训练后使得泛化性能下降</li>
+<li><strong>欠拟合(underfitting):</strong> 学习能力底下。对训练样本的一般性质尚未学好</li>
+</ul>
+<p><img src="/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure1.PNG" alt="Figure1"></p>
+<h3 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h3><h3 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h3>
       
     </div>
     
@@ -394,6 +430,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+        </div>
       
 
       
@@ -464,8 +506,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -551,6 +602,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（二）模型评估与选择"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（二）模型评估与选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经验误差与过拟合"><span class="nav-number">1.1.</span> <span class="nav-text">经验误差与过拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估方法"><span class="nav-number">1.2.</span> <span class="nav-text">评估方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能度量"><span class="nav-number">1.3.</span> <span class="nav-text">性能度量</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -578,7 +645,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.2k</span>
+    <span title="Site words total count">9.5k</span>
   
 </div>
 
@@ -597,7 +664,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共9.2k字</span>
+  <span class="post-count">博客全站共9.5k字</span>
 </div>
         
 
