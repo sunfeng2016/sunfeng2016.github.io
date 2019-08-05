@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[chapter_2]]></title>
+    <url>%2F2019%2F08%2F05%2Fchapter_2%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[《机器学习》西瓜书学习笔记（一）-- 绪论]]></title>
     <url>%2F2019%2F08%2F05%2F%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%20%E7%BB%AA%E8%AE%BA%2F</url>
     <content type="text"><![CDATA[《机器学习》西瓜书学习笔记（一）绪论 引言 学习算法(learning algorithm): 机器学习研究的主要内容，是关于在计算机上从数据产生“模型”的算法，即“学习算法”. 学习算法的作用： 基于提供的经验数据产生模型 面对新情况，模型可提供相应的判断 模型(model): 泛指从数据中学到的结果 学习器(learner): 学习算法在给定参数空间上的实例化 基本术语 数据集(data set): 一组记录的集合 示例(instance)/样本(sample)/特征向量(feature vector): 每条记录（关于一个事件或对象的描述）或空间中的每一个点（对应一个坐标向量） 属性(attribute)/特征(feature): 反映事件或对象在某方面的表现或性质的事项 属性值(attribute value): 属性上的取值 属性空间(attribute space)/样本空间(sample space)/输入空间(input space): 属性张成的空间 维数(dimensionality): 属性的个数 学习(learning)/训练(training): 从数据中学的模型的过程 训练数据(training data): 训练过程中使用的数据 训练样本(training sample): 训练数据中的每个样本 训练集(training set): 训练样本组成的集合 假设(hypothesis): 学得模型对应了关于数据的某种潜在的规律 真相/真实(ground-truth): 这种潜在规律的自身 预测(prediction): 获得训练样本的结果信息，才能建立“预测”的模型 标记(label): 关于示例结果的信息 样例(example): 拥有了标记信息的示例 标记空间(label space): 所有标记的集合 分类(classification): 预测的离散值 二分类(binary classification) 正类(positive class) 负类(negative class) 多分类(multi-class classification) 回归(regression): 预测的连续值 测试(testing): 学的模型后，使用其进行预测的过程 测试样本(testing sample): 被预测的样本 学习任务分类： 监督学习(supervised learning): 有标记 分类 回归 无监督学习(unsupervised learning): 无标记 聚类(clustering) 泛化(generalization)能力: 学得模型适用于新样本的能力 假设空间 科学推理: 归纳(induction): 特殊 —-&gt; 一般，泛化 假设(deduction): 一般 —-&gt; 特殊，特化 归纳学习： 广义：从样例中学习 狭义：从训练数据学得概念，概念学习、概念形成 归纳偏好 归纳偏好: 机器学习算法在学习过程中对某种类型假设的偏好 任何一个有效的机器学习算法必有其归纳偏好 “奥卡姆剃刀”原则: 若有多个假设与观察一致，则选最简单的那个 “没有免费的午餐”定理(NFL定理): 总误差与学习算法无关]]></content>
