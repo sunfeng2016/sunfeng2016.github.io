@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-04T12:35:08.617Z</updated>
+  <updated>2019-08-05T10:45:30.987Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《机器学习》西瓜书学习笔记（一）-- 绪论</title>
+    <link href="http://sunfeng.online/2019/08/05/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%20%E7%BB%AA%E8%AE%BA/"/>
+    <id>http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（一）-- 绪论/</id>
+    <published>2019-08-05T10:39:04.000Z</published>
+    <updated>2019-08-05T10:45:30.987Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（一）绪论"><a href="#《机器学习》西瓜书学习笔记（一）绪论" class="headerlink" title="《机器学习》西瓜书学习笔记（一）绪论"></a>《机器学习》西瓜书学习笔记（一）绪论</h2><a id="more"></a><h3 id="常用术语"><a href="#常用术语" class="headerlink" title="常用术语"></a>常用术语</h3><h3 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h3><h3 id="归纳偏好"><a href="#归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;《机器学习》西瓜书学习笔记（一）绪论&quot;&gt;&lt;a href=&quot;#《机器学习》西瓜书学习笔记（一）绪论&quot; class=&quot;headerlink&quot; title=&quot;《机器学习》西瓜书学习笔记（一）绪论&quot;&gt;&lt;/a&gt;《机器学习》西瓜书学习笔记（一）绪论&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="《机器学习》西瓜书学习笔记" scheme="http://sunfeng.online/categories/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="machine learning" scheme="http://sunfeng.online/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>课程一(Neural Networks and Deep Learning), 第三周(Shallow neural networks)——Programming assignment 3、Planar data classification with a hidden layer</title>
