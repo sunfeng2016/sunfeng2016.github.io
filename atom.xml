@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-05T10:45:30.987Z</updated>
+  <updated>2019-08-05T12:18:41.329Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://sunfeng.online/2019/08/05/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%20%E7%BB%AA%E8%AE%BA/"/>
     <id>http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（一）-- 绪论/</id>
     <published>2019-08-05T10:39:04.000Z</published>
-    <updated>2019-08-05T10:45:30.987Z</updated>
+    <updated>2019-08-05T12:18:41.329Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（一）绪论"><a href="#《机器学习》西瓜书学习笔记（一）绪论" class="headerlink" title="《机器学习》西瓜书学习笔记（一）绪论"></a>《机器学习》西瓜书学习笔记（一）绪论</h2><a id="more"></a><h3 id="常用术语"><a href="#常用术语" class="headerlink" title="常用术语"></a>常用术语</h3><h3 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h3><h3 id="归纳偏好"><a href="#归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好</h3>]]></content>
+    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（一）绪论"><a href="#《机器学习》西瓜书学习笔记（一）绪论" class="headerlink" title="《机器学习》西瓜书学习笔记（一）绪论"></a>《机器学习》西瓜书学习笔记（一）绪论</h2><a id="more"></a><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><ol><li><strong>学习算法(learning algorithm):</strong> 机器学习研究的主要内容，是关于在计算机上从数据产生“模型”的算法，即“学习算法”.</li><li><strong>学习算法的作用：</strong><ul><li>基于提供的经验数据产生模型</li><li>面对新情况，模型可提供相应的判断</li></ul></li><li><strong>模型(model):</strong> 泛指从数据中学到的结果</li><li><strong>学习器(learner):</strong> 学习算法在给定参数空间上的实例化</li></ol><hr><h3 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h3><ul><li><strong>数据集(data set):</strong> 一组记录的集合</li><li><strong>示例(instance)/样本(sample)/特征向量(feature vector):</strong> 每条记录（关于一个事件或对象的描述）或空间中的每一个点（对应一个坐标向量）</li><li><strong>属性(attribute)/特征(feature):</strong> 反映事件或对象在某方面的表现或性质的事项</li><li><strong>属性值(attribute value):</strong> 属性上的取值</li><li><strong>属性空间(attribute space)/样本空间(sample space)/输入空间(input space):</strong> 属性张成的空间</li><li><strong>维数(dimensionality):</strong> 属性的个数</li><li><strong>学习(learning)/训练(training):</strong> 从数据中学的模型的过程</li><li><strong>训练数据(training data): </strong> 训练过程中使用的数据</li><li><strong>训练样本(training sample):</strong> 训练数据中的每个样本</li><li><strong>训练集(training set):</strong> 训练样本组成的集合</li><li><strong>假设(hypothesis):</strong> 学得模型对应了关于数据的某种潜在的规律</li><li><strong>真相/真实(ground-truth):</strong> 这种潜在规律的自身</li><li><strong>预测(prediction):</strong> 获得训练样本的结果信息，才能建立“预测”的模型</li><li><strong>标记(label):</strong> 关于示例结果的信息</li><li><strong>样例(example):</strong> 拥有了标记信息的示例</li><li><strong>标记空间(label space):</strong> 所有标记的集合</li><li><strong>分类(classification):</strong> 预测的离散值<ul><li>二分类(binary classification)<ul><li>正类(positive class)</li><li>负类(negative class)</li></ul></li><li>多分类(multi-class classification)</li></ul></li><li><strong>回归(regression):</strong> 预测的连续值</li><li><strong>测试(testing):</strong> 学的模型后，使用其进行预测的过程</li><li><strong>测试样本(testing sample):</strong> 被预测的样本</li><li>学习任务分类：<ul><li><font color="#0099ff">监督学习(supervised learning): 有标记</font><ul><li>分类</li><li>回归</li></ul></li><li><font color="#0099ff">无监督学习(unsupervised learning): 无标记</font><ul><li>聚类(clustering)</li></ul></li></ul></li><li><strong>泛化(generalization)能力:</strong> 学得模型适用于新样本的能力</li></ul><hr><h3 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h3><ul><li>科学推理:<ul><li><strong>归纳(induction):</strong> 特殊 —-&gt; 一般，泛化</li><li><strong>假设(deduction):</strong> 一般 —-&gt; 特殊，特化</li></ul></li><li><strong>归纳学习：</strong> <ul><li>广义：从样例中学习</li><li>狭义：从训练数据学得概念，概念学习、概念形成</li></ul></li></ul><hr><h3 id="归纳偏好"><a href="#归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好</h3><ul><li><strong>归纳偏好:</strong> 机器学习算法在学习过程中对某种类型假设的偏好<ul><li><strong><font color="#0099ff">任何一个有效的机器学习算法必有其归纳偏好</font></strong></li></ul></li><li><strong>“奥卡姆剃刀”原则:</strong> 若有多个假设与观察一致，则选最简单的那个</li><li><strong>“没有免费的午餐”定理(NFL定理):</strong>  总误差与学习算法无关</li></ul><hr>]]></content>
     
     <summary type="html">
     
