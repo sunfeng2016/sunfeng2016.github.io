@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure2.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure3.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure4.png">
-<meta property="og:updated_time" content="2019-08-06T07:21:10.924Z">
+<meta property="og:updated_time" content="2019-08-06T08:01:05.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（二）-- 模型评估与选择">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,565
+                  1,637
                 </span>
               
 
@@ -454,10 +454,9 @@
 <ul>
 <li><font color="#0099ff">自助法产生的数据集改变了初始数据集的分布，这会引入估计偏差</font>
 
-
-
 </li>
 </ul>
+<hr>
 <h3 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h3><p><strong>性能度量(performance measure)：</strong> 衡量模型泛化能力的评价标准</p>
 <ul>
 <li>回归任务<ul>
@@ -513,9 +512,18 @@ R = \frac{TP}{TP + FN}</script><p><strong>解释：</strong></p>
 </ul>
 </li>
 </ol>
-<p><strong>F1:</strong></p>
-<p><strong>Fβ:</strong></p>
-<hr>
+<p><strong>F1:</strong> 基于查准率和查全率的调和平均</p>
+<script type="math/tex; mode=display">
+\frac{1}{F1} = \frac{1}{2} · (\frac{1}{P} + \frac{1}{R})</script><script type="math/tex; mode=display">
+F1 = \frac{2 \times P \times R}{P + R} = \frac{2 \times TP}{样例总数 + TP - TN}</script><p><strong>Fβ:</strong> 基于查准率和查全率的调和平均</p>
+<script type="math/tex; mode=display">
+\frac{1}{F_\beta} = \frac{1}{1 + \beta^2} · (\frac{1}{P} + \frac{\beta^2}{R})</script><script type="math/tex; mode=display">
+F_\beta = \frac{(1 + \beta^2) \times P \times R}{(\beta^2 \times P) + R}</script><p><strong>说明：</strong> </p>
+<ul>
+<li><strong>β &gt; 0 </strong>度量了查全率和查准率的相对重要性</li>
+<li><strong>β &gt; 1 </strong>时查全率有更大的影响</li>
+<li><strong>β &lt; 1 </strong>时查准率有更大的影响</li>
+</ul>
 <h4 id="4-分类任务的性能度量3-——-ROC与AUC"><a href="#4-分类任务的性能度量3-——-ROC与AUC" class="headerlink" title="4. 分类任务的性能度量3 —— ROC与AUC"></a>4. 分类任务的性能度量3 —— ROC与AUC</h4><h4 id="5-分类任务的性能度量4-——-代价敏感错误率与代价曲线"><a href="#5-分类任务的性能度量4-——-代价敏感错误率与代价曲线" class="headerlink" title="5. 分类任务的性能度量4 —— 代价敏感错误率与代价曲线"></a>5. 分类任务的性能度量4 —— 代价敏感错误率与代价曲线</h4>
       
     </div>
@@ -756,7 +764,7 @@ R = \frac{TP}{TP + FN}</script><p><strong>解释：</strong></p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10.8k</span>
+    <span title="Site words total count">10.9k</span>
   
 </div>
 
@@ -775,7 +783,7 @@ R = \frac{TP}{TP + FN}</script><p><strong>解释：</strong></p>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.8k字</span>
+  <span class="post-count">博客全站共10.9k字</span>
 </div>
         
 
