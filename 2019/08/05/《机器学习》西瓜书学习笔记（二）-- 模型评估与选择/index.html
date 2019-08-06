@@ -97,7 +97,8 @@
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure1.PNG">
-<meta property="og:updated_time" content="2019-08-05T12:50:23.040Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure2.PNG">
+<meta property="og:updated_time" content="2019-08-06T02:32:12.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（二）-- 模型评估与选择">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
@@ -357,7 +358,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  230
+                  776
                 </span>
               
 
@@ -373,7 +374,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -405,7 +406,40 @@
 <li><strong>欠拟合(underfitting):</strong> 学习能力底下。对训练样本的一般性质尚未学好</li>
 </ul>
 <p><img src="/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure1.PNG" alt="Figure1"></p>
-<h3 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h3><h3 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h3>
+<hr>
+<h3 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h3><p><strong>理想：</strong> 通过评估学习器的<strong>泛化误差</strong>，选出泛化误差最小的学习器</p>
+<p><strong>实际：</strong> <strong>泛化误差</strong> 只能通过测试集上的 <strong>测试误差</strong>  作为近似</p>
+<p><strong><font color="#0099ff">机器学习的目的是产生泛化能力好的模型，那么什么样的模型才是泛化能力好的模型呢? 这需要按照一定的评估方法和度量指标去衡量。</font></strong></p>
+<p>给定一个包含m个样例的数据集 $ D = \{(x_1, y_1), (x_2, y_2), … ,(x_m, y_m)\}$ ,通过对D进行适当的处理，从中产生出训练集S和测试集T，<strong>测试集应该尽可能与训练集互斥</strong>，常见的方法有以下三种：</p>
+<h4 id="1-留出法"><a href="#1-留出法" class="headerlink" title="1.留出法"></a>1.留出法</h4><p><strong>留出法：</strong> 直接将数据集D划分为两个互斥的集合，其中一个集合作为训练集S，另一个集合作为测试集T，即 <em>D=S</em>∪<em>T</em>，<em>S</em>∩<em>T=</em>∅. </p>
+<p><strong>注意点：</strong></p>
+<ul>
+<li>要保持数据分布的一致性<ul>
+<li>分层采样</li>
+</ul>
+</li>
+<li>采用多次随机划分取均值的评估方法</li>
+<li>测试集的比例应当适当(2/3 ~ 4/5)</li>
+</ul>
+<h4 id="2-交叉验证法"><a href="#2-交叉验证法" class="headerlink" title="2.交叉验证法"></a>2.交叉验证法</h4><p><strong>交叉验证法：</strong> 将数据集平均分成 <code>K</code> 份，并尽量保证每份数据分布一致。依次用其中 <code>K - 1</code> 份作为训练集，剩下的一份作为测试集。这样就有 <code>K</code> 组训练/测试集。从而可以进行 <code>K</code> 次训练和测试，返回K测测试结果的均值，也称为”K折交叉验证法”</p>
+<p><img src="/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure2.PNG" alt="Figure2"></p>
+<p><strong>注意点：</strong></p>
+<ul>
+<li>K折交叉验证要随机使用不同的划分重复p次，最终取p次K折交叉验证的均值</li>
+</ul>
+<p><strong>留一法：</strong> 若令K = m, 则称为“留一法 (LOO)”</p>
+<ul>
+<li>优点<ul>
+<li>不受随机样本划分的影响，因为m个样本只有唯一的方式划分为m个子集，即每个子集只含有一个样本</li>
+<li>被实际评估的模型与期望评估的用D训练出的模型很相似，因为使用的训练集与初始数据集相比至少一个样本</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>当数据集比较大时，训练m个模型的计算开销比较大</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-自助法"><a href="#3-自助法" class="headerlink" title="3.自助法"></a>3.自助法</h4><h3 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h3>
       
     </div>
     
@@ -611,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（二）模型评估与选择"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（二）模型评估与选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经验误差与过拟合"><span class="nav-number">1.1.</span> <span class="nav-text">经验误差与过拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估方法"><span class="nav-number">1.2.</span> <span class="nav-text">评估方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能度量"><span class="nav-number">1.3.</span> <span class="nav-text">性能度量</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（二）模型评估与选择"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（二）模型评估与选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经验误差与过拟合"><span class="nav-number">1.1.</span> <span class="nav-text">经验误差与过拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估方法"><span class="nav-number">1.2.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-留出法"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.留出法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-交叉验证法"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.交叉验证法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-自助法"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.自助法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能度量"><span class="nav-number">1.3.</span> <span class="nav-text">性能度量</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -645,7 +679,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.5k</span>
+    <span title="Site words total count">10.0k</span>
   
 </div>
 
@@ -664,7 +698,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共9.5k字</span>
+  <span class="post-count">博客全站共10.0k字</span>
 </div>
         
 
