@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure4.png">
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure5.png">
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-2070a8bd6c71ccf58a78a213430dee59_hd.png">
-<meta property="og:updated_time" content="2019-08-06T11:34:55.719Z">
+<meta property="og:updated_time" content="2019-08-06T14:01:45.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（二）-- 模型评估与选择">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,948
+                  2,005
                 </span>
               
 
@@ -540,7 +540,18 @@ FPR = \frac{FP}{TN + FP}</script><p><strong>ROC:</strong> 全称是“受试者�
 <h4 id="5-分类任务的性能度量4-——-代价敏感错误率与代价曲线"><a href="#5-分类任务的性能度量4-——-代价敏感错误率与代价曲线" class="headerlink" title="5. 分类任务的性能度量4 —— 代价敏感错误率与代价曲线"></a>5. 分类任务的性能度量4 —— 代价敏感错误率与代价曲线</h4><p>前面介绍的性能度量，大都隐式地假设了“<strong>均等代价</strong>”，而为权衡不同类型错误所造成的不同损失，应为错误赋予：“<strong>非均等代价</strong>”。</p>
 <p>下图为二分类代价矩阵，其中 $cost_{ij}$ 表示将第i类样本预测为第j类样本的代价</p>
 <p><img src="https://pic2.zhimg.com/80/v2-2070a8bd6c71ccf58a78a213430dee59_hd.png" alt="img"></p>
-
+<p><strong>代价敏感(cost-sensitive)错误率:</strong> </p>
+<script type="math/tex; mode=display">
+E(f;D;cost)=\frac{1}{m}(\sum_{x_i \in D^+} II (f(x_i) \ne y_i) \times cost_{01} + \sum_{x_i \in D^-} II(f(x^i) \ne y_i) \times cost_{10})</script><p><strong>性能度量的方法</strong>：绘制代价曲线</p>
+<p>代价曲线的横轴是正例概率代价 $P(+)cost$，纵轴是归一化代价 $cost_{norm}$</p>
+<script type="math/tex; mode=display">
+P(+)_{cost} = \frac{p\times cost_{01}}{p\times{cost_{01}} + (1-p)\times{cost_{10}}}</script><script type="math/tex; mode=display">
+cost_{norm} = \frac{FNR \times p\times cost_{01} + FPR \times (1 - p) \times cost_{10}}{p \times cost_{01} + (1 - p) \times cost_{10}}</script><hr>
+<h3 id="比较检验"><a href="#比较检验" class="headerlink" title="比较检验"></a>比较检验</h3><script type="math/tex; mode=display">
+\begin{pmatrix}
+m\\
+m^\prime
+\end{pmatrix}</script><h3 id="偏差与方差"><a href="#偏差与方差" class="headerlink" title="偏差与方差"></a>偏差与方差</h3>
       
     </div>
     
@@ -746,7 +757,7 @@ FPR = \frac{FP}{TN + FP}</script><p><strong>ROC:</strong> 全称是“受试者�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（二）模型评估与选择"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（二）模型评估与选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经验误差与过拟合"><span class="nav-number">1.1.</span> <span class="nav-text">经验误差与过拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估方法"><span class="nav-number">1.2.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-留出法-hold-out"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.留出法 (hold-out)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-交叉验证法-cross-validation"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.交叉验证法 (cross validation)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-自助法-bootstrapping"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.自助法 (bootstrapping)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能度量"><span class="nav-number">1.3.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-回归任务的性能度量-——-均方误差"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 回归任务的性能度量 —— 均方误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分类任务的性能度量1-——-错误率与精度"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 分类任务的性能度量1 —— 错误率与精度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-分类任务的性能度量2-——-查准率、查全率与F1"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 分类任务的性能度量2 —— 查准率、查全率与F1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-分类任务的性能度量3-——-ROC与AUC"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. 分类任务的性能度量3 —— ROC与AUC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-分类任务的性能度量4-——-代价敏感错误率与代价曲线"><span class="nav-number">1.3.5.</span> <span class="nav-text">5. 分类任务的性能度量4 —— 代价敏感错误率与代价曲线</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（二）模型评估与选择"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（二）模型评估与选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经验误差与过拟合"><span class="nav-number">1.1.</span> <span class="nav-text">经验误差与过拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估方法"><span class="nav-number">1.2.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-留出法-hold-out"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.留出法 (hold-out)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-交叉验证法-cross-validation"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.交叉验证法 (cross validation)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-自助法-bootstrapping"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.自助法 (bootstrapping)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能度量"><span class="nav-number">1.3.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-回归任务的性能度量-——-均方误差"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 回归任务的性能度量 —— 均方误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分类任务的性能度量1-——-错误率与精度"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 分类任务的性能度量1 —— 错误率与精度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-分类任务的性能度量2-——-查准率、查全率与F1"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 分类任务的性能度量2 —— 查准率、查全率与F1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-分类任务的性能度量3-——-ROC与AUC"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. 分类任务的性能度量3 —— ROC与AUC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-分类任务的性能度量4-——-代价敏感错误率与代价曲线"><span class="nav-number">1.3.5.</span> <span class="nav-text">5. 分类任务的性能度量4 —— 代价敏感错误率与代价曲线</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较检验"><span class="nav-number">1.4.</span> <span class="nav-text">比较检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏差与方差"><span class="nav-number">1.5.</span> <span class="nav-text">偏差与方差</span></a></li></ol></li></ol></div>
             
 
           </div>
