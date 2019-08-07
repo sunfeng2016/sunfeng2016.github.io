@@ -102,7 +102,8 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure4.png">
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure5.png">
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-2070a8bd6c71ccf58a78a213430dee59_hd.png">
-<meta property="og:updated_time" content="2019-08-07T07:17:49.098Z">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-ae93d046ff25fd8d5ea74467d579cb41_r.jpg">
+<meta property="og:updated_time" content="2019-08-07T07:43:34.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（二）-- 模型评估与选择">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
@@ -362,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,782
+                  2,851
                 </span>
               
 
@@ -558,24 +559,37 @@ m^\prime
 <li>测试样本<strong>x</strong>在数据集中的标记：$y_D$</li>
 <li>测试样本<strong>x</strong>的真实标记：$y$</li>
 <li>训练集：$D$</li>
-<li>从训练集$D$中学的模型：$f$</li>
+<li>从训练集$D$中学得的模型：$f$</li>
 <li>模型$f$在测试样本<strong>x</strong>上的真实输出：$f(x; D)$</li>
 <li><strong>数据分布：Ɗ</strong></li>
 </ul>
 <p><strong>1. $\overline f(x)$ (预测输出的期望) </strong>：学习算法的期望预测</p>
 <script type="math/tex; mode=display">
-\overline f(x) = E_Ɗ[f(x;D)]</script><p>【所有可能的训练数据集】（数据分布 Ɗ）训练出的【所有模型预测输出】的期望值。</p>
-<ol>
-<li>$Variance$ (方差)**：使用样本数相同的不同训练集产生的方差</li>
-</ol>
+\overline f(x) = E_Ɗ[f(x;D)]</script><p><strong>2. $Variance$ (方差)</strong>：使用样本数相同的不同训练集产生的方差</p>
 <script type="math/tex; mode=display">
-var(x) = E_Ɗ[(f(x;D) - \overline f(x))^2]</script><p>【在分布Ɗ上】的【不同训练集训练出的模型】的【预测输出】与【期望预测输出值】的比较。</p>
+var(x) = E_Ɗ[(f(x;D) - \overline f(x))^2]</script><font color="#0099ff">方差度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响</font>
+
 <p><strong>3. $Bias$ (偏差)</strong>：期望输出与真实标记之间的差别</p>
 <script type="math/tex; mode=display">
-bias^2(x) = (\overline f(x) - y)^2</script><p>用【所有可能的训练数据集】（数据分布Ɗ）训练出的【所有模型预测输出】的期望与【真实模型的输出值】比较得出的差异。</p>
+bias^2(x) = (\overline f(x) - y)^2</script><font color="#0099ff">偏差度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力</font>
+
 <p><strong>4. $\varepsilon^2$ (噪声)</strong>：数据集标记和真实标记的方差</p>
 <script type="math/tex; mode=display">
-\varepsilon ^2 = E_Ɗ[(y_Ɗ - y)^2]</script><p>噪声数据主要来源是训练数据的错误标签的情况以及输入数据某一维不确定的情况。</p>
+\varepsilon ^2 = E_Ɗ[(y_Ɗ - y)^2]</script><font color="#0099ff">噪声则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度</font>
+
+<p>噪声数据主要来源是训练数据的错误标签的情况以及输入数据某一维不确定的情况。</p>
+<font color="#0099ff">为了方便讨论，假定噪声期望为0，则对算法的期望泛化误差进行分解可得：</font>
+
+<p><img src="https://pic2.zhimg.com/v2-ae93d046ff25fd8d5ea74467d579cb41_r.jpg" alt="preview"></p>
+<p>故：</p>
+<script type="math/tex; mode=display">
+E(f;D) = bias^2 (x) + var(x) + \varepsilon^2</script><p> 即：<strong>泛化误差 = 偏差 + 方差 + 噪声</strong></p>
+<p><strong><font color="#099ff">总结：</font></strong></p>
+<ul>
+<li><strong>偏差：</strong> </li>
+<li><strong>方差：</strong> </li>
+<li><strong>噪声：</strong> </li>
+</ul>
 <hr>
 <h3 id="二项分布参数p的检验"><a href="#二项分布参数p的检验" class="headerlink" title="二项分布参数p的检验"></a>二项分布参数p的检验</h3><p>设某事件发生的概率为 <code>p</code> ， <code>p</code> 未知，作 <code>m</code> 次独立试验，每次观察该事件是否发生，以X记该事件发生的次数，则X服从二项分布 <code>B(m, p)</code>，现根据X检验如下假设：</p>
 <script type="math/tex; mode=display">
@@ -870,7 +884,7 @@ i
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">12.0k</span>
+    <span title="Site words total count">12.1k</span>
   
 </div>
 
@@ -889,7 +903,7 @@ i
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共12.0k字</span>
+  <span class="post-count">博客全站共12.1k字</span>
 </div>
         
 
