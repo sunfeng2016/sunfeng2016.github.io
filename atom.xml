@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-07T07:46:18.285Z</updated>
+  <updated>2019-08-07T08:41:22.946Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step</title>
+    <link href="http://sunfeng.online/2019/08/07/%E8%AF%BE%E7%A8%8B%E4%B8%80(Neural%20Networks%20and%20Deep%20Learning),%20%E7%AC%AC%E5%9B%9B%E5%91%A8(Deep%20neural%20networks)%E2%80%94%E2%80%94Programming%20assignment%204%E3%80%81Building%20your%20Deep%20Neural%20Network,%20step%20by%20step/"/>
+    <id>http://sunfeng.online/2019/08/07/课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step/</id>
+    <published>2019-08-07T07:58:04.000Z</published>
+    <updated>2019-08-07T08:41:22.946Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Building-your-Deep-Neural-Network-Step-by-Step"><a href="#Building-your-Deep-Neural-Network-Step-by-Step" class="headerlink" title="Building your Deep Neural Network: Step by Step"></a>Building your Deep Neural Network: Step by Step</h3><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Building-your-Deep-Neural-Network-Step-by-Step&quot;&gt;&lt;a href=&quot;#Building-your-Deep-Neural-Network-Step-by-Step&quot; class=&quot;headerlink&quot; title=&quot;Building your Deep Neural Network: Step by Step&quot;&gt;&lt;/a&gt;Building your Deep Neural Network: Step by Step&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="Coursera深度学习笔记" scheme="http://sunfeng.online/categories/Coursera%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Coursera" scheme="http://sunfeng.online/tags/Coursera/"/>
+    
+      <category term="Deep learning" scheme="http://sunfeng.online/tags/Deep-learning/"/>
+    
+      <category term="Neural networks" scheme="http://sunfeng.online/tags/Neural-networks/"/>
+    
+  </entry>
   
   <entry>
     <title>《机器学习》西瓜书学习笔记（二）-- 模型评估与选择</title>
@@ -80,9 +106,9 @@
     
       <category term="Coursera" scheme="http://sunfeng.online/tags/Coursera/"/>
     
-      <category term="Neural Network" scheme="http://sunfeng.online/tags/Neural-Network/"/>
-    
       <category term="Deep learning" scheme="http://sunfeng.online/tags/Deep-learning/"/>
+    
+      <category term="Neural Network" scheme="http://sunfeng.online/tags/Neural-Network/"/>
     
   </entry>
   
