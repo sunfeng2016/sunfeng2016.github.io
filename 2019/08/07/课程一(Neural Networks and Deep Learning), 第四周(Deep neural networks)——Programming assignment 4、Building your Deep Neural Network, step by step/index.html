@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="Building your Deep Neural Network: Step by Step">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T08:41:22.946Z">
+<meta property="og:updated_time" content="2019-08-07T11:28:46.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step">
 <meta name="twitter:description" content="Building your Deep Neural Network: Step by Step">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8
+                  241
                 </span>
               
 
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -393,7 +393,41 @@
 
       
         <h3 id="Building-your-Deep-Neural-Network-Step-by-Step"><a href="#Building-your-Deep-Neural-Network-Step-by-Step" class="headerlink" title="Building your Deep Neural Network: Step by Step"></a>Building your Deep Neural Network: Step by Step</h3><a id="more"></a>
-
+<p>Welcome to your week 4 assignment (part 1 of 2)! You have previously trained a 2-layer Neural Network (with a signal hidden layer). This week, you will build a deep neural network, with as many layers as you want!</p>
+<ul>
+<li>In this notebook, you will implement all the functions required to build a deep neural network.</li>
+<li>In the next assignment, you will use these functions to build a deep neural network for image classification.</li>
+</ul>
+<p><strong>After this assignment you will be able to:</strong></p>
+<ul>
+<li>Use non-linear units like ReLU to improve your model</li>
+<li>Build a deeper neural network (with more than 1 hidden layer)</li>
+<li>Implement an easy-to-use neural network class</li>
+</ul>
+<p><strong>Notation:</strong></p>
+<ul>
+<li>Superscript [I] denotes a quantity associated with the $1^{th}$ layer.<ul>
+<li>Example: $a^{[L]}$is the $L^{th}$ layer activation. $W^{[L]}$ and  $b^{[L]}$ are the $L^{th}$  layer parameters.</li>
+</ul>
+</li>
+<li>Superscript (i) denotes a quantity associated with the $i^{th}$ example.<ul>
+<li>Example: $x^{(i)}$ is the $i^{th}$ training example.</li>
+</ul>
+</li>
+<li>Lowerscript i denotes the $i^{th}$ entry of a vector.<ul>
+<li>Example: $a_i^{[I]}$ denotes the $i^{th}$ entry of the $I^{th}$ layer’s activations.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Let’s get started!</strong></p>
+<hr>
+<h3 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h3><hr>
+<h3 id="Outline-of-the-Assignment"><a href="#Outline-of-the-Assignment" class="headerlink" title="Outline of the Assignment"></a>Outline of the Assignment</h3><hr>
+<h3 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h3><h4 id="2-layer-Neural-Network"><a href="#2-layer-Neural-Network" class="headerlink" title="2-layer Neural Network"></a>2-layer Neural Network</h4><h4 id="L-layer-Neural-Network"><a href="#L-layer-Neural-Network" class="headerlink" title="L-layer Neural Network"></a>L-layer Neural Network</h4><hr>
+<h3 id="Forward-propagation-module"><a href="#Forward-propagation-module" class="headerlink" title="Forward propagation module"></a>Forward propagation module</h3><h4 id="Linear-Forward"><a href="#Linear-Forward" class="headerlink" title="Linear Forward"></a>Linear Forward</h4><h4 id="Linear-Activation-Forward"><a href="#Linear-Activation-Forward" class="headerlink" title="Linear-Activation Forward"></a>Linear-Activation Forward</h4><h4 id="L-Layer-Model"><a href="#L-Layer-Model" class="headerlink" title="L-Layer Model"></a>L-Layer Model</h4><hr>
+<h3 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h3><hr>
+<h3 id="Backward-propagation-module"><a href="#Backward-propagation-module" class="headerlink" title="Backward propagation module"></a>Backward propagation module</h3><h4 id="Linear-backward"><a href="#Linear-backward" class="headerlink" title="Linear backward"></a>Linear backward</h4><h4 id="Linear-Activation-backward"><a href="#Linear-Activation-backward" class="headerlink" title="Linear-Activation backward"></a>Linear-Activation backward</h4><h4 id="L-Model-Backward"><a href="#L-Model-Backward" class="headerlink" title="L-Model Backward"></a>L-Model Backward</h4><h4 id="Update-Parameters"><a href="#Update-Parameters" class="headerlink" title="Update Parameters"></a>Update Parameters</h4><hr>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3>
       
     </div>
     
@@ -603,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-your-Deep-Neural-Network-Step-by-Step"><span class="nav-number">1.</span> <span class="nav-text">Building your Deep Neural Network: Step by Step</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-your-Deep-Neural-Network-Step-by-Step"><span class="nav-number">1.</span> <span class="nav-text">Building your Deep Neural Network: Step by Step</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Packages"><span class="nav-number">2.</span> <span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Outline-of-the-Assignment"><span class="nav-number">3.</span> <span class="nav-text">Outline of the Assignment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Initialization"><span class="nav-number">4.</span> <span class="nav-text">Initialization</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-layer-Neural-Network"><span class="nav-number">4.1.</span> <span class="nav-text">2-layer Neural Network</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L-layer-Neural-Network"><span class="nav-number">4.2.</span> <span class="nav-text">L-layer Neural Network</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Forward-propagation-module"><span class="nav-number">5.</span> <span class="nav-text">Forward propagation module</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-Forward"><span class="nav-number">5.1.</span> <span class="nav-text">Linear Forward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-Activation-Forward"><span class="nav-number">5.2.</span> <span class="nav-text">Linear-Activation Forward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L-Layer-Model"><span class="nav-number">5.3.</span> <span class="nav-text">L-Layer Model</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cost-function"><span class="nav-number">6.</span> <span class="nav-text">Cost function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backward-propagation-module"><span class="nav-number">7.</span> <span class="nav-text">Backward propagation module</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-backward"><span class="nav-number">7.1.</span> <span class="nav-text">Linear backward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-Activation-backward"><span class="nav-number">7.2.</span> <span class="nav-text">Linear-Activation backward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L-Model-Backward"><span class="nav-number">7.3.</span> <span class="nav-text">L-Model Backward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Update-Parameters"><span class="nav-number">7.4.</span> <span class="nav-text">Update Parameters</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">8.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
             
 
           </div>
@@ -637,7 +671,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">12.1k</span>
+    <span title="Site words total count">12.3k</span>
   
 </div>
 
@@ -656,7 +690,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共12.1k字</span>
+  <span class="post-count">博客全站共12.3k字</span>
 </div>
         
 
