@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure5.png">
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-2070a8bd6c71ccf58a78a213430dee59_hd.png">
 <meta property="og:image" content="https://pic2.zhimg.com/v2-ae93d046ff25fd8d5ea74467d579cb41_r.jpg">
-<meta property="og:updated_time" content="2019-08-10T06:34:10.865Z">
+<meta property="og:updated_time" content="2019-08-10T06:51:57.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（二）-- 模型评估与选择">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
@@ -567,8 +567,11 @@ FPR = \frac{FP}{TN + FP}</script><p><strong>ROC:</strong> 全称是“受试者�
 <p><img src="/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure5.png" alt="Figure5"></p>
 <p><strong>性能度量方法：</strong> 绘制ROC曲线</p>
 <ul>
-<li><strong>当曲线没有交叉的时候：</strong> 外侧曲线的学习器性能优于内侧</li>
-<li><strong>当曲线有交叉的时候：</strong> 比较ROC面积，如AUC</li>
+<li><p><strong>当曲线没有交叉的时候：</strong> 外侧曲线的学习器性能优于内侧</p>
+</li>
+<li><p><strong>当曲线有交叉的时候：</strong> 比较ROC面积，如AUC</p>
+<script type="math/tex; mode=display">
+AUC = \frac{1}{2}\sum_{i = 1}^{m - 1}{(x_{i+1}-x_{i})\times(y_{i}+y_{i+1})}</script></li>
 </ul>
 <h4 id="5-分类任务的性能度量4-——-代价敏感错误率与代价曲线"><a href="#5-分类任务的性能度量4-——-代价敏感错误率与代价曲线" class="headerlink" title="5. 分类任务的性能度量4 —— 代价敏感错误率与代价曲线"></a>5. 分类任务的性能度量4 —— 代价敏感错误率与代价曲线</h4><p>前面介绍的性能度量，大都隐式地假设了“<strong>均等代价</strong>”，而为权衡不同类型错误所造成的不同损失，应为错误赋予：“<strong>非均等代价</strong>”。</p>
 <p>下图为二分类代价矩阵，其中 $cost_{ij}$ 表示将第i类样本预测为第j类样本的代价</p>
