@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure5.png">
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-2070a8bd6c71ccf58a78a213430dee59_hd.png">
 <meta property="og:image" content="https://pic2.zhimg.com/v2-ae93d046ff25fd8d5ea74467d579cb41_r.jpg">
-<meta property="og:updated_time" content="2019-08-07T07:46:18.285Z">
+<meta property="og:updated_time" content="2019-08-10T06:34:10.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（二）-- 模型评估与选择">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,851
+                  3,118
                 </span>
               
 
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  11
                 </span>
               
             </div>
@@ -500,7 +500,14 @@ R = \frac{TP}{TP + FN}</script><p><strong>解释：</strong></p>
 <li><p><strong>直接观察数值</strong></p>
 </li>
 <li><p><strong>建立P-R图</strong></p>
-<p><img src="/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure4.png" alt="Figure4"></p>
+<ul>
+<li>“P-R曲线”是描述查准/查全率变化的曲线</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>P-R曲线定义如下：根据学习器的预测结果（一般为一个实值或概率）对测试样本进行排序，将最可能是“正例”的样本排在前面，最不可能是“正例”的排在后面，按此顺序逐个把样本作为“正例”进行预测，每次计算出当前的P值和R值，如下图所示：</p>
+<p> <img src="/2019/08/05/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure4.png" alt="Figure4"></p>
 <ul>
 <li><font color="#0099ff">当曲线没有交叉的时候：</font><ul>
 <li>外侧学习器的性能优于内侧</li>
@@ -514,7 +521,7 @@ R = \frac{TP}{TP + FN}</script><p><strong>解释：</strong></p>
 </li>
 </ul>
 </li>
-</ol>
+</ul>
 <p><strong>F1:</strong> 基于查准率和查全率的调和平均</p>
 <script type="math/tex; mode=display">
 \frac{1}{F1} = \frac{1}{2} · (\frac{1}{P} + \frac{1}{R})</script><script type="math/tex; mode=display">
@@ -525,6 +532,31 @@ F_\beta = \frac{(1 + \beta^2) \times P \times R}{(\beta^2 \times P) + R}</script
 <ul>
 <li><strong>β &gt; 1 </strong>时查全率有更大的影响</li>
 <li><strong>β &lt; 1 </strong>时查准率有更大的影响</li>
+</ul>
+<p><strong><font color="#0099ff">在n个二分类混淆矩阵上综合考虑查准率和查全率：</font></strong></p>
+<p><strong>方法一：宏(macro)：</strong>  先在各混淆矩阵上分别计算出查准率和查全率，记为 $(P_1, R_1)$, $(P_2, R_2)$, …… ,$(P_n, R_n)$, 再计算平均值，这样就得到了：</p>
+<ul>
+<li><p><strong>宏查准率(macro-P)</strong></p>
+<script type="math/tex; mode=display">
+macro\_P = \frac{1}{n}\sum_{i = 1}^{n}{P_i}</script></li>
+<li><p><strong>宏查全率(macro-R)</strong></p>
+<script type="math/tex; mode=display">
+macro\_R = \frac{1}{n}\sum_{i = 1}^{n}{R_i}</script></li>
+<li><p><strong>宏F1(macro-F1)</strong></p>
+<script type="math/tex; mode=display">
+macro\_F1 = \frac{2 \times macro\_P \times macro\_R}{macro\_P + macro\_R}</script></li>
+</ul>
+<p><strong>方法二：微(micro)：</strong>  先将各混淆矩阵的对应元素进行平均，得到TP、FP、TN、FN的平均值，分别记为 $\overline{TP}$，$\overline{FP}$，$\overline{TN}$，$\overline{FN}$，再基于这些平均值计算出：</p>
+<ul>
+<li><p><strong>微查准率(micro-P)</strong></p>
+<script type="math/tex; mode=display">
+micro\_P = \frac{\overline{TP}}{\overline{TP} + \overline{FP}}</script></li>
+<li><p><strong>微查全率(micro-R)</strong></p>
+<script type="math/tex; mode=display">
+micro\_R = \frac{\overline{TP}}{\overline{TP} + \overline{FN}}</script></li>
+<li><p><strong>微F1(micro-F1)</strong></p>
+<script type="math/tex; mode=display">
+micro\_F1 = \frac{2 \times micro\_P \times micro\_R}{micro\_P + micro\_R}</script></li>
 </ul>
 <h4 id="4-分类任务的性能度量3-——-ROC与AUC"><a href="#4-分类任务的性能度量3-——-ROC与AUC" class="headerlink" title="4. 分类任务的性能度量3 —— ROC与AUC"></a>4. 分类任务的性能度量3 —— ROC与AUC</h4><p>与P-R图相同，ROC图通过对测试样本设置不同的<strong>阈值</strong>并与预测值比较，划分出正例和反例。再计算出真正例率和假正例率。P-R图逐个将样本作为正例，ROC图逐次与阈值进行比较后划分正例。本质上，都是将测试样本进行排序。</p>
 <p><strong>真正例率(TPR):</strong> 【真正例样本数】与【真实情况是正例的样本数】的比值</p>
@@ -888,7 +920,7 @@ i
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">19.6k</span>
+    <span title="Site words total count">19.9k</span>
   
 </div>
 
@@ -907,7 +939,7 @@ i
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19.6k字</span>
+  <span class="post-count">博客全站共19.9k字</span>
 </div>
         
 
