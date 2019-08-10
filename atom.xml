@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-09T06:40:33.693Z</updated>
+  <updated>2019-08-10T06:59:09.631Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《机器学习》西瓜书学习笔记（三）-- 线性模型</title>
+    <link href="http://sunfeng.online/2019/08/10/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89--%20%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9/"/>
+    <id>http://sunfeng.online/2019/08/10/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/</id>
+    <published>2019-08-10T06:54:48.000Z</published>
+    <updated>2019-08-10T06:59:09.631Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（三）线性模型"><a href="#《机器学习》西瓜书学习笔记（三）线性模型" class="headerlink" title="《机器学习》西瓜书学习笔记（三）线性模型"></a>《机器学习》西瓜书学习笔记（三）线性模型</h2><a id="more"></a><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><h3 id="对数几率回归"><a href="#对数几率回归" class="headerlink" title="对数几率回归"></a>对数几率回归</h3><h3 id="线性判别分析"><a href="#线性判别分析" class="headerlink" title="线性判别分析"></a>线性判别分析</h3><h3 id="多分类学习"><a href="#多分类学习" class="headerlink" title="多分类学习"></a>多分类学习</h3><h3 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;《机器学习》西瓜书学习笔记（三）线性模型&quot;&gt;&lt;a href=&quot;#《机器学习》西瓜书学习笔记（三）线性模型&quot; class=&quot;headerlink&quot; title=&quot;《机器学习》西瓜书学习笔记（三）线性模型&quot;&gt;&lt;/a&gt;《机器学习》西瓜书学习笔记（三）线性模型&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="《机器学习》西瓜书学习笔记" scheme="http://sunfeng.online/categories/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="machine learning" scheme="http://sunfeng.online/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>课程一(Neural Networks and Deep Learning), 第四周(Deep Neural Networks)——Programming Assignments 5、Deep Neural Network Application</title>
