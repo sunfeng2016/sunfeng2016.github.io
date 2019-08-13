@@ -97,7 +97,7 @@
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（四） 决策树">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/08/13/《机器学习》西瓜书学习笔记（四）--%20决策树/figure1.PNG">
-<meta property="og:updated_time" content="2019-08-13T13:27:08.515Z">
+<meta property="og:updated_time" content="2019-08-13T14:09:05.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（四）-- 决策树">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（四） 决策树">
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  564
+                  713
                 </span>
               
 
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -434,12 +434,29 @@ Ent(D) = - \sum _{k = 1}^{|y|}p_k\log_2p_k</script><p><strong>$Ent(D)$ 的值越
 </li>
 <li><p>使用 $a$ 对样本集 $D$ 进行划分，则会产生 $V$ 个分支结点，其中第 $v$ 个分支结点包含了 $D$ 中所有在属性 $a$ 上取值为 $a^v$ 的样本，记为 $D^v$.</p>
 <script type="math/tex; mode=display">
-Gian(D, a) = Ent(D) - \sum _{v=1}^{V}\frac{|D^v|}{|D|}Ent(D^v).</script><p><strong>信息增益越大，则意味着使用属性 $a$ 来进行划分所获得的 “纯度提升”越大</strong>。</p>
-</li>
-<li><p>aa</p>
+Gain(D, a) = Ent(D) - \sum _{v=1}^{V}\frac{|D^v|}{|D|}Ent(D^v).</script><p><strong>信息增益越大，则意味着使用属性 $a$ 来进行划分所获得的 “纯度提升”越大</strong>。</p>
 </li>
 </ul>
-<h4 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h4><h4 id="基尼指数"><a href="#基尼指数" class="headerlink" title="基尼指数"></a>基尼指数</h4><hr>
+<p><strong>以信息增益为准则进行属性划分：</strong></p>
+<script type="math/tex; mode=display">
+a_* = arg\ max Gain(D, a)</script><h4 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h4><p><em>信息增益准则对可取值数目较多的属性有所偏好，为减少这种偏好可能带来的不利影响，C4.5决策树算法不直接使用信息增益，而是使用“增益率”来选择最优划分属性。</em></p>
+<p><strong>增益率 (gain ratio):</strong></p>
+<script type="math/tex; mode=display">
+Gain\_ratio(D,a) = \frac{Gain(D, a)}{IV(a)}</script><p>其中：</p>
+<script type="math/tex; mode=display">
+IV(a) = - \sum_{v=1}^{V}\frac{|D^v|}{|D|}\log_2\frac{|D^v|}{|D|}</script><p>称为属性 $a$ 的 “固有值”</p>
+<h4 id="基尼指数"><a href="#基尼指数" class="headerlink" title="基尼指数"></a>基尼指数</h4><p><em>GART 决策树使用 “基尼指数”来选择划分属性</em></p>
+<p><strong>基尼值：</strong>用来度量数据集 $D$ 的纯度</p>
+<script type="math/tex; mode=display">
+\begin {equation}
+\begin {split}
+Gini(D) &= \sum_{k=1}^{|y|}\sum_{k\prime \ne k} p_kp_{k\prime}\\
+&= 1 - \sum_{k=1}^{|y|}{p_k^2}
+\end {split}
+\end {equation}</script><p><strong>$Gini(D)$ 越小，则数据集 $D$ 的纯度越高</strong></p>
+<p><strong>基尼指数 (Gini index):</strong></p>
+<script type="math/tex; mode=display">
+Gini\_index(D, a) = \sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)</script><hr>
 <h3 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h3><h4 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h4><h4 id="后剪枝"><a href="#后剪枝" class="headerlink" title="后剪枝"></a>后剪枝</h4><hr>
 <h3 id="连续与缺失值"><a href="#连续与缺失值" class="headerlink" title="连续与缺失值"></a>连续与缺失值</h3><h4 id="连续值处理"><a href="#连续值处理" class="headerlink" title="连续值处理"></a>连续值处理</h4><h4 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h4><hr>
 <h3 id="多变量决策树"><a href="#多变量决策树" class="headerlink" title="多变量决策树"></a>多变量决策树</h3>
@@ -682,7 +699,7 @@ Gian(D, a) = Ent(D) - \sum _{v=1}^{V}\frac{|D^v|}{|D|}Ent(D^v).</script><p><stro
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">24.5k</span>
+    <span title="Site words total count">24.6k</span>
   
 </div>
 
@@ -701,7 +718,7 @@ Gian(D, a) = Ent(D) - \sum _{v=1}^{V}\frac{|D^v|}{|D|}Ent(D^v).</script><p><stro
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.5k字</span>
+  <span class="post-count">博客全站共24.6k字</span>
 </div>
         
 
