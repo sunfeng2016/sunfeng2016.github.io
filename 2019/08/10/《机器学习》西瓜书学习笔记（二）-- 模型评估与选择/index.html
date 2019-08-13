@@ -99,7 +99,9 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/10/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure.PNG">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-433cdde5a09ff2450cb99383ad8211b8_hd.jpg">
 <meta property="og:image" content="https://pic3.zhimg.com/80/v2-cdae5065290f57c9fc387b7d05b5b68a_hd.jpg">
-<meta property="og:updated_time" content="2019-08-13T06:02:16.053Z">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-437db32129fdc1d411ac560bfa0f8842_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-2c27bcec29d2a98b0a4725775cb8b2c4_hd.jpg">
+<meta property="og:updated_time" content="2019-08-13T07:25:27.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（三）-- 线性模型">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（三）线性模型">
@@ -359,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,753
+                  3,562
                 </span>
               
 
@@ -375,7 +377,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  14
                 </span>
               
             </div>
@@ -602,7 +604,53 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
 <p>$\boldsymbol J$ 的分子分母都是关于 $\boldsymbol w$ 的二次项，因此  $\boldsymbol J$  的解与  $\boldsymbol w$  的长度无关，只与其方向有关。</p>
 <p>故由拉格朗日乘子法，可列 $\boldsymbol S_b \boldsymbol w = \lambda \boldsymbol S_w \boldsymbol w $，又由于 $\boldsymbol S_b \boldsymbol w$ 方向恒为 $(\boldsymbol \mu _0 - \boldsymbol \mu_1) $，令 $\boldsymbol S_b \boldsymbol w=\lambda(\boldsymbol \mu _0 - \boldsymbol \mu_1) $，带入得 $\boldsymbol w = \boldsymbol S _w ^{-1}(\boldsymbol \mu _0 - \boldsymbol \mu_1) $</p>
 <h4 id="2-多分类任务中的LDA"><a href="#2-多分类任务中的LDA" class="headerlink" title="2. 多分类任务中的LDA"></a>2. 多分类任务中的LDA</h4><hr>
-<h3 id="多分类学习"><a href="#多分类学习" class="headerlink" title="多分类学习"></a>多分类学习</h3><hr>
+<h3 id="多分类学习"><a href="#多分类学习" class="headerlink" title="多分类学习"></a>多分类学习</h3><p><strong>多分类学习的两个思路：</strong> </p>
+<ul>
+<li><strong>一是将二分类学习方法直接推广到多分类</strong>，如LDA</li>
+<li><strong>二是基于某些策略，利用二分类学习器来解决多分类问题</strong></li>
+</ul>
+<h4 id="拆解法和拆分策略"><a href="#拆解法和拆分策略" class="headerlink" title="拆解法和拆分策略"></a>拆解法和拆分策略</h4><p><strong>拆解法：</strong> 将多分类任务拆解成为若干个二分类任务求解</p>
+<p><strong>拆解步骤：</strong> </p>
+<ul>
+<li>通过拆分策略对问题进行<strong>【拆分】</strong></li>
+<li>为拆分出的每个二分类任务<strong>【训练】</strong>一个分类器</li>
+<li>对各个分类器的结果进行<strong>【集成】</strong>，以获得多分类结果</li>
+</ul>
+<p><strong>拆分策略：</strong></p>
+<ul>
+<li>“一对一 (OvO)”</li>
+<li>“一对其余 (OvR)”</li>
+<li>“多对多 (MvM)”</li>
+</ul>
+<p>假设多分类学习有 $\boldsymbol N$ 个类别 $\boldsymbol C_1, \boldsymbol C_2, … \boldsymbol C_N$, 给定数据集 $ D = \{(\boldsymbol x_1, y_1),(\boldsymbol x_2, y_2),…,(\boldsymbol x_m, y_m)\}$, $y_i \in \{C_1, C-2, … ,C_n\}$ </p>
+<h5 id="OvO"><a href="#OvO" class="headerlink" title="OvO:"></a>OvO:</h5><ul>
+<li>将 $N$ 个分类分别两两配对，从而 <strong>【拆分】</strong> 成 $N(N-1)/2$ 个二分类任务</li>
+<li><strong>【训练】</strong> 时为了区分 $C_i$ 和 $C_j$ 这两个分类，这 $N(N-1)/2$ 个分类器的一个将 $C_i$ 作为正例，$C_j$ 作为反例</li>
+<li>测试时将新样本同时提交给所有分类器，将得到 $N(N-1)/2$ 个分类结果，<strong>【集成】</strong> 的方法是通过投票在这些结果中选出最终结果</li>
+</ul>
+<h5 id="OvR"><a href="#OvR" class="headerlink" title="OvR:"></a>OvR:</h5><ul>
+<li>将 $N$ 个分类中的1个分类拿出来作为一个分类器的正例，其余均设置为反例，从而<strong>【拆分】</strong>成 $N$ 个分类任务</li>
+<li><strong>【训练】</strong> 得到 $N$ 个分类器</li>
+<li><strong>【集成】</strong> 的方法是考虑各被判为正例的分类器的置信度，选择置信度大的类别标记作为分类的结果</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/80/v2-437db32129fdc1d411ac560bfa0f8842_hd.jpg" alt="img"></p>
+<h5 id="MvM"><a href="#MvM" class="headerlink" title="MvM:"></a>MvM:</h5><p>MvM是OvO和OvR的一般形式，反过来说，OvO和OvR是MvM的特例。</p>
+<p>MvM每次将若干个类作为正类，若干个其他类作为反类。但其构造必须有特殊的设计，不能随意选取。常用的一种MvM技术是“纠错输出码”（ECOC）技术。</p>
+<h4 id="“纠错输出码”-ECOC-技术"><a href="#“纠错输出码”-ECOC-技术" class="headerlink" title="“纠错输出码” (ECOC) 技术"></a>“纠错输出码” (ECOC) 技术</h4><p><strong>ECOC过程主要分为两步：</strong></p>
+<ul>
+<li><strong>编码：</strong>对 $N$ 个类进行 $M$ 次划分，产生 $M$ 个分类器</li>
+<li><strong>解码：</strong>$M$ 个分类器对测试样本进行预测，得到 $M$ 个预测标记。将其组成编码；这个编码与 $N$ 个类别各自的编码进行比较，返回其中距离较小的类别作为最终预测的结果</li>
+</ul>
+<p><strong>编码形式：</strong></p>
+<ul>
+<li><strong>二元码：</strong> “正类”、“反类”</li>
+<li><p><strong>三元码：</strong> “正类”、“反类”、“停用类”</p>
+<p>以二元 ECOC 码为例：如下图，首先，将 $N (N = 4)$ 个类提供设计构造成 $M (M = 5)$ 个分类器 $(f_1, f_2,f_3,f_4,f_5)$, 每个分类器为每个类分别配了一个标记结果 (-1或+1)，从而，每一个类 $C_i, i\in \{1, N\}$ 都获得了一个 $M$ 位的编码，这个编码就是 <strong>【各类所对应的编码】</strong></p>
+</li>
+</ul>
+<p>当有一个测试示例 $A$ 时，先将 $A$ 依照次序放入 $M$ 个分类器中，得到了 $M$ 个分类标记结果 $(-1,-1,+1,-1,+1);$ 再将这 $M$ 个标记结果编成一个纠错输出码 $(-1-1+1-1+1);$ 最后去和<strong>【各类所对应的编码】</strong>进行比较海明距离或欧式距离，距离最短的编码对应的分类就是结果。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-2c27bcec29d2a98b0a4725775cb8b2c4_hd.jpg" alt="img"></p>
+<hr>
 <h3 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h3><hr>
 
       
@@ -810,7 +858,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（三）线性模型"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（三）线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本形式"><span class="nav-number">1.1.</span> <span class="nav-text">基本形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-回顾各符号对应的概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 回顾各符号对应的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-线性模型-linear-model"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 线性模型 (linear model)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归"><span class="nav-number">1.2.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-线性回归-linear-regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 线性回归 (linear regression)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-最小二乘法-least-square-method"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 最小二乘法 (least square method)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-属性数目为1的简单例子-一元线性回归"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. (属性数目为1的简单例子)一元线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-属性数目为d的复杂例子-多元线性回归"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. (属性数目为d的复杂例子)多元线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-线性模型的丰富变化"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. 线性模型的丰富变化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率回归"><span class="nav-number">1.3.</span> <span class="nav-text">对数几率回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单位阶跃函数-unit-step-function"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 单位阶跃函数 (unit-step function)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-对数几率函数-logistic-function"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 对数几率函数 (logistic function)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性判别分析-LDA"><span class="nav-number">1.4.</span> <span class="nav-text">线性判别分析 (LDA)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-二分类任务中的LDA"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 二分类任务中的LDA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-多分类任务中的LDA"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 多分类任务中的LDA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类学习"><span class="nav-number">1.5.</span> <span class="nav-text">多分类学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类别不平衡问题"><span class="nav-number">1.6.</span> <span class="nav-text">类别不平衡问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（三）线性模型"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（三）线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本形式"><span class="nav-number">1.1.</span> <span class="nav-text">基本形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-回顾各符号对应的概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 回顾各符号对应的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-线性模型-linear-model"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 线性模型 (linear model)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归"><span class="nav-number">1.2.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-线性回归-linear-regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 线性回归 (linear regression)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-最小二乘法-least-square-method"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 最小二乘法 (least square method)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-属性数目为1的简单例子-一元线性回归"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. (属性数目为1的简单例子)一元线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-属性数目为d的复杂例子-多元线性回归"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. (属性数目为d的复杂例子)多元线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-线性模型的丰富变化"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. 线性模型的丰富变化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率回归"><span class="nav-number">1.3.</span> <span class="nav-text">对数几率回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单位阶跃函数-unit-step-function"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 单位阶跃函数 (unit-step function)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-对数几率函数-logistic-function"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 对数几率函数 (logistic function)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性判别分析-LDA"><span class="nav-number">1.4.</span> <span class="nav-text">线性判别分析 (LDA)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-二分类任务中的LDA"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 二分类任务中的LDA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-多分类任务中的LDA"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 多分类任务中的LDA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类学习"><span class="nav-number">1.5.</span> <span class="nav-text">多分类学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拆解法和拆分策略"><span class="nav-number">1.5.1.</span> <span class="nav-text">拆解法和拆分策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#OvO"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">OvO:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OvR"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">OvR:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MvM"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">MvM:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“纠错输出码”-ECOC-技术"><span class="nav-number">1.5.2.</span> <span class="nav-text">“纠错输出码” (ECOC) 技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类别不平衡问题"><span class="nav-number">1.6.</span> <span class="nav-text">类别不平衡问题</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -844,7 +892,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">22.6k</span>
+    <span title="Site words total count">23.5k</span>
   
 </div>
 
@@ -863,7 +911,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共22.6k字</span>
+  <span class="post-count">博客全站共23.5k字</span>
 </div>
         
 
