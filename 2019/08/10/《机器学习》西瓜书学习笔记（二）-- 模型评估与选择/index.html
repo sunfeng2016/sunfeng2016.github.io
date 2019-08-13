@@ -101,7 +101,7 @@
 <meta property="og:image" content="https://pic3.zhimg.com/80/v2-cdae5065290f57c9fc387b7d05b5b68a_hd.jpg">
 <meta property="og:image" content="https://pic3.zhimg.com/80/v2-437db32129fdc1d411ac560bfa0f8842_hd.jpg">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-2c27bcec29d2a98b0a4725775cb8b2c4_hd.jpg">
-<meta property="og:updated_time" content="2019-08-13T07:25:27.236Z">
+<meta property="og:updated_time" content="2019-08-13T08:05:14.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（三）-- 线性模型">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（三）线性模型">
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,562
+                  4,037
                 </span>
               
 
@@ -377,7 +377,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14
+                  15
                 </span>
               
             </div>
@@ -622,7 +622,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
 <li>“一对其余 (OvR)”</li>
 <li>“多对多 (MvM)”</li>
 </ul>
-<p>假设多分类学习有 $\boldsymbol N$ 个类别 $\boldsymbol C_1, \boldsymbol C_2, … \boldsymbol C_N$, 给定数据集 $ D = \{(\boldsymbol x_1, y_1),(\boldsymbol x_2, y_2),…,(\boldsymbol x_m, y_m)\}$, $y_i \in \{C_1, C-2, … ,C_n\}$ </p>
+<p>假设多分类学习有 $\boldsymbol N$ 个类别 $\boldsymbol C_1, \boldsymbol C_2, … \boldsymbol C_N$, 给定数据集 $ D = \{(\boldsymbol x_1, y_1),(\boldsymbol x_2, y_2),…,(\boldsymbol x_m, y_m)\}$, $y_i \in \{C_1, C_2, … ,C_n\}$ </p>
 <h5 id="OvO"><a href="#OvO" class="headerlink" title="OvO:"></a>OvO:</h5><ul>
 <li>将 $N$ 个分类分别两两配对，从而 <strong>【拆分】</strong> 成 $N(N-1)/2$ 个二分类任务</li>
 <li><strong>【训练】</strong> 时为了区分 $C_i$ 和 $C_j$ 这两个分类，这 $N(N-1)/2$ 个分类器的一个将 $C_i$ 作为正例，$C_j$ 作为反例</li>
@@ -644,14 +644,31 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
 <p><strong>编码形式：</strong></p>
 <ul>
 <li><strong>二元码：</strong> “正类”、“反类”</li>
-<li><p><strong>三元码：</strong> “正类”、“反类”、“停用类”</p>
-<p>以二元 ECOC 码为例：如下图，首先，将 $N (N = 4)$ 个类提供设计构造成 $M (M = 5)$ 个分类器 $(f_1, f_2,f_3,f_4,f_5)$, 每个分类器为每个类分别配了一个标记结果 (-1或+1)，从而，每一个类 $C_i, i\in \{1, N\}$ 都获得了一个 $M$ 位的编码，这个编码就是 <strong>【各类所对应的编码】</strong></p>
-</li>
+<li><strong>三元码：</strong> “正类”、“反类”、“停用类”</li>
 </ul>
+<p>以二元 ECOC 码为例：如下图，首先，将 $N (N = 4)$ 个类提供设计构造成 $M (M = 5)$ 个分类器 $(f_1, f_2,f_3,f_4,f_5)$, 每个分类器为每个类分别配了一个标记结果 (-1或+1)，从而，每一个类 $C_i, i\in \{1, N\}$ 都获得了一个 $M$ 位的编码，这个编码就是 <strong>【各类所对应的编码】</strong></p>
 <p>当有一个测试示例 $A$ 时，先将 $A$ 依照次序放入 $M$ 个分类器中，得到了 $M$ 个分类标记结果 $(-1,-1,+1,-1,+1);$ 再将这 $M$ 个标记结果编成一个纠错输出码 $(-1-1+1-1+1);$ 最后去和<strong>【各类所对应的编码】</strong>进行比较海明距离或欧式距离，距离最短的编码对应的分类就是结果。</p>
 <p><img src="https://pic1.zhimg.com/80/v2-2c27bcec29d2a98b0a4725775cb8b2c4_hd.jpg" alt="img"></p>
 <hr>
-<h3 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h3><hr>
+<h3 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h3><p><strong>类别不平衡(class-imbalance)</strong> 就是指分类任务中不同类别的训练样例数目差别很大的情况</p>
+<p>以二分类问题为例，该问题一般指的是训练集中正负样本数比例相差过大（比如正例9998个，负例2个），其一般会造成以下的一些情况：</p>
+<ul>
+<li>类别少的误判惩罚过低，导致有所偏袒，当样本不确定时倾向于把样本分类为多数类。</li>
+<li>样本数量分布很不平衡时，特征的分布同样会不平衡。</li>
+<li>传统的评价指标变得不可靠，例如准确率。</li>
+</ul>
+<p>而在多分类问题中，尽管原始训练集中可能不同类别训练样本数目相当，通过OvR、MvM进行拆分时也有可能会造成上述情况，所以类别不平衡问题亟待解决。</p>
+<p><strong>再缩放：</strong> 解决类别不平衡问题一个最基本思路是 “再缩放”，即当正反例数目不同时，令 $m^+$ 表示正例数目，$m^-$ 表示反例数目，则：</p>
+<script type="math/tex; mode=display">
+几率 = \frac{y\prime}{1-y\prime} = \frac{y}{1-y}\times\frac{m^-}{m^+}</script><font color="#0099ff">再缩放的思想虽然简单，但实际操作却不平凡，主要因为“训练集是真实样本总体的无偏采样”这个假设往往不成立，即我们未必能基于训练集的观察几率来推断真实几率</font>
+
+<p><strong>现有技术大体上有三类做法：</strong></p>
+<ul>
+<li>第一类是对训练集里的反类样例进行<strong>欠采样</strong>，即去除一些反例使得正、反例数目接近</li>
+<li>第二类是对训练集里的正类样例进行<strong>过采样</strong>，即增加一些正例使得正、反例数目接近</li>
+<li>第三类则是直接基于原始训练集进行学习，但在用训练好的分类器进行预测时，将上式嵌入到其决策过程中，称为<strong>阈值移动</strong></li>
+</ul>
+<hr>
 
       
     </div>
@@ -892,7 +909,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.5k</span>
+    <span title="Site words total count">23.9k</span>
   
 </div>
 
@@ -911,7 +928,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共23.5k字</span>
+  <span class="post-count">博客全站共23.9k字</span>
 </div>
         
 
