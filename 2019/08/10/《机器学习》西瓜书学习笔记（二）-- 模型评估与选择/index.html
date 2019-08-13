@@ -96,10 +96,14 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（三）线性模型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-12T05:17:29.406Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/10/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure.PNG">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-433cdde5a09ff2450cb99383ad8211b8_hd.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-cdae5065290f57c9fc387b7d05b5b68a_hd.jpg">
+<meta property="og:updated_time" content="2019-08-13T06:02:16.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（三）-- 线性模型">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（三）线性模型">
+<meta name="twitter:image" content="http://sunfeng.online/2019/08/10/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure.PNG">
 
 
 
@@ -355,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,673
+                  2,753
                 </span>
               
 
@@ -371,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  11
                 </span>
               
             </div>
@@ -530,8 +534,74 @@ f(\hat x_i) = \hat x_i^T  (\boldsymbol X^T \boldsymbol X)^{-1}\boldsymbol X^T y.
 </li>
 </ul>
 <hr>
-<h3 id="对数几率回归"><a href="#对数几率回归" class="headerlink" title="对数几率回归"></a>对数几率回归</h3><hr>
-<h3 id="线性判别分析"><a href="#线性判别分析" class="headerlink" title="线性判别分析"></a>线性判别分析</h3><hr>
+<h3 id="对数几率回归"><a href="#对数几率回归" class="headerlink" title="对数几率回归"></a>对数几率回归</h3><p><strong>预测：</strong> 依靠机器学习学得的模型，对新的示例进行结果判断</p>
+<ul>
+<li><strong>回归任务：</strong> 预测的是连续值</li>
+<li><strong>分类任务：</strong> 预测的是离散值</li>
+</ul>
+<p>如果说说线性模型预测连续值，只需要让预测值逼近真实标记 $y$ 或其衍生物的话，当预测离散值的时候，如何让线性模型的预测值 (连续) 和真实标记值 $y$ (离散) 联系起来呢？</p>
+<p>其实，离散状态的真实标记 $y$, 未尝不可以有一种连续的衍生物 $z$, 这样通过单调可微的联系函数 $g(.)$ , 就可以让连续的预测值联系离散的真实标记。</p>
+<h4 id="1-单位阶跃函数-unit-step-function"><a href="#1-单位阶跃函数-unit-step-function" class="headerlink" title="1. 单位阶跃函数 (unit-step function)"></a>1. 单位阶跃函数 (unit-step function)</h4><p>在二分类任务当中，输出标记为 $y = \{0, 1\}$ , 而线性回归模型产生的预测值：$z = \boldsymbol w^T \boldsymbol x + b$   是实值。要将连续值 $z$ 转换为离散值 0/1，最理想的是 “单位阶跃函数” </p>
+<script type="math/tex; mode=display">
+\begin {equation}
+y = 
+\begin {cases}
+0, & z < 0;\\
+0.5 & z = 0; \\
+1 & z > 0;
+\end {cases}
+\end {equation}</script><p><img src="/2019/08/10/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure.PNG" alt="Figure1"></p>
+<h4 id="2-对数几率函数-logistic-function"><a href="#2-对数几率函数-logistic-function" class="headerlink" title="2. 对数几率函数 (logistic function)"></a>2. 对数几率函数 (logistic function)</h4><p>单位阶跃函数虽好，但是不可微，不是理想的联系函数 $g(.)$ , 我们希望找到一个在形态上趋近于单位阶跃函数的连续函数，并且是单调可微的。对数几率函数正是这样的一个函数：</p>
+<script type="math/tex; mode=display">
+y = \frac {1}{1 + e^{-z}}</script><p><img src="https://pic1.zhimg.com/80/v2-433cdde5a09ff2450cb99383ad8211b8_hd.jpg" alt="img"></p>
+<p>将 $ z = \boldsymbol w^T \boldsymbol x + b$ 带入可得 $y = \frac {1}{1 + e^{-(  \boldsymbol w^T \boldsymbol x + b)}}$ , 亦即 $\ln \frac{y}{1-y} =   \boldsymbol w^T \boldsymbol x + b$. </p>
+<p>如果说将 $y$ 看作样本 $x$ 作为正例的可能性，那么 $1-y$ 就是其成反例的可能性。</p>
+<p><strong>几率：</strong> 两者的比值即为 “几率”，反映了样本作为正例的相对可能性</p>
+<script type="math/tex; mode=display">
+几率 = \frac {正例可能性}{反例可能性} = \frac{y}{1-y}</script><p><strong>对数几率：</strong> 对几率取对数就可得到 “对数几率”</p>
+<script type="math/tex; mode=display">
+对数几率 = \ln \frac{y}{1-y}</script><p><strong>对数几率回归：</strong> 用线性模型的预测结果去逼近真实标记的对数几率，其对应的模型叫做“对数几率回归”(logistic regression，亦称逻辑回归)</p>
+<hr>
+<h3 id="线性判别分析-LDA"><a href="#线性判别分析-LDA" class="headerlink" title="线性判别分析 (LDA)"></a>线性判别分析 (LDA)</h3><p><strong>线性判别分析 (Linear Discriminant Analysis, LDA)</strong> 是一种经典的用于解决二分类问题的线性学习方法。</p>
+<h4 id="1-二分类任务中的LDA"><a href="#1-二分类任务中的LDA" class="headerlink" title="1. 二分类任务中的LDA"></a>1. 二分类任务中的LDA</h4><p><strong>LDA大概分为三个步骤：</strong></p>
+<ul>
+<li>给定样例</li>
+<li>寻找一条满足 “同类近，异类远”的投影直线</li>
+<li>新样本的分类依靠投影后点的位置来确定</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/80/v2-cdae5065290f57c9fc387b7d05b5b68a_hd.jpg" alt="img"></p>
+<p><strong>第一步：给定样例：</strong></p>
+<p>给定数据集 $D = \{(\boldsymbol x_i, y_i)\}_{i = 1}^{m},  y_i \in \{0, 1\}$, 令 $\boldsymbol X_j$、$\boldsymbol \mu_j$、$\boldsymbol \sum_j$ 分别表示第 $j \in \{0, 1\}$ 类示例的集合、均值向量、协方差矩阵。将数据投影到直线 $\boldsymbol w$ 上，则两类样本的 <strong>样本中心</strong> 在直线上的投影分别为 $\boldsymbol w^T \boldsymbol \mu_0$ 和$\boldsymbol w^T \boldsymbol \mu_1$，两类样本的协方差矩阵分别为 $\boldsymbol w^T \boldsymbol \sum_0 \boldsymbol w$ 和 $\boldsymbol w^T \boldsymbol \sum_1 \boldsymbol w$，由于直线是一维空间，因此 $\boldsymbol w^T \boldsymbol \mu_0$ 、$\boldsymbol w^T \boldsymbol \mu_1$、 $\boldsymbol w^T \boldsymbol \sum_0 \boldsymbol w$ 和、$\boldsymbol w^T \boldsymbol \sum_1 \boldsymbol w$均为实数。</p>
+<font color="#0099ff">顺便一提，如上图，横轴坐标分别为 x1 和 x2，代表样本的两个属性，此图代表属性个数为2时张成的二维空间。但当属性个数为n时，属性空间也为n维，只不过无法在图中体现了。 </font>
+
+<p><strong>第二步：寻找投影直线：</strong></p>
+<p><strong>两个原则：</strong> </p>
+<ul>
+<li><strong>同类近：</strong> 欲使得同类投影点尽可能近，可以让异类样例投影点的协方差尽可能小，即 $\boldsymbol w^T \boldsymbol \sum _0 \boldsymbol w + \boldsymbol w^T \boldsymbol \sum_1 \boldsymbol w$ 尽可能小</li>
+<li><strong>异类远：</strong> 欲使得异类投影点尽可能远离，可以让类中心之间的距离尽可能大，即 $||\boldsymbol w^T \boldsymbol \mu_0 - \boldsymbol w^T \boldsymbol \mu_1||_2^2$ 尽可能大</li>
+</ul>
+<p><strong>广义瑞利商：</strong> 同时考虑二者，得到最大化目标，即：</p>
+<script type="math/tex; mode=display">
+\begin {equation}
+\begin {split}
+J &= \frac{||\boldsymbol w^T \boldsymbol \mu_0 - \boldsymbol w^T \boldsymbol \mu_1||_2^2}{\boldsymbol w^T \boldsymbol \sum _0 \boldsymbol w + \boldsymbol w^T \boldsymbol \sum_1 \boldsymbol w}\\
+&= \frac{\boldsymbol w^T(\boldsymbol \mu_0 - \boldsymbol \mu_1)(\boldsymbol \mu_0 - \boldsymbol \mu_1)^T\boldsymbol w}{\boldsymbol w^T (\boldsymbol \sum_0 + \boldsymbol \sum_1) \boldsymbol w}
+\end {split}
+\end {equation}</script><p><strong>类内散度矩阵：</strong> </p>
+<script type="math/tex; mode=display">
+\begin {equation}
+\begin {split}
+\boldsymbol S_w &= \boldsymbol \sum _0 + \boldsymbol \sum _1 \\
+& = \boldsymbol \sum_{x \in X_0}(\boldsymbol x - \boldsymbol \mu_0)(\boldsymbol x - \boldsymbol \mu_0)^T + \boldsymbol \sum_{x \in X_1}(\boldsymbol x - \boldsymbol \mu_1)(\boldsymbol x - \boldsymbol \mu_1)^T
+\end {split}
+\end {equation}</script><p><strong>类间散度矩阵：</strong> </p>
+<script type="math/tex; mode=display">
+\boldsymbol S_b = (\boldsymbol \mu _0 - \boldsymbol \mu_1) (\boldsymbol \mu _0 - \boldsymbol \mu_1)^T</script><p><strong>重写得：</strong></p>
+<script type="math/tex; mode=display">
+J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsymbol S_w \boldsymbol w}</script><p><strong>确定 $\boldsymbol  w$ :</strong></p>
+<p>$\boldsymbol J$ 的分子分母都是关于 $\boldsymbol w$ 的二次项，因此  $\boldsymbol J$  的解与  $\boldsymbol w$  的长度无关，只与其方向有关。</p>
+<p>故由拉格朗日乘子法，可列 $\boldsymbol S_b \boldsymbol w = \lambda \boldsymbol S_w \boldsymbol w $，又由于 $\boldsymbol S_b \boldsymbol w$ 方向恒为 $(\boldsymbol \mu _0 - \boldsymbol \mu_1) $，令 $\boldsymbol S_b \boldsymbol w=\lambda(\boldsymbol \mu _0 - \boldsymbol \mu_1) $，带入得 $\boldsymbol w = \boldsymbol S _w ^{-1}(\boldsymbol \mu _0 - \boldsymbol \mu_1) $</p>
+<h4 id="2-多分类任务中的LDA"><a href="#2-多分类任务中的LDA" class="headerlink" title="2. 多分类任务中的LDA"></a>2. 多分类任务中的LDA</h4><hr>
 <h3 id="多分类学习"><a href="#多分类学习" class="headerlink" title="多分类学习"></a>多分类学习</h3><hr>
 <h3 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h3><hr>
 
@@ -740,7 +810,7 @@ f(\hat x_i) = \hat x_i^T  (\boldsymbol X^T \boldsymbol X)^{-1}\boldsymbol X^T y.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（三）线性模型"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（三）线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本形式"><span class="nav-number">1.1.</span> <span class="nav-text">基本形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-回顾各符号对应的概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 回顾各符号对应的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-线性模型-linear-model"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 线性模型 (linear model)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归"><span class="nav-number">1.2.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-线性回归-linear-regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 线性回归 (linear regression)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-最小二乘法-least-square-method"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 最小二乘法 (least square method)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-属性数目为1的简单例子-一元线性回归"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. (属性数目为1的简单例子)一元线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-属性数目为d的复杂例子-多元线性回归"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. (属性数目为d的复杂例子)多元线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-线性模型的丰富变化"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. 线性模型的丰富变化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率回归"><span class="nav-number">1.3.</span> <span class="nav-text">对数几率回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性判别分析"><span class="nav-number">1.4.</span> <span class="nav-text">线性判别分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类学习"><span class="nav-number">1.5.</span> <span class="nav-text">多分类学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类别不平衡问题"><span class="nav-number">1.6.</span> <span class="nav-text">类别不平衡问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（三）线性模型"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（三）线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本形式"><span class="nav-number">1.1.</span> <span class="nav-text">基本形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-回顾各符号对应的概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 回顾各符号对应的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-线性模型-linear-model"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 线性模型 (linear model)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归"><span class="nav-number">1.2.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-线性回归-linear-regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 线性回归 (linear regression)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-最小二乘法-least-square-method"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 最小二乘法 (least square method)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-属性数目为1的简单例子-一元线性回归"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. (属性数目为1的简单例子)一元线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-属性数目为d的复杂例子-多元线性回归"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. (属性数目为d的复杂例子)多元线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-线性模型的丰富变化"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. 线性模型的丰富变化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率回归"><span class="nav-number">1.3.</span> <span class="nav-text">对数几率回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单位阶跃函数-unit-step-function"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 单位阶跃函数 (unit-step function)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-对数几率函数-logistic-function"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 对数几率函数 (logistic function)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性判别分析-LDA"><span class="nav-number">1.4.</span> <span class="nav-text">线性判别分析 (LDA)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-二分类任务中的LDA"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 二分类任务中的LDA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-多分类任务中的LDA"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 多分类任务中的LDA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类学习"><span class="nav-number">1.5.</span> <span class="nav-text">多分类学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类别不平衡问题"><span class="nav-number">1.6.</span> <span class="nav-text">类别不平衡问题</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -774,7 +844,7 @@ f(\hat x_i) = \hat x_i^T  (\boldsymbol X^T \boldsymbol X)^{-1}\boldsymbol X^T y.
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.6k</span>
+    <span title="Site words total count">22.6k</span>
   
 </div>
 
@@ -793,7 +863,7 @@ f(\hat x_i) = \hat x_i^T  (\boldsymbol X^T \boldsymbol X)^{-1}\boldsymbol X^T y.
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共21.6k字</span>
+  <span class="post-count">博客全站共22.6k字</span>
 </div>
         
 
