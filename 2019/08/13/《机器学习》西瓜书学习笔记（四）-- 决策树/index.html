@@ -97,7 +97,7 @@
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（四） 决策树">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/08/13/《机器学习》西瓜书学习笔记（四）--%20决策树/figure1.PNG">
-<meta property="og:updated_time" content="2019-08-13T12:28:43.432Z">
+<meta property="og:updated_time" content="2019-08-13T13:27:08.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（四）-- 决策树">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（四） 决策树">
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  307
+                  564
                 </span>
               
 
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -418,7 +418,28 @@
 </li>
 </ul>
 <hr>
-<h3 id="划分选择"><a href="#划分选择" class="headerlink" title="划分选择"></a>划分选择</h3><h4 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h4><h4 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h4><h4 id="基尼指数"><a href="#基尼指数" class="headerlink" title="基尼指数"></a>基尼指数</h4><hr>
+<h3 id="划分选择"><a href="#划分选择" class="headerlink" title="划分选择"></a>划分选择</h3><p>决策树学习的关键是 <strong>如何选择最优划分属性</strong>，<font color="#0099ff">一般而言，随着划分过程的不断进行，我们希望决策树的分支结点所包含的样本尽可能属于同一类别，即结点的“纯度”越来越高。</font> </p>
+<h4 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h4><p><strong>信息熵 (information entropy):</strong></p>
+<ul>
+<li><p>信息熵是度量样本集合<strong>纯度</strong>最常用的一种指标。</p>
+</li>
+<li><p>假定当前样本集合 $D$ 中第 $k$ 类样本所占的比例为 $p_k (k = 1, 2, …, |y|)$, 则 $D$ 的信息熵定义为：</p>
+<script type="math/tex; mode=display">
+Ent(D) = - \sum _{k = 1}^{|y|}p_k\log_2p_k</script><p><strong>$Ent(D)$ 的值越小，则 $D$ 的纯度越高</strong></p>
+</li>
+</ul>
+<p><strong>信息增益 (information gain):</strong></p>
+<ul>
+<li><p>假设离散属性 $a$ 有 $V$ 个可能的取值 $\{a^1, a^2, … , a^V\}$</p>
+</li>
+<li><p>使用 $a$ 对样本集 $D$ 进行划分，则会产生 $V$ 个分支结点，其中第 $v$ 个分支结点包含了 $D$ 中所有在属性 $a$ 上取值为 $a^v$ 的样本，记为 $D^v$.</p>
+<script type="math/tex; mode=display">
+Gian(D, a) = Ent(D) - \sum _{v=1}^{V}\frac{|D^v|}{|D|}Ent(D^v).</script><p><strong>信息增益越大，则意味着使用属性 $a$ 来进行划分所获得的 “纯度提升”越大</strong>。</p>
+</li>
+<li><p>aa</p>
+</li>
+</ul>
+<h4 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h4><h4 id="基尼指数"><a href="#基尼指数" class="headerlink" title="基尼指数"></a>基尼指数</h4><hr>
 <h3 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h3><h4 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h4><h4 id="后剪枝"><a href="#后剪枝" class="headerlink" title="后剪枝"></a>后剪枝</h4><hr>
 <h3 id="连续与缺失值"><a href="#连续与缺失值" class="headerlink" title="连续与缺失值"></a>连续与缺失值</h3><h4 id="连续值处理"><a href="#连续值处理" class="headerlink" title="连续值处理"></a>连续值处理</h4><h4 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h4><hr>
 <h3 id="多变量决策树"><a href="#多变量决策树" class="headerlink" title="多变量决策树"></a>多变量决策树</h3>
@@ -661,7 +682,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">24.2k</span>
+    <span title="Site words total count">24.5k</span>
   
 </div>
 
@@ -680,7 +701,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.2k字</span>
+  <span class="post-count">博客全站共24.5k字</span>
 </div>
         
 
