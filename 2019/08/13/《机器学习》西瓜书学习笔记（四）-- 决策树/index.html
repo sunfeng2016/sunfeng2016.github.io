@@ -96,10 +96,12 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（四） 决策树">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-13T09:03:22.779Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/13/《机器学习》西瓜书学习笔记（四）--%20决策树/figure1.PNG">
+<meta property="og:updated_time" content="2019-08-13T12:28:43.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（四）-- 决策树">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（四） 决策树">
+<meta name="twitter:image" content="http://sunfeng.online/2019/08/13/《机器学习》西瓜书学习笔记（四）--%20决策树/figure1.PNG">
 
 
 
@@ -355,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  15
+                  307
                 </span>
               
 
@@ -393,7 +395,33 @@
 
       
         <h2 id="《机器学习》西瓜书学习笔记（四）-决策树"><a href="#《机器学习》西瓜书学习笔记（四）-决策树" class="headerlink" title="《机器学习》西瓜书学习笔记（四） 决策树"></a>《机器学习》西瓜书学习笔记（四） 决策树</h2><a id="more"></a>
-
+<h3 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h3><p><strong>决策树 (decision tree)：</strong></p>
+<ul>
+<li>一类常见的机器学习算法</li>
+<li>决策树是基于树形结构进行决策的</li>
+<li>决策树学习的目的是产生一棵泛化能力强，即处理未见示例能力强的决策树</li>
+</ul>
+<p><strong>基本流程：</strong>决策树基本流程遵循简单直观的“分而治之”策略，如下图所示：</p>
+<p><img src="/2019/08/13/《机器学习》西瓜书学习笔记（四）-- 决策树/figure1.PNG" alt="figure1"></p>
+<p><strong>在决策树基本算法中，有三种情形会导致递归返回：</strong></p>
+<ul>
+<li>当前结点包含的样本全属于同一类别，无需划分</li>
+<li>当前属性集为空，或是所有样本在所有属性上取值相同，无法划分<ul>
+<li>将当前结点标记为叶子结点</li>
+<li>并将其类别设定为该结点所含样本最多的类别</li>
+</ul>
+</li>
+<li>当前结点包含的样本集合为空，不能划分<ul>
+<li>将当前结点标记为叶子结点</li>
+<li>并将类别设定为其父节点所含样本最多的类别</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="划分选择"><a href="#划分选择" class="headerlink" title="划分选择"></a>划分选择</h3><h4 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h4><h4 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h4><h4 id="基尼指数"><a href="#基尼指数" class="headerlink" title="基尼指数"></a>基尼指数</h4><hr>
+<h3 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h3><h4 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h4><h4 id="后剪枝"><a href="#后剪枝" class="headerlink" title="后剪枝"></a>后剪枝</h4><hr>
+<h3 id="连续与缺失值"><a href="#连续与缺失值" class="headerlink" title="连续与缺失值"></a>连续与缺失值</h3><h4 id="连续值处理"><a href="#连续值处理" class="headerlink" title="连续值处理"></a>连续值处理</h4><h4 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h4><hr>
+<h3 id="多变量决策树"><a href="#多变量决策树" class="headerlink" title="多变量决策树"></a>多变量决策树</h3>
       
     </div>
     
@@ -599,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（四）-决策树"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（四） 决策树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（四）-决策树"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（四） 决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本流程"><span class="nav-number">1.1.</span> <span class="nav-text">基本流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#划分选择"><span class="nav-number">1.2.</span> <span class="nav-text">划分选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益"><span class="nav-number">1.2.1.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增益率"><span class="nav-number">1.2.2.</span> <span class="nav-text">增益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基尼指数"><span class="nav-number">1.2.3.</span> <span class="nav-text">基尼指数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剪枝处理"><span class="nav-number">1.3.</span> <span class="nav-text">剪枝处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预剪枝"><span class="nav-number">1.3.1.</span> <span class="nav-text">预剪枝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后剪枝"><span class="nav-number">1.3.2.</span> <span class="nav-text">后剪枝</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续与缺失值"><span class="nav-number">1.4.</span> <span class="nav-text">连续与缺失值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#连续值处理"><span class="nav-number">1.4.1.</span> <span class="nav-text">连续值处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺失值处理"><span class="nav-number">1.4.2.</span> <span class="nav-text">缺失值处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多变量决策树"><span class="nav-number">1.5.</span> <span class="nav-text">多变量决策树</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -633,7 +661,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.9k</span>
+    <span title="Site words total count">24.2k</span>
   
 </div>
 
@@ -652,7 +680,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共23.9k字</span>
+  <span class="post-count">博客全站共24.2k字</span>
 </div>
         
 
