@@ -99,7 +99,8 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure1.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure2.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure3.PNG">
-<meta property="og:updated_time" content="2019-08-14T07:54:08.521Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure4.PNG">
+<meta property="og:updated_time" content="2019-08-14T10:01:38.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（五）-- 神经网络">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（五） 神经网络">
@@ -359,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  220
+                  484
                 </span>
               
 
@@ -375,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -400,8 +401,9 @@
 <h3 id="神经元模型"><a href="#神经元模型" class="headerlink" title="神经元模型"></a>神经元模型</h3><p><strong>神经网络 (neural network):</strong> </p>
 <ul>
 <li>神经网络是由具有适应性的简单单元组成的广泛并行互连的网络，它的组织能够模拟生物神经系统对真实世界物体所做出的反应</li>
+<li>神经网络中最基本的成分是<strong>神经元模型</strong></li>
 </ul>
-<p><strong>神经元 (neuron) 模型: </strong></p>
+<p><strong>神经元 (neuron) 模型: </strong> M-P神经元模型</p>
 <ul>
 <li>神经元接收到来自 $n$ 个其他神经元传递过来的输入信号</li>
 <li>这些输入信号通过权重的连接进行传递</li>
@@ -416,10 +418,42 @@
 <li><p><strong>Sigmoid函数</strong> </p>
 <p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure3.PNG" alt="figure3"></p>
 </li>
-<li></li>
 </ul>
 <hr>
-<h3 id="感知机与多层网络"><a href="#感知机与多层网络" class="headerlink" title="感知机与多层网络"></a>感知机与多层网络</h3><hr>
+<h3 id="感知机与多层网络"><a href="#感知机与多层网络" class="headerlink" title="感知机与多层网络"></a>感知机与多层网络</h3><h4 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机 (Perceptron)"></a>感知机 (Perceptron)</h4><p><strong>感知机：</strong></p>
+<ul>
+<li><p>由两层神经元组成</p>
+</li>
+<li><p>输入层接收外界输入信号传递给输出层</p>
+</li>
+<li><p>输出层是M-P神经元</p>
+</li>
+<li><p>给定训练数据集，权重 $w_i (i = 1,2,…,n)$ 以及阈值 $\theta$ 可通过学习得到</p>
+</li>
+<li><p>将阈值 $\theta$ 可以看做一个固定输入为-1.0的“哑结点”所对应的权重$w_{n+1}$</p>
+<p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure4.PNG" alt="figure4"></p>
+</li>
+</ul>
+<p><strong>感知机学习规则：</strong></p>
+<ul>
+<li>对训练样例 $(\boldsymbol x, y)$, 若当前感知机的输出为 $\hat y$, 则感知机的权重将这样调整：<script type="math/tex; mode=display">
+\begin {equation}
+\begin {split}
+w_i &\leftarrow w_i + \Delta w_i,\\
+\Delta w_i &= \eta(y-\hat y)x_i,
+\end {split}
+\end{equation}</script>其中 $\eta \in (0, 1)$ 称为<strong>学习率 (learning rate)</strong>.</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>感知机只有输出层神经元进行激活函数处理，即只拥有一层功能神经元，其学习能力非常有限</p>
+</li>
+<li><p>感知机无法解决非线性可分问题</p>
+</li>
+<li><p>要解决非线性可分问题，需要考虑使用多层功能神经元</p>
+</li>
+</ul>
+<h4 id="多层前馈神经网络-multi-layer-feedforward-neural-networks"><a href="#多层前馈神经网络-multi-layer-feedforward-neural-networks" class="headerlink" title="多层前馈神经网络 (multi-layer feedforward neural networks)"></a>多层前馈神经网络 (multi-layer feedforward neural networks)</h4><hr>
 <h3 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h3><hr>
 <h3 id="全局最小与局部最小"><a href="#全局最小与局部最小" class="headerlink" title="全局最小与局部最小"></a>全局最小与局部最小</h3><hr>
 <h3 id="其他常见的神经网络"><a href="#其他常见的神经网络" class="headerlink" title="其他常见的神经网络"></a>其他常见的神经网络</h3><hr>
@@ -630,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（五）-神经网络"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（五） 神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#神经元模型"><span class="nav-number">1.1.</span> <span class="nav-text">神经元模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知机与多层网络"><span class="nav-number">1.2.</span> <span class="nav-text">感知机与多层网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差逆传播算法"><span class="nav-number">1.3.</span> <span class="nav-text">误差逆传播算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局最小与局部最小"><span class="nav-number">1.4.</span> <span class="nav-text">全局最小与局部最小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他常见的神经网络"><span class="nav-number">1.5.</span> <span class="nav-text">其他常见的神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习"><span class="nav-number">1.6.</span> <span class="nav-text">深度学习</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（五）-神经网络"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（五） 神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#神经元模型"><span class="nav-number">1.1.</span> <span class="nav-text">神经元模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知机与多层网络"><span class="nav-number">1.2.</span> <span class="nav-text">感知机与多层网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#感知机-Perceptron"><span class="nav-number">1.2.1.</span> <span class="nav-text">感知机 (Perceptron)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多层前馈神经网络-multi-layer-feedforward-neural-networks"><span class="nav-number">1.2.2.</span> <span class="nav-text">多层前馈神经网络 (multi-layer feedforward neural networks)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差逆传播算法"><span class="nav-number">1.3.</span> <span class="nav-text">误差逆传播算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局最小与局部最小"><span class="nav-number">1.4.</span> <span class="nav-text">全局最小与局部最小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他常见的神经网络"><span class="nav-number">1.5.</span> <span class="nav-text">其他常见的神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习"><span class="nav-number">1.6.</span> <span class="nav-text">深度学习</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -664,7 +698,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.8k</span>
+    <span title="Site words total count">26.1k</span>
   
 </div>
 
@@ -683,7 +717,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.8k字</span>
+  <span class="post-count">博客全站共26.1k字</span>
 </div>
         
 
