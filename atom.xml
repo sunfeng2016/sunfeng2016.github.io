@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-14T07:30:14.992Z</updated>
+  <updated>2019-08-14T07:54:08.521Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://sunfeng.online/2019/08/14/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89--%20%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     <id>http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/</id>
     <published>2019-08-14T07:26:34.000Z</published>
-    <updated>2019-08-14T07:30:14.992Z</updated>
+    <updated>2019-08-14T07:54:08.521Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（五）-神经网络"><a href="#《机器学习》西瓜书学习笔记（五）-神经网络" class="headerlink" title="《机器学习》西瓜书学习笔记（五） 神经网络"></a>《机器学习》西瓜书学习笔记（五） 神经网络</h2><a id="more"></a><h3 id="神经元模型"><a href="#神经元模型" class="headerlink" title="神经元模型"></a>神经元模型</h3><h3 id="感知机与多层网络"><a href="#感知机与多层网络" class="headerlink" title="感知机与多层网络"></a>感知机与多层网络</h3><h3 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h3><h3 id="全局最小与局部最小"><a href="#全局最小与局部最小" class="headerlink" title="全局最小与局部最小"></a>全局最小与局部最小</h3><h3 id="其他常见的神经网络"><a href="#其他常见的神经网络" class="headerlink" title="其他常见的神经网络"></a>其他常见的神经网络</h3><h3 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h3>]]></content>
+    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（五）-神经网络"><a href="#《机器学习》西瓜书学习笔记（五）-神经网络" class="headerlink" title="《机器学习》西瓜书学习笔记（五） 神经网络"></a>《机器学习》西瓜书学习笔记（五） 神经网络</h2><a id="more"></a><h3 id="神经元模型"><a href="#神经元模型" class="headerlink" title="神经元模型"></a>神经元模型</h3><p><strong>神经网络 (neural network):</strong> </p><ul><li>神经网络是由具有适应性的简单单元组成的广泛并行互连的网络，它的组织能够模拟生物神经系统对真实世界物体所做出的反应</li></ul><p><strong>神经元 (neuron) 模型: </strong></p><ul><li>神经元接收到来自 $n$ 个其他神经元传递过来的输入信号</li><li>这些输入信号通过权重的连接进行传递</li><li>神经元收到的总输入值将与神经元的阈值进行比较，然后通过 “激活函数” 处理以产生神经元的输出</li></ul><p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure1.PNG" alt="figure1"></p><p><strong>激活函数 (activation function):</strong></p><ul><li><p><strong>阶跃函数</strong></p><p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure2.PNG" alt="figure2"></p></li><li><p><strong>Sigmoid函数</strong> </p><p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure3.PNG" alt="figure3"></p></li><li></li></ul><hr><h3 id="感知机与多层网络"><a href="#感知机与多层网络" class="headerlink" title="感知机与多层网络"></a>感知机与多层网络</h3><hr><h3 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h3><hr><h3 id="全局最小与局部最小"><a href="#全局最小与局部最小" class="headerlink" title="全局最小与局部最小"></a>全局最小与局部最小</h3><hr><h3 id="其他常见的神经网络"><a href="#其他常见的神经网络" class="headerlink" title="其他常见的神经网络"></a>其他常见的神经网络</h3><hr><h3 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h3><hr>]]></content>
     
     <summary type="html">
     
