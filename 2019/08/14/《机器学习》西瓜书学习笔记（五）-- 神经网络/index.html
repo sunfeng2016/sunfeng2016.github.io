@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure5.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure6.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure7.PNG">
-<meta property="og:updated_time" content="2019-08-14T13:19:03.354Z">
+<meta property="og:updated_time" content="2019-08-14T14:06:18.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（五）-- 神经网络">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（五） 神经网络">
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,267
+                  1,771
                 </span>
               
 
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  7
                 </span>
               
             </div>
@@ -574,10 +574,55 @@ e_h &= -\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial\alp
 \end {split}
 \end {equation}</script></li>
 </ul>
+<p><strong>BP算法工作流程:</strong> 对于每个输入样例：</p>
+<ul>
+<li>先将输入示例提供给输入层神经元</li>
+<li>然后逐层将信号前传，直到产生输出层的结果</li>
+<li>然后计算输出层的误差 (4-5行)</li>
+<li>再将误差逆向传播至隐层神经元 (第6行)</li>
+<li>最后根据隐层神经元的误差来对连接权和阈值进行调整 (第7行)</li>
+</ul>
 <p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure7.PNG" alt="figure7"></p>
+<p><strong>标准BP算法：</strong> </p>
+<ul>
+<li>以上介绍的误差逆传播算法称为 <strong>标准BP算法</strong> </li>
+<li>更新规则基于单个的 $E_k$ 推导而得</li>
+<li>每次仅针对一个训练样本更新连接权和阈值</li>
+<li>参数更新的非常频繁，而且对于不同的样例进行更新的效果可能出现 “抵消” 现象</li>
+<li>需要更多的迭代次数</li>
+</ul>
+<p><strong>累积BP算法：</strong> </p>
+<ul>
+<li>累积误差逆传播算法是要最小化训练集 $D$ 上的累积误差: $E = \frac{1}{m}\sum_{k=1}^{m}E_k$</li>
+<li>在读取整个训练集 $D$ 一遍后才对参数进行更新</li>
+<li>参数更新频率低得多</li>
+</ul>
+<p><strong>缓解BP网络过拟合的策略：</strong></p>
+<ul>
+<li><p><strong>早停 (early stopping):</strong> </p>
+<ul>
+<li>将数据集分为训练集和验证集</li>
+<li>训练集用来计算梯度、更新连接权和阈值</li>
+<li>验证集用来估计误差</li>
+<li>若训练集误差降低但验证集误差升高，则停止训练，同时返回具有最小验证集误差的连接权和阈值</li>
+</ul>
+</li>
+<li><p><strong>正则化 (regularization):</strong> </p>
+<ul>
+<li><p>基本思想是在误差目标函数中增加一个用于描述网络复杂度的部分</p>
+</li>
+<li><p>例如连接权和阈值的平方和</p>
+</li>
+<li><p>仍令 $E_k$ 表示第 $k$ 个训练样本上的误差， $w_i$ 表示连接权和阈值，则误差目标函数改变为：</p>
+<script type="math/tex; mode=display">
+E_k = \lambda\frac{1}{m}\sum_{k=1}^{m}E_k + (1-\lambda)\sum_{i}{w_i^2}</script><p>其中 $\lambda \in (0,1)$ 用于对经验误差和网络复杂度这两项进行折中，常通过交叉验证法来估计。</p>
+</li>
+</ul>
+</li>
+</ul>
 <hr>
 <h3 id="全局最小与局部最小"><a href="#全局最小与局部最小" class="headerlink" title="全局最小与局部最小"></a>全局最小与局部最小</h3><hr>
-<h3 id="其他常见的神经网络"><a href="#其他常见的神经网络" class="headerlink" title="其他常见的神经网络"></a>其他常见的神经网络</h3><hr>
+<h3 id="其他常见的神经网络"><a href="#其他常见的神经网络" class="headerlink" title="其他常见的神经网络"></a>其他常见的神经网络</h3><h4 id="RBF网络"><a href="#RBF网络" class="headerlink" title="RBF网络"></a>RBF网络</h4><h4 id="ART网络"><a href="#ART网络" class="headerlink" title="ART网络"></a>ART网络</h4><h4 id="SOM网络"><a href="#SOM网络" class="headerlink" title="SOM网络"></a>SOM网络</h4><h4 id="级联相关网络"><a href="#级联相关网络" class="headerlink" title="级联相关网络"></a>级联相关网络</h4><h4 id="Elman网络"><a href="#Elman网络" class="headerlink" title="Elman网络"></a>Elman网络</h4><h4 id="Boltzmann机"><a href="#Boltzmann机" class="headerlink" title="Boltzmann机"></a>Boltzmann机</h4><hr>
 <h3 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h3><hr>
 
       
@@ -785,7 +830,7 @@ e_h &= -\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial\alp
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（五）-神经网络"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（五） 神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#神经元模型"><span class="nav-number">1.1.</span> <span class="nav-text">神经元模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知机与多层网络"><span class="nav-number">1.2.</span> <span class="nav-text">感知机与多层网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#感知机-Perceptron"><span class="nav-number">1.2.1.</span> <span class="nav-text">感知机 (Perceptron)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多层前馈神经网络-multi-layer-feedforward-neural-networks"><span class="nav-number">1.2.2.</span> <span class="nav-text">多层前馈神经网络 (multi-layer feedforward neural networks)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差逆传播算法"><span class="nav-number">1.3.</span> <span class="nav-text">误差逆传播算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局最小与局部最小"><span class="nav-number">1.4.</span> <span class="nav-text">全局最小与局部最小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他常见的神经网络"><span class="nav-number">1.5.</span> <span class="nav-text">其他常见的神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习"><span class="nav-number">1.6.</span> <span class="nav-text">深度学习</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（五）-神经网络"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（五） 神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#神经元模型"><span class="nav-number">1.1.</span> <span class="nav-text">神经元模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知机与多层网络"><span class="nav-number">1.2.</span> <span class="nav-text">感知机与多层网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#感知机-Perceptron"><span class="nav-number">1.2.1.</span> <span class="nav-text">感知机 (Perceptron)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多层前馈神经网络-multi-layer-feedforward-neural-networks"><span class="nav-number">1.2.2.</span> <span class="nav-text">多层前馈神经网络 (multi-layer feedforward neural networks)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差逆传播算法"><span class="nav-number">1.3.</span> <span class="nav-text">误差逆传播算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局最小与局部最小"><span class="nav-number">1.4.</span> <span class="nav-text">全局最小与局部最小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他常见的神经网络"><span class="nav-number">1.5.</span> <span class="nav-text">其他常见的神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RBF网络"><span class="nav-number">1.5.1.</span> <span class="nav-text">RBF网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ART网络"><span class="nav-number">1.5.2.</span> <span class="nav-text">ART网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SOM网络"><span class="nav-number">1.5.3.</span> <span class="nav-text">SOM网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#级联相关网络"><span class="nav-number">1.5.4.</span> <span class="nav-text">级联相关网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Elman网络"><span class="nav-number">1.5.5.</span> <span class="nav-text">Elman网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Boltzmann机"><span class="nav-number">1.5.6.</span> <span class="nav-text">Boltzmann机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习"><span class="nav-number">1.6.</span> <span class="nav-text">深度学习</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -819,7 +864,7 @@ e_h &= -\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial\alp
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">26.8k</span>
+    <span title="Site words total count">27.4k</span>
   
 </div>
 
@@ -838,7 +883,7 @@ e_h &= -\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial\alp
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26.8k字</span>
+  <span class="post-count">博客全站共27.4k字</span>
 </div>
         
 
