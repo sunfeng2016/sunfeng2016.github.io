@@ -100,7 +100,8 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure2.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure3.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure4.PNG">
-<meta property="og:updated_time" content="2019-08-14T10:01:38.559Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure5.PNG">
+<meta property="og:updated_time" content="2019-08-14T10:13:51.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（五）-- 神经网络">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（五） 神经网络">
@@ -360,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  484
+                  649
                 </span>
               
 
@@ -422,18 +423,13 @@
 <hr>
 <h3 id="感知机与多层网络"><a href="#感知机与多层网络" class="headerlink" title="感知机与多层网络"></a>感知机与多层网络</h3><h4 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机 (Perceptron)"></a>感知机 (Perceptron)</h4><p><strong>感知机：</strong></p>
 <ul>
-<li><p>由两层神经元组成</p>
-</li>
-<li><p>输入层接收外界输入信号传递给输出层</p>
-</li>
-<li><p>输出层是M-P神经元</p>
-</li>
-<li><p>给定训练数据集，权重 $w_i (i = 1,2,…,n)$ 以及阈值 $\theta$ 可通过学习得到</p>
-</li>
-<li><p>将阈值 $\theta$ 可以看做一个固定输入为-1.0的“哑结点”所对应的权重$w_{n+1}$</p>
-<p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure4.PNG" alt="figure4"></p>
-</li>
+<li>由两层神经元组成</li>
+<li>输入层接收外界输入信号传递给输出层</li>
+<li>输出层是M-P神经元</li>
+<li>给定训练数据集，权重 $w_i (i = 1,2,…,n)$ 以及阈值 $\theta$ 可通过学习得到</li>
+<li>将阈值 $\theta$ 可以看做一个固定输入为-1.0的“哑结点”所对应的权重$w_{n+1}$</li>
 </ul>
+<p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure4.PNG" alt="figure4"></p>
 <p><strong>感知机学习规则：</strong></p>
 <ul>
 <li>对训练样例 $(\boldsymbol x, y)$, 若当前感知机的输出为 $\hat y$, 则感知机的权重将这样调整：<script type="math/tex; mode=display">
@@ -453,7 +449,19 @@ w_i &\leftarrow w_i + \Delta w_i,\\
 <li><p>要解决非线性可分问题，需要考虑使用多层功能神经元</p>
 </li>
 </ul>
-<h4 id="多层前馈神经网络-multi-layer-feedforward-neural-networks"><a href="#多层前馈神经网络-multi-layer-feedforward-neural-networks" class="headerlink" title="多层前馈神经网络 (multi-layer feedforward neural networks)"></a>多层前馈神经网络 (multi-layer feedforward neural networks)</h4><hr>
+<h4 id="多层前馈神经网络-multi-layer-feedforward-neural-networks"><a href="#多层前馈神经网络-multi-layer-feedforward-neural-networks" class="headerlink" title="多层前馈神经网络 (multi-layer feedforward neural networks)"></a>多层前馈神经网络 (multi-layer feedforward neural networks)</h4><p><strong>多层前馈神经网络：</strong></p>
+<ul>
+<li>每层神经元与下一层神经元完全互联，神经元之间不存在同层连接，也不存在跨层连接</li>
+<li>输入层神经元接收外界输入</li>
+<li>隐层与输出层神经元对信号进行加工，最终结果有输出层神经元输出</li>
+<li>即，<strong>输入层神经元仅是接受输入，不进行函数处理，隐层与输出层包含功能神经元</strong></li>
+</ul>
+<p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure5.PNG" alt="figure5"></p>
+<p><strong>神经网络学习：</strong></p>
+<ul>
+<li>神经网络的学习过程，就是根据训练数据来调整神经元之间的“连接权” (connection weight) 以及每个神经元的阈值</li>
+</ul>
+<hr>
 <h3 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h3><hr>
 <h3 id="全局最小与局部最小"><a href="#全局最小与局部最小" class="headerlink" title="全局最小与局部最小"></a>全局最小与局部最小</h3><hr>
 <h3 id="其他常见的神经网络"><a href="#其他常见的神经网络" class="headerlink" title="其他常见的神经网络"></a>其他常见的神经网络</h3><hr>
@@ -698,7 +706,7 @@ w_i &\leftarrow w_i + \Delta w_i,\\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">26.1k</span>
+    <span title="Site words total count">26.2k</span>
   
 </div>
 
@@ -717,7 +725,7 @@ w_i &\leftarrow w_i + \Delta w_i,\\
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26.1k字</span>
+  <span class="post-count">博客全站共26.2k字</span>
 </div>
         
 
