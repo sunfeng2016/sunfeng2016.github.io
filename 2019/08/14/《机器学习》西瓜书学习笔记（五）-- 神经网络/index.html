@@ -103,7 +103,8 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure5.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure6.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure7.PNG">
-<meta property="og:updated_time" content="2019-08-14T14:06:18.952Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure8.PNG">
+<meta property="og:updated_time" content="2019-08-15T07:10:50.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（五）-- 神经网络">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（五） 神经网络">
@@ -363,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,771
+                  2,268
                 </span>
               
 
@@ -379,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  8
                 </span>
               
             </div>
@@ -621,7 +622,50 @@ E_k = \lambda\frac{1}{m}\sum_{k=1}^{m}E_k + (1-\lambda)\sum_{i}{w_i^2}</script><
 </li>
 </ul>
 <hr>
-<h3 id="全局最小与局部最小"><a href="#全局最小与局部最小" class="headerlink" title="全局最小与局部最小"></a>全局最小与局部最小</h3><hr>
+<h3 id="全局最小与局部极小"><a href="#全局最小与局部极小" class="headerlink" title="全局最小与局部极小"></a>全局最小与局部极小</h3><h4 id="局部极小-local-minimum"><a href="#局部极小-local-minimum" class="headerlink" title="局部极小 (local minimum)"></a>局部极小 (local minimum)</h4><p><strong>局部极小解：</strong></p>
+<ul>
+<li><p>对 $\boldsymbol w^<em>$ 和 $\theta^</em>$，若存在 $\epsilon &gt; 0$ 使得：</p>
+<script type="math/tex; mode=display">
+\forall (\boldsymbol w;\theta) \in \{(\boldsymbol w; \theta) \boldsymbol | \ ||(\boldsymbol w;\theta) - (\boldsymbol w^*;\theta^*)|| \le \epsilon \}</script><p>都有 $E(\boldsymbol w;\theta ) &gt; E(\boldsymbol w^<em>;\theta^</em>)$ 成立，则 $(\boldsymbol w^<em>;\theta^</em>)$ 为局部极小解</p>
+</li>
+<li><font color="#0099ff">局部极小解是参数空间中的某个点，其领域点的误差函数值均不小于该点的函数值</font>
+</li>
+<li><p>参数空间内梯度为零的点，只要其误差函数值小于邻点的误差函数值，就是局部极小点</p>
+</li>
+<li><p>可能存在多个局部极小值，但却只会有一个全局最小值</p>
+</li>
+</ul>
+<h4 id="全局最小-global-minimum"><a href="#全局最小-global-minimum" class="headerlink" title="全局最小 (global minimum)"></a>全局最小 (global minimum)</h4><p><strong>全局最小解：</strong></p>
+<ul>
+<li><p>对 $\boldsymbol w^<em>$ 和 $\theta^</em>$，若存在 $\epsilon &gt; 0$ 使得：</p>
+<script type="math/tex; mode=display">
+\forall (\boldsymbol w;\theta) \in \{(\boldsymbol w; \theta) \boldsymbol | \ ||(\boldsymbol w;\theta) - (\boldsymbol w^*;\theta^*)|| \le \epsilon \}</script><p>对参数空间的任意 $(\boldsymbol w;\theta)$, $E(\boldsymbol w;\theta ) &gt; E(\boldsymbol w^<em>;\theta^</em>)$ 成立，则 $(\boldsymbol w^<em>;\theta^</em>)$ 为全局最小解</p>
+</li>
+<li><font color="#0099ff">全局最小解则是指参数空间中所有点的误差函数值均不小于该点的误差函数值</font>
+</li>
+<li><p>全局最小一定是局部极小，反之不成立</p>
+</li>
+</ul>
+<p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure8.PNG" alt="figure8"></p>
+<h4 id="参数寻优"><a href="#参数寻优" class="headerlink" title="参数寻优"></a>参数寻优</h4><p><strong>参数寻优：</strong></p>
+<ul>
+<li>参数寻优过程中就是希望找到全局最小</li>
+<li>参数寻优方法：<strong>梯度下降</strong></li>
+</ul>
+<p><strong>梯度下降法参数寻优：</strong></p>
+<ul>
+<li>从某些初始解出发，迭代寻找参数最优解</li>
+<li>每次迭代中，先计算误差函数在当前点的梯度，然后根据梯度确定搜索方向</li>
+<li>由于梯度方向是函数值下降最快的方向，因此梯度下降法就是沿着负梯度方向搜素最优解</li>
+<li>若误差函数的当前梯度为零，则已达到局部极小，更新量将为零，这意味着参数的迭代更新将在此停止</li>
+<li>如果误差函数仅有一个局部极小，则此时找到的局部极小就是全局最小</li>
+<li>如果误差函数具有多个局部极小，则不能保证找的的解是全局最小，即<strong>参数寻优陷入了局部极小</strong></li>
+</ul>
+<p><strong>“跳出”局部极小，达到全局最小：</strong></p>
+<ul>
+<li></li>
+</ul>
+<hr>
 <h3 id="其他常见的神经网络"><a href="#其他常见的神经网络" class="headerlink" title="其他常见的神经网络"></a>其他常见的神经网络</h3><h4 id="RBF网络"><a href="#RBF网络" class="headerlink" title="RBF网络"></a>RBF网络</h4><h4 id="ART网络"><a href="#ART网络" class="headerlink" title="ART网络"></a>ART网络</h4><h4 id="SOM网络"><a href="#SOM网络" class="headerlink" title="SOM网络"></a>SOM网络</h4><h4 id="级联相关网络"><a href="#级联相关网络" class="headerlink" title="级联相关网络"></a>级联相关网络</h4><h4 id="Elman网络"><a href="#Elman网络" class="headerlink" title="Elman网络"></a>Elman网络</h4><h4 id="Boltzmann机"><a href="#Boltzmann机" class="headerlink" title="Boltzmann机"></a>Boltzmann机</h4><hr>
 <h3 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h3><hr>
 
@@ -830,7 +874,7 @@ E_k = \lambda\frac{1}{m}\sum_{k=1}^{m}E_k + (1-\lambda)\sum_{i}{w_i^2}</script><
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（五）-神经网络"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（五） 神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#神经元模型"><span class="nav-number">1.1.</span> <span class="nav-text">神经元模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知机与多层网络"><span class="nav-number">1.2.</span> <span class="nav-text">感知机与多层网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#感知机-Perceptron"><span class="nav-number">1.2.1.</span> <span class="nav-text">感知机 (Perceptron)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多层前馈神经网络-multi-layer-feedforward-neural-networks"><span class="nav-number">1.2.2.</span> <span class="nav-text">多层前馈神经网络 (multi-layer feedforward neural networks)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差逆传播算法"><span class="nav-number">1.3.</span> <span class="nav-text">误差逆传播算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局最小与局部最小"><span class="nav-number">1.4.</span> <span class="nav-text">全局最小与局部最小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他常见的神经网络"><span class="nav-number">1.5.</span> <span class="nav-text">其他常见的神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RBF网络"><span class="nav-number">1.5.1.</span> <span class="nav-text">RBF网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ART网络"><span class="nav-number">1.5.2.</span> <span class="nav-text">ART网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SOM网络"><span class="nav-number">1.5.3.</span> <span class="nav-text">SOM网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#级联相关网络"><span class="nav-number">1.5.4.</span> <span class="nav-text">级联相关网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Elman网络"><span class="nav-number">1.5.5.</span> <span class="nav-text">Elman网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Boltzmann机"><span class="nav-number">1.5.6.</span> <span class="nav-text">Boltzmann机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习"><span class="nav-number">1.6.</span> <span class="nav-text">深度学习</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（五）-神经网络"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（五） 神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#神经元模型"><span class="nav-number">1.1.</span> <span class="nav-text">神经元模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知机与多层网络"><span class="nav-number">1.2.</span> <span class="nav-text">感知机与多层网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#感知机-Perceptron"><span class="nav-number">1.2.1.</span> <span class="nav-text">感知机 (Perceptron)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多层前馈神经网络-multi-layer-feedforward-neural-networks"><span class="nav-number">1.2.2.</span> <span class="nav-text">多层前馈神经网络 (multi-layer feedforward neural networks)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差逆传播算法"><span class="nav-number">1.3.</span> <span class="nav-text">误差逆传播算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局最小与局部极小"><span class="nav-number">1.4.</span> <span class="nav-text">全局最小与局部极小</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#局部极小-local-minimum"><span class="nav-number">1.4.1.</span> <span class="nav-text">局部极小 (local minimum)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局最小-global-minimum"><span class="nav-number">1.4.2.</span> <span class="nav-text">全局最小 (global minimum)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数寻优"><span class="nav-number">1.4.3.</span> <span class="nav-text">参数寻优</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他常见的神经网络"><span class="nav-number">1.5.</span> <span class="nav-text">其他常见的神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RBF网络"><span class="nav-number">1.5.1.</span> <span class="nav-text">RBF网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ART网络"><span class="nav-number">1.5.2.</span> <span class="nav-text">ART网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SOM网络"><span class="nav-number">1.5.3.</span> <span class="nav-text">SOM网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#级联相关网络"><span class="nav-number">1.5.4.</span> <span class="nav-text">级联相关网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Elman网络"><span class="nav-number">1.5.5.</span> <span class="nav-text">Elman网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Boltzmann机"><span class="nav-number">1.5.6.</span> <span class="nav-text">Boltzmann机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习"><span class="nav-number">1.6.</span> <span class="nav-text">深度学习</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -864,7 +908,7 @@ E_k = \lambda\frac{1}{m}\sum_{k=1}^{m}E_k + (1-\lambda)\sum_{i}{w_i^2}</script><
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.4k</span>
+    <span title="Site words total count">27.9k</span>
   
 </div>
 
@@ -883,7 +927,7 @@ E_k = \lambda\frac{1}{m}\sum_{k=1}^{m}E_k + (1-\lambda)\sum_{i}{w_i^2}</script><
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.4k字</span>
+  <span class="post-count">博客全站共27.9k字</span>
 </div>
         
 
