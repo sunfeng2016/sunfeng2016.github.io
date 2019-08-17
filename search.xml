@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[《机器学习》西瓜书学习笔记（七）-- 贝叶斯分类器]]></title>
     <url>%2F2019%2F08%2F17%2F%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89--%20%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8%2F</url>
-    <content type="text"><![CDATA[《机器学习》西瓜书学习笔记（七）贝叶斯分类器 贝叶斯决策论极大似然估计朴素贝叶斯分类器半朴素贝叶斯分类器贝叶斯网结构学习推断EM算法]]></content>
+    <content type="text"><![CDATA[《机器学习》西瓜书学习笔记（七）贝叶斯分类器 贝叶斯决策论条件风险 (conditional risk) 假设有 $N$ 种可能的类别标记，即 $ {\cal Y} = \{c_1,c_2,…,c_N \}$ 将样本 $\boldsymbol x$ 分类为 $c_i$ 所产生的期望损失 ，即在样本 $\boldsymbol x$ 上的 “条件风险” 为： R(c_i|\boldsymbol x) = \sum_{j=1}^{N}\lambda_{ij}P(c_j|\boldsymbol x)其中： $\lambda_{ij}$ 是将一个真实标记为 $c_j$ 的样本分类为 $c_i$ 所产生的损失； $P(c_i|\boldsymbol x)$ 表示样本 $\boldsymbol x $ 属于类别 $c_j$ 的后验概率 贝叶斯决策论 (Bayesian decision theory) 基于相关概率和误判损失来选择最优类别标记 即寻找一个判定准则 $h: {\cal X} \mapsto {\cal Y}$ 以最小化结构风险 R(h) = E_x[R(h(\boldsymbol x)\ | \ \boldsymbol x)] 贝叶斯判定准则 (Bayes decision rule) 为最小化总体风险，只需在每个样本上选择那个能使条件风险 $R(c|\boldsymbol x)$ 最小的类别标记，即： h^*(\boldsymbol x) = \mathop{\arg\min}_{c\in {\cal Y}}\ {R(c\ |\ \boldsymbol x)} \tag{1} 极大似然估计朴素贝叶斯分类器半朴素贝叶斯分类器贝叶斯网结构学习推断EM算法]]></content>
       <categories>
         <category>《机器学习》西瓜书学习笔记</category>
       </categories>

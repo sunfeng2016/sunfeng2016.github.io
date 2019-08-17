@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（七）贝叶斯分类器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-17T03:57:02.666Z">
+<meta property="og:updated_time" content="2019-08-17T13:07:24.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（七）-- 贝叶斯分类器">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（七）贝叶斯分类器">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  60
+                  261
                 </span>
               
 
@@ -393,7 +393,31 @@
 
       
         <h2 id="《机器学习》西瓜书学习笔记（七）贝叶斯分类器"><a href="#《机器学习》西瓜书学习笔记（七）贝叶斯分类器" class="headerlink" title="《机器学习》西瓜书学习笔记（七）贝叶斯分类器"></a>《机器学习》西瓜书学习笔记（七）贝叶斯分类器</h2><a id="more"></a>
-<h3 id="贝叶斯决策论"><a href="#贝叶斯决策论" class="headerlink" title="贝叶斯决策论"></a>贝叶斯决策论</h3><h3 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h3><h3 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h3><h3 id="半朴素贝叶斯分类器"><a href="#半朴素贝叶斯分类器" class="headerlink" title="半朴素贝叶斯分类器"></a>半朴素贝叶斯分类器</h3><h3 id="贝叶斯网"><a href="#贝叶斯网" class="headerlink" title="贝叶斯网"></a>贝叶斯网</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><h4 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h4><h4 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h4><h3 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h3>
+<h3 id="贝叶斯决策论"><a href="#贝叶斯决策论" class="headerlink" title="贝叶斯决策论"></a>贝叶斯决策论</h3><p><strong>条件风险 (conditional risk)</strong></p>
+<ul>
+<li><p>假设有 $N$ 种可能的类别标记，即 $ {\cal Y} = \{c_1,c_2,…,c_N \}$ </p>
+</li>
+<li><p>将样本 $\boldsymbol x$ 分类为 $c_i$ 所产生的期望损失 ，即在样本 $\boldsymbol x$ 上的 “条件风险” 为：</p>
+<script type="math/tex; mode=display">
+R(c_i|\boldsymbol x) = \sum_{j=1}^{N}\lambda_{ij}P(c_j|\boldsymbol x)</script><p>其中：</p>
+<p> $\lambda_{ij}$ 是将一个真实标记为 $c_j$ 的样本分类为 $c_i$ 所产生的损失；</p>
+<p>$P(c_i|\boldsymbol x)$ 表示样本 $\boldsymbol x $ 属于类别 $c_j$ 的后验概率 </p>
+</li>
+</ul>
+<p><strong>贝叶斯决策论 (Bayesian decision theory)</strong></p>
+<ul>
+<li><p>基于相关概率和误判损失来选择最优类别标记</p>
+</li>
+<li><p>即寻找一个判定准则 $h: {\cal X} \mapsto {\cal Y}$ 以最小化结构风险</p>
+<script type="math/tex; mode=display">
+R(h) = E_x[R(h(\boldsymbol x)\ | \ \boldsymbol  x)]</script></li>
+</ul>
+<p><strong>贝叶斯判定准则  (Bayes decision rule)</strong></p>
+<ul>
+<li>为最小化总体风险，只需在每个样本上选择那个能使条件风险 $R(c|\boldsymbol x)$ 最小的类别标记，即：<script type="math/tex; mode=display">
+h^*(\boldsymbol x) = \mathop{\arg\min}_{c\in {\cal Y}}\ {R(c\ |\ \boldsymbol x)} \tag{1}</script></li>
+</ul>
+<h3 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h3><h3 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h3><h3 id="半朴素贝叶斯分类器"><a href="#半朴素贝叶斯分类器" class="headerlink" title="半朴素贝叶斯分类器"></a>半朴素贝叶斯分类器</h3><h3 id="贝叶斯网"><a href="#贝叶斯网" class="headerlink" title="贝叶斯网"></a>贝叶斯网</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><h4 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h4><h4 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h4><h3 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h3>
       
     </div>
     
@@ -633,7 +657,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">28.3k</span>
+    <span title="Site words total count">28.5k</span>
   
 </div>
 
@@ -652,7 +676,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共28.3k字</span>
+  <span class="post-count">博客全站共28.5k字</span>
 </div>
         
 
