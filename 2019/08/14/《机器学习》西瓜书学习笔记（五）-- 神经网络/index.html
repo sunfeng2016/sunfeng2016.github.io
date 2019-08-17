@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure6.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure7.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure8.PNG">
-<meta property="og:updated_time" content="2019-08-16T06:51:44.832Z">
+<meta property="og:updated_time" content="2019-08-17T13:29:24.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（五）-- 神经网络">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（五） 神经网络">
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,268
+                  2,280
                 </span>
               
 
@@ -430,7 +430,7 @@
 <li>输入层接收外界输入信号传递给输出层</li>
 <li>输出层是M-P神经元</li>
 <li>给定训练数据集，权重 $w_i (i = 1,2,…,n)$ 以及阈值 $\theta$ 可通过学习得到</li>
-<li>将阈值 $\theta$ 可以看做一个固定输入为-1.0的“哑结点”所对应的权重$w_{n+1}$</li>
+<li>将阈值 $\theta$ 可以看做一个固定输入为 -1.0 的 “哑结点” 所对应的权重$w_{n+1}$</li>
 </ul>
 <p><img src="/2019/08/14/《机器学习》西瓜书学习笔记（五）-- 神经网络/figure4.PNG" alt="figure4"></p>
 <p><strong>感知机学习规则：</strong></p>
@@ -512,13 +512,13 @@ w_i &\leftarrow w_i + \Delta w_i,\\
 <li><p><strong>神经网络输出：</strong></p>
 <ul>
 <li>对训练样例 $(\boldsymbol x_k, \boldsymbol y_k)$, 假定神经网络输出为 $\hat y_k = (\hat y_1 ^k,\hat y_2 ^k,…,\hat y_l ^k)$, 即：<script type="math/tex; mode=display">
-\hat y_j^k = f(\beta _j - \theta_j) \qquad (1)</script></li>
+\hat y_j^k = f(\beta _j - \theta_j) \tag {1}</script></li>
 </ul>
 </li>
 <li><p><strong>均方误差：</strong></p>
 <ul>
 <li>网络在样例 $(\boldsymbol x_k, \boldsymbol y_k)$ 上的误差为：<script type="math/tex; mode=display">
-E_k = \frac{1}{2}\sum_{j=1}^{l}{(\hat y_j^k - y_j^k)^2}\qquad(2)</script></li>
+E_k = \frac{1}{2}\sum_{j=1}^{l}{(\hat y_j^k - y_j^k)^2} \tag{2}</script></li>
 </ul>
 </li>
 </ul>
@@ -537,45 +537,47 @@ E_k = \frac{1}{2}\sum_{j=1}^{l}{(\hat y_j^k - y_j^k)^2}\qquad(2)</script></li>
 v \leftarrow v + \Delta v</script></li>
 <li><p>基于<strong>梯度下降 (gradient descent)</strong>策略，以目标的负梯度方向对参数进行调整，对式(2)的误差 $E_k$ , 给定学习率 $\eta$, 有：</p>
 <script type="math/tex; mode=display">
-\Delta w_{hj} = -\eta \frac{\partial E_k}{\partial w_{hj}}\qquad (3)</script></li>
+\Delta w_{hj} = -\eta \frac{\partial E_k}{\partial w_{hj}}\tag{3}</script></li>
 <li><p><strong>反向传播</strong>：由于 $w_{hj}$ 先影响到第 $j$ 个输出层神经元的输入值 $\beta_j$, 再影响到其输出值 $\hat y_j^k$ , 然后影响到 $E_k$, 由链式法则得:</p>
 <script type="math/tex; mode=display">
-\frac{\partial E_k}{\partial w_{hj}} = \frac{\partial E_k}{\partial \hat y_j^k} \cdot \frac{\partial y_j^k}{\partial \beta _j} \cdot \frac{\partial \beta_j}{\partial w_{hj}} \qquad (4)</script></li>
+\frac{\partial E_k}{\partial w_{hj}} = \frac{\partial E_k}{\partial \hat y_j^k} \cdot \frac{\partial y_j^k}{\partial \beta _j} \cdot \frac{\partial \beta_j}{\partial w_{hj}}\tag{4}</script></li>
 <li><p>根据 $\beta_j$ 的定义，得:</p>
 <script type="math/tex; mode=display">
-\frac{\partial \beta_j}{\partial w_{hj}} = b_h \qquad (5)</script></li>
+\frac{\partial \beta_j}{\partial w_{hj}} = b_h \tag{5}</script></li>
 <li><p>Sigmoid函数 $f(x)$ 的导数：</p>
 <script type="math/tex; mode=display">
- f\prime(x) = f(x)(1-f(x)) \qquad (6)</script></li>
+f\prime(x) = f(x)(1-f(x)) \tag{6}</script></li>
 <li><p>根据式(1)(2)和(6)，有:</p>
 <script type="math/tex; mode=display">
 \begin {equation}
 \begin {split}
 g_j &= - \frac{\partial E_k}{\partial \hat y_j^k} \cdot \frac{\partial y_j^k}{\partial \beta _j}\\
 &= -(\hat y_j^k - y_j^k)f\prime(\beta_j-\theta_j)\\
-&= \hat y_j ^k(1-\hat y_j^k)(y_j^k-\hat y_j^k) \qquad (7)
+&= \hat y_j ^k(1-\hat y_j^k)(y_j^k-\hat y_j^k) 
 \end {split}
-\end {equation}</script></li>
+\end {equation}
+\tag{7}</script></li>
 <li><p>由式(3)(4)(5)和(7)即可得 BP 算法中关于 $w_{hj}$ 的更新公式:</p>
 <script type="math/tex; mode=display">
-\Delta w_{hj} = \eta g_jb_h \qquad(8)</script></li>
+\Delta w_{hj} = \eta g_jb_h \tag{8}</script></li>
 <li><p>类似可得：</p>
 <script type="math/tex; mode=display">
-\Delta \theta_j = -\eta g_j\qquad(9)\\
-\Delta v_{ih} = \eta e_hx_i \qquad (10)\\
-\Delta \gamma_h = -\eta e_h \qquad (11)</script><p>其中:</p>
-<script type="math/tex; mode=display">
-\begin {equation}
-\begin {split}
-e_h &= -\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial\alpha_h}\\
-&= -\sum_{j=1}^{l}\frac{\partial E_k}{\partial \beta_j} \cdot \frac{\partial \beta_j}{\partial b_h} f\prime(\alpha_h-\gamma_h)\\
-&=\sum_{j=1}^{l}w_{hj}g_jf\prime(\alpha_h-\gamma_h)\\
-&= b_h(1-b_h)\sum_{j=1}^{l}w_{hj}g_j \qquad(12)
-
-\end {split}
-\end {equation}</script></li>
+\Delta \theta_j = -\eta g_j\tag{9}</script><script type="math/tex; mode=display">
+\Delta v_{ih} = \eta e_hx_i \tag{10}</script><script type="math/tex; mode=display">
+\Delta \gamma_h = -\eta e_h \tag{11}</script></li>
 </ul>
-<p><strong>BP算法工作流程:</strong> 对于每个输入样例：</p>
+<p>  其中:</p>
+<script type="math/tex; mode=display">
+  \begin {equation}
+  \begin {split}
+  e_h &= -\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial\alpha_h}\\
+  &= -\sum_{j=1}^{l}\frac{\partial E_k}{\partial \beta_j} \cdot \frac{\partial \beta_j}{\partial b_h} f\prime(\alpha_h-\gamma_h)\\
+  &=\sum_{j=1}^{l}w_{hj}g_jf\prime(\alpha_h-\gamma_h)\\
+  &= b_h(1-b_h)\sum_{j=1}^{l}w_{hj}g_j 
+
+  \end {split}
+  \end {equation}
+  \tag{12}</script><p><strong>BP算法工作流程:</strong> 对于每个输入样例：</p>
 <ul>
 <li>先将输入示例提供给输入层神经元</li>
 <li>然后逐层将信号前传，直到产生输出层的结果</li>
@@ -624,6 +626,8 @@ E_k = \lambda\frac{1}{m}\sum_{k=1}^{m}E_k + (1-\lambda)\sum_{i}{w_i^2}</script><
 <hr>
 <h3 id="全局最小与局部极小"><a href="#全局最小与局部极小" class="headerlink" title="全局最小与局部极小"></a>全局最小与局部极小</h3><h4 id="局部极小-local-minimum"><a href="#局部极小-local-minimum" class="headerlink" title="局部极小 (local minimum)"></a>局部极小 (local minimum)</h4><p><strong>局部极小解：</strong> </p>
 <ul>
+<li><p>对 $\boldsymbol w^<em>$ 和 $\theta ^</em>$，若存在 $\epsilon &gt; 0$ 使得：</p>
+</li>
 <li><p>对 $ \boldsymbol w^<em> $ 和 $ \theta^</em> $，若存在 $ \epsilon &gt; 0 $ 使得：</p>
 <script type="math/tex; mode=display">
 \forall (\boldsymbol w;\theta) \in \{(\boldsymbol w; \theta) \boldsymbol | \ ||(\boldsymbol w;\theta) - (\boldsymbol w^*;\theta^*)|| \le \epsilon \}</script><p>都有 $E(\boldsymbol w;\theta ) &gt; E(\boldsymbol w^<em>;\theta^</em>)$ 成立，则 $(\boldsymbol w^<em>;\theta^</em>)$ 为局部极小解</p>
