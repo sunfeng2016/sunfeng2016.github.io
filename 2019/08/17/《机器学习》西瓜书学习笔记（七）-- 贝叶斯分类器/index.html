@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（七）贝叶斯分类器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-17T13:07:24.781Z">
+<meta property="og:updated_time" content="2019-08-18T06:04:49.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（七）-- 贝叶斯分类器">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（七）贝叶斯分类器">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  261
+                  693
                 </span>
               
 
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -399,7 +399,7 @@
 </li>
 <li><p>将样本 $\boldsymbol x$ 分类为 $c_i$ 所产生的期望损失 ，即在样本 $\boldsymbol x$ 上的 “条件风险” 为：</p>
 <script type="math/tex; mode=display">
-R(c_i|\boldsymbol x) = \sum_{j=1}^{N}\lambda_{ij}P(c_j|\boldsymbol x)</script><p>其中：</p>
+R(c_i|\boldsymbol x) = \sum_{j=1}^{N}\lambda_{ij}P(c_j|\boldsymbol x) \tag{1}</script><p>其中：</p>
 <p> $\lambda_{ij}$ 是将一个真实标记为 $c_j$ 的样本分类为 $c_i$ 所产生的损失；</p>
 <p>$P(c_i|\boldsymbol x)$ 表示样本 $\boldsymbol x $ 属于类别 $c_j$ 的后验概率 </p>
 </li>
@@ -410,13 +410,86 @@ R(c_i|\boldsymbol x) = \sum_{j=1}^{N}\lambda_{ij}P(c_j|\boldsymbol x)</script><p
 </li>
 <li><p>即寻找一个判定准则 $h: {\cal X} \mapsto {\cal Y}$ 以最小化结构风险</p>
 <script type="math/tex; mode=display">
-R(h) = E_x[R(h(\boldsymbol x)\ | \ \boldsymbol  x)]</script></li>
+R(h) = E_x[R(h(\boldsymbol x)\ | \ \boldsymbol  x)] \tag{2}</script></li>
 </ul>
 <p><strong>贝叶斯判定准则  (Bayes decision rule)</strong></p>
 <ul>
 <li>为最小化总体风险，只需在每个样本上选择那个能使条件风险 $R(c|\boldsymbol x)$ 最小的类别标记，即：<script type="math/tex; mode=display">
-h^*(\boldsymbol x) = \mathop{\arg\min}_{c\in {\cal Y}}\ {R(c\ |\ \boldsymbol x)} \tag{1}</script></li>
+h^*(\boldsymbol x) = \mathop{\arg\min}_{c\in {\cal Y}}\ {R(c\ |\ \boldsymbol x)} \tag{3}</script></li>
 </ul>
+<ul>
+<li>此时：<ul>
+<li>$h^<em>$ 称为<em>*贝叶斯最优分类器</em></em> (Bayes optimal classifier)</li>
+<li>总体风险 $R(h^<em>)$ 称为<em>*贝叶斯风险 </em></em> (Bayes risk)</li>
+<li>$1-R(h^*)$ 反映了分类器所能达到的最好性能</li>
+</ul>
+</li>
+</ul>
+<p><strong>最小化的错误率的贝叶斯最优分类器：</strong></p>
+<ul>
+<li><p>若目标是最小化分类错误率，则误判损失 $\lambda_{ij}$ 可写为：</p>
+<script type="math/tex; mode=display">
+\lambda_{ij} = 
+\begin{cases}
+0, & \text{if} \ \ i = j\\
+1, & \text{otherwise}
+\end{cases}
+\tag{4}</script></li>
+<li><p>此时条件风险为</p>
+<script type="math/tex; mode=display">
+R(c\ |\ \boldsymbol x) = 1-P(c\ | \ \boldsymbol x) \tag{5}</script><p>解析：</p>
+<script type="math/tex; mode=display">
+\begin {equation}
+\begin {split}
+&R(c_i|\boldsymbol x) = 1 * P(c_1|\boldsymbol x) + 1 * P(c_2|\boldsymbol x) + ... + 0 *  P(c_i|\boldsymbol x)+ ... + 1 * P(c_N|\boldsymbol x) \\
+&\because \ \sum_{j=1}^{N}P(c_j|\boldsymbol x) = 1 \\
+&\therefore \  R(c_i|\boldsymbol x) = 1-P(c_i|\boldsymbol x)
+\end {split}
+\end {equation}</script></li>
+<li><p>于是，最小化分类错误率的贝叶斯最优分类器为：</p>
+<script type="math/tex; mode=display">
+h^*{(\boldsymbol x)} = \mathop{\arg\min}_{c\in\cal Y}\ P(c \ |\ \boldsymbol x) \tag {6}</script><p>即，对每个样本 $x$, 选择能使后验概率 $P(c  | \boldsymbol x)$ 最大的类别标记</p>
+</li>
+<li><p><font color="#0099ff">欲使用贝叶斯判定准则最小化决策风险，首先要获得后验概率 </font> $P(c  | \boldsymbol x)$ </p>
+</li>
+</ul>
+<p><strong>估计后验概率 $P(c  | \boldsymbol x)$ 的两种策略：</strong></p>
+<ul>
+<li><p><strong>判别式模型</strong> (discriminative models)</p>
+<ul>
+<li>给定 $x$, 可通过直接建模  $P(c  | \boldsymbol x)$ 来预测 $c$</li>
+<li>如：决策树、BP神经网络、支持向量机</li>
+</ul>
+</li>
+<li><p><strong>生成式模型</strong> (generative models)</p>
+<ul>
+<li><p>先对联合概率分布 $P(\boldsymbol x,c)$ 建模，然后由此获得 $P(c  | \boldsymbol x)$ ，即：</p>
+<script type="math/tex; mode=display">
+P(c \ |\ \boldsymbol x) = \frac{P(\boldsymbol x, c)}{P(\boldsymbol x)}\tag{7}</script></li>
+<li><p>基于贝叶斯定理，得：</p>
+<script type="math/tex; mode=display">
+P(c \ |\ \boldsymbol x) = \frac{P(c)\ P(\boldsymbol x \ |\ c)}{P(\boldsymbol x)}\tag{8}</script></li>
+<li><p>$P(c)$: 是类先验概率</p>
+<ul>
+<li>表达了样本空间中各类样本所占的比例</li>
+<li>根据大数定律，当训练集中包含充足的独立同分布样本时，$P(c)$ 可通过各类样本出现的频率来进行估计</li>
+</ul>
+</li>
+<li><p>$P(\boldsymbol x  | c)$: 是样本 $\boldsymbol x$ 相对于类标记 $c$ 的类条件概率，或称为“似然”</p>
+<ul>
+<li>类条件概率涉及关于 $\boldsymbol x$ 所有属性的联合概率</li>
+<li>不能直接根据样本出现的频率来进行估计</li>
+</ul>
+</li>
+<li><p>$P(\boldsymbol x)$: 是用于归一化的证据因子</p>
+<ul>
+<li>对给定的样本 $\boldsymbol x$, 证据因子与类别标记无关</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
 <h3 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h3><h3 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h3><h3 id="半朴素贝叶斯分类器"><a href="#半朴素贝叶斯分类器" class="headerlink" title="半朴素贝叶斯分类器"></a>半朴素贝叶斯分类器</h3><h3 id="贝叶斯网"><a href="#贝叶斯网" class="headerlink" title="贝叶斯网"></a>贝叶斯网</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><h4 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h4><h4 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h4><h3 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h3>
       
     </div>
@@ -657,7 +730,7 @@ h^*(\boldsymbol x) = \mathop{\arg\min}_{c\in {\cal Y}}\ {R(c\ |\ \boldsymbol x)}
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">28.5k</span>
+    <span title="Site words total count">28.9k</span>
   
 </div>
 
@@ -676,7 +749,7 @@ h^*(\boldsymbol x) = \mathop{\arg\min}_{c\in {\cal Y}}\ {R(c\ |\ \boldsymbol x)}
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共28.5k字</span>
+  <span class="post-count">博客全站共28.9k字</span>
 </div>
         
 
