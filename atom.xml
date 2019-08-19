@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-19T10:50:01.929Z</updated>
+  <updated>2019-08-19T10:52:14.513Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://sunfeng.online/2019/08/19/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%9D%EF%BC%89--%20%E8%81%9A%E7%B1%BB/"/>
     <id>http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）-- 聚类/</id>
     <published>2019-08-19T08:41:05.000Z</published>
-    <updated>2019-08-19T10:50:01.929Z</updated>
+    <updated>2019-08-19T10:52:14.513Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（九）-聚类"><a href="#《机器学习》西瓜书学习笔记（九）-聚类" class="headerlink" title="《机器学习》西瓜书学习笔记（九） 聚类"></a>《机器学习》西瓜书学习笔记（九） 聚类</h2><a id="more"></a><h3 id="聚类任务"><a href="#聚类任务" class="headerlink" title="聚类任务"></a>聚类任务</h3><p><strong>聚类</strong> (clustering)</p><ul><li>无监督学习 (unsupervised learning) 的一种</li><li>试图将数据划分为若干个不相交的子集，每个子集为一个 <strong>簇</strong> (cluster)</li><li>每个簇可能对应于一些潜在的概念(类别)</li></ul><p><strong>聚类的形式化解释</strong></p><ul><li>样本集 $D = \{\boldsymbol x_1,  \boldsymbol x_2,…,\boldsymbol x_m\}$ 包含 $m$ 个样本</li><li>每个样本 $\boldsymbol x_i = (x_{i1}; x_{i2}; …;x_{in})$ 是一个 $n$ 维向量</li><li>聚类算法将样本 $D$ 划分为 $k$ 个不相交的簇 $\{C_l  |  l = 1,2,…,k \}$, 其中 $C_i \bigcap C_j = \empty  (i \ne j)$, 且 $D = \bigcup_{l=1}^{k}C_l$</li><li>用 $\lambda_j \in \{1,2,…,k \}$ 表示样本 $\boldsymbol x_j$ 的 “簇标记”，即 $\boldsymbol x_j \in C_{\lambda_j}$ </li><li>聚类结果 $\boldsymbol \lambda = \{\lambda_1;\lambda_2;…;\lambda_m\}$</li></ul><hr><h3 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h3><hr><h3 id="距离计算"><a href="#距离计算" class="headerlink" title="距离计算"></a>距离计算</h3><hr><h3 id="原型聚类"><a href="#原型聚类" class="headerlink" title="原型聚类"></a>原型聚类</h3><h4 id="K-均值聚类"><a href="#K-均值聚类" class="headerlink" title="K 均值聚类"></a>K 均值聚类</h4><h4 id="学习向量量化"><a href="#学习向量量化" class="headerlink" title="学习向量量化"></a>学习向量量化</h4><h4 id="高斯混合聚类"><a href="#高斯混合聚类" class="headerlink" title="高斯混合聚类"></a>高斯混合聚类</h4><hr><h3 id="密度聚类"><a href="#密度聚类" class="headerlink" title="密度聚类"></a>密度聚类</h3><hr><h3 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h3><hr>]]></content>
+    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（九）-聚类"><a href="#《机器学习》西瓜书学习笔记（九）-聚类" class="headerlink" title="《机器学习》西瓜书学习笔记（九） 聚类"></a>《机器学习》西瓜书学习笔记（九） 聚类</h2><a id="more"></a><h3 id="聚类任务"><a href="#聚类任务" class="headerlink" title="聚类任务"></a>聚类任务</h3><p><strong>聚类</strong> (clustering)</p><ul><li>无监督学习 (unsupervised learning) 的一种</li><li>试图将数据划分为若干个不相交的子集，每个子集为一个 <strong>簇</strong> (cluster)</li><li>每个簇可能对应于一些潜在的概念(类别)</li></ul><p><strong>聚类的形式化解释</strong></p><ul><li>样本集 $D = \{\boldsymbol x_1,  \boldsymbol x_2,…,\boldsymbol x_m\}$ 包含 $m$ 个样本</li><li>每个样本 $\boldsymbol x_i = (x_{i1}; x_{i2}; …;x_{in})$ 是一个 $n$ 维向量</li><li>聚类算法将样本 $D$ 划分为 $k$ 个不相交的簇 $\{C_l  |  l = 1,2,…,k \}$, 其中 $C_i \bigcap C_j = \emptyset  (i \ne j)$, 且 $D = \bigcup_{l=1}^{k}C_l$</li><li>用 $\lambda_j \in \{1,2,…,k \}$ 表示样本 $\boldsymbol x_j$ 的 “簇标记”，即 $\boldsymbol x_j \in C_{\lambda_j}$ </li><li>聚类结果 $\boldsymbol \lambda = \{\lambda_1;\lambda_2;…;\lambda_m\}$</li></ul><hr><h3 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h3><hr><h3 id="距离计算"><a href="#距离计算" class="headerlink" title="距离计算"></a>距离计算</h3><hr><h3 id="原型聚类"><a href="#原型聚类" class="headerlink" title="原型聚类"></a>原型聚类</h3><h4 id="K-均值聚类"><a href="#K-均值聚类" class="headerlink" title="K 均值聚类"></a>K 均值聚类</h4><h4 id="学习向量量化"><a href="#学习向量量化" class="headerlink" title="学习向量量化"></a>学习向量量化</h4><h4 id="高斯混合聚类"><a href="#高斯混合聚类" class="headerlink" title="高斯混合聚类"></a>高斯混合聚类</h4><hr><h3 id="密度聚类"><a href="#密度聚类" class="headerlink" title="密度聚类"></a>密度聚类</h3><hr><h3 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h3><hr>]]></content>
     
     <summary type="html">
     

@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[《机器学习》西瓜书学习笔记（九）-- 聚类]]></title>
     <url>%2F2019%2F08%2F19%2F%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%9D%EF%BC%89--%20%E8%81%9A%E7%B1%BB%2F</url>
-    <content type="text"><![CDATA[《机器学习》西瓜书学习笔记（九） 聚类 聚类任务聚类 (clustering) 无监督学习 (unsupervised learning) 的一种 试图将数据划分为若干个不相交的子集，每个子集为一个 簇 (cluster) 每个簇可能对应于一些潜在的概念(类别) 聚类的形式化解释 样本集 $D = \{\boldsymbol x_1, \boldsymbol x_2,…,\boldsymbol x_m\}$ 包含 $m$ 个样本 每个样本 $\boldsymbol x_i = (x_{i1}; x_{i2}; …;x_{in})$ 是一个 $n$ 维向量 聚类算法将样本 $D$ 划分为 $k$ 个不相交的簇 $\{C_l | l = 1,2,…,k \}$, 其中 $C_i \bigcap C_j = \empty (i \ne j)$, 且 $D = \bigcup_{l=1}^{k}C_l$ 用 $\lambda_j \in \{1,2,…,k \}$ 表示样本 $\boldsymbol x_j$ 的 “簇标记”，即 $\boldsymbol x_j \in C_{\lambda_j}$ 聚类结果 $\boldsymbol \lambda = \{\lambda_1;\lambda_2;…;\lambda_m\}$ 性能度量 距离计算 原型聚类K 均值聚类学习向量量化高斯混合聚类 密度聚类 层次聚类]]></content>
+    <content type="text"><![CDATA[《机器学习》西瓜书学习笔记（九） 聚类 聚类任务聚类 (clustering) 无监督学习 (unsupervised learning) 的一种 试图将数据划分为若干个不相交的子集，每个子集为一个 簇 (cluster) 每个簇可能对应于一些潜在的概念(类别) 聚类的形式化解释 样本集 $D = \{\boldsymbol x_1, \boldsymbol x_2,…,\boldsymbol x_m\}$ 包含 $m$ 个样本 每个样本 $\boldsymbol x_i = (x_{i1}; x_{i2}; …;x_{in})$ 是一个 $n$ 维向量 聚类算法将样本 $D$ 划分为 $k$ 个不相交的簇 $\{C_l | l = 1,2,…,k \}$, 其中 $C_i \bigcap C_j = \emptyset (i \ne j)$, 且 $D = \bigcup_{l=1}^{k}C_l$ 用 $\lambda_j \in \{1,2,…,k \}$ 表示样本 $\boldsymbol x_j$ 的 “簇标记”，即 $\boldsymbol x_j \in C_{\lambda_j}$ 聚类结果 $\boldsymbol \lambda = \{\lambda_1;\lambda_2;…;\lambda_m\}$ 性能度量 距离计算 原型聚类K 均值聚类学习向量量化高斯混合聚类 密度聚类 层次聚类]]></content>
       <categories>
         <category>《机器学习》西瓜书学习笔记</category>
       </categories>
