@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（七）贝叶斯分类器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-18T06:14:20.554Z">
+<meta property="og:updated_time" content="2019-08-18T09:21:48.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（七）-- 贝叶斯分类器">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（七）贝叶斯分类器">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  693
+                  762
                 </span>
               
 
@@ -448,7 +448,7 @@ R(c\ |\ \boldsymbol x) = 1-P(c\ | \ \boldsymbol x) \tag{5}</script><p>解析：<
 \end {equation}</script></li>
 <li><p>于是，最小化分类错误率的贝叶斯最优分类器为：</p>
 <script type="math/tex; mode=display">
-h^*{(\boldsymbol x)} = \mathop{\arg\min}_{c\in\cal Y}\ P(c \ |\ \boldsymbol x) \tag {6}</script><p>即，对每个样本 $x$, 选择能使后验概率 $P(c  | \boldsymbol x)$ 最大的类别标记</p>
+h^*{(\boldsymbol x)} = \mathop{\arg\max}_{c\in\cal Y}\ P(c \ |\ \boldsymbol x) \tag {6}</script><p>即，对每个样本 $x$, 选择能使后验概率 $P(c  | \boldsymbol x)$ 最大的类别标记</p>
 </li>
 <li><p><font color="#0099ff">欲使用贝叶斯判定准则最小化决策风险，首先要获得后验概率 </font> $P(c  | \boldsymbol x)$ </p>
 </li>
@@ -490,7 +490,22 @@ P(c \ |\ \boldsymbol x) = \frac{P(c)\ P(\boldsymbol x \ |\ c)}{P(\boldsymbol x)}
 </li>
 </ul>
 <hr>
-<h3 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h3><h3 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h3><h3 id="半朴素贝叶斯分类器"><a href="#半朴素贝叶斯分类器" class="headerlink" title="半朴素贝叶斯分类器"></a>半朴素贝叶斯分类器</h3><h3 id="贝叶斯网"><a href="#贝叶斯网" class="headerlink" title="贝叶斯网"></a>贝叶斯网</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><h4 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h4><h4 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h4><h3 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h3>
+<h3 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h3><p><strong>极大似然估计 (Maximum Likehood Estimation)</strong></p>
+<ul>
+<li><p>估计类条件概率的一种常用策略</p>
+</li>
+<li><p>令 $D_c$ 表示训练集 $D$ 中第 $c$ 类样本组成的集合</p>
+</li>
+<li><p>假设这些样本时独立同分布的，则参数 $\theta_c$ 对于数据集 $D_c$ 的似然是：</p>
+<script type="math/tex; mode=display">
+P(D_c \ | \ \theta_c) = \prod_{\boldsymbol x\in D_c} \ P(\boldsymbol x \ |\ \theta_c)\tag{9}</script></li>
+<li></li>
+</ul>
+<hr>
+<h3 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h3><hr>
+<h3 id="半朴素贝叶斯分类器"><a href="#半朴素贝叶斯分类器" class="headerlink" title="半朴素贝叶斯分类器"></a>半朴素贝叶斯分类器</h3><hr>
+<h3 id="贝叶斯网"><a href="#贝叶斯网" class="headerlink" title="贝叶斯网"></a>贝叶斯网</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><h4 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h4><h4 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h4><hr>
+<h3 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h3>
       
     </div>
     
@@ -730,7 +745,7 @@ P(c \ |\ \boldsymbol x) = \frac{P(c)\ P(\boldsymbol x \ |\ c)}{P(\boldsymbol x)}
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">28.9k</span>
+    <span title="Site words total count">29.0k</span>
   
 </div>
 
@@ -749,7 +764,7 @@ P(c \ |\ \boldsymbol x) = \frac{P(c)\ P(\boldsymbol x \ |\ c)}{P(\boldsymbol x)}
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共28.9k字</span>
+  <span class="post-count">博客全站共29.0k字</span>
 </div>
         
 
