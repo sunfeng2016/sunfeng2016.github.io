@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/17/《机器学习》西瓜书学习笔记（七）--%20贝叶斯分类器/figure3.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/17/《机器学习》西瓜书学习笔记（七）--%20贝叶斯分类器/figure4.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/17/《机器学习》西瓜书学习笔记（七）--%20贝叶斯分类器/figure5.PNG">
-<meta property="og:updated_time" content="2019-08-19T07:30:44.797Z">
+<meta property="og:updated_time" content="2019-08-19T07:45:11.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（七）-- 贝叶斯分类器">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（七）贝叶斯分类器">
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,201
+                  1,249
                 </span>
               
 
@@ -549,9 +549,13 @@ h_{nb}(x) = \mathop{\arg\max}_{c\in \cal Y} \ P(c)\prod_{i=1}^{d}\ P(x_i\ |\ c)\
 <script type="math/tex; mode=display">
 P(c) = \frac{|D_c|}{|D|}\tag{16}</script><p>其中, $D_c$ 表示训练集 $D$ 中，第 $c$ 类样本组成的集合</p>
 </li>
-<li><p>$P(x_i  |  c)$ : 在第 $c$ 类样本中，在 i 个属性上取值为 $x_i$ 的条件概率</p>
+<li><p>$P(x_i  |  c)$ : 表示第 $c$ 类样本在 i 个属性上取值为 $x_i$ 的条件概率</p>
 <script type="math/tex; mode=display">
 P(x_i\ | \ c) = \frac{|D_{c,x_i}|}{|D_c|}\tag{17}</script><p>其中，$D_{c,x_i}$ 表示 $D_c$ 中在第 $i$ 个属性上取值为 $x_i$ 的样本组成的集合</p>
+</li>
+<li><p>对于连续属性，假设服从正态分布，则：</p>
+<script type="math/tex; mode=display">
+P(x_i\ | \ c) = \frac{1}{\sqrt{2\pi}\sigma_{c,i}}\exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma^2_{c,i}} \right)\tag{18}</script><p>其中，$\mu_{c,i}$ 和 $\sigma^2_{c,i}$ 分别是第 $c$ 类样本在第 $i$ 个属性上取值的均值和方差</p>
 </li>
 </ul>
 </li>
@@ -824,7 +828,7 @@ P(好瓜 = 否) = \frac{9}{17}\approx 0.529\\</script><ul>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">29.4k</span>
+    <span title="Site words total count">29.5k</span>
   
 </div>
 
@@ -843,7 +847,7 @@ P(好瓜 = 否) = \frac{9}{17}\approx 0.529\\</script><ul>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共29.4k字</span>
+  <span class="post-count">博客全站共29.5k字</span>
 </div>
         
 
