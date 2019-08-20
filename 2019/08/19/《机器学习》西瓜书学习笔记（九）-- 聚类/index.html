@@ -96,10 +96,12 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（九） 聚类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-20T06:46:54.818Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）--%20聚类/figure1.PNG">
+<meta property="og:updated_time" content="2019-08-20T09:14:21.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（九）-- 聚类">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（九） 聚类">
+<meta name="twitter:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）--%20聚类/figure1.PNG">
 
 
 
@@ -355,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  792
+                  1,141
                 </span>
               
 
@@ -371,7 +373,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -527,7 +529,49 @@ dist(\boldsymbol x_i,\boldsymbol x_j) \le dist(\boldsymbol x_i,\boldsymbol x_k) 
 </ul>
 <script type="math/tex; mode=display">
 \text{MinkovDM}_p(\boldsymbol x_i,\boldsymbol x_j) = \left(\sum_{u=1}^{n_c}{|x_{iu}-x_{ju} |^p} + \sum_{u=n_c+1}^{n} \text{VDM}_p(x_{iu} ,x_{ju}) \right)^{\frac{1}{p}}\tag{22}</script><hr>
-<h3 id="原型聚类"><a href="#原型聚类" class="headerlink" title="原型聚类"></a>原型聚类</h3><h4 id="K-均值聚类"><a href="#K-均值聚类" class="headerlink" title="K 均值聚类"></a>K 均值聚类</h4><h4 id="学习向量量化"><a href="#学习向量量化" class="headerlink" title="学习向量量化"></a>学习向量量化</h4><h4 id="高斯混合聚类"><a href="#高斯混合聚类" class="headerlink" title="高斯混合聚类"></a>高斯混合聚类</h4><hr>
+<h3 id="原型聚类"><a href="#原型聚类" class="headerlink" title="原型聚类"></a>原型聚类</h3><h4 id="K-均值聚类"><a href="#K-均值聚类" class="headerlink" title="K 均值聚类"></a>K 均值聚类</h4><font color="#099ff">K 均值算法也称为 K-Means 算法</font>
+
+<p><strong>K-Means 算法思想:</strong> </p>
+<ul>
+<li><p>给定样本集 $D = \{\boldsymbol x_1, \boldsymbol x_2, …, \boldsymbol x_m \}$</p>
+</li>
+<li><p>针对聚类所得的簇划分 ${\cal C} = \{C_1,C_2,…,C_k\}$ 最小化平方误差：</p>
+<script type="math/tex; mode=display">
+E = \sum_{i=1}^{k}\sum_{\boldsymbol x \in C_i}\left\| \boldsymbol x - \boldsymbol\mu_i \right\|_2^2\tag{24}</script><p>其中 $\boldsymbol \mu_i = \frac{1}{|C_i|}{\sum_{\boldsymbol x \in C_i}\boldsymbol x}$ 是簇 $C_i$ 的均值向量</p>
+</li>
+</ul>
+<p><strong>K-Means 算法流程：</strong></p>
+<ul>
+<li>初始化均值向量 (第1行)</li>
+<li>对当前簇划分进行迭代更新 (第4~8行)</li>
+<li>对当前簇的均值向量进行迭代更新 (第9~16行)</li>
+<li>若迭代更新后聚类结果保持不变，则返回当前簇划分结果 (第17~18行)</li>
+</ul>
+<p><img src="/2019/08/19/《机器学习》西瓜书学习笔记（九）-- 聚类/figure1.PNG" alt="figure1"></p>
+<h4 id="学习向量量化"><a href="#学习向量量化" class="headerlink" title="学习向量量化"></a>学习向量量化</h4><font color="#099ff">学习向量量化  (Learning Vector Quantization, 简称 LVQ) 假设数据样本带有类别标记</font>
+
+<p><strong>LVQ 算法思想：</strong></p>
+<ul>
+<li><p>给定样本集 $D = \{(\boldsymbol x_1, y_1), (\boldsymbol x_2,y_2), …, (\boldsymbol x_m,y_m) \}$</p>
+</li>
+<li><p>特征向量 $\boldsymbol x_j = \{x_{j1};x_{j2};…;x_{jn} \}$</p>
+</li>
+<li><p>类别标记 ${\cal Y} = \{y_1,y_2,…,y_m\}$</p>
+</li>
+<li><p>LVQ 试图学得一组 $n$ 维原型向量 $\{\boldsymbol p_1, \boldsymbol p_2, …,\boldsymbol p_q \}$ , 每个原型向量代表一个聚类簇，簇标记 $t_i \in \cal Y$</p>
+</li>
+</ul>
+<p><strong>LVQ 算法流程:</strong></p>
+<ul>
+<li>初始化原型聚类 (第1行)</li>
+<li>对原型向量进行迭代优化 (第2~12行)<ul>
+<li>随机选取一个有标记的训练样本 $\boldsymbol x_j$ </li>
+<li>找出与其距离最近的原型向量 $\boldsymbol p_{i^*}$ </li>
+<li>若原型向量 $\boldsymbol p_{i^<em>}$ 与 $\boldsymbol x_j$ 的类别标记相同，则令 $\boldsymbol p_{i^</em>}$ 向 $\boldsymbol x_j$ 方向靠拢</li>
+</ul>
+</li>
+</ul>
+<h4 id="高斯混合聚类"><a href="#高斯混合聚类" class="headerlink" title="高斯混合聚类"></a>高斯混合聚类</h4><hr>
 <h3 id="密度聚类"><a href="#密度聚类" class="headerlink" title="密度聚类"></a>密度聚类</h3><hr>
 <h3 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h3><hr>
 
@@ -770,7 +814,7 @@ dist(\boldsymbol x_i,\boldsymbol x_j) \le dist(\boldsymbol x_i,\boldsymbol x_k) 
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">30.4k</span>
+    <span title="Site words total count">30.8k</span>
   
 </div>
 
@@ -789,7 +833,7 @@ dist(\boldsymbol x_i,\boldsymbol x_j) \le dist(\boldsymbol x_i,\boldsymbol x_k) 
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共30.4k字</span>
+  <span class="post-count">博客全站共30.8k字</span>
 </div>
         
 
