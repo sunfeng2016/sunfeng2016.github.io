@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（九） 聚类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-19T13:12:55.749Z">
+<meta property="og:updated_time" content="2019-08-20T05:35:20.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（九）-- 聚类">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（九） 聚类">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  413
+                  542
                 </span>
               
 
@@ -412,7 +412,7 @@
 <ul>
 <li><p>数据集 $D = \{\boldsymbol x_1,  \boldsymbol x_2,…,\boldsymbol x_m\}$</p>
 </li>
-<li><p>聚类的簇划分 ${\cal C} = \{C_1,C_2,…, C_k\}$，簇标记向量 $\boldsymbol \lambda$ </p>
+<li><p>聚类的簇划分 ${\cal C} = \{C_1,C_2,…, C_k\}$，簇标记向量 $\boldsymbol \lambda$  </p>
 </li>
 <li><p>参考模型给出的簇划分 ${\cal C^{*}} = \{C_1^{*}, C_2^{*},…, C_k^{*}\}$，簇标记向量 $\boldsymbol \lambda^{*}$</p>
 </li>
@@ -440,7 +440,34 @@ FMI = \sqrt{\frac{a}{a+b}\cdot\frac{a}{a+c}}\tag{6}</script></li>
 RI = \frac{2(a+d)}{m(m-1)}\tag{7}</script></li>
 </ul>
 <p><strong>度量方法：</strong><font color="#009f">上述性能度量的结果值均在 [0,1] 区间，值越大越好</font></p>
-<h4 id="内部指标-internal-index"><a href="#内部指标-internal-index" class="headerlink" title="内部指标 (internal index)"></a>内部指标 (internal index)</h4><hr>
+<h4 id="内部指标-internal-index"><a href="#内部指标-internal-index" class="headerlink" title="内部指标 (internal index)"></a>内部指标 (internal index)</h4><p><strong>变量符号定义：</strong></p>
+<ul>
+<li><p>$avg(C)$: 簇 $C$ 内样本间的平均距离</p>
+<script type="math/tex; mode=display">
+avg(C) = \frac{2}{|C|(|C|-1)}\sum_{1\le i <j\le|C|}dist(\boldsymbol x_i,\boldsymbol x_j)\tag{8}</script><p>其中，$dist(\cdot,\cdot)$ 用于计算两个样本间的距离</p>
+</li>
+<li><p>$diam(C)$: 簇 $C$ 内样本间的最远距离</p>
+<script type="math/tex; mode=display">
+diam(C) = \mathop{\max}_{1\le i <j\le|C|}dist(\boldsymbol x_i,\boldsymbol x_j)\tag{9}</script></li>
+<li><p>$d_{min}(C_i,C_j)$: 簇 $C_i$ 与 $C_j$ 最近样本间的距离</p>
+<script type="math/tex; mode=display">
+d_{min}(C_i,C_j) = \mathop{\min}_{\boldsymbol x_i \in C_i,\boldsymbol x_j \in C_j}dist(\boldsymbol x_i,\boldsymbol x_j)\tag{10}</script></li>
+<li><p>$d_{cen}(C_i,C_j)$: 簇 $C_i$ 与 $C_j$ 中心点间的距离</p>
+<script type="math/tex; mode=display">
+d_{cen}(C_i,C_j) = dist(\boldsymbol \mu_i,\boldsymbol \mu_j)\tag{11}</script><p>其中，$\boldsymbol \mu$ 代表簇 $C$ 的中心点 </p>
+</li>
+</ul>
+<p><strong>常用内部指标：</strong></p>
+<ul>
+<li><p>DB指数 (简称 DBI)</p>
+<script type="math/tex; mode=display">
+DBI = \frac{1}{k}\sum_{i=1}^{k}\mathop{\max}_{j\ne i}\left(\frac{avg(C_i)+avg(C_j)}{d_{cen}(C_i,C_j)} \right)\tag{12}</script></li>
+<li><p>Dunn指数 (简称 DI)</p>
+<script type="math/tex; mode=display">
+DI = \mathop{\min}_{1\le i \le k}\left\{\mathop {\min}_{j\ne i}\left(\frac{dmin(C_i,C_j)}{\mathop{\max}_{1\le l\le k}diam(C_l)} \right) \right\}</script></li>
+</ul>
+<p><strong>度量方法：</strong> <font color="#099f">DBI 的值越小越好，而 DI 的值越大越好</font></p>
+<hr>
 <h3 id="距离计算"><a href="#距离计算" class="headerlink" title="距离计算"></a>距离计算</h3><hr>
 <h3 id="原型聚类"><a href="#原型聚类" class="headerlink" title="原型聚类"></a>原型聚类</h3><h4 id="K-均值聚类"><a href="#K-均值聚类" class="headerlink" title="K 均值聚类"></a>K 均值聚类</h4><h4 id="学习向量量化"><a href="#学习向量量化" class="headerlink" title="学习向量量化"></a>学习向量量化</h4><h4 id="高斯混合聚类"><a href="#高斯混合聚类" class="headerlink" title="高斯混合聚类"></a>高斯混合聚类</h4><hr>
 <h3 id="密度聚类"><a href="#密度聚类" class="headerlink" title="密度聚类"></a>密度聚类</h3><hr>
@@ -685,7 +712,7 @@ RI = \frac{2(a+d)}{m(m-1)}\tag{7}</script></li>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">30.0k</span>
+    <span title="Site words total count">30.2k</span>
   
 </div>
 
@@ -704,7 +731,7 @@ RI = \frac{2(a+d)}{m(m-1)}\tag{7}</script></li>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共30.0k字</span>
+  <span class="post-count">博客全站共30.2k字</span>
 </div>
         
 
