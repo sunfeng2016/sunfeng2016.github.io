@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-22T07:49:17.357Z</updated>
+  <updated>2019-08-22T07:59:02.312Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -17,16 +17,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>chapter-10</title>
-    <link href="http://sunfeng.online/2019/08/22/chapter-10/"/>
-    <id>http://sunfeng.online/2019/08/22/chapter-10/</id>
+    <title>《机器学习》西瓜书学习笔记（十）-- 降维与度量学习</title>
+    <link href="http://sunfeng.online/2019/08/22/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8D%81%EF%BC%89--%20%E9%99%8D%E7%BB%B4%E4%B8%8E%E5%BA%A6%E9%87%8F%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://sunfeng.online/2019/08/22/《机器学习》西瓜书学习笔记（十）-- 降维与度量学习/</id>
     <published>2019-08-22T07:49:17.000Z</published>
-    <updated>2019-08-22T07:49:17.357Z</updated>
+    <updated>2019-08-22T07:59:02.312Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（十）—-降维与度量学习"><a href="#《机器学习》西瓜书学习笔记（十）—-降维与度量学习" class="headerlink" title="《机器学习》西瓜书学习笔记（十）— 降维与度量学习"></a>《机器学习》西瓜书学习笔记（十）— 降维与度量学习</h2><a id="more"></a><h3 id="k-近邻学习"><a href="#k-近邻学习" class="headerlink" title="k 近邻学习"></a>k 近邻学习</h3><h3 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h3>]]></content>
     
     <summary type="html">
     
+      &lt;h2 id=&quot;《机器学习》西瓜书学习笔记（十）—-降维与度量学习&quot;&gt;&lt;a href=&quot;#《机器学习》西瓜书学习笔记（十）—-降维与度量学习&quot; class=&quot;headerlink&quot; title=&quot;《机器学习》西瓜书学习笔记（十）— 降维与度量学习&quot;&gt;&lt;/a&gt;《机器学习》西瓜书学习笔记（十）— 降维与度量学习&lt;/h2&gt;
+    
     </summary>
     
+      <category term="《机器学习》西瓜书学习笔记" scheme="http://sunfeng.online/categories/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="machine learning" scheme="http://sunfeng.online/tags/machine-learning/"/>
     
   </entry>
   

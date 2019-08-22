@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="machine learning,">
 
 
 
@@ -88,17 +88,18 @@
 
 
 
-<meta name="description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta name="description" content="《机器学习》西瓜书学习笔记（十）— 降维与度量学习">
+<meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="chapter-10">
-<meta property="og:url" content="http://sunfeng.online/2019/08/22/chapter-10/index.html">
+<meta property="og:title" content="《机器学习》西瓜书学习笔记（十）-- 降维与度量学习">
+<meta property="og:url" content="http://sunfeng.online/2019/08/22/《机器学习》西瓜书学习笔记（十）-- 降维与度量学习/index.html">
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
-<meta property="og:description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta property="og:description" content="《机器学习》西瓜书学习笔记（十）— 降维与度量学习">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-22T07:49:17.357Z">
+<meta property="og:updated_time" content="2019-08-22T07:59:02.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chapter-10">
-<meta name="twitter:description" content="南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业">
+<meta name="twitter:title" content="《机器学习》西瓜书学习笔记（十）-- 降维与度量学习">
+<meta name="twitter:description" content="《机器学习》西瓜书学习笔记（十）— 降维与度量学习">
 
 
 
@@ -128,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://sunfeng.online/2019/08/22/chapter-10/">
+  <link rel="canonical" href="http://sunfeng.online/2019/08/22/《机器学习》西瓜书学习笔记（十）-- 降维与度量学习/">
 
 
 
 
 
-  <title>chapter-10 | SunFeng's Blog</title>
+  <title>《机器学习》西瓜书学习笔记（十）-- 降维与度量学习 | SunFeng's Blog</title>
   
 
 
@@ -271,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sunfeng.online/2019/08/22/chapter-10/">
+    <link itemprop="mainEntityOfPage" href="http://sunfeng.online/2019/08/22/《机器学习》西瓜书学习笔记（十）-- 降维与度量学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SunFeng">
@@ -288,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">chapter-10</h1>
+          <h1 class="post-title" itemprop="name headline">《机器学习》西瓜书学习笔记（十）-- 降维与度量学习</h1>
         
 
         <div class="post-meta">
@@ -311,6 +312,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/《机器学习》西瓜书学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">《机器学习》西瓜书学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -332,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  28
                 </span>
               
 
@@ -369,7 +392,8 @@
       
 
       
-        
+        <h2 id="《机器学习》西瓜书学习笔记（十）—-降维与度量学习"><a href="#《机器学习》西瓜书学习笔记（十）—-降维与度量学习" class="headerlink" title="《机器学习》西瓜书学习笔记（十）— 降维与度量学习"></a>《机器学习》西瓜书学习笔记（十）— 降维与度量学习</h2><a id="more"></a>
+<h3 id="k-近邻学习"><a href="#k-近邻学习" class="headerlink" title="k 近邻学习"></a>k 近邻学习</h3><h3 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h3>
       
     </div>
     
@@ -394,6 +418,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+        </div>
       
 
       
@@ -464,8 +494,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -551,6 +590,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（十）—-降维与度量学习"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（十）— 降维与度量学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#k-近邻学习"><span class="nav-number">1.1.</span> <span class="nav-text">k 近邻学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低维嵌入"><span class="nav-number">1.2.</span> <span class="nav-text">低维嵌入</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -578,7 +633,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.6k</span>
+    <span title="Site words total count">31.7k</span>
   
 </div>
 
@@ -597,7 +652,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共31.6k字</span>
+  <span class="post-count">博客全站共31.7k字</span>
 </div>
         
 
