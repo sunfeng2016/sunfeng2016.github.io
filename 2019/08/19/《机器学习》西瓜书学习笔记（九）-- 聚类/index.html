@@ -98,8 +98,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）--%20聚类/figure1.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）--%20聚类/figure2.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）--%20聚类/figure4.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）--%20聚类/figure3.PNG">
-<meta property="og:updated_time" content="2019-08-20T13:24:20.585Z">
+<meta property="og:updated_time" content="2019-08-22T03:45:13.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（九）-- 聚类">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（九） 聚类">
@@ -359,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,511
+                  1,761
                 </span>
               
 
@@ -375,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  7
                 </span>
               
             </div>
@@ -595,7 +596,40 @@ E = \sum_{i=1}^{k}\sum_{\boldsymbol x \in C_i}\left\| \boldsymbol x - \boldsymbo
 <li>此类算法假设聚类结构能通过样本分布的紧密程度确定</li>
 <li>常见的算法：DBSCAN 算法</li>
 </ul>
-<h4 id="DBSCAN-算法"><a href="#DBSCAN-算法" class="headerlink" title="DBSCAN 算法"></a>DBSCAN 算法</h4><p><strong>DBSCAN 算法思想：</strong></p>
+<h4 id="DBSCAN-算法"><a href="#DBSCAN-算法" class="headerlink" title="DBSCAN 算法"></a>DBSCAN 算法</h4><font color="#0099">DBSCAN 基于一组 "领域" 参数 </font> $(\epsilon, MinPts)$ <font color="#0099">来刻画样本分布的紧密程度</font>
+
+<p><strong>DBSCAN 相关概念：</strong></p>
+<ul>
+<li><p><strong>$\epsilon$-邻域 </strong> </p>
+<ul>
+<li><p>对 $\boldsymbol x_j\in D$，其 $\epsilon$ -邻域包含样本集 $D$ 中与 $\boldsymbol x_j$ 距离不大于 $\epsilon$ 的样本，即 </p>
+<p>$N_{\epsilon}(\boldsymbol x_j) = \{\boldsymbol x_j  | dist(\boldsymbol x_i,\boldsymbol x_j) \le \epsilon \}$</p>
+</li>
+</ul>
+</li>
+<li><p><strong>核心对象</strong> (core object)</p>
+<ul>
+<li>若 $\boldsymbol x_j$ 的 $\epsilon$-邻域内至少含有 $MinPts$ 个样本，即 $|N_{\epsilon}(\boldsymbol x_j)|\ge MinPts$, 则 $\boldsymbol x_j$ 是一个核心对象</li>
+</ul>
+</li>
+<li><p><strong>密度直达</strong> (directly density-reachable)</p>
+<ul>
+<li>若 $\boldsymbol x_j$ 位于 $\boldsymbol x_i$ 的 $\epsilon$-邻域内，且 $\boldsymbol x_i$ 是核心对象，则称 $\boldsymbol x_j$ 由 $\boldsymbol x_i$ 密度直达</li>
+</ul>
+</li>
+<li><p><strong>密度可达</strong> (density-reachable)</p>
+<ul>
+<li>对 $\boldsymbol x_i$ 和 $\boldsymbol x_j$ , 若存在样本序列 $\boldsymbol p_1$, $\boldsymbol p_2$, …… ,$\boldsymbol p_n$, 其中 $\boldsymbol p_1 = \boldsymbol x_i$, $\boldsymbol p_n =\boldsymbol x_j$, 且 $\boldsymbol p_{i+1}$ 由 $\boldsymbol p_i$ 密度直达，则称 $\boldsymbol x_j$ 由 $\boldsymbol x_i$ 密度可达</li>
+</ul>
+</li>
+<li><p><strong>密度相连</strong> (density-connected)</p>
+<ul>
+<li>对 $\boldsymbol x_i$ 与 $\boldsymbol x_j$，若存在 $\boldsymbol x_k$ 使得 $\boldsymbol x_i$ 与 $\boldsymbol x_j$ 均由 $\boldsymbol x_k$ 密度可达，则 $\boldsymbol x_i$ 与 $\boldsymbol x_j$ 密度相连</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/08/19/《机器学习》西瓜书学习笔记（九）-- 聚类/figure4.PNG" alt="figure4"></p>
+<p><strong>DBSCAN 算法思想：</strong></p>
 <ul>
 <li>DBSCAN 中 “簇” 的定义：由密度可达关系导出的最大密度相连的样本集合</li>
 <li>给定领域参数 $(\epsilon, MinPts)$, 簇 $C \subseteq D$ 是满足以下性质的非空样本子集：<ul>
@@ -854,7 +888,7 @@ E = \sum_{i=1}^{k}\sum_{\boldsymbol x \in C_i}\left\| \boldsymbol x - \boldsymbo
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.1k</span>
+    <span title="Site words total count">31.4k</span>
   
 </div>
 
@@ -873,7 +907,7 @@ E = \sum_{i=1}^{k}\sum_{\boldsymbol x \in C_i}\left\| \boldsymbol x - \boldsymbo
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共31.1k字</span>
+  <span class="post-count">博客全站共31.4k字</span>
 </div>
         
 
