@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（十）降维与度量学习">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-22T08:04:01.018Z">
+<meta property="og:updated_time" content="2019-08-22T10:54:45.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（十）-- 降维与度量学习">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（十）降维与度量学习">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  53
+                  217
                 </span>
               
 
@@ -393,7 +393,29 @@
 
       
         <h2 id="《机器学习》西瓜书学习笔记（十）降维与度量学习"><a href="#《机器学习》西瓜书学习笔记（十）降维与度量学习" class="headerlink" title="《机器学习》西瓜书学习笔记（十）降维与度量学习"></a>《机器学习》西瓜书学习笔记（十）降维与度量学习</h2><a id="more"></a>
-<h3 id="k-近邻学习"><a href="#k-近邻学习" class="headerlink" title="k 近邻学习"></a>k 近邻学习</h3><hr>
+<h3 id="k-近邻学习"><a href="#k-近邻学习" class="headerlink" title="k 近邻学习"></a>k 近邻学习</h3><p><strong>k 近邻简介：</strong></p>
+<ul>
+<li>k 近邻 (k-Nearest Neighbor, 简称KNN)</li>
+<li>一种常用的监督学习方法</li>
+</ul>
+<p><strong>k 近邻思想：</strong></p>
+<ul>
+<li>给定测试样本，基于某种距离度量找出训练集中与其最靠近的 $k$ 个训练样本</li>
+<li>然后基于这 $k$ 个邻居的信息来进行预测</li>
+<li>在分类任务中，可采用 “投票法”<ul>
+<li>即选择 $k$ 个样本中出现最多的类别标记作为预测结果</li>
+</ul>
+</li>
+<li>在回归任务中，可采用 “平均法”<ul>
+<li>即将这 $k$ 个样本的实值输出标记的平均值作为预测结果</li>
+</ul>
+</li>
+</ul>
+<p><strong>k 近邻特点：</strong> </p>
+<ul>
+<li>没有显式的训练过程</li>
+</ul>
+<hr>
 <h3 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h3><hr>
 <h3 id="核化线性降维"><a href="#核化线性降维" class="headerlink" title="核化线性降维"></a>核化线性降维</h3><hr>
 <h3 id="流行学习"><a href="#流行学习" class="headerlink" title="流行学习"></a>流行学习</h3><h4 id="等度量映射"><a href="#等度量映射" class="headerlink" title="等度量映射"></a>等度量映射</h4><h4 id="局部线性嵌入"><a href="#局部线性嵌入" class="headerlink" title="局部线性嵌入"></a>局部线性嵌入</h4><hr>
@@ -638,7 +660,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.7k</span>
+    <span title="Site words total count">31.9k</span>
   
 </div>
 
@@ -657,7 +679,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共31.7k字</span>
+  <span class="post-count">博客全站共31.9k字</span>
 </div>
         
 
