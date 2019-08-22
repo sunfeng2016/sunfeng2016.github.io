@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-22T07:44:09.400Z</updated>
+  <updated>2019-08-22T07:49:17.357Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>chapter-10</title>
+    <link href="http://sunfeng.online/2019/08/22/chapter-10/"/>
+    <id>http://sunfeng.online/2019/08/22/chapter-10/</id>
+    <published>2019-08-22T07:49:17.000Z</published>
+    <updated>2019-08-22T07:49:17.357Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>《机器学习》西瓜书学习笔记（九）-- 聚类</title>

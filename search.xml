@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[chapter-10]]></title>
+    <url>%2F2019%2F08%2F22%2Fchapter-10%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[《机器学习》西瓜书学习笔记（九）-- 聚类]]></title>
     <url>%2F2019%2F08%2F19%2F%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%9D%EF%BC%89--%20%E8%81%9A%E7%B1%BB%2F</url>
     <content type="text"><![CDATA[《机器学习》西瓜书学习笔记（九） 聚类 聚类任务聚类 (clustering) 无监督学习 (unsupervised learning) 的一种 试图将数据划分为若干个不相交的子集，每个子集为一个 簇 (cluster) 每个簇可能对应于一些潜在的概念(类别) 聚类的形式化解释 样本集 $D = \{\boldsymbol x_1, \boldsymbol x_2,…,\boldsymbol x_m\}$ 包含 $m$ 个样本 每个样本 $\boldsymbol x_i = (x_{i1}; x_{i2}; …;x_{in})$ 是一个 $n$ 维向量 聚类算法将样本 $D$ 划分为 $k$ 个不相交的簇 $\{C_l | l = 1,2,…,k \}$, 其中 $C_i \bigcap C_j = \emptyset$, $ (i \ne j)$ 且 $D = \bigcup_{l=1}^{k}C_l$ 用 $\lambda_j \in \{1,2,…,k \}$ 表示样本 $\boldsymbol x_j$ 的 “簇标记”，即 $\boldsymbol x_j \in C_{\lambda_j}$ 聚类结果 $\boldsymbol \lambda = \{\lambda_1;\lambda_2;…;\lambda_m\}$ 性能度量外部指标 (external index)变量符号定义： 数据集 $D = \{\boldsymbol x_1, \boldsymbol x_2,…,\boldsymbol x_m\}$ 聚类的簇划分 ${\cal C} = \{C_1,C_2,…, C_k\}$，簇标记向量 $\boldsymbol \lambda$ 参考模型给出的簇划分 ${\cal C^{*}} = \{C_1^{*}, C_2^{*},…, C_k^{*}\}$，簇标记向量 $\boldsymbol \lambda^{*}$ 定义： a = |SS|,\ \ SS=\{(\boldsymbol x_i,\boldsymbol x_j)\ |\ \lambda_i = \lambda_j,\lambda_i^* = \lambda_j^*, i < j\} \tag{1} b = |SD|,\ \ SD=\{(\boldsymbol x_i,\boldsymbol x_j)\ |\ \lambda_i = \lambda_j,\lambda_i^* \ne \lambda_j^*, i < j\} \tag{2} c = |DS|,\ \ DS=\{(\boldsymbol x_i,\boldsymbol x_j)\ |\ \lambda_i \ne \lambda_j,\lambda_i^* = \lambda_j^*, i < j\} \tag{3} d = |DD|,\ \ DD=\{(\boldsymbol x_i,\boldsymbol x_j)\ |\ \lambda_i \ne \lambda_j,\lambda_i^* \ne \lambda_j^*, i < j\} \tag{4} 其中： 集合 $SS$ 包含了在 $C$ 中隶属于相同簇且在 $C^*$ 中也隶属于相同簇的样本对 集合 $SD$ 包含了在 $C$ 中隶属于相同簇但在 $C^*$ 中隶属于不相同簇的样本对 …… 常用外部指标： Jaccard 系数 (Jaccard Coefficient, 简称 JC) JC = \frac{a}{a+b+c}\tag{5} FM 指数 (Fowlkes and Mallows Index, 简称FMI) FMI = \sqrt{\frac{a}{a+b}\cdot\frac{a}{a+c}}\tag{6} Rand 指数 (Rand Index, 简称 RI) RI = \frac{2(a+d)}{m(m-1)}\tag{7} 度量方法：上述性能度量的结果值均在 [0,1] 区间，值越大越好 内部指标 (internal index)变量符号定义： $avg(C)$: 簇 $C$ 内样本间的平均距离 avg(C) = \frac{2}{|C|(|C|-1)}\sum_{1\le i]]></content>
