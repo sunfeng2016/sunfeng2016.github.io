@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）--%20聚类/figure2.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）--%20聚类/figure4.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（九）--%20聚类/figure3.PNG">
-<meta property="og:updated_time" content="2019-08-22T03:45:13.474Z">
+<meta property="og:updated_time" content="2019-08-22T06:38:08.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（九）-- 聚类">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（九） 聚类">
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,761
+                  2,033
                 </span>
               
 
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  8
                 </span>
               
             </div>
@@ -647,7 +647,46 @@ E = \sum_{i=1}^{k}\sum_{\boldsymbol x \in C_i}\left\| \boldsymbol x - \boldsymbo
 </ul>
 <p><img src="/2019/08/19/《机器学习》西瓜书学习笔记（九）-- 聚类/figure3.PNG" alt="figure3"></p>
 <hr>
-<h3 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h3><hr>
+<h3 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h3><h4 id="层次聚类-1"><a href="#层次聚类-1" class="headerlink" title="层次聚类"></a>层次聚类</h4><p><strong>层次聚类 (hierarchical clustering)</strong></p>
+<ul>
+<li>试图在不同层次对数据集进行划分，从而形成属性结构</li>
+<li>数据集划分的策略：<ul>
+<li>“自底向上”的聚合策略</li>
+<li>“自顶向下”的分拆策略</li>
+</ul>
+</li>
+</ul>
+<h4 id="AGNES-算法"><a href="#AGNES-算法" class="headerlink" title="AGNES 算法"></a>AGNES 算法</h4><p><strong>AGNES 算法简介：</strong></p>
+<ul>
+<li>一种采用自底向上聚合策略的层次聚类算法</li>
+</ul>
+<p><strong>AGNES 算法思想：</strong></p>
+<ul>
+<li><p>先将数据集中的每个样本看作一个初始聚类簇</p>
+</li>
+<li><p>然后在算法运行的每一步中找出距离最近的两个聚类簇进行合并，其中两个簇间的距离计算方法如下：</p>
+<ul>
+<li><p><strong>最小距离：</strong></p>
+<script type="math/tex; mode=display">
+d_{min}(C_i,C_j) = \mathop{\min}_{\boldsymbol x\in C_i,\boldsymbol z\in C_j}\text{dist}(\boldsymbol x, \boldsymbol z)\tag{41}</script></li>
+<li><p><strong>最大距离：</strong></p>
+<script type="math/tex; mode=display">
+d_{max}(C_i,C_j) = \mathop{\max}_{\boldsymbol x\in C_i,\boldsymbol z\in C_j}\text{dist}(\boldsymbol x, \boldsymbol z)\tag{42}</script></li>
+<li><p><strong>平均距离：</strong> </p>
+<script type="math/tex; mode=display">
+d_{avg}(C_i,C_j) = \frac{1}{|C_i||C_j|} \sum_{\boldsymbol x\in C_i}\sum_{\boldsymbol z\in C_j}\text{dist}(\boldsymbol x, \boldsymbol z) \tag{43}</script></li>
+</ul>
+</li>
+<li><p>将上述过程不断重复，直到达到预设的聚类簇个数</p>
+</li>
+</ul>
+<p><strong>AGNES 算法流程：</strong></p>
+<ul>
+<li>对仅含一个样本的初始聚类簇和相应的距离矩阵进行初始化 (第1-9行)</li>
+<li>不断合并距离最近的聚类簇，并对合并得到的聚类簇的聚类矩阵进行更新</li>
+<li>上述过程不断重复，直到达到预设的聚类簇数</li>
+</ul>
+<hr>
 
       
     </div>
@@ -854,7 +893,7 @@ E = \sum_{i=1}^{k}\sum_{\boldsymbol x \in C_i}\left\| \boldsymbol x - \boldsymbo
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（九）-聚类"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（九） 聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类任务"><span class="nav-number">1.1.</span> <span class="nav-text">聚类任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能度量"><span class="nav-number">1.2.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#外部指标-external-index"><span class="nav-number">1.2.1.</span> <span class="nav-text">外部指标 (external index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部指标-internal-index"><span class="nav-number">1.2.2.</span> <span class="nav-text">内部指标 (internal index)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#距离计算"><span class="nav-number">1.3.</span> <span class="nav-text">距离计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#距离度量-distiance-measure"><span class="nav-number">1.3.1.</span> <span class="nav-text">距离度量 (distiance measure)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闵可夫斯基距离-Minkowski-distance"><span class="nav-number">1.3.2.</span> <span class="nav-text">闵可夫斯基距离 (Minkowski distance)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VDM-Value-Difference-Metric-距离"><span class="nav-number">1.3.3.</span> <span class="nav-text">VDM (Value Difference Metric) 距离</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型聚类"><span class="nav-number">1.4.</span> <span class="nav-text">原型聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#K-均值聚类"><span class="nav-number">1.4.1.</span> <span class="nav-text">K 均值聚类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学习向量量化"><span class="nav-number">1.4.2.</span> <span class="nav-text">学习向量量化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯混合聚类"><span class="nav-number">1.4.3.</span> <span class="nav-text">高斯混合聚类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#密度聚类"><span class="nav-number">1.5.</span> <span class="nav-text">密度聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#密度聚类-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">密度聚类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBSCAN-算法"><span class="nav-number">1.5.2.</span> <span class="nav-text">DBSCAN 算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次聚类"><span class="nav-number">1.6.</span> <span class="nav-text">层次聚类</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（九）-聚类"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（九） 聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类任务"><span class="nav-number">1.1.</span> <span class="nav-text">聚类任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能度量"><span class="nav-number">1.2.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#外部指标-external-index"><span class="nav-number">1.2.1.</span> <span class="nav-text">外部指标 (external index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部指标-internal-index"><span class="nav-number">1.2.2.</span> <span class="nav-text">内部指标 (internal index)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#距离计算"><span class="nav-number">1.3.</span> <span class="nav-text">距离计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#距离度量-distiance-measure"><span class="nav-number">1.3.1.</span> <span class="nav-text">距离度量 (distiance measure)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闵可夫斯基距离-Minkowski-distance"><span class="nav-number">1.3.2.</span> <span class="nav-text">闵可夫斯基距离 (Minkowski distance)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VDM-Value-Difference-Metric-距离"><span class="nav-number">1.3.3.</span> <span class="nav-text">VDM (Value Difference Metric) 距离</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型聚类"><span class="nav-number">1.4.</span> <span class="nav-text">原型聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#K-均值聚类"><span class="nav-number">1.4.1.</span> <span class="nav-text">K 均值聚类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学习向量量化"><span class="nav-number">1.4.2.</span> <span class="nav-text">学习向量量化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯混合聚类"><span class="nav-number">1.4.3.</span> <span class="nav-text">高斯混合聚类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#密度聚类"><span class="nav-number">1.5.</span> <span class="nav-text">密度聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#密度聚类-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">密度聚类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBSCAN-算法"><span class="nav-number">1.5.2.</span> <span class="nav-text">DBSCAN 算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次聚类"><span class="nav-number">1.6.</span> <span class="nav-text">层次聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#层次聚类-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">层次聚类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AGNES-算法"><span class="nav-number">1.6.2.</span> <span class="nav-text">AGNES 算法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -888,7 +927,7 @@ E = \sum_{i=1}^{k}\sum_{\boldsymbol x \in C_i}\left\| \boldsymbol x - \boldsymbo
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.4k</span>
+    <span title="Site words total count">31.6k</span>
   
 </div>
 
@@ -907,7 +946,7 @@ E = \sum_{i=1}^{k}\sum_{\boldsymbol x \in C_i}\left\| \boldsymbol x - \boldsymbo
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共31.4k字</span>
+  <span class="post-count">博客全站共31.6k字</span>
 </div>
         
 
