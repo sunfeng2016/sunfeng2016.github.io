@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（十）降维与度量学习">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-22T10:54:45.139Z">
+<meta property="og:updated_time" content="2019-08-22T13:02:48.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（十）-- 降维与度量学习">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（十）降维与度量学习">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  217
+                  460
                 </span>
               
 
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -416,7 +416,25 @@
 <li>没有显式的训练过程</li>
 </ul>
 <hr>
-<h3 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h3><hr>
+<h3 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h3><p><strong>维数灾难</strong> (curse of dimensionality)</p>
+<ul>
+<li>在高维情形下出现的数据样本稀疏、距离计算困难等问题</li>
+</ul>
+<p><strong>降维</strong> (dimension reduction)</p>
+<ul>
+<li>缓解维数灾难的一个重要途径</li>
+<li>通过某种数学变换将原始高维属性空间转变为一个低维 “子空间” </li>
+<li>在子空间中样本密度大幅提高，距离计算也变得更为容易</li>
+</ul>
+<p><strong>多维缩放</strong> (Multiple Dimensional Scaling，简称 MDS)：要求原始空间中样本之间的距离在低维空间中得以保持</p>
+<ul>
+<li>设 $m$ 个样本在原始空间的距离矩阵为 $\boldsymbol D\in {\Bbb R}^{m\times m}$</li>
+<li>其第 $i$ 行 $j$ 列元素 $dist_{ij}$ 为样本 $\boldsymbol x_i$ 到 $\boldsymbol x_j$ 的距离</li>
+<li>目标是获得样本在 $d\prime$ 维空间的表示 $\boldsymbol Z\in {\Bbb R}^{d\prime\times m}$, $d\prime \le d$</li>
+<li>且任意两个样本在 $d\prime$ 维空间中欧式距离等于在原始空间中的距离，即 $\left|z_i-z_j \right| = dist_{ij}$</li>
+<li></li>
+</ul>
+<hr>
 <h3 id="核化线性降维"><a href="#核化线性降维" class="headerlink" title="核化线性降维"></a>核化线性降维</h3><hr>
 <h3 id="流行学习"><a href="#流行学习" class="headerlink" title="流行学习"></a>流行学习</h3><h4 id="等度量映射"><a href="#等度量映射" class="headerlink" title="等度量映射"></a>等度量映射</h4><h4 id="局部线性嵌入"><a href="#局部线性嵌入" class="headerlink" title="局部线性嵌入"></a>局部线性嵌入</h4><hr>
 <h3 id="度量学习"><a href="#度量学习" class="headerlink" title="度量学习"></a>度量学习</h3><hr>
@@ -660,7 +678,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.9k</span>
+    <span title="Site words total count">32.1k</span>
   
 </div>
 
@@ -679,7 +697,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共31.9k字</span>
+  <span class="post-count">博客全站共32.1k字</span>
 </div>
         
 
