@@ -99,7 +99,8 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure1.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure2.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure3.PNG">
-<meta property="og:updated_time" content="2019-08-25T08:32:51.700Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure4.PNG">
+<meta property="og:updated_time" content="2019-08-25T09:47:23.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（八）-- 集成学习">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（八）集成学习">
@@ -359,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  744
+                  1,045
                 </span>
               
 
@@ -375,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -487,7 +488,48 @@
 <li>然后再从这个子集中选择一个最优属性用于划分</li>
 </ul>
 <hr>
-<h3 id="结合策略"><a href="#结合策略" class="headerlink" title="结合策略"></a>结合策略</h3><h4 id="平均法"><a href="#平均法" class="headerlink" title="平均法"></a>平均法</h4><h4 id="投票法"><a href="#投票法" class="headerlink" title="投票法"></a>投票法</h4><h4 id="学习法"><a href="#学习法" class="headerlink" title="学习法"></a>学习法</h4><hr>
+<h3 id="结合策略"><a href="#结合策略" class="headerlink" title="结合策略"></a>结合策略</h3><p><strong>学习器结合的好处：</strong></p>
+<p><img src="/2019/08/19/《机器学习》西瓜书学习笔记（八）-- 集成学习/figure4.PNG" alt="figure4"></p>
+<ul>
+<li>假定集成包含 $T$ 个基学习器 $\{h_1,h_2,…,h_T \}$, 其中 $h_i$ 在示例 $\boldsymbol x$ 上的输出为 $h_i(\boldsymbol x)$</li>
+</ul>
+<h4 id="平均法"><a href="#平均法" class="headerlink" title="平均法"></a>平均法</h4><p><strong>平均法是回归任务，即数值型输出 $h_i(\boldsymbol x) \in {\Bbb R}$, 常使用的结合策略</strong></p>
+<ul>
+<li><p><strong>简单平均法</strong> (simple average)</p>
+<script type="math/tex; mode=display">
+H(\boldsymbol x) = \frac{1}{T}\sum_{i=1}^{T}h_i(\boldsymbol x)</script></li>
+<li><p><strong>加权平均法</strong> (weighted average)</p>
+<script type="math/tex; mode=display">
+H(\boldsymbol x) = \sum_{i=1}^{T}w_ih_i(\boldsymbol x)</script><p>其中 $w_i$ 为个体学习器 $h_i$ 的权重，<strong>权重一般需要从训练数据中学习而得</strong></p>
+</li>
+</ul>
+<font color="#0099">在个体学习器性能相差较大时宜使用加权平均法，而在个体学习器性能相近时宜使用简单平均法</font>
+
+
+
+<h4 id="投票法"><a href="#投票法" class="headerlink" title="投票法"></a>投票法</h4><p><strong>投票法是分类任务，即学习器 $h_i$ 将从类别标记集合 $\{c_1,c_2,…,c_N \}$ 中预测出一个标记，常用的结合策略</strong></p>
+<p>假定 $h_i$ 在样本 $\boldsymbol x$ 上的预测输出为一个 $N$ 维向量 $(h_i^1(\boldsymbol x);h_i^2(\boldsymbol x);…;h_i^N(\boldsymbol x))$, 其中 $h_i^j(\boldsymbol x)$ 是 $h_i$ 在类别标记 $c_j$ 上的输出</p>
+<ul>
+<li><p><strong>绝对多数投票法</strong></p>
+<script type="math/tex; mode=display">
+\begin {equation}
+H(\boldsymbol x) = 
+\begin {cases}
+c_j \qquad &{\text if}\ \sum_{i=1}^{T}h_i^j(x)>0.5\sum_{k=1}^{T}\sum_{i=1}^{T}h_i^j(x)\\
+{\text reject} &{\text otherwise}
+\end {cases}
+\end {equation}</script><p>即，若某类标记得票过半数，则预测为该标记，否则拒绝预测</p>
+</li>
+<li><p><strong>相对多数投票法</strong></p>
+<script type="math/tex; mode=display">
+H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}h_i^j(\boldsymbol x)}</script><p>即，预测为得票最多的标记</p>
+</li>
+<li><p><strong>加权投票法</strong></p>
+<script type="math/tex; mode=display">
+H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}w_ih_i^j(\boldsymbol x)}</script><p>$w_i$ 是 $h_i$ 的权重</p>
+</li>
+</ul>
+<h4 id="学习法"><a href="#学习法" class="headerlink" title="学习法"></a>学习法</h4><hr>
 <h3 id="多样性"><a href="#多样性" class="headerlink" title="多样性"></a>多样性</h3><h4 id="误差-分歧分解"><a href="#误差-分歧分解" class="headerlink" title="误差-分歧分解"></a>误差-分歧分解</h4><h3 id="多样性度量"><a href="#多样性度量" class="headerlink" title="多样性度量"></a>多样性度量</h3><h4 id="多样性增强"><a href="#多样性增强" class="headerlink" title="多样性增强"></a>多样性增强</h4><hr>
 
       
@@ -733,7 +775,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.1k</span>
+    <span title="Site words total count">33.4k</span>
   
 </div>
 
@@ -752,7 +794,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共33.1k字</span>
+  <span class="post-count">博客全站共33.4k字</span>
 </div>
         
 
