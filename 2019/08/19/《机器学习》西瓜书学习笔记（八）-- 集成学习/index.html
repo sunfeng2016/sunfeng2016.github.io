@@ -100,7 +100,8 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure2.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure3.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure4.PNG">
-<meta property="og:updated_time" content="2019-08-25T09:47:23.530Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure5.PNG">
+<meta property="og:updated_time" content="2019-08-25T11:29:51.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（八）-- 集成学习">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（八）集成学习">
@@ -360,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,045
+                  1,201
                 </span>
               
 
@@ -529,7 +530,27 @@ H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}h_i^j(\boldsymbol x)}<
 H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}w_ih_i^j(\boldsymbol x)}</script><p>$w_i$ 是 $h_i$ 的权重</p>
 </li>
 </ul>
-<h4 id="学习法"><a href="#学习法" class="headerlink" title="学习法"></a>学习法</h4><hr>
+<h4 id="学习法"><a href="#学习法" class="headerlink" title="学习法"></a>学习法</h4><p><strong>学习法简介：</strong></p>
+<ul>
+<li>当训练数据很多时，一种更为强大的结合策略是使用 “学习法”</li>
+<li>即通过另一个学习器来进行结合<ul>
+<li>其中个体学习器称为初级学习器</li>
+<li>用于结合的学习器称为次级学习器</li>
+</ul>
+</li>
+<li>典型代表：Stacking</li>
+</ul>
+<p><strong>Stack算法流程：</strong></p>
+<ul>
+<li>先从初始训练集中训练出初级学习器</li>
+<li>然后 “生成” 一个新数据集用于训练次级学习器<ul>
+<li>在新数据集中，初级学习器的输出被当做样例输入特征</li>
+<li>初始样本的标记仍被当做样例标记</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/08/19/《机器学习》西瓜书学习笔记（八）-- 集成学习/figure5.PNG" alt="figure5"></p>
+<hr>
 <h3 id="多样性"><a href="#多样性" class="headerlink" title="多样性"></a>多样性</h3><h4 id="误差-分歧分解"><a href="#误差-分歧分解" class="headerlink" title="误差-分歧分解"></a>误差-分歧分解</h4><h3 id="多样性度量"><a href="#多样性度量" class="headerlink" title="多样性度量"></a>多样性度量</h3><h4 id="多样性增强"><a href="#多样性增强" class="headerlink" title="多样性增强"></a>多样性增强</h4><hr>
 
       
@@ -775,7 +796,7 @@ H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}w_ih_i^j(\boldsymbol x
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.4k</span>
+    <span title="Site words total count">33.6k</span>
   
 </div>
 
@@ -794,7 +815,7 @@ H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}w_ih_i^j(\boldsymbol x
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共33.4k字</span>
+  <span class="post-count">博客全站共33.6k字</span>
 </div>
         
 
