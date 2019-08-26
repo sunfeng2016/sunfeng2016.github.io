@@ -101,7 +101,8 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure3.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure4.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure5.PNG">
-<meta property="og:updated_time" content="2019-08-26T02:16:09.367Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure6.PNG">
+<meta property="og:updated_time" content="2019-08-26T02:22:28.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（八）-- 集成学习">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（八）集成学习">
@@ -361,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,783
+                  1,795
                 </span>
               
 
@@ -621,11 +622,11 @@ E = \overline E-\overline A \tag{8.36}</script><font color="#0099">个体学习�
 <li><p>对二分类任务，$y_i \in \{-1, +1\}$</p>
 </li>
 <li><p>分类器 $h_i$ 和 $h_j$ 的预测结果列联表为:</p>
-<p>|            | $h_i = +1$ | $h_i = -1$ |<br>| :————: | :————: | :————: |<br>| $h_j = +1$ |     a      |     c      |<br>| $h_j = -1$ |     b      |     d      |</p>
+<p><img src="/2019/08/19/《机器学习》西瓜书学习笔记（八）-- 集成学习/figure6.PNG" alt="figure6"></p>
 <p>其中，$a$ 表示 $h_i$ 和 $h_j$ 均预测为正类的样本数目</p>
-<p>……</p>
 </li>
 </ul>
+<p>……</p>
 <p><strong>常见多样性性能度量</strong></p>
 <ul>
 <li><p><strong>不合度量</strong> (disagreement measure)</p>
@@ -649,7 +650,17 @@ p_1 = \frac{a+d}{m}\tag{8.41}</script><p>$p_2$ 是 两个分类器偶然达成�
 p_2 = \frac{(a+b)(a+c)+(c+d)(b+d)}{m^2}\tag{8.42}</script><p>若分类器 $h_i$ 与 $h_j$ 在 $D$ 上完全一致，则 $\kappa = 1$; 若它们仅是偶然达成一致，则 $\kappa = 0$</p>
 </li>
 </ul>
-<h4 id="多样性增强"><a href="#多样性增强" class="headerlink" title="多样性增强"></a>多样性增强</h4><hr>
+<h4 id="多样性增强"><a href="#多样性增强" class="headerlink" title="多样性增强"></a>多样性增强</h4><ul>
+<li><p><strong>数据样本扰动</strong></p>
+</li>
+<li><p><strong>输入属性扰动</strong></p>
+</li>
+<li><p><strong>输出表示扰动</strong></p>
+</li>
+<li><p><strong>算法参数扰动</strong></p>
+</li>
+</ul>
+<hr>
 
       
     </div>
