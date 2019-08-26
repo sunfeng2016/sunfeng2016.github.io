@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（六） 支持向量机">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T02:48:19.806Z">
+<meta property="og:updated_time" content="2019-08-26T02:51:14.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（六）-- 支持向量机">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（六） 支持向量机">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  298
+                  304
                 </span>
               
 
@@ -401,7 +401,7 @@
 
 * 划分超平面的线性方程描述：
   $$
-  \boldsymbol w^T \boldsymbol x + b = 0
+  \boldsymbol w^T \boldsymbol x + b = 0\tag{6.1}
   $$
   其中 $\boldsymbol w = (w_1;w_2;...;w_d)$ 为法向量，决定超平面的方向；
 
@@ -411,7 +411,7 @@
 
 * 样本空间中的任意点 $\boldsymbol x$ 到超平面的 $(\boldsymbol w, b)$ 距离为:
   $$
-  r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}
+  r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}\tag{6.2}
   $$
 
 假设超平面 $(\boldsymbol w, b)$ 能将训练样本正确分类，即对于 $(\boldsymbol x_i, y_i) \in D$:
@@ -426,7 +426,7 @@
   \begin {cases}
   \boldsymbol w^T \boldsymbol x_i + b \ge +1, \ \ y_i = +1 \\
   \boldsymbol w^T \boldsymbol x_i + b \le -1, \ \ y_i = -1
-  \end {cases}
+  \end {cases}\tag{6.3}
   \end {equation}
   $$
 
@@ -438,7 +438,7 @@
 
 * 两个异类支持向量到超平面的距离之和为
   $$
-  \gamma = \frac{2}{||\boldsymbol w ||}
+  \gamma = \frac{2}{||\boldsymbol w ||}\tag{6.4}
   $$
   它被称为 "间隔"
 
@@ -452,7 +452,7 @@
   \begin {split}
   & \mathop{\max} _{\boldsymbol w,b}\frac{2}{||\boldsymbol w||}\\
   & s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m
-  \end {split}
+  \end {split}\tag{6.5}
   \end {equation}
   $$
 
@@ -464,7 +464,7 @@
   \begin {split}
   & \mathop{\min}_{\boldsymbol w,b} \frac{1}{2} {||\boldsymbol w||}^2\\
   & s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m
-  \end {split}
+  \end {split}\tag{6.6}
   \end {equation}
   $$
 
