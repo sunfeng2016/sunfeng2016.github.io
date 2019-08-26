@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure3.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure4.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure5.PNG">
-<meta property="og:updated_time" content="2019-08-25T11:29:51.055Z">
+<meta property="og:updated_time" content="2019-08-26T02:12:44.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（八）-- 集成学习">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（八）集成学习">
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,201
+                  1,783
                 </span>
               
 
@@ -377,7 +377,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  7
                 </span>
               
             </div>
@@ -551,7 +551,103 @@ H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}w_ih_i^j(\boldsymbol x
 </ul>
 <p><img src="/2019/08/19/《机器学习》西瓜书学习笔记（八）-- 集成学习/figure5.PNG" alt="figure5"></p>
 <hr>
-<h3 id="多样性"><a href="#多样性" class="headerlink" title="多样性"></a>多样性</h3><h4 id="误差-分歧分解"><a href="#误差-分歧分解" class="headerlink" title="误差-分歧分解"></a>误差-分歧分解</h4><h3 id="多样性度量"><a href="#多样性度量" class="headerlink" title="多样性度量"></a>多样性度量</h3><h4 id="多样性增强"><a href="#多样性增强" class="headerlink" title="多样性增强"></a>多样性增强</h4><hr>
+<h3 id="多样性"><a href="#多样性" class="headerlink" title="多样性"></a>多样性</h3><h4 id="误差-分歧分解"><a href="#误差-分歧分解" class="headerlink" title="误差-分歧分解"></a>误差-分歧分解</h4><p><strong>问题描述：</strong></p>
+<ul>
+<li>假定用个体学习器 $h_1,h_2,…,h_T$ 通过加权平均法结合产生的集成来完成回归任务 $f :  {\Bbb R}^d\mapsto {\Bbb R} $</li>
+</ul>
+<p><strong>误差-分歧分解：</strong></p>
+<ul>
+<li><p>对于示例 $\boldsymbol x$ ，定义学习器 $h_i$ 的 <strong>分歧</strong> 为：</p>
+<script type="math/tex; mode=display">
+A(h_i|\boldsymbol x) = \left(h_i(\boldsymbol x)-H(\boldsymbol x) \right)^2\tag{8.27}</script></li>
+<li><p>则集成的 <strong>分歧</strong> 是：</p>
+<script type="math/tex; mode=display">
+\begin {align}
+\overline A(h|\boldsymbol x) 
+&= \sum_{i=1}^Tw_iA(h_i|\boldsymbol x) \\
+&= \sum_{i=1}^Tw_i\left(h_i(\boldsymbol x)-H(\boldsymbol x) \right)^2\tag{8.28}
+\end {align}</script></li>
+<li><p><strong>分歧</strong> 项表征了个体学习器在样本 $\boldsymbol x$ 上的不一致性</p>
+</li>
+<li><p>即在一定程度上反映了个体学习器的多样性</p>
+</li>
+<li><p>个体学习器 $h_i$ 的平方误差为：</p>
+<script type="math/tex; mode=display">
+E(h_i|\boldsymbol x) = (f(\boldsymbol x)-h_i(\boldsymbol x))^2\tag{8.29}</script></li>
+<li><p>集成 $H$ 的平方误差为：</p>
+<script type="math/tex; mode=display">
+E(H|\boldsymbol x) = (f(\boldsymbol x)-H(\boldsymbol x))^2\tag{8.30}</script></li>
+<li><p>令个体学习器误差的加权值为：$\overline E(h|\boldsymbol) = \sum_{i=1}^Tw_i\cdot E(h_i|\boldsymbol x) $</p>
+</li>
+<li><p>则，集成的分歧</p>
+<script type="math/tex; mode=display">
+\begin {align}
+\overline A(h|\boldsymbol x) 
+&= \sum_{i=1}^{T}w_iE(h_i|\boldsymbol x)-E(H|\boldsymbol x)\\
+&= \overline E(h|\boldsymbol x)-E(H|\boldsymbol x)\tag{8.31}
+\end {align}</script></li>
+<li><p>令 $p(\boldsymbol x)$ 表示样本的概率密度，则在全样本上有：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{T}w_i\int A(h_i|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x = \sum_{i=1}^{T}w_i\int E(h_i|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x -
+\int E(H|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x \tag{8.32}</script></li>
+<li><p>令个体学习器 $h_i$ 在全样本上的泛化误差和分歧项分别为:</p>
+<script type="math/tex; mode=display">
+E_i = \int E(h_i|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x\tag{8.33}</script><script type="math/tex; mode=display">
+A_i = \int A(h_i|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x \tag{8.34}</script></li>
+<li><p>集成的泛化误差为：</p>
+<script type="math/tex; mode=display">
+E = \int E(H|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x \tag{8.35}</script></li>
+<li><p>令 $\overline E = \sum_{i=1}^Tw_iE_i$ 表示个体学习器泛化误差的加权均值</p>
+</li>
+<li><p>令 $\overline A = \sum_{i=1}^Tw_iA_i$ 表示个体学习器的加权分歧值</p>
+</li>
+<li><p>将 (8.33)~(8.34)带入(8.32)得：</p>
+<script type="math/tex; mode=display">
+E = \overline E-\overline A \tag{8.36}</script><font color="#0099">个体学习器的准确性越高、多样性越大，则集成越好</font>
+
+</li>
+</ul>
+<h4 id="多样性度量"><a href="#多样性度量" class="headerlink" title="多样性度量"></a>多样性度量</h4><p><strong>多样性度量</strong> (diversity measure)</p>
+<ul>
+<li>用于度量集成中个体分类器的多样性</li>
+<li>即估算个体学习器的多样化程度</li>
+</ul>
+<p><strong>列联表 </strong> </p>
+<ul>
+<li><p>给定数据集 $D = \{ (\boldsymbol x_1,y_1),(\boldsymbol x_2,y_2),…,(\boldsymbol x_m,y_m)\}$</p>
+</li>
+<li><p>对二分类任务，$y_i \in \{-1, +1\}$</p>
+</li>
+<li><p>分类器 $h_i$ 和 $h_j$ 的预测结果列联表为:</p>
+<p>|            | $h_i = +1$ | $h_i = -1$ |<br>| :————: | :————: | :————: |<br>| $h_j = +1$ |     a      |     c      |<br>| $h_j = -1$ |     b      |     d      |</p>
+<p>其中，$a$ 表示 $h_i$ 和 $h_j$ 均预测为正类的样本数目</p>
+<p>……</p>
+</li>
+</ul>
+<p><strong>常见多样性性能度量</strong></p>
+<ul>
+<li><p><strong>不合度量</strong> (disagreement measure)</p>
+<script type="math/tex; mode=display">
+dis_{ij} =\frac{b+c}{m}\tag{8.37}</script><p>$dis_{ij}$ 的值域为 [0, 1], 值越大则多样性越大</p>
+</li>
+<li><p><strong>相关系数</strong> (correlation coefficient)</p>
+<script type="math/tex; mode=display">
+\rho_{ij} = \frac{ad-bc}{\sqrt{a+b}\sqrt{a+c}\sqrt{c+d}\sqrt{b+d}}\tag{8.38}</script><p>$\rho_{ij}$ 的值域为 [-1,1], 若 $h_i$ 和 $h_j$ 无关，则值为0；若 $h_i$ 和 $h_j$ 正相关则值为正，否则为负</p>
+</li>
+<li><p><strong>Q-统计量</strong> (Q-statistic)</p>
+<script type="math/tex; mode=display">
+Q_{ij} = \frac{ad-bc}{ad+bc}\tag{8.39}</script><p>$Q_{ij}$ 的值域为 [-1,1], 若 $h_i$ 和 $h_j$ 无关，则值为0；若 $h_i$ 和 $h_j$ 正相关则值为正，否则为负</p>
+</li>
+<li><p>$\kappa$<strong>-统计量 </strong>($\kappa$-statistics)</p>
+<script type="math/tex; mode=display">
+\kappa = \frac{p_1-p_2}{1-p_2}\tag{8.40}</script><p>其中，$p_1$ 是两个分类器取得一致的概率：</p>
+<script type="math/tex; mode=display">
+p_1 = \frac{a+d}{m}\tag{8.41}</script><p>$p_2$ 是 两个分类器偶然达成一致的概率：</p>
+<script type="math/tex; mode=display">
+p_2 = \frac{(a+b)(a+c)+(c+d)(b+d)}{m^2}\tag{8.42}</script><p>若分类器 $h_i$ 与 $h_j$ 在 $D$ 上完全一致，则 $\kappa = 1$; 若它们仅是偶然达成一致，则 $\kappa = 0$</p>
+</li>
+</ul>
+<h4 id="多样性增强"><a href="#多样性增强" class="headerlink" title="多样性增强"></a>多样性增强</h4><hr>
 
       
     </div>
@@ -762,7 +858,7 @@ H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}w_ih_i^j(\boldsymbol x
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（八）集成学习"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（八）集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#个体与集成"><span class="nav-number">1.1.</span> <span class="nav-text">个体与集成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习-ensemble-learning"><span class="nav-number">1.1.1.</span> <span class="nav-text">集成学习 (ensemble learning)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boosting"><span class="nav-number">1.2.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Boosting简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">Boosting简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AdaBoost-算法"><span class="nav-number">1.2.2.</span> <span class="nav-text">AdaBoost 算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bagging-与随机森林"><span class="nav-number">1.3.</span> <span class="nav-text">Bagging 与随机森林</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bagging"><span class="nav-number">1.3.1.</span> <span class="nav-text">Bagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机森林-Random-Forrest-简称-RF"><span class="nav-number">1.3.2.</span> <span class="nav-text">随机森林 (Random Forrest, 简称 RF)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结合策略"><span class="nav-number">1.4.</span> <span class="nav-text">结合策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#平均法"><span class="nav-number">1.4.1.</span> <span class="nav-text">平均法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#投票法"><span class="nav-number">1.4.2.</span> <span class="nav-text">投票法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学习法"><span class="nav-number">1.4.3.</span> <span class="nav-text">学习法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多样性"><span class="nav-number">1.5.</span> <span class="nav-text">多样性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#误差-分歧分解"><span class="nav-number">1.5.1.</span> <span class="nav-text">误差-分歧分解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多样性度量"><span class="nav-number">1.6.</span> <span class="nav-text">多样性度量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多样性增强"><span class="nav-number">1.6.1.</span> <span class="nav-text">多样性增强</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（八）集成学习"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（八）集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#个体与集成"><span class="nav-number">1.1.</span> <span class="nav-text">个体与集成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习-ensemble-learning"><span class="nav-number">1.1.1.</span> <span class="nav-text">集成学习 (ensemble learning)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boosting"><span class="nav-number">1.2.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Boosting简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">Boosting简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AdaBoost-算法"><span class="nav-number">1.2.2.</span> <span class="nav-text">AdaBoost 算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bagging-与随机森林"><span class="nav-number">1.3.</span> <span class="nav-text">Bagging 与随机森林</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bagging"><span class="nav-number">1.3.1.</span> <span class="nav-text">Bagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机森林-Random-Forrest-简称-RF"><span class="nav-number">1.3.2.</span> <span class="nav-text">随机森林 (Random Forrest, 简称 RF)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结合策略"><span class="nav-number">1.4.</span> <span class="nav-text">结合策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#平均法"><span class="nav-number">1.4.1.</span> <span class="nav-text">平均法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#投票法"><span class="nav-number">1.4.2.</span> <span class="nav-text">投票法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学习法"><span class="nav-number">1.4.3.</span> <span class="nav-text">学习法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多样性"><span class="nav-number">1.5.</span> <span class="nav-text">多样性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#误差-分歧分解"><span class="nav-number">1.5.1.</span> <span class="nav-text">误差-分歧分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多样性度量"><span class="nav-number">1.5.2.</span> <span class="nav-text">多样性度量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多样性增强"><span class="nav-number">1.5.3.</span> <span class="nav-text">多样性增强</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -796,7 +892,7 @@ H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}w_ih_i^j(\boldsymbol x
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.6k</span>
+    <span title="Site words total count">34.2k</span>
   
 </div>
 
@@ -815,7 +911,7 @@ H(\boldsymbol x) = c_{\mathop{\arg \max}_{j}\sum_{i=1}^{T}w_ih_i^j(\boldsymbol x
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共33.6k字</span>
+  <span class="post-count">博客全站共34.2k字</span>
 </div>
         
 
