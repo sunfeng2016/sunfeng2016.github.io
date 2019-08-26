@@ -97,7 +97,7 @@
 <meta property="og:description" content="深入理解拉格朗日乘子法和KKT条件">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://pic002.cnblogs.com/images/2012/103496/2012101621500549.png">
-<meta property="og:updated_time" content="2019-08-26T11:46:03.023Z">
+<meta property="og:updated_time" content="2019-08-26T12:02:31.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拉格朗日乘子法(Lagrange Multiplier)和KKT条件">
 <meta name="twitter:description" content="深入理解拉格朗日乘子法和KKT条件">
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  825
+                  965
                 </span>
               
 
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -424,7 +424,7 @@
 </ul>
 <p><strong>拉格朗日乘子法</strong></p>
 <p>&ensp;&ensp;<font color="#0099ff">拉格朗日乘子法是一种寻找多元函数在其变量受到一个或多个条件的约束时的极值的方法</font>。</p>
-<p>&ensp;&ensp; <font color="#0099ff">这种方法可以将一个拥有 n 个变量与 k 个约束条件的最优化问题转换为一个求解有 n+k 个变量的方程组的解的问题。</font></p>
+<p>&ensp;&ensp;<font color="#0099ff">这种方法可以将一个拥有 n 个变量与 k 个约束条件的最优化问题转换为一个求解有 n+k 个变量的方程组的解的问题。</font></p>
 <ul>
 <li><p>首先定义拉格朗日函数：</p>
 <script type="math/tex; mode=display">
@@ -493,6 +493,9 @@ V_{max} = f\left(\frac{\sqrt 3}{3}a, \frac{\sqrt 3}{3}b, \frac{\sqrt 3}{3}c\righ
 <p>&ensp;&ensp;<font color="#0099">绿色的线表示约束，也就是说，只要正好落在这条绿线上的点才可能是满足要求的点。如果没有这条约束，f(x,y)的最小值应该会是会落在最小那圈等高线内部的某一点上。</font></p>
 <p>&ensp;&ensp;<font color="#099ff">而现在加上了约束条件，最小值点应该是 f(x,y)等高线和约束条件相切的位置，因为如果只是相交意味着肯定还存在其他等高线在该条等高线的内部或者外部，使得新的等高线与目标函数的交点的值更大或者更小</font></p>
 <p>&ensp;&ensp;<font color="#ff0000">只有到等高线与约束条件的函数曲线相切的时候，才可能取到最优值</font></p>
+<p>&ensp;&ensp;如果我们对约束也求梯度 $\nabla g(x,y)$, 则其梯度如图中绿色箭头所示；<strong>显然，当目标函数 $f(x,y)$ 的等高线和约束相切，则它们切点的梯度一定在一条直线上($f$ 和 $g$ 的斜率平行)</strong></p>
+<p>&ensp;&ensp;即在最优解的时候: $\nabla f(x,y) = \lambda(\nabla g(x,y) - c)$, 即 $\nabla[f(x,y) + \lambda(g(x,y)-c) ] = 0$</p>
+<p>&ensp;&ensp;那么拉格朗日函数： $F(x,y) = f(x,y)+\lambda(g(x,y)-c)$ 在达到极值时与 $f(x,y)$ 相等，因为 $g(x,y)-c$ 总为0</p>
 <h3 id="不等式约束条件"><a href="#不等式约束条件" class="headerlink" title="不等式约束条件"></a>不等式约束条件</h3><hr>
 
       
@@ -734,7 +737,7 @@ V_{max} = f\left(\frac{\sqrt 3}{3}a, \frac{\sqrt 3}{3}b, \frac{\sqrt 3}{3}c\righ
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">35.0k</span>
+    <span title="Site words total count">35.1k</span>
   
 </div>
 
@@ -753,7 +756,7 @@ V_{max} = f\left(\frac{\sqrt 3}{3}a, \frac{\sqrt 3}{3}b, \frac{\sqrt 3}{3}c\righ
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共35.0k字</span>
+  <span class="post-count">博客全站共35.1k字</span>
 </div>
         
 
