@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-23T08:11:35.276Z</updated>
+  <updated>2019-08-26T08:39:46.804Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>拉格朗日乘子法(Lagrange Multiplier)和KKT条件</title>
+    <link href="http://sunfeng.online/2019/08/26/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95(Lagrange%20Multiplier)%E5%92%8CKKT%E6%9D%A1%E4%BB%B6/"/>
+    <id>http://sunfeng.online/2019/08/26/拉格朗日乘子法(Lagrange Multiplier)和KKT条件/</id>
+    <published>2019-08-26T08:28:13.000Z</published>
+    <updated>2019-08-26T08:39:46.804Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;font color=#0099ff size=7 face=&quot;黑体&quot;&gt;color=#0099ff size=72 face=&quot;黑体&quot;&lt;/font&gt;</span><br></pre></td></tr></table></figure><p><strong><font size="6">深入理解拉格朗日乘子法和KKT条件</font></strong></p><a id="more"></a><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h2 id="优化问题"><a href="#优化问题" class="headerlink" title="优化问题"></a>优化问题</h2><h3 id="无约束条件"><a href="#无约束条件" class="headerlink" title="无约束条件"></a>无约束条件</h3><h3 id="等式约束条件"><a href="#等式约束条件" class="headerlink" title="等式约束条件"></a>等式约束条件</h3><h3 id="不等式约束条件"><a href="#不等式约束条件" class="headerlink" title="不等式约束条件"></a>不等式约束条件</h3><hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;font color=#0099ff size=7 face=&amp;quot;黑体&amp;quot;&amp;gt;color=#0099ff size=72 face=&amp;quot;黑体&amp;quot;&amp;lt;/font&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;font size=&quot;6&quot;&gt;深入理解拉格朗日乘子法和KKT条件&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数学方法整理" scheme="http://sunfeng.online/categories/%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="SVM" scheme="http://sunfeng.online/tags/SVM/"/>
+    
+  </entry>
   
   <entry>
     <title>《机器学习》西瓜书学习笔记（十）-- 降维与度量学习</title>
@@ -109,9 +132,9 @@
     <link href="http://sunfeng.online/2019/08/16/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89--%20%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/"/>
     <id>http://sunfeng.online/2019/08/16/《机器学习》西瓜书学习笔记（六）-- 支持向量机/</id>
     <published>2019-08-16T06:53:52.000Z</published>
-    <updated>2019-08-26T03:28:13.410Z</updated>
+    <updated>2019-08-26T06:49:12.656Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（六）-支持向量机"><a href="#《机器学习》西瓜书学习笔记（六）-支持向量机" class="headerlink" title="《机器学习》西瓜书学习笔记（六） 支持向量机"></a>《机器学习》西瓜书学习笔记（六） 支持向量机</h2><a id="more"></a><h3 id="间隔与支持向量"><a href="#间隔与支持向量" class="headerlink" title="间隔与支持向量"></a>间隔与支持向量</h3><p><strong><font color="#0099">给定训练集，分类学习最基本的想法就是基于训练集在样本空间中找到一个划分超平面，将不同类别的样本划分开来，且要求划分超平面产生的分类结果要尽可能鲁棒，对未见示例的泛化能力要尽可能强</font></strong></p><p><strong>划分超平面</strong></p><ul><li><p>划分超平面的线性方程描述：</p><script type="math/tex; mode=display">\boldsymbol w^T \boldsymbol x + b = 0\tag{6.1}</script><p>其中 $\boldsymbol w = (w_1;w_2;…;w_d)$ 为法向量，决定超平面的方向；</p><p>$b$ 为位移项，决定了超平面与原点之间的距离；</p><p>将此超平面记为 $(\boldsymbol w, b)$</p></li><li><p>样本空间中的任意点 $\boldsymbol x$ 到超平面的 $(\boldsymbol w, b)$ 距离为:</p><script type="math/tex; mode=display">r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}\tag{6.2}</script></li></ul><p>假设超平面 $(\boldsymbol w, b)$ 能将训练样本正确分类，即对于 $(\boldsymbol x_i, y_i) \in D$:</p><ul><li><p>若 $y_i = +1$, 则有 $\boldsymbol w^T \boldsymbol x_i + b &gt; 0$</p></li><li><p>若 $y_i = -1$, 则有 $\boldsymbol w^T \boldsymbol x_i + b &lt; 0$ </p></li><li><p>令</p><script type="math/tex; mode=display">\begin {equation}\begin {cases}\boldsymbol w^T \boldsymbol x_i + b \ge +1, \ \ y_i = +1 \\\boldsymbol w^T \boldsymbol x_i + b \le -1, \ \ y_i = -1\end {cases}\tag{6.3}\end {equation}</script></li></ul><p><strong>支持向量 (support vector)：</strong> </p><ul><li>距离超平面最近的几个训练样本可使上式的等号成立，它们被称为 “支持向量”</li></ul><p><strong>间隔 (margin): </strong></p><ul><li>两个异类支持向量到超平面的距离之和为<script type="math/tex; mode=display">\gamma = \frac{2}{||\boldsymbol w ||}\tag{6.4}</script>它被称为 “间隔”</li></ul><p><img src="/2019/08/16/《机器学习》西瓜书学习笔记（六）-- 支持向量机/figure2.PNG" alt="figure2"></p><p><strong>支持向量机(Support Vector Machine, SVM)</strong></p><ul><li><p>最大化间隔：</p><script type="math/tex; mode=display">\begin {equation}\begin {split}& \mathop{\max} _{\boldsymbol w,b}\frac{2}{||\boldsymbol w||}\\& s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m\end {split}\tag{6.5}\end {equation}</script></li><li><p>最大化 $||\boldsymbol w||^{-1}:$ </p></li><li><p>最小化 $||\boldsymbol w||^{2}:$ </p><script type="math/tex; mode=display">\begin {equation}\begin {split}& \mathop{\min}_{\boldsymbol w,b} \frac{1}{2} {||\boldsymbol w||}^2\\& s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m\end {split}\tag{6.6}\end {equation}</script></li></ul>   <font color="#0099">此为支持向量机 (Support vector Machine，简称SVM) 的基本型</font><hr><h3 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h3><ul><li>aaaa</li><li><strong>bbbbbb</strong></li><li></li></ul><hr><h3 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h3><hr><h3 id="间隔与正则化"><a href="#间隔与正则化" class="headerlink" title="间隔与正则化"></a>间隔与正则化</h3><hr><h3 id="支持向量回归"><a href="#支持向量回归" class="headerlink" title="支持向量回归"></a>支持向量回归</h3><hr>]]></content>
+    <content type="html"><![CDATA[<h2 id="《机器学习》西瓜书学习笔记（六）-支持向量机"><a href="#《机器学习》西瓜书学习笔记（六）-支持向量机" class="headerlink" title="《机器学习》西瓜书学习笔记（六） 支持向量机"></a>《机器学习》西瓜书学习笔记（六） 支持向量机</h2><a id="more"></a><h3 id="间隔与支持向量"><a href="#间隔与支持向量" class="headerlink" title="间隔与支持向量"></a>间隔与支持向量</h3><p><strong><font color="#0099">给定训练集，分类学习最基本的想法就是基于训练集在样本空间中找到一个划分超平面，将不同类别的样本划分开来，且要求划分超平面产生的分类结果要尽可能鲁棒，对未见示例的泛化能力要尽可能强</font></strong></p><p><strong>划分超平面</strong></p><ul><li><p>划分超平面的线性方程描述：</p><script type="math/tex; mode=display">\boldsymbol w^T \boldsymbol x + b = 0\tag{6.1}</script><p>其中 $\boldsymbol w = (w_1;w_2;…;w_d)$ 为法向量，决定超平面的方向；</p><p>$b$ 为位移项，决定了超平面与原点之间的距离；</p><p>将此超平面记为 $(\boldsymbol w, b)$</p></li><li><p>样本空间中的任意点 $\boldsymbol x$ 到超平面的 $(\boldsymbol w, b)$ 距离为:</p><script type="math/tex; mode=display">r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}\tag{6.2}</script></li></ul><p>假设超平面 $(\boldsymbol w, b)$ 能将训练样本正确分类，即对于 $(\boldsymbol x_i, y_i) \in D$:</p><ul><li><p>若 $y_i = +1$, 则有 $\boldsymbol w^T \boldsymbol x_i + b &gt; 0$</p></li><li><p>若 $y_i = -1$, 则有 $\boldsymbol w^T \boldsymbol x_i + b &lt; 0$ </p></li><li><p>令</p><script type="math/tex; mode=display">\begin {equation}\begin {cases}\boldsymbol w^T \boldsymbol x_i + b \ge +1, \ \ y_i = +1 \\\boldsymbol w^T \boldsymbol x_i + b \le -1, \ \ y_i = -1\end {cases}\tag{6.3}\end {equation}</script></li></ul><p><strong>支持向量 (support vector)：</strong> </p><ul><li>距离超平面最近的几个训练样本可使上式的等号成立，它们被称为 “支持向量”</li></ul><p><strong>间隔 (margin): </strong></p><ul><li>两个异类支持向量到超平面的距离之和为<script type="math/tex; mode=display">\gamma = \frac{2}{||\boldsymbol w ||}\tag{6.4}</script>它被称为 “间隔”</li></ul><p><img src="/2019/08/16/《机器学习》西瓜书学习笔记（六）-- 支持向量机/figure2.PNG" alt="figure2"></p><p><strong>支持向量机(Support Vector Machine, SVM)</strong></p><ul><li><p>最大化间隔：</p><script type="math/tex; mode=display">\begin {equation}\begin {split}& \mathop{\max} _{\boldsymbol w,b}\frac{2}{||\boldsymbol w||}\\& s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m\end {split}\tag{6.5}\end {equation}</script></li><li><p>最大化 $||\boldsymbol w||^{-1}:$ </p></li><li><p>最小化 $||\boldsymbol w||^{2}:$ </p><script type="math/tex; mode=display">\begin {equation}\begin {split}& \mathop{\min}_{\boldsymbol w,b} \frac{1}{2} {||\boldsymbol w||}^2\\& s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m\end {split}\tag{6.6}\end {equation}</script></li></ul>   <font color="#0099">此为支持向量机 (Support vector Machine，简称SVM) 的基本型</font><hr><h3 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h3><hr><h3 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h3><hr><h3 id="间隔与正则化"><a href="#间隔与正则化" class="headerlink" title="间隔与正则化"></a>间隔与正则化</h3><hr><h3 id="支持向量回归"><a href="#支持向量回归" class="headerlink" title="支持向量回归"></a>支持向量回归</h3><hr>]]></content>
     
     <summary type="html">
     
