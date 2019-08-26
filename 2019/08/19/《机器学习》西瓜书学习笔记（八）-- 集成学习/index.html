@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure3.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure4.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/19/《机器学习》西瓜书学习笔记（八）--%20集成学习/figure5.PNG">
-<meta property="og:updated_time" content="2019-08-26T02:12:44.141Z">
+<meta property="og:updated_time" content="2019-08-26T02:16:09.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（八）-- 集成学习">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（八）集成学习">
@@ -587,9 +587,11 @@ E(H|\boldsymbol x) = (f(\boldsymbol x)-H(\boldsymbol x))^2\tag{8.30}</script></l
 &= \overline E(h|\boldsymbol x)-E(H|\boldsymbol x)\tag{8.31}
 \end {align}</script></li>
 <li><p>令 $p(\boldsymbol x)$ 表示样本的概率密度，则在全样本上有：</p>
+</li>
+</ul>
 <script type="math/tex; mode=display">
 \sum_{i=1}^{T}w_i\int A(h_i|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x = \sum_{i=1}^{T}w_i\int E(h_i|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x -
-\int E(H|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x \tag{8.32}</script></li>
+\int E(H|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x \tag{8.32}</script><ul>
 <li><p>令个体学习器 $h_i$ 在全样本上的泛化误差和分歧项分别为:</p>
 <script type="math/tex; mode=display">
 E_i = \int E(h_i|\boldsymbol x)p(\boldsymbol x)d\boldsymbol x\tag{8.33}</script><script type="math/tex; mode=display">
