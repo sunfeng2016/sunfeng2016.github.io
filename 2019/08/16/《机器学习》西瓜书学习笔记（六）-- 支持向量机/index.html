@@ -96,12 +96,10 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（六） 支持向量机">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://sunfeng.online/2019/08/16/《机器学习》西瓜书学习笔记（六）--%20支持向量机/figure1.PNG">
-<meta property="og:updated_time" content="2019-08-16T07:57:50.611Z">
+<meta property="og:updated_time" content="2019-08-26T02:44:36.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（六）-- 支持向量机">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（六） 支持向量机">
-<meta name="twitter:image" content="http://sunfeng.online/2019/08/16/《机器学习》西瓜书学习笔记（六）--%20支持向量机/figure1.PNG">
 
 
 
@@ -357,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  357
+                  298
                 </span>
               
 
@@ -395,66 +393,85 @@
 
       
         <h2 id="《机器学习》西瓜书学习笔记（六）-支持向量机"><a href="#《机器学习》西瓜书学习笔记（六）-支持向量机" class="headerlink" title="《机器学习》西瓜书学习笔记（六） 支持向量机"></a>《机器学习》西瓜书学习笔记（六） 支持向量机</h2><a id="more"></a>
-<h3 id="间隔与支持向量"><a href="#间隔与支持向量" class="headerlink" title="间隔与支持向量"></a>间隔与支持向量</h3><p><font color="#0099ff">给定训练集，分类学习最基本的想法就是基于训练集在样本空间中找到一个划分超平面，将不同类别的样本划分开来</font>，<strong>且要求划分超平面产生的分类结果要尽可能鲁棒，对未见示例的泛化能力要尽可能强</strong></p>
-<p><strong>划分超平面</strong></p>
-<ul>
-<li><p>划分超平面的线性方程描述：</p>
-<script type="math/tex; mode=display">
-\boldsymbol w^T \boldsymbol x + b = 0</script><p>其中 $\boldsymbol w = (w_1;w_2;…;w_d)$ 为法向量，决定超平面的方向；</p>
-<p>$b$ 为位移项，决定了超平面与原点之间的距离；</p>
-<p>将此超平面记为 $(\boldsymbol w, b)$</p>
-</li>
-<li><p>样本空间中的任意点 $\boldsymbol x$ 到超平面的 $(\boldsymbol w, b)$ 距离为:</p>
-<script type="math/tex; mode=display">
-r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}</script></li>
-</ul>
-<p>假设超平面 $(\boldsymbol w, b)$ 能将训练样本正确分类，即对于 $(\boldsymbol x_i, y_i) \in D$:</p>
-<ul>
-<li><p>若 $y_i = +1$, 则有 $\boldsymbol w^T \boldsymbol x_i + b &gt; 0$</p>
-</li>
-<li><p>若 $y_i = -1$, 则有 $\boldsymbol w^T \boldsymbol x_i + b &lt; 0$ </p>
-</li>
-<li><p>令</p>
-<script type="math/tex; mode=display">
-\begin {equation}
-\begin {cases}
-\boldsymbol w^T \boldsymbol x_i + b \ge +1, \ \ y_i = +1 \\
-\boldsymbol w^T \boldsymbol x_i + b \le -1, \ \ y_i = -1
-\end {cases}
-\end {equation}</script></li>
-</ul>
-<p><strong>支持向量 (support vector)：</strong> </p>
-<ul>
-<li>距离超平面最近的几个训练样本可使上式的等号成立，它们被称为 “支持向量”</li>
-</ul>
-<p><strong>间隔 (margin): </strong></p>
-<ul>
-<li>两个异类支持向量到超平面的距离之和为<script type="math/tex; mode=display">
-\gamma = \frac{2}{||\boldsymbol w ||}</script>它被称为 “间隔”</li>
-</ul>
-<p><img src="/2019/08/16/《机器学习》西瓜书学习笔记（六）-- 支持向量机/figure1.PNG" alt="figure1"></p>
-<p><strong>支持向量机(Support Vector Machine, SVM)</strong></p>
-<ul>
-<li>最大化间隔：<script type="math/tex; mode=display">
-\begin {equation}
-\begin {split}
-& max _{\boldsymbol w,b}\frac{2}{||\boldsymbol w||}\\
-& s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m
-\end {split}
-\end {equation}</script></li>
-</ul>
-<ul>
-<li><p>最大化 $||\boldsymbol w||^{-1}:$ </p>
-</li>
-<li><p>最小化 $||\boldsymbol w||^{2}:$ </p>
-<script type="math/tex; mode=display">
-\begin {equation}
-\begin {split}
-& min_{\boldsymbol w,b} \frac{1}{2} {||\boldsymbol w||}\\
-& s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m
-\end {split}
-\end {equation}</script></li>
-</ul>
+<h3 id="间隔与支持向量"><a href="#间隔与支持向量" class="headerlink" title="间隔与支持向量"></a>间隔与支持向量</h3><font color="#0099ff">给定训练集，分类学习最基本的想法就是基于训练集在样本空间中找到一个划分超平面，将不同类别的样本划分开来</font>，**且要求划分超平面产生的分类结果要尽可能鲁棒，对未见示例的泛化能力要尽可能强**
+
+
+
+**划分超平面**
+
+* 划分超平面的线性方程描述：
+  $$
+  \boldsymbol w^T \boldsymbol x + b = 0
+  $$
+  其中 $\boldsymbol w = (w_1;w_2;...;w_d)$ 为法向量，决定超平面的方向；
+
+  $b$ 为位移项，决定了超平面与原点之间的距离；
+
+  将此超平面记为 $(\boldsymbol w, b)$
+
+* 样本空间中的任意点 $\boldsymbol x$ 到超平面的 $(\boldsymbol w, b)$ 距离为:
+  $$
+  r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}
+  $$
+
+假设超平面 $(\boldsymbol w, b)$ 能将训练样本正确分类，即对于 $(\boldsymbol x_i, y_i) \in D$:
+
+* 若 $y_i = +1$, 则有 $\boldsymbol w^T \boldsymbol x_i + b > 0$
+
+* 若 $y_i = -1$, 则有 $\boldsymbol w^T \boldsymbol x_i + b < 0$ 
+
+* 令
+  $$
+  \begin {equation}
+  \begin {cases}
+  \boldsymbol w^T \boldsymbol x_i + b \ge +1, \ \ y_i = +1 \\
+  \boldsymbol w^T \boldsymbol x_i + b \le -1, \ \ y_i = -1
+  \end {cases}
+  \end {equation}
+  $$
+
+**支持向量 (support vector)：** 
+
+* 距离超平面最近的几个训练样本可使上式的等号成立，它们被称为 "支持向量"
+
+**间隔 (margin): **
+
+* 两个异类支持向量到超平面的距离之和为
+  $$
+  \gamma = \frac{2}{||\boldsymbol w ||}
+  $$
+  它被称为 "间隔"
+
+![figure2](/chapter-6/figure2.PNG)
+
+**支持向量机(Support Vector Machine, SVM)**
+
+* 最大化间隔：
+  $$
+  \begin {equation}
+  \begin {split}
+  & \mathop{\max} _{\boldsymbol w,b}\frac{2}{||\boldsymbol w||}\\
+  & s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m
+  \end {split}
+  \end {equation}
+  $$
+
+* 最大化 $||\boldsymbol w||^{-1}:$ 
+
+* 最小化 $||\boldsymbol w||^{2}:$ 
+  $$
+  \begin {equation}
+  \begin {split}
+  & \mathop{\min}_{\boldsymbol w,b} \frac{1}{2} {||\boldsymbol w||}^2\\
+  & s.t.\ y_i(\boldsymbol w^T \boldsymbol x_i + b) \ge 1,i = 1,2,...,m
+  \end {split}
+  \end {equation}
+  $$
+
+
+   <font color="#0099">此为支持向量机 (Support vector Machine，简称SVM) 的基本型</font>
+
+<hr>
 <h3 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h3><h3 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h3><h3 id="间隔与正则化"><a href="#间隔与正则化" class="headerlink" title="间隔与正则化"></a>间隔与正则化</h3><h3 id="支持向量回归"><a href="#支持向量回归" class="headerlink" title="支持向量回归"></a>支持向量回归</h3>
       
     </div>
@@ -699,7 +716,7 @@ r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}</script></li>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.2k</span>
+    <span title="Site words total count">34.1k</span>
   
 </div>
 
@@ -718,7 +735,7 @@ r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}</script></li>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共34.2k字</span>
+  <span class="post-count">博客全站共34.1k字</span>
 </div>
         
 
