@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[拉格朗日乘子法(Lagrange Multiplier)和KKT条件]]></title>
     <url>%2F2019%2F08%2F26%2F%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95(Lagrange%20Multiplier)%E5%92%8CKKT%E6%9D%A1%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[1&lt;font color=#0099ff size=7 face=&quot;黑体&quot;&gt;color=#0099ff size=72 face=&quot;黑体&quot;&lt;/font&gt; 深入理解拉格朗日乘子法和KKT条件 简介优化问题无约束条件等式约束条件不等式约束条件]]></content>
+    <content type="text"><![CDATA[深入理解拉格朗日乘子法和KKT条件 简介 在求解最优化问题中，拉格朗日乘子法 (Lagrange Multiplier) 和 KKT (Karush Kuhn Tucker) 条件 是两种常用的方法。 在有等式约束时使用拉格朗日乘子法 在有不等式约束时使用KKT条件 优化问题&ensp;&ensp; 我们这里提到的 最优化问题是指对于给定的某一函数，求其在指定作用域上的全局最小值 (因为最小值与最大值可以很容易转化，即最大值问题可以转化为最小值问题)。 &ensp;&ensp; 一般情况下，最优化问题可分为以下三种情况： 无约束条件 这是最简单的情况，解决方法通常是函数对变量求导，令求导函数等于0的点可能是极值点。将极值点带回原函数进行验证即可 等式约束条件不等式约束条件]]></content>
       <categories>
         <category>数学方法整理</category>
       </categories>
