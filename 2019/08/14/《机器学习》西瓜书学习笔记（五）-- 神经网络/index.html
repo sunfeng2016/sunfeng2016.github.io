@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure6.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure7.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/08/14/《机器学习》西瓜书学习笔记（五）--%20神经网络/figure8.PNG">
-<meta property="og:updated_time" content="2019-08-17T14:17:19.263Z">
+<meta property="og:updated_time" content="2019-08-27T04:38:21.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（五）-- 神经网络">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（五） 神经网络">
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,280
+                  2,336
                 </span>
               
 
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  9
                 </span>
               
             </div>
@@ -557,18 +557,20 @@ g_j &= - \frac{\partial E_k}{\partial \hat y_j^k} \cdot \frac{\partial y_j^k}{\p
 \end {split}
 \end {equation}
 \tag{7}</script></li>
-<li><p>由式(3)(4)(5)和(7)即可得 BP 算法中关于 $w_{hj}$ 的更新公式:</p>
-<script type="math/tex; mode=display">
-\Delta w_{hj} = \eta g_jb_h \tag{8}</script></li>
+<li>由式(3)(4)(5)和(7)即可得 BP 算法中关于 $w_{hj}$ 的更新公式:<script type="math/tex; mode=display">
+  \Delta w_{hj} = \eta g_jb_h \tag{8}</script></li>
+</ul>
+<ul>
 <li><p>类似可得：</p>
 <script type="math/tex; mode=display">
-\Delta \theta_j = -\eta g_j\tag{9}</script><script type="math/tex; mode=display">
-\Delta v_{ih} = \eta e_hx_i \tag{10}</script><script type="math/tex; mode=display">
-\Delta \gamma_h = -\eta e_h \tag{11}</script></li>
-</ul>
-<p>  其中:</p>
+\begin {align}
+\Delta \theta_j &= -\eta g_j\tag{9}\\
+ \Delta v_{ih} &= \eta e_hx_i \tag{10}\\
+ \Delta \gamma_h &= -\eta e_h \tag{11}
+\end {align}</script></li>
+<li><p>其中：</p>
 <script type="math/tex; mode=display">
-  \begin {equation}
+\begin {equation}
   \begin {split}
   e_h &= -\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial\alpha_h}\\
   &= -\sum_{j=1}^{l}\frac{\partial E_k}{\partial \beta_j} \cdot \frac{\partial \beta_j}{\partial b_h} f\prime(\alpha_h-\gamma_h)\\
@@ -577,7 +579,9 @@ g_j &= - \frac{\partial E_k}{\partial \hat y_j^k} \cdot \frac{\partial y_j^k}{\p
 
   \end {split}
   \end {equation}
-  \tag{12}</script><p><strong>BP算法工作流程:</strong> 对于每个输入样例：</p>
+  \tag{12}</script></li>
+</ul>
+<p><strong>BP算法工作流程:</strong> 对于每个输入样例：</p>
 <ul>
 <li>先将输入示例提供给输入层神经元</li>
 <li>然后逐层将信号前传，直到产生输出层的结果</li>
@@ -666,7 +670,9 @@ E_k = \lambda\frac{1}{m}\sum_{k=1}^{m}E_k + (1-\lambda)\sum_{i}{w_i^2}</script><
 </ul>
 <p><strong>“跳出”局部极小，达到全局最小：</strong></p>
 <ul>
-<li></li>
+<li>以多组不同参数初始化多个神经网络，选择最接近全局最小的</li>
+<li><strong>模拟退火</strong>：每一步以一定的概率接收比当前解更差的结果</li>
+<li><strong>随机梯度下降</strong></li>
 </ul>
 <hr>
 <h3 id="其他常见的神经网络"><a href="#其他常见的神经网络" class="headerlink" title="其他常见的神经网络"></a>其他常见的神经网络</h3><h4 id="RBF网络"><a href="#RBF网络" class="headerlink" title="RBF网络"></a>RBF网络</h4><h4 id="ART网络"><a href="#ART网络" class="headerlink" title="ART网络"></a>ART网络</h4><h4 id="SOM网络"><a href="#SOM网络" class="headerlink" title="SOM网络"></a>SOM网络</h4><h4 id="级联相关网络"><a href="#级联相关网络" class="headerlink" title="级联相关网络"></a>级联相关网络</h4><h4 id="Elman网络"><a href="#Elman网络" class="headerlink" title="Elman网络"></a>Elman网络</h4><h4 id="Boltzmann机"><a href="#Boltzmann机" class="headerlink" title="Boltzmann机"></a>Boltzmann机</h4><hr>

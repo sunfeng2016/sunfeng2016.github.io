@@ -97,7 +97,7 @@
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（四） 决策树">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/08/13/《机器学习》西瓜书学习笔记（四）--%20决策树/figure1.PNG">
-<meta property="og:updated_time" content="2019-08-14T07:15:59.519Z">
+<meta property="og:updated_time" content="2019-08-27T03:31:46.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（四）-- 决策树">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（四） 决策树">
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,656
+                  1,657
                 </span>
               
 
@@ -423,9 +423,9 @@
 <ul>
 <li><p>信息熵是度量样本集合<strong>纯度</strong>最常用的一种指标。</p>
 </li>
-<li><p>假定当前样本集合 $D$ 中第 $k$ 类样本所占的比例为 $p_k (k = 1, 2, …, |y|)$, 则 $D$ 的信息熵定义为：</p>
+<li><p>假定当前样本集合 $D$ 中第 $k$ 类样本所占的比例为 $p_k (k = 1, 2, …, |{\cal Y}|)$, 则 $D$ 的信息熵定义为：</p>
 <script type="math/tex; mode=display">
-Ent(D) = - \sum _{k = 1}^{|y|}p_k\log_2p_k</script><p><strong>$Ent(D)$ 的值越小，则 $D$ 的纯度越高</strong></p>
+Ent(D) = - \sum _{k = 1}^{|{\cal Y}|}p_k\log_2p_k</script><p><strong>$Ent(D)$ 的值越小，则 $D$ 的纯度越高</strong></p>
 </li>
 </ul>
 <p><strong>信息增益 (information gain):</strong></p>
@@ -439,7 +439,7 @@ Gain(D, a) = Ent(D) - \sum _{v=1}^{V}\frac{|D^v|}{|D|}Ent(D^v).</script><p><stro
 </ul>
 <p><strong>以信息增益为准则选择划分属性：</strong></p>
 <script type="math/tex; mode=display">
-a_* = arg\ max Gain(D, a)</script><h4 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h4><p><em>信息增益准则对可取值数目较多的属性有所偏好，为减少这种偏好可能带来的不利影响，C4.5决策树算法不直接使用信息增益，而是使用“增益率”来选择最优划分属性。</em></p>
+a_* = \mathop{\arg\max}_{a\in A} Gain(D, a)</script><h4 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h4><p><em>信息增益准则对可取值数目较多的属性有所偏好，为减少这种偏好可能带来的不利影响，C4.5决策树算法不直接使用信息增益，而是使用“增益率”来选择最优划分属性。</em></p>
 <p><strong>增益率 (gain ratio):</strong></p>
 <script type="math/tex; mode=display">
 Gain\_ratio(D,a) = \frac{Gain(D, a)}{IV(a)}</script><p>其中：</p>

@@ -101,7 +101,7 @@
 <meta property="og:image" content="https://pic3.zhimg.com/80/v2-cdae5065290f57c9fc387b7d05b5b68a_hd.jpg">
 <meta property="og:image" content="https://pic3.zhimg.com/80/v2-437db32129fdc1d411ac560bfa0f8842_hd.jpg">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-2c27bcec29d2a98b0a4725775cb8b2c4_hd.jpg">
-<meta property="og:updated_time" content="2019-08-13T08:14:38.880Z">
+<meta property="og:updated_time" content="2019-08-27T03:16:35.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（三）-- 线性模型">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（三）线性模型">
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,037
+                  4,023
                 </span>
               
 
@@ -403,9 +403,8 @@
 <p><strong>属性：</strong> $x_i$ </p>
 <p><strong>属性个数(维度)：</strong> $d$ </p>
 <p><strong>数据集：</strong> $D = \{\boldsymbol x_1, \boldsymbol x_2, …, \boldsymbol x_m\}$ </p>
-<p><strong>带标记的数据集：</strong> $D = \{ (\boldsymbol x_1, y_1),  (\boldsymbol x_2, y_2), … , (\boldsymbol x_m, y_m)\}$ </p>
 <p><strong>模型：</strong> $f$ </p>
-<p><strong>模型在示例 $x$ 上的预测输出：</strong>  $f(\boldsymbol x)$</p>
+<p><strong>模型在示例 $\boldsymbol x$ 上的预测输出：</strong>  $f(\boldsymbol x)$</p>
 <h4 id="2-线性模型-linear-model"><a href="#2-线性模型-linear-model" class="headerlink" title="2. 线性模型 (linear model)"></a>2. 线性模型 (linear model)</h4><p><strong>线性模型的目的：</strong> 试图学得一个【通过属性的线性组合来进行预测】的【函数】</p>
 <p><strong>线性模型的本质：</strong> 学得一个线性函数</p>
 <p><strong>线性模型的特征：</strong> 通过属性的线性组合来进行预测，即：</p>
@@ -446,13 +445,13 @@ f(x) = \boldsymbol w^T\boldsymbol x + b</script><p>其中 $\boldsymbol w = (w1;w
 <p>此时数据集为：$D = \{(x_1, y_1), (x_2, y_2), … , (x_m, y_m)\}$</p>
 <p><strong>线性回归模型试图学得：</strong></p>
 <script type="math/tex; mode=display">
-f(xi) = wx_i + b, 使得f(xi) \approx y_i</script><p><strong>如何确定 $w$ 和 $b$：</strong> 最小二乘法，试图让均方误差最小化，即：</p>
+f(x_i) = wx_i + b, 使得f(x_i) \approx y_i</script><p><strong>如何确定 $w$ 和 $b$：</strong> 最小二乘法，试图让均方误差最小化，即：</p>
 <script type="math/tex; mode=display">
 \begin{equation}
 \begin{split}
-(w^*, b^*) &= arg \ min \ E_{(w, b)}\\
-&= arg \ min \ \sum_{i = 1}^{m}{(f(x_i) - y_i)^2}\\
-&= arg \ min \ \sum_{i = 1}^{m}{(y_i - wx_i - b)^2}\\
+(w^*, b^*) &= \mathop{\arg\min}_{(w,b)} \ E_{(w, b)}\\
+&= \mathop{\arg\min}_{(w,b)} \ \sum_{i = 1}^{m}{(f(x_i) - y_i)^2}\\
+&= \mathop{\arg\min}_{(w,b)} \ \sum_{i = 1}^{m}{(y_i - wx_i - b)^2}\\
 \end{split}
 \end{equation}</script><p><strong>参数估计：</strong> <font color="#0099ff">求解w和b使均方误差最小化的过程，称为线性回归模型的最小二乘“参数估计”（parameter estimation）</font></p>
 <p>根据函数知识可知，一般 U形曲线的函数，如$f(x) = x^2$ ，通常都是凸函数，其最小值点一般在函数的极小值点处，也就是偏导数为0的点。</p>
@@ -477,10 +476,10 @@ b &= \frac{1}{m} \sum_{i=1}^{m}{(y_i - wx_i)^2} \\
 </li>
 </ol>
 <h4 id="4-属性数目为d的复杂例子-多元线性回归"><a href="#4-属性数目为d的复杂例子-多元线性回归" class="headerlink" title="4. (属性数目为d的复杂例子)多元线性回归"></a>4. (属性数目为d的复杂例子)多元线性回归</h4><p>现实中我们几乎碰不见属性值个数为1的例子，通常情况下，样本由d个属性描述。</p>
-<p>此时，<strong>示例</strong>还是： $\boldsymbol x = (x_1; x_2; … ; x_d)$，<strong>数据集</strong>还是：$D = \{ (\boldsymbol x_1, y_1),  (\boldsymbol x_2, y_2), … , (\boldsymbol x_m, y_m)\}$ </p>
+<p>此时，<strong>数据集</strong>为：$D = \{ (\boldsymbol x_1, y_1),  (\boldsymbol x_2, y_2), … , (\boldsymbol x_m, y_m)\}$ ，其中 $\boldsymbol x_i = (x_{i1}; x_{i2}; … x_{id}), y_i \in R$ </p>
 <p><strong>线性回归模型试图学得：</strong> </p>
 <script type="math/tex; mode=display">
-f(\boldsymbol xi) = w\boldsymbol x_i + b, 使得f(\boldsymbol xi) \approx y_i</script><p><strong>如何确定 w 和 b：</strong> 类似的，可以用最小二乘法来对 $w$ 和 $b$ 进行估计，具体过程如下：</p>
+f(\boldsymbol x_i) = w\boldsymbol x_i + b, 使得f(\boldsymbol x_i) \approx y_i</script><p><strong>如何确定 w 和 b：</strong> 类似的，可以用最小二乘法来对 $w$ 和 $b$ 进行估计，具体过程如下：</p>
 <ol>
 <li><p>将$w$ 和 $b$ 吸入向量形式 $\hat w = (w; b)$ </p>
 </li>
@@ -507,8 +506,8 @@ x_{m1} & x_{m2} & \ldots & x_{md} & 1
 <script type="math/tex; mode=display">
 \begin {equation}
 \begin {split}
-\hat w^* &= arg\ min \ E_{\hat w}\\
-&= arg\ min \ (y - \boldsymbol X \hat w)^T(y - \boldsymbol X \hat w)
+\hat w^* &= \mathop{\arg \min}_{\hat w} \ E_{\hat w}\\
+&= \mathop{\arg \min}_{\hat w} \ (y - \boldsymbol X \hat w)^T(y - \boldsymbol X \hat w)
 \end{split}
 \end {equation}</script></li>
 <li><p>将 $E_{\hat w}$ 对 $\hat w$ 求导得到:</p>
@@ -541,7 +540,7 @@ f(\hat x_i) = \hat x_i^T  (\boldsymbol X^T \boldsymbol X)^{-1}\boldsymbol X^T y.
 <li><strong>回归任务：</strong> 预测的是连续值</li>
 <li><strong>分类任务：</strong> 预测的是离散值</li>
 </ul>
-<p>如果说说线性模型预测连续值，只需要让预测值逼近真实标记 $y$ 或其衍生物的话，当预测离散值的时候，如何让线性模型的预测值 (连续) 和真实标记值 $y$ (离散) 联系起来呢？</p>
+<p>如果说线性模型预测连续值，只需要让预测值逼近真实标记 $y$ 或其衍生物的话，当预测离散值的时候，如何让线性模型的预测值 (连续) 和真实标记值 $y$ (离散) 联系起来呢？</p>
 <p>其实，离散状态的真实标记 $y$, 未尝不可以有一种连续的衍生物 $z$, 这样通过单调可微的联系函数 $g(.)$ , 就可以让连续的预测值联系离散的真实标记。</p>
 <h4 id="1-单位阶跃函数-unit-step-function"><a href="#1-单位阶跃函数-unit-step-function" class="headerlink" title="1. 单位阶跃函数 (unit-step function)"></a>1. 单位阶跃函数 (unit-step function)</h4><p>在二分类任务当中，输出标记为 $y = \{0, 1\}$ , 而线性回归模型产生的预测值：$z = \boldsymbol w^T \boldsymbol x + b$   是实值。要将连续值 $z$ 转换为离散值 0/1，最理想的是 “单位阶跃函数” </p>
 <script type="math/tex; mode=display">

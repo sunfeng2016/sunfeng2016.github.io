@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/08/05/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure5.png">
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-2070a8bd6c71ccf58a78a213430dee59_hd.png">
 <meta property="og:image" content="https://pic2.zhimg.com/v2-ae93d046ff25fd8d5ea74467d579cb41_r.jpg">
-<meta property="og:updated_time" content="2019-08-27T02:19:28.484Z">
+<meta property="og:updated_time" content="2019-08-27T02:48:37.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（二）-- 模型评估与选择">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（二）模型评估与选择">
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,400
+                  3,401
                 </span>
               
 
@@ -585,7 +585,7 @@ P(+)_{cost} = \frac{p\times cost_{01}}{p\times{cost_{01}} + (1-p)\times{cost_{10
 cost_{norm} = \frac{FNR \times p\times cost_{01} + FPR \times (1 - p) \times cost_{10}}{p \times cost_{01} + (1 - p) \times cost_{10}}</script><hr>
 <h3 id="比较检验"><a href="#比较检验" class="headerlink" title="比较检验"></a>比较检验</h3><p><strong><font color="#ff0000">机器学习中性能比较需要考虑的因素：</font></strong></p>
 <ol>
-<li>目标是比较泛化性能，但通过实现评估方法得到的是测试集上的性能，两者的对比结果可能未必相同</li>
+<li>性能比较的目标是比较泛化性能，但通过实验评估方法得到的是测试集上的性能，两者的对比结果可能未必相同</li>
 <li>测试集上的性能受测试集本身的影响较大，使用不同大小的测试集会得到不同的结果，即使相同大小的测试集，若包含的测试样例不同，则测试结果也会不同</li>
 <li>很多机器学习算法本身有一定的随机性，即便用相同的参数设置在同一个测试集上多次运行，其结果也会不同</li>
 </ol>
@@ -597,12 +597,12 @@ cost_{norm} = \frac{FNR \times p\times cost_{01} + FPR \times (1 - p) \times cos
 <h4 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h4><h4 id="交叉验证-t-检验"><a href="#交叉验证-t-检验" class="headerlink" title="交叉验证 t 检验"></a>交叉验证 t 检验</h4><h4 id="McNemar-检验"><a href="#McNemar-检验" class="headerlink" title="McNemar 检验"></a>McNemar 检验</h4><h4 id="Friedman-检验与-Nemenyi-检验"><a href="#Friedman-检验与-Nemenyi-检验" class="headerlink" title="Friedman 检验与 Nemenyi 检验"></a>Friedman 检验与 Nemenyi 检验</h4><hr>
 <h3 id="偏差与方差"><a href="#偏差与方差" class="headerlink" title="偏差与方差"></a>偏差与方差</h3><p><strong>“偏差—方差分解”</strong> ：是解释学习器泛化性能的重要工具，在解释这个概念之前，先明确以下各变量名：</p>
 <ul>
-<li>测试样本：<strong>x</strong></li>
-<li>测试样本<strong>x</strong>在数据集中的标记：$y_D$</li>
-<li>测试样本<strong>x</strong>的真实标记：$y$</li>
+<li>测试样本：$\boldsymbol x$</li>
+<li>测试样本 $\boldsymbol x$ 在数据集中的标记：$y_D$</li>
+<li>测试样本 $\boldsymbol x$ 的真实标记：$y$ </li>
 <li>训练集：$D$</li>
-<li>从训练集$D$中学得的模型：$f$</li>
-<li>模型$f$在测试样本<strong>x</strong>上的真实输出：$f(x; D)$</li>
+<li>从训练集 $D$ 中学得的模型：$f$</li>
+<li>模型 $f$ 在测试样本 $\boldsymbol x$上的预测输出：$f(x; D)$</li>
 <li><strong>数据分布：Ɗ</strong></li>
 </ul>
 <p><strong>1. $\overline f(x)$ (预测输出的期望) </strong>：学习算法的期望预测</p>
@@ -626,12 +626,6 @@ bias^2(x) = (\overline f(x) - y)^2</script><font color="#0099ff">偏差度量了
 <p>故：</p>
 <script type="math/tex; mode=display">
 E(f;D) = bias^2 (x) + var(x) + \varepsilon^2</script><p> 即：<strong>泛化误差 = 偏差 + 方差 + 噪声</strong></p>
-<p><strong><font color="#099ff">总结：</font></strong></p>
-<ul>
-<li><strong>偏差：</strong> </li>
-<li><strong>方差：</strong> </li>
-<li><strong>噪声：</strong> </li>
-</ul>
 <hr>
 <h3 id="二项分布参数p的检验"><a href="#二项分布参数p的检验" class="headerlink" title="二项分布参数p的检验"></a>二项分布参数p的检验</h3><p>设某事件发生的概率为 <code>p</code> ， <code>p</code> 未知，作 <code>m</code> 次独立试验，每次观察该事件是否发生，以X记该事件发生的次数，则X服从二项分布 <code>B(m, p)</code>，现根据X检验如下假设：</p>
 <script type="math/tex; mode=display">
