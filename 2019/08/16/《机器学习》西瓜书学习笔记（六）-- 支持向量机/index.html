@@ -97,7 +97,7 @@
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（六） 支持向量机">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/08/16/《机器学习》西瓜书学习笔记（六）--%20支持向量机/figure2.PNG">
-<meta property="og:updated_time" content="2019-08-26T06:49:12.656Z">
+<meta property="og:updated_time" content="2019-08-27T13:18:28.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（六）-- 支持向量机">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（六） 支持向量机">
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  374
+                  534
                 </span>
               
 
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -423,9 +423,44 @@ r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}\tag{6.2}</scri
 \end {cases}\tag{6.3}
 \end {equation}</script></li>
 </ul>
+<p><strong>式 (6.3) 推导</strong></p>
+<ul>
+<li><p>假设超平面是 $(\boldsymbol w^\prime)^T\boldsymbol x + \boldsymbol b^\prime= 0 $, 对于 $(\boldsymbol x_i, y_i)$, 有：</p>
+<script type="math/tex; mode=display">
+\begin {equation}
+\begin {cases}
+(\boldsymbol w^\prime)^T \boldsymbol x_i + b^\prime > 0, \ \ y_i = +1 \\
+(\boldsymbol w^\prime)^T \boldsymbol x_i + b^\prime < 0, \ \ y_i = -1
+\end {cases}\tag{*}
+\end {equation}</script></li>
+<li><p>根据几何间隔，将以上关系可修正为:</p>
+<script type="math/tex; mode=display">
+\begin {equation}
+\begin {cases}
+(\boldsymbol w^\prime)^T \boldsymbol x_i + b^\prime \ge +\xi, \ \ y_i = +1 \\
+(\boldsymbol w^\prime)^T \boldsymbol x_i + b^\prime \le -\xi, \ \ y_i = -1
+\end {cases}\tag{**}
+\end {equation}</script></li>
+<li><p>由 $\xi &gt; 0$ 得：</p>
+<script type="math/tex; mode=display">
+\begin {equation}
+\begin {cases}
+(\frac{1}{\xi} \boldsymbol w^\prime)^T \boldsymbol x_i + \frac{1}{\xi}b^\prime \ge +1, \ \ y_i = +1 \\
+(\frac{1}{\xi}\boldsymbol w^\prime)^T \boldsymbol x_i + \frac{1}{\xi}b^\prime \le -1, \ \ y_i = -1
+\end {cases}\tag{***}
+\end {equation}</script></li>
+<li><p>令 $\boldsymbol w = \frac{1}{\xi} \boldsymbol w^\prime$, $b = \frac{1}{\xi}b^\prime$, 得：</p>
+<script type="math/tex; mode=display">
+\begin {equation}
+\begin {cases}
+\boldsymbol w^T \boldsymbol x_i + b \ge +1, \ \ y_i = +1 \\
+\boldsymbol w^T \boldsymbol x_i + b \le -1, \ \ y_i = -1
+\end {cases}\tag{****}
+\end {equation}</script></li>
+</ul>
 <p><strong>支持向量 (support vector)：</strong> </p>
 <ul>
-<li>距离超平面最近的几个训练样本可使上式的等号成立，它们被称为 “支持向量”</li>
+<li>距离超平面最近的几个训练样本可使上式 (6.6) 的等号成立，它们被称为 “支持向量”</li>
 </ul>
 <p><strong>间隔 (margin): </strong></p>
 <ul>
@@ -459,7 +494,49 @@ r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}\tag{6.2}</scri
 
 
 <hr>
-<h3 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h3><hr>
+<h3 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h3><h4 id="SVM-基本型的对偶问题-dual-problem"><a href="#SVM-基本型的对偶问题-dual-problem" class="headerlink" title="SVM 基本型的对偶问题 (dual problem)"></a><strong>SVM 基本型的对偶问题</strong> (dual problem)</h4><ul>
+<li><p>式 (6.6) 对应的拉格朗日函数：</p>
+<script type="math/tex; mode=display">
+L(\boldsymbol w, b, \alpha) = \frac{1}{2}\left\|\boldsymbol w \right\|^2+\sum_{i=1}^{m}{\alpha_i\left( 1-y_i(\boldsymbol w^T\boldsymbol x_i+b)\right )}\tag{6.8}</script><p>其中，$\alpha = (\alpha_i;\alpha_2;…;\alpha_m)$.</p>
+</li>
+<li><p>令 $L(\boldsymbol w, b, \alpha)$ 对 $\boldsymbol w$ 和 $b$ 求偏导为零可得:</p>
+<script type="math/tex; mode=display">
+\begin {align}
+\boldsymbol w &= \sum_{i=1}^{m}{\alpha_i y_i\boldsymbol x_i}\tag{6.9}\\
+0 &= \sum_{i=1}^{m}{\alpha_i y_i}\tag{6.10}
+\end {align}</script></li>
+<li><p>式 (6.9) 和 (6.10) 推导：</p>
+<script type="math/tex; mode=display">
+\begin {align}
+L(\boldsymbol w, b, \alpha) 
+&= \frac{1}{2}\left\|\boldsymbol w \right\|^2+\sum_{i=1}^{m}{\alpha_i\left( 1-y_i(\boldsymbol w^T\boldsymbol x_i+b)\right )}\\
+&= \frac{1}{2}\left\|\boldsymbol w \right\|^2+\sum_{i=1}^{m}{\left( \alpha_i-\alpha_iy_i\boldsymbol w^T\boldsymbol x_i+\alpha_iy_ib)\right )}\\
+&= \frac{1}{2}\left\|\boldsymbol w \right\|^2 + \sum_{i=1}^{m}\alpha_i - \sum_{i=1}^{m}\alpha_iy_i\boldsymbol w^T\boldsymbol x_i - \sum_{i=1}^{m}\alpha_iy_ib
+\end {align}</script><p>对 $\boldsymbol w$ 和 $b$ 求偏导为零可得:</p>
+<script type="math/tex; mode=display">
+\begin {align}
+\frac{\partial L}{\partial \boldsymbol w} &= \frac{1}{2}\times 2\times \boldsymbol w + 0 - \sum_{i=1}^{m}\alpha_iy_i\boldsymbol x_i - 0 = 0 \Rightarrow \boldsymbol w = \sum_{i=1}^{m}\alpha_iy_i\boldsymbol x_i \\
+\frac{\partial L}{\partial \boldsymbol b} &= 0 + 0 - 0 - \sum_{i=1}^{m}\alpha_iy_i\Rightarrow 0 = \sum_{i=1}^{m}\alpha_iy_i
+\end {align}</script></li>
+<li><p>将式 (6.9) 带入 (6.8) 得:</p>
+<script type="math/tex; mode=display">
+\begin {align}
+L(\boldsymbol w, b, \alpha) 
+&= \frac{1}{2}\boldsymbol w^T\boldsymbol w +\sum_{i=1}^{m}{\alpha_i} - \sum_{i=1}^{m}\alpha_iy_i\boldsymbol w^T\boldsymbol x_i - \sum_{i=1}^{m}\alpha_iy_ib \\
+&= \frac{1}{2}\boldsymbol w^T \sum_{i=1}^{m}{\alpha_i y_i\boldsymbol x_i}+\sum_{i=1}^{m}{\alpha_i} - \sum_{i=1}^{m}\alpha_iy_i\boldsymbol w^T\boldsymbol x_i - \sum_{i=1}^{m}\alpha_iy_ib \\
+&= \frac{1}{2}\boldsymbol w^T \sum_{i=1}^{m}{\alpha_i y_i\boldsymbol x_i} - \boldsymbol w^T\sum_{i=1}^{m}\alpha_iy_i\boldsymbol x_i + \sum_{i=1}^{m}{\alpha_i}  - b\sum_{i=1}^{m}\alpha_iy_i \\
+&=- \frac{1}{2}\boldsymbol w^T \sum_{i=1}^{m}{\alpha_i y_i\boldsymbol x_i} + \sum_{i=1}^{m}{\alpha_i}  - b\sum_{i=1}^{m}\alpha_iy_i \\
+&= - \frac{1}{2}\boldsymbol (\sum_{i=1}^{m}{\alpha_i y_i\boldsymbol x_i})^T \sum_{i=1}^{m}{\alpha_i y_i\boldsymbol x_i} + \sum_{i=1}^{m}{\alpha_i}  - b\sum_{i=1}^{m}\alpha_iy_i \\
+&= \sum_{i=1}^{m}{\alpha_i} - \frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^{m}{\alpha_i\alpha_jy_iy_j\boldsymbol x_i^T\boldsymbol x_j} -b\sum_{i=1}^{m}\alpha_iy_i \\
+\end {align}</script></li>
+<li><p>再考虑式 (6.10) 的约束，得到式 (6.6) 的对对偶问题：</p>
+<script type="math/tex; mode=display">
+\begin {align}
+&\mathop{\max}_{\alpha}{\sum_{i=1}^{m}{\alpha_i} - \frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^{m}{\alpha_i\alpha_jy_iy_j\boldsymbol x_i^T\boldsymbol x_j}}\tag{6.11}\\
+&s.t \  \sum_{i=1}^{m}\alpha_iy_i = 0, \ \alpha_i \ge0,i = 1, 2,...,m
+\end {align}</script></li>
+</ul>
+<hr>
 <h3 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h3><hr>
 <h3 id="间隔与正则化"><a href="#间隔与正则化" class="headerlink" title="间隔与正则化"></a>间隔与正则化</h3><hr>
 <h3 id="支持向量回归"><a href="#支持向量回归" class="headerlink" title="支持向量回归"></a>支持向量回归</h3><hr>
@@ -673,7 +750,7 @@ r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}\tag{6.2}</scri
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（六）-支持向量机"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（六） 支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#间隔与支持向量"><span class="nav-number">1.1.</span> <span class="nav-text">间隔与支持向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对偶问题"><span class="nav-number">1.2.</span> <span class="nav-text">对偶问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核函数"><span class="nav-number">1.3.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间隔与正则化"><span class="nav-number">1.4.</span> <span class="nav-text">间隔与正则化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持向量回归"><span class="nav-number">1.5.</span> <span class="nav-text">支持向量回归</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（六）-支持向量机"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（六） 支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#间隔与支持向量"><span class="nav-number">1.1.</span> <span class="nav-text">间隔与支持向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对偶问题"><span class="nav-number">1.2.</span> <span class="nav-text">对偶问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM-基本型的对偶问题-dual-problem"><span class="nav-number">1.2.1.</span> <span class="nav-text">SVM 基本型的对偶问题 (dual problem)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核函数"><span class="nav-number">1.3.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间隔与正则化"><span class="nav-number">1.4.</span> <span class="nav-text">间隔与正则化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持向量回归"><span class="nav-number">1.5.</span> <span class="nav-text">支持向量回归</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -707,7 +784,7 @@ r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}\tag{6.2}</scri
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">36.1k</span>
+    <span title="Site words total count">36.3k</span>
   
 </div>
 
@@ -726,7 +803,7 @@ r = \frac{|\boldsymbol w^T \boldsymbol x + b|}{||\boldsymbol w||}\tag{6.2}</scri
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共36.1k字</span>
+  <span class="post-count">博客全站共36.3k字</span>
 </div>
         
 
