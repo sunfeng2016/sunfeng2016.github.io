@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-26T12:56:07.914Z</updated>
+  <updated>2019-08-30T08:33:24.706Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>吴恩达《神经网络与深度学习》课程笔记（1）—— 深度学习概述</title>
+    <link href="http://sunfeng.online/2019/08/30/%E5%90%B4%E6%81%A9%E8%BE%BE%E3%80%8A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/"/>
+    <id>http://sunfeng.online/2019/08/30/吴恩达《神经网络与深度学习》课程笔记（1）—— 深度学习概述/</id>
+    <published>2019-08-30T08:28:59.000Z</published>
+    <updated>2019-08-30T08:33:24.706Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><font size="5">吴恩达《神经网络与深度学习》课程笔记（1）—— 深度学习概述</font></strong></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;&lt;font size=&quot;5&quot;&gt;吴恩达《神经网络与深度学习》课程笔记（1）—— 深度学习概述&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Coursera深度学习笔记" scheme="http://sunfeng.online/categories/Coursera%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="神经网络与深度学习" scheme="http://sunfeng.online/categories/Coursera%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Coursera深度学习笔记" scheme="http://sunfeng.online/tags/Coursera%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>课程一(Neural Networks and Deep Learning)，第一周(Introduction to Deep Learning)--10个测试题</title>
