@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础]]></title>
+    <url>%2F2019%2F09%2F05%2F%E5%90%B4%E6%81%A9%E8%BE%BE%E3%80%8A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89--%20%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[吴恩达《神经网络与深度学习》课程笔记（2） 神经网络基础 Logistic 回归梯度下降法 (Gradient Descent)计算图 (Computation Graph)Logistic 回归中的梯度下降法]]></content>
+      <categories>
+        <category>Coursera深度学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Coursera深度学习笔记</tag>
+        <tag>神经网络与深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[吴恩达《神经网络与深度学习》课程笔记（1）-- 深度学习概述]]></title>
     <url>%2F2019%2F08%2F30%2F%E5%90%B4%E6%81%A9%E8%BE%BE%E3%80%8A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89--%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0%2F</url>
     <content type="text"><![CDATA[吴恩达《神经网络与深度学习》课程笔记（1） 深度学习概述 什么是神经网络？(What is a Neural Network ?)深度学习： 指训练神经网络的过程 有时候特指训练大规模的神经网络 神经网络： 一个房价预测的例子 神经网络的监督学习 (Supervised Learning with Neural Network)常见神经网络的监督学习案例： 为什么深度学习会兴起？(Why the Deep Learning taking off ?) 数据 (Data) 计算能力 (Computation) 算法 (Algorithm)]]></content>

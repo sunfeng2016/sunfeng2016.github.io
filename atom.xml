@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-08-31T05:40:15.941Z</updated>
+  <updated>2019-09-05T09:48:17.100Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -17,17 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础</title>
+    <link href="http://sunfeng.online/2019/09/05/%E5%90%B4%E6%81%A9%E8%BE%BE%E3%80%8A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89--%20%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    <id>http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础/</id>
+    <published>2019-09-05T09:41:52.000Z</published>
+    <updated>2019-09-05T09:48:17.100Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><font size="4">吴恩达《神经网络与深度学习》课程笔记（2） 神经网络基础</font></strong></p><hr><a id="more"></a><h3 id="Logistic-回归"><a href="#Logistic-回归" class="headerlink" title="Logistic 回归"></a>Logistic 回归</h3><h3 id="梯度下降法-Gradient-Descent"><a href="#梯度下降法-Gradient-Descent" class="headerlink" title="梯度下降法 (Gradient Descent)"></a>梯度下降法 (Gradient Descent)</h3><h3 id="计算图-Computation-Graph"><a href="#计算图-Computation-Graph" class="headerlink" title="计算图 (Computation Graph)"></a>计算图 (Computation Graph)</h3><h3 id="Logistic-回归中的梯度下降法"><a href="#Logistic-回归中的梯度下降法" class="headerlink" title="Logistic 回归中的梯度下降法"></a>Logistic 回归中的梯度下降法</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;&lt;font size=&quot;4&quot;&gt;吴恩达《神经网络与深度学习》课程笔记（2） 神经网络基础&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Coursera深度学习笔记" scheme="http://sunfeng.online/categories/Coursera%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Coursera深度学习笔记" scheme="http://sunfeng.online/tags/Coursera%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="神经网络与深度学习" scheme="http://sunfeng.online/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>吴恩达《神经网络与深度学习》课程笔记（1）-- 深度学习概述</title>
     <link href="http://sunfeng.online/2019/08/30/%E5%90%B4%E6%81%A9%E8%BE%BE%E3%80%8A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89--%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/"/>
     <id>http://sunfeng.online/2019/08/30/吴恩达《神经网络与深度学习》课程笔记（1）-- 深度学习概述/</id>
     <published>2019-08-30T08:28:59.000Z</published>
-    <updated>2019-08-31T05:40:15.941Z</updated>
+    <updated>2019-09-05T09:43:19.358Z</updated>
     
-    <content type="html"><![CDATA[<p><strong><font size="4">吴恩达《神经网络与深度学习》课程笔记（1） 深度学习概述</font></strong></p><a id="more"></a><h3 id="什么是神经网络？-What-is-a-Neural-Network"><a href="#什么是神经网络？-What-is-a-Neural-Network" class="headerlink" title="什么是神经网络？(What is a Neural Network ?)"></a>什么是神经网络？(What is a Neural Network ?)</h3><p><strong>深度学习：</strong></p><ul><li>指训练神经网络的过程</li><li>有时候特指训练大规模的神经网络</li></ul><p><strong>神经网络：</strong> 一个房价预测的例子</p><p><img src="/2019/08/30/吴恩达《神经网络与深度学习》课程笔记（1）-- 深度学习概述/figure1.PNG" alt="figure1"></p><h3 id="神经网络的监督学习-Supervised-Learning-with-Neural-Network"><a href="#神经网络的监督学习-Supervised-Learning-with-Neural-Network" class="headerlink" title="神经网络的监督学习 (Supervised Learning with Neural Network)"></a>神经网络的监督学习 (Supervised Learning with Neural Network)</h3><p><strong>常见神经网络的监督学习案例：</strong></p><p><img src="/2019/08/30/吴恩达《神经网络与深度学习》课程笔记（1）-- 深度学习概述/figure2.PNG" alt="figure2"></p><h3 id="为什么深度学习会兴起？-Why-the-Deep-Learning-taking-off"><a href="#为什么深度学习会兴起？-Why-the-Deep-Learning-taking-off" class="headerlink" title="为什么深度学习会兴起？(Why the Deep Learning taking off ?)"></a>为什么深度学习会兴起？(Why the Deep Learning taking off ?)</h3><ul><li><strong>数据</strong> (Data)</li><li><strong>计算能力</strong> (Computation)</li><li><strong>算法</strong> (Algorithm)</li></ul>]]></content>
+    <content type="html"><![CDATA[<p><strong><font size="4">吴恩达《神经网络与深度学习》课程笔记（1） 深度学习概述</font></strong></p><hr><a id="more"></a><h3 id="什么是神经网络？-What-is-a-Neural-Network"><a href="#什么是神经网络？-What-is-a-Neural-Network" class="headerlink" title="什么是神经网络？(What is a Neural Network ?)"></a>什么是神经网络？(What is a Neural Network ?)</h3><p><strong>深度学习：</strong></p><ul><li>指训练神经网络的过程</li><li>有时候特指训练大规模的神经网络</li></ul><p><strong>神经网络：</strong> 一个房价预测的例子</p><p><img src="/2019/08/30/吴恩达《神经网络与深度学习》课程笔记（1）-- 深度学习概述/figure1.PNG" alt="figure1"></p><h3 id="神经网络的监督学习-Supervised-Learning-with-Neural-Network"><a href="#神经网络的监督学习-Supervised-Learning-with-Neural-Network" class="headerlink" title="神经网络的监督学习 (Supervised Learning with Neural Network)"></a>神经网络的监督学习 (Supervised Learning with Neural Network)</h3><p><strong>常见神经网络的监督学习案例：</strong></p><p><img src="/2019/08/30/吴恩达《神经网络与深度学习》课程笔记（1）-- 深度学习概述/figure2.PNG" alt="figure2"></p><h3 id="为什么深度学习会兴起？-Why-the-Deep-Learning-taking-off"><a href="#为什么深度学习会兴起？-Why-the-Deep-Learning-taking-off" class="headerlink" title="为什么深度学习会兴起？(Why the Deep Learning taking off ?)"></a>为什么深度学习会兴起？(Why the Deep Learning taking off ?)</h3><ul><li><strong>数据</strong> (Data)</li><li><strong>计算能力</strong> (Computation)</li><li><strong>算法</strong> (Algorithm)</li></ul>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;&lt;strong&gt;&lt;font size=&quot;4&quot;&gt;吴恩达《神经网络与深度学习》课程笔记（1） 深度学习概述&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
     
     </summary>
     
