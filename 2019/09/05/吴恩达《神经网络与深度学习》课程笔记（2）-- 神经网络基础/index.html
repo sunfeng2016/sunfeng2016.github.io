@@ -98,7 +98,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure1.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure2.PNG">
-<meta property="og:updated_time" content="2019-09-05T12:35:30.491Z">
+<meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure3.PNG">
+<meta property="og:updated_time" content="2019-09-05T13:42:10.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础">
 <meta name="twitter:description" content="吴恩达《神经网络与深度学习》课程笔记（2） 神经网络基础">
@@ -358,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  628
+                  911
                 </span>
               
 
@@ -374,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -434,9 +435,9 @@
 s = \sigma(w^Tx+b) = \sigma(z) = \frac{1}{1+e^{-z}}</script><p>为将 $w^Tx+b$ 约束在 [0,1]间，引入 Sigmoid函数</p>
 </li>
 </ul>
-<p>![figure2](<a href="https://raw.githubusercontent.com/bighuang624/Andrew-Ng-Deep-Learning-notes/master/docs/Neural_Networks_and_Deep_Learning/sigmoid-function.png" target="_blank" rel="noopener">https://raw.githubusercontent.com/bighuang624/Andrew-Ng-Deep-Learning-notes/master/docs/Neural_Networks_and_Deep_Learning/sigmoid-function.png</a></p>
 <p><strong><font color="#0099ff">Logistic 回归可以看作是一个非常小的神经网络，下图是一个典型的例子：</font></strong></p>
 <p><img src="/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础/figure2.PNG" alt="figure2"></p>
+<hr>
 <h3 id="逻辑回归的代价函数-Logistic-Regression-Cost-Function"><a href="#逻辑回归的代价函数-Logistic-Regression-Cost-Function" class="headerlink" title="逻辑回归的代价函数 (Logistic Regression Cost Function)"></a>逻辑回归的代价函数 (Logistic Regression Cost Function)</h3><p><strong>损失函数 (loss function)</strong></p>
 <ul>
 <li><font color="#0099">用于衡量预测结果与真实值之间的误差</font>
@@ -463,7 +464,49 @@ L(\hat y,y) = -y\log(\hat y)-(1-y)\log(1-\hat y)</script></li>
 J(w,b)=\frac{1}{m}\sum_{i=1}^{m}L(\hat y^{(i)},y^{(i)})
 = \frac{1}{m}\left(-y^{(i)}\log(\hat y^{(i)})-(1-y^{(i)})\log(1-\hat y^{(i)})\right)</script></li>
 </ul>
-<h3 id="梯度下降法-Gradient-Descent"><a href="#梯度下降法-Gradient-Descent" class="headerlink" title="梯度下降法 (Gradient Descent)"></a>梯度下降法 (Gradient Descent)</h3><h3 id="计算图-Computation-Graph"><a href="#计算图-Computation-Graph" class="headerlink" title="计算图 (Computation Graph)"></a>计算图 (Computation Graph)</h3><h3 id="Logistic-回归中的梯度下降法"><a href="#Logistic-回归中的梯度下降法" class="headerlink" title="Logistic 回归中的梯度下降法"></a>Logistic 回归中的梯度下降法</h3>
+<hr>
+<h3 id="梯度下降-Gradient-Descent"><a href="#梯度下降-Gradient-Descent" class="headerlink" title="梯度下降 (Gradient Descent)"></a>梯度下降 (Gradient Descent)</h3><p><strong>梯度 (gradient)</strong></p>
+<ul>
+<li>梯度是一个向量，其方向是函数增长最快的方向，其大小表示函数的最大增长速度</li>
+<li>按梯度的方向走，函数增长的最快</li>
+<li>按梯度的负方向走，函数降低的最快</li>
+</ul>
+<p><strong>模型训练目标</strong></p>
+<ul>
+<li>模型的训练目标即是寻找合适的 $w$ 和 $b$ 以最小化代价函数值</li>
+<li>简单起见，先假设 $w$ 与 $b$ 都是一维实数，那么可以得到函数 $J$ 关于 $w$ 和 $b$ 的图如下：</li>
+</ul>
+<p><img src="/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础/figure3.PNG" alt="figure3"></p>
+<ul>
+<li><font color="#0099">成本函数 J 是一个凸函数，与非凸函数的区别在于其不含有多个局部最低点，选择这样的代价函数就保证了无论怎样初始化模型参数值，都能寻找到合适的最优解</font>
+
+</li>
+</ul>
+<p><strong>参数更新：</strong></p>
+<ul>
+<li><p>参数 $w$ 的更新公式：</p>
+<script type="math/tex; mode=display">
+w := w-\alpha\frac{\partial J(w,b)}{\partial w}</script></li>
+<li><p>参数 $b$ 的更新公式：</p>
+<script type="math/tex; mode=display">
+b:=b-\alpha\frac{\partial J(w,b)}{\partial b}</script><p>其中， $\alpha$ 为学习率，控制步长</p>
+</li>
+</ul>
+<hr>
+<h3 id="逻辑回归中的梯度下降-Logistic-Regression-Gradient-Descent"><a href="#逻辑回归中的梯度下降-Logistic-Regression-Gradient-Descent" class="headerlink" title="逻辑回归中的梯度下降 (Logistic Regression Gradient Descent)"></a>逻辑回归中的梯度下降 (Logistic Regression Gradient Descent)</h3><p><strong>问题假设：</strong></p>
+<ul>
+<li>假设样本只有两个特征 $x_1$ 和 $x_2$</li>
+</ul>
+<p><strong>参数回顾：</strong></p>
+<ul>
+<li>权值：$w_1$ 和 $w_2$</li>
+<li>偏置：$b$</li>
+<li>线性回归输出：$z = w_1x_1+w_2x_2+b$</li>
+<li>逻辑回归输出：$\hat y  = a = \sigma(z)$, 其中 $z = w_1x_1+w_2x_2+b$, $\sigma(z) = \frac{1}{1-e^{-z}}$</li>
+<li>损失函数：</li>
+<li>代价函数：</li>
+</ul>
+
       
     </div>
     
@@ -671,7 +714,7 @@ J(w,b)=\frac{1}{m}\sum_{i=1}^{m}L(\hat y^{(i)},y^{(i)})
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类-Binary-Classification"><span class="nav-number">1.</span> <span class="nav-text">二分类 (Binary Classification)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归-Logistic-Regression"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归 (Logistic Regression)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归的代价函数-Logistic-Regression-Cost-Function"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归的代价函数 (Logistic Regression Cost Function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降法-Gradient-Descent"><span class="nav-number">4.</span> <span class="nav-text">梯度下降法 (Gradient Descent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算图-Computation-Graph"><span class="nav-number">5.</span> <span class="nav-text">计算图 (Computation Graph)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-回归中的梯度下降法"><span class="nav-number">6.</span> <span class="nav-text">Logistic 回归中的梯度下降法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类-Binary-Classification"><span class="nav-number">1.</span> <span class="nav-text">二分类 (Binary Classification)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归-Logistic-Regression"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归 (Logistic Regression)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归的代价函数-Logistic-Regression-Cost-Function"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归的代价函数 (Logistic Regression Cost Function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降-Gradient-Descent"><span class="nav-number">4.</span> <span class="nav-text">梯度下降 (Gradient Descent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归中的梯度下降-Logistic-Regression-Gradient-Descent"><span class="nav-number">5.</span> <span class="nav-text">逻辑回归中的梯度下降 (Logistic Regression Gradient Descent)</span></a></li></ol></div>
             
 
           </div>
@@ -705,7 +748,7 @@ J(w,b)=\frac{1}{m}\sum_{i=1}^{m}L(\hat y^{(i)},y^{(i)})
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">37.1k</span>
+    <span title="Site words total count">37.3k</span>
   
 </div>
 
@@ -724,7 +767,7 @@ J(w,b)=\frac{1}{m}\sum_{i=1}^{m}L(\hat y^{(i)},y^{(i)})
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共37.1k字</span>
+  <span class="post-count">博客全站共37.3k字</span>
 </div>
         
 
