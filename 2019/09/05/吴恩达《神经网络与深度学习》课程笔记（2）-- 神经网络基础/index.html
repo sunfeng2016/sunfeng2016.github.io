@@ -99,7 +99,9 @@
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure1.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure2.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure3.PNG">
-<meta property="og:updated_time" content="2019-09-05T13:42:10.322Z">
+<meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure4.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure5.PNG">
+<meta property="og:updated_time" content="2019-09-06T08:53:19.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础">
 <meta name="twitter:description" content="吴恩达《神经网络与深度学习》课程笔记（2） 神经网络基础">
@@ -359,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  911
+                  1,205
                 </span>
               
 
@@ -375,7 +377,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -503,8 +505,63 @@ b:=b-\alpha\frac{\partial J(w,b)}{\partial b}</script><p>其中， $\alpha$ 为�
 <li>偏置：$b$</li>
 <li>线性回归输出：$z = w_1x_1+w_2x_2+b$</li>
 <li>逻辑回归输出：$\hat y  = a = \sigma(z)$, 其中 $z = w_1x_1+w_2x_2+b$, $\sigma(z) = \frac{1}{1-e^{-z}}$</li>
-<li>损失函数：</li>
-<li>代价函数：</li>
+<li>损失函数：$L(\hat y^{(i)},y^{(i)}) = -y^{(i)}\log(\hat y^{(i)})-(1-y^{(i)})\log(1-\hat y^{(i)})$</li>
+<li>代价函数：$J(w,b) = \frac{1}{m}\sum_{i =1}^{m}L(\hat y^{(i)},y^{(i)})$</li>
+</ul>
+<p><strong>单个样本的梯度下降：</strong></p>
+<ul>
+<li><p>根据上述假设，输入参数有5个：$x_1$, $x_2$, $w_1$, $w_2$ 和 $b$, 可以推导出如下的计算图：</p>
+<p><img src="/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础/figure4.PNG" alt="figure4"></p>
+</li>
+<li><p>其中 $L(a,y) = -y\log(a)-(1-y)\log(1-a)$</p>
+</li>
+<li><p>首先反向求出 $L$ 对于 $a$ 的导数:</p>
+<script type="math/tex; mode=display">
+da = \frac{d L}{d a} = -y/a+(1-y)/(1-a)</script></li>
+<li><p>然后继续求出 $L$ 对于 $z$ 的导数：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+dz = \frac{d L}{d z}&= \frac{d L}{d a} \cdot\frac{d a}{d z}\\
+&= \left( -y/a+(1-y)/(1-a) \right)\cdot\left(a(1-a) \right)\\
+&= a- y
+\end {align}</script></li>
+<li><p>最终求出 $L$ 对于参数 $w$ 和 $b$ 的导数：</p>
+<script type="math/tex; mode=display">
+\begin {align}
+dw_1 = \frac{\partial L}{\partial w_1} &= \frac{dL}{dz}\cdot\frac{dz}{dw_1} \\
+&= (a-y) \cdot x_1 \\
+dw_2 = \frac{\partial L}{\partial w_2} &= \frac{dL}{dz}\cdot\frac{dz}{dw_2} \\
+&= (a-y) \cdot x_2 \\
+db = \frac{\partial L}{\partial w_1} &= \frac{dL}{dz}\cdot\frac{dz}{db} \\
+&= (a-y) 
+\end {align}</script></li>
+<li><p>根据如下公式进行参数更新：</p>
+<script type="math/tex; mode=display">
+\begin {align}
+w_1 &:= w_1-\alpha dw_1 \\
+w_2 &:= w_2-\alpha dw_2 \\
+b &:= b - \alpha db
+\end {align}</script></li>
+</ul>
+<p><strong>$m$个样本的梯度下降：</strong></p>
+<ul>
+<li><p>接下来，我们需要将对于单个样本的损失函数扩展到整个训练集的代价函数：</p>
+<script type="math/tex; mode=display">
+J(w,b) = \frac{1}{m}\sum_{i=1}^{m}L(a^{(i)},y^{(i)})\\
+a^{(i)} = \hat y^{(i)} = \sigma(z^{(i)})= \sigma(w^Tx^{(i)}+b)</script></li>
+<li><p>我们可以对于某个权重参数 $w_1$, 其导数计算为:</p>
+<script type="math/tex; mode=display">
+\frac{\partial J(w,b)}{\partial w_1} = \frac{1}{m}\sum_{i=1}^{m}\frac{\partial L(a^{(i)},y^{(i)})}{\partial w_1}</script></li>
+</ul>
+<p><strong>完成的逻辑回归中某次训练流程如下，这里仅假设特征向量的维度为2：</strong></p>
+<p><img src="/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础/figure5.PNG" alt="figure5"></p>
+<ul>
+<li>然后，对 $w_1$, $w_2$ 和 $b$ 进行迭代</li>
+<li><font color="#ff00">上述过程在计算时有一个缺点：需要编写两个 for 循环</font><ul>
+<li>第一个 for 循环用于遍历所有的样本</li>
+<li>第二个 for 循环用于遍历所有的特征</li>
+</ul>
+</li>
 </ul>
 
       
@@ -748,7 +805,7 @@ b:=b-\alpha\frac{\partial J(w,b)}{\partial b}</script><p>其中， $\alpha$ 为�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">37.3k</span>
+    <span title="Site words total count">37.6k</span>
   
 </div>
 
@@ -767,7 +824,7 @@ b:=b-\alpha\frac{\partial J(w,b)}{\partial b}</script><p>其中， $\alpha$ 为�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共37.3k字</span>
+  <span class="post-count">博客全站共37.6k字</span>
 </div>
         
 
