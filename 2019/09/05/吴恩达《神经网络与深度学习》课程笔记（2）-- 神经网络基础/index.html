@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure3.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure4.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure5.PNG">
-<meta property="og:updated_time" content="2019-09-06T08:53:19.291Z">
+<meta property="og:updated_time" content="2019-09-06T11:38:02.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础">
 <meta name="twitter:description" content="吴恩达《神经网络与深度学习》课程笔记（2） 神经网络基础">
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,205
+                  1,346
                 </span>
               
 
@@ -562,6 +562,29 @@ a^{(i)} = \hat y^{(i)} = \sigma(z^{(i)})= \sigma(w^Tx^{(i)}+b)</script></li>
 <li>第二个 for 循环用于遍历所有的特征</li>
 </ul>
 </li>
+</ul>
+<hr>
+<h3 id="向量化-Vectorization"><a href="#向量化-Vectorization" class="headerlink" title="向量化 (Vectorization)"></a>向量化 (Vectorization)</h3><ul>
+<li><p>在逻辑回归中，需要计算:</p>
+<script type="math/tex; mode=display">
+z = w^Tx+b</script></li>
+<li><p>如果是非向量化的循环方式，代码可能如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n_x):</span><br><span class="line">    z += w[i] * x[i]</span><br><span class="line">z += b</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>而如果是项量化的操作，代码则会简介很多，并带来近百倍性能的提升(并行指令):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = np.dot(w,x) + b</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不用显示 for 循环，实现逻辑回归的梯度下降一次迭代 (对应之前蓝色代码的for循环部分，这里公式和 Numpy 的代码混杂，注意分辨)：</p>
+<script type="math/tex; mode=display">
+\begin {align}
+Z &= w^TX+b=np.dot(w.T,x)+b\\
+A &= \sigma(Z)\\
+dZ &= A-Y\\
+dw &= \frac{1}{m}XdZ^T\\
+db &= \frac{1}{m}np.sum(dZ)\\
+w &:= w-\sigma dw\\
+b &:= b -\sigma db
+\end {align}</script></li>
 </ul>
 
       
@@ -771,7 +794,7 @@ a^{(i)} = \hat y^{(i)} = \sigma(z^{(i)})= \sigma(w^Tx^{(i)}+b)</script></li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类-Binary-Classification"><span class="nav-number">1.</span> <span class="nav-text">二分类 (Binary Classification)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归-Logistic-Regression"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归 (Logistic Regression)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归的代价函数-Logistic-Regression-Cost-Function"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归的代价函数 (Logistic Regression Cost Function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降-Gradient-Descent"><span class="nav-number">4.</span> <span class="nav-text">梯度下降 (Gradient Descent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归中的梯度下降-Logistic-Regression-Gradient-Descent"><span class="nav-number">5.</span> <span class="nav-text">逻辑回归中的梯度下降 (Logistic Regression Gradient Descent)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类-Binary-Classification"><span class="nav-number">1.</span> <span class="nav-text">二分类 (Binary Classification)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归-Logistic-Regression"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归 (Logistic Regression)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归的代价函数-Logistic-Regression-Cost-Function"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归的代价函数 (Logistic Regression Cost Function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降-Gradient-Descent"><span class="nav-number">4.</span> <span class="nav-text">梯度下降 (Gradient Descent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归中的梯度下降-Logistic-Regression-Gradient-Descent"><span class="nav-number">5.</span> <span class="nav-text">逻辑回归中的梯度下降 (Logistic Regression Gradient Descent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量化-Vectorization"><span class="nav-number">6.</span> <span class="nav-text">向量化 (Vectorization)</span></a></li></ol></div>
             
 
           </div>
@@ -805,7 +828,7 @@ a^{(i)} = \hat y^{(i)} = \sigma(z^{(i)})= \sigma(w^Tx^{(i)}+b)</script></li>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">37.6k</span>
+    <span title="Site words total count">37.8k</span>
   
 </div>
 
@@ -824,7 +847,7 @@ a^{(i)} = \hat y^{(i)} = \sigma(z^{(i)})= \sigma(w^Tx^{(i)}+b)</script></li>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共37.6k字</span>
+  <span class="post-count">博客全站共37.8k字</span>
 </div>
         
 
