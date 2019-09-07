@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure3.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure4.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/05/吴恩达《神经网络与深度学习》课程笔记（2）--%20神经网络基础/figure5.PNG">
-<meta property="og:updated_time" content="2019-09-07T08:03:31.413Z">
+<meta property="og:updated_time" content="2019-09-07T08:41:02.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达《神经网络与深度学习》课程笔记（2）-- 神经网络基础">
 <meta name="twitter:description" content="吴恩达《神经网络与深度学习》课程笔记（2） 神经网络基础">
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,346
+                  1,639
                 </span>
               
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -597,6 +597,28 @@ w &:= w-\sigma dw\\
 b &:= b -\sigma db
 \end {align}</script></li>
 </ul>
+<h3 id="Python-中的广播机制-Broadcasting-in-Python"><a href="#Python-中的广播机制-Broadcasting-in-Python" class="headerlink" title="Python 中的广播机制 (Broadcasting in Python)"></a>Python 中的广播机制 (Broadcasting in Python)</h3><p><strong>numpy 广播机制</strong>：</p>
+<ul>
+<li><strong><font color="#0099ff">如果两个数组的后缘维度的轴长度相符或其中一方的轴长度为1，则认为它们是广播兼容的，广播会在缺失维度和轴长度为1的维度上进行</font></strong></li>
+</ul>
+<p><strong>三种常见的广播形式：</strong></p>
+<ul>
+<li>矩阵 $A_{m,n}$ 和矩阵 $B_{1,n}$ 进行四则运算:<ul>
+<li>后缘维度轴长度相符，可以广播</li>
+<li>广播沿着轴长度为1的轴进行，即 $B_{1,n}$ 广播成为 $B_{m,n}^{\prime}$, 然后进行四则运算</li>
+</ul>
+</li>
+<li>矩阵 $A_{m,n}$ 和矩阵 $B_{m,1}$ 进行四则运算:<ul>
+<li>后缘维度轴长度不相符，但一方轴长度为1，可以广播</li>
+<li>广播沿着轴长度为1的轴进行，即 $B_{m,1}$ 广播成为 $B_{m,n}^{\prime}$, 然后进行四则运算</li>
+</ul>
+</li>
+<li>矩阵 $A_{m,1}$ 和常数 $R$ 进行四则运算:<ul>
+<li>后缘维度轴长度不相符，但其中一方轴长度为1，可以广播</li>
+<li>广播沿着缺失维度和轴长度为1的轴进行，即将 $R$ 广播成 $B_{m,1}^{\prime}$, 然后进行四则运算</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -803,7 +825,7 @@ b &:= b -\sigma db
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类-Binary-Classification"><span class="nav-number">1.</span> <span class="nav-text">二分类 (Binary Classification)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归-Logistic-Regression"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归 (Logistic Regression)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归的代价函数-Logistic-Regression-Cost-Function"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归的代价函数 (Logistic Regression Cost Function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降-Gradient-Descent"><span class="nav-number">4.</span> <span class="nav-text">梯度下降 (Gradient Descent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归中的梯度下降-Logistic-Regression-Gradient-Descent"><span class="nav-number">5.</span> <span class="nav-text">逻辑回归中的梯度下降 (Logistic Regression Gradient Descent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量化-Vectorization"><span class="nav-number">6.</span> <span class="nav-text">向量化 (Vectorization)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类-Binary-Classification"><span class="nav-number">1.</span> <span class="nav-text">二分类 (Binary Classification)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归-Logistic-Regression"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归 (Logistic Regression)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归的代价函数-Logistic-Regression-Cost-Function"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归的代价函数 (Logistic Regression Cost Function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降-Gradient-Descent"><span class="nav-number">4.</span> <span class="nav-text">梯度下降 (Gradient Descent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归中的梯度下降-Logistic-Regression-Gradient-Descent"><span class="nav-number">5.</span> <span class="nav-text">逻辑回归中的梯度下降 (Logistic Regression Gradient Descent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量化-Vectorization"><span class="nav-number">6.</span> <span class="nav-text">向量化 (Vectorization)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-中的广播机制-Broadcasting-in-Python"><span class="nav-number">7.</span> <span class="nav-text">Python 中的广播机制 (Broadcasting in Python)</span></a></li></ol></div>
             
 
           </div>
@@ -837,7 +859,7 @@ b &:= b -\sigma db
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">36.4k</span>
+    <span title="Site words total count">36.7k</span>
   
 </div>
 
@@ -856,7 +878,7 @@ b &:= b -\sigma db
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共36.4k字</span>
+  <span class="post-count">博客全站共36.7k字</span>
 </div>
         
 
