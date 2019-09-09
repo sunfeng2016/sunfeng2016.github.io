@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure1.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure2.PNG">
-<meta property="og:updated_time" content="2019-09-07T11:31:38.416Z">
+<meta property="og:updated_time" content="2019-09-07T14:43:59.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达《神经网络与深度学习》课程笔记（3）-- 浅层神经网络">
 <meta name="twitter:description" content="吴恩达《神经网络与深度学习》课程笔记（3） 浅层神经网络">
@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  640
+                  675
                 </span>
               
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -468,7 +468,19 @@ a^{[2]} &= \sigma(z^{[2]})
 </li>
 </ul>
 <hr>
-<h3 id="多样本向量化-Vectorizing-across-multiple-examples"><a href="#多样本向量化-Vectorizing-across-multiple-examples" class="headerlink" title="多样本向量化 (Vectorizing across multiple examples)"></a>多样本向量化 (Vectorizing across multiple examples)</h3><hr>
+<h3 id="多样本向量化-Vectorizing-across-multiple-examples"><a href="#多样本向量化-Vectorizing-across-multiple-examples" class="headerlink" title="多样本向量化 (Vectorizing across multiple examples)"></a>多样本向量化 (Vectorizing across multiple examples)</h3><p><strong>矩阵 $X$ </strong></p>
+<ul>
+<li>将 $m$ 个含有 n 维特征的训练样本组合成一个 $n \times m$ 的矩阵 $X$:<script type="math/tex; mode=display">
+X = 
+\begin {bmatrix}
+\vdots & \vdots & \vdots & \vdots\\
+x^{(1)} & x^{(2)} &\cdots & x^{(m)} \\
+\vdots & \vdots & \vdots & \vdots
+\end {bmatrix}</script></li>
+</ul>
+<p><strong>矩阵 $Z$</strong></p>
+<p><strong>矩阵 $A$</strong></p>
+<hr>
 <h3 id="向量化实现的解释-Justification-for-vectorized-implementation"><a href="#向量化实现的解释-Justification-for-vectorized-implementation" class="headerlink" title="向量化实现的解释 (Justification for vectorized implementation)"></a>向量化实现的解释 (Justification for vectorized implementation)</h3><hr>
 <h3 id="激活函数-Activation-function"><a href="#激活函数-Activation-function" class="headerlink" title="激活函数 (Activation function)"></a>激活函数 (Activation function)</h3><hr>
 <h3 id="为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function"><a href="#为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function" class="headerlink" title="为什么需要非线性激活函数？(Why need a nonlinear activation function?)"></a>为什么需要非线性激活函数？(Why need a nonlinear activation function?)</h3><hr>
