@@ -99,7 +99,9 @@
 <meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure1.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure2.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure3.PNG">
-<meta property="og:updated_time" content="2019-09-10T03:19:26.993Z">
+<meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure4.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure5.PNG">
+<meta property="og:updated_time" content="2019-09-10T09:09:23.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达《神经网络与深度学习》课程笔记（3）-- 浅层神经网络">
 <meta name="twitter:description" content="吴恩达《神经网络与深度学习》课程笔记（3） 浅层神经网络">
@@ -370,7 +372,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  764
+                  1,638
                 </span>
               
 
@@ -386,7 +388,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -522,11 +524,66 @@ A^{[2]} = \sigma(Z^{[2]})\\
 <li>从上图可以看出，当加入更多的样本时，只需向矩阵 $X$ 中加入更多列</li>
 </ul>
 <hr>
-<h3 id="激活函数-Activation-function"><a href="#激活函数-Activation-function" class="headerlink" title="激活函数 (Activation function)"></a>激活函数 (Activation function)</h3><hr>
-<h3 id="为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function"><a href="#为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function" class="headerlink" title="为什么需要非线性激活函数？(Why need a nonlinear activation function?)"></a>为什么需要非线性激活函数？(Why need a nonlinear activation function?)</h3><hr>
-<h3 id="激活函数的导数-Derivatives-of-activation-functions"><a href="#激活函数的导数-Derivatives-of-activation-functions" class="headerlink" title="激活函数的导数 (Derivatives of activation functions)"></a>激活函数的导数 (Derivatives of activation functions)</h3><hr>
-<h3 id="神经网络的梯度下降-Gradient-descent-for-neural-networks"><a href="#神经网络的梯度下降-Gradient-descent-for-neural-networks" class="headerlink" title="神经网络的梯度下降 (Gradient descent for neural  networks)"></a>神经网络的梯度下降 (Gradient descent for neural  networks)</h3><hr>
-<h3 id="随机初始化-Random-Initialization"><a href="#随机初始化-Random-Initialization" class="headerlink" title="随机初始化 (Random Initialization)"></a>随机初始化 (Random Initialization)</h3>
+<h3 id="激活函数-Activation-function"><a href="#激活函数-Activation-function" class="headerlink" title="激活函数 (Activation function)"></a>激活函数 (Activation function)</h3><font color="#0099ff">有一个问题是神经网络的隐藏层和输出单元用什么激活函数。之前我们都是选用 sigmoid 函数，但有时其他函数效果会好很多。</font>
+
+<p><strong>常见的激活函数：</strong></p>
+<ul>
+<li><p><strong>Sigmoid 函数</strong></p>
+<script type="math/tex; mode=display">
+a = sigmoid(z) = \frac{1}{1+e^{-z}}</script><p>在二分类问题中，对于输出层，因为 $y$ 的值是 0 或 1，所以常用 Sigmoid 函数</p>
+</li>
+<li><p><strong>tanh 函数 (双曲正切函数)</strong></p>
+<script type="math/tex; mode=display">
+a = tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}</script><p>tanh 函数效果几乎总是优于 Sigmoid 函数，因为其函数值域在 -1 和 1之间，其均值更接近零均值，有类似数据中心化的效果</p>
+<p><strong><font color="#ff000">Sigmoid 函数和 tanh 函数两者的共同缺点：</font></strong>在 $z$ 特别大或者特别小时，梯度会变得很小，最后会接近0，导致降低梯度下降的速度。</p>
+</li>
+<li><p><strong>ReLU 函数 (修正线性单元)</strong></p>
+<script type="math/tex; mode=display">
+a = max(0,z)</script><p>当 z &gt; 0 时，梯度始终为 1，从而提高神经网络基于梯度算法的运算速度，收敛速度远大于 sigmoid 和 tanh。然而当 z &lt; 0 时，梯度一直为 0，但是实际的运用中，该缺陷的影响不是很大</p>
+</li>
+<li><p><strong>Leaky ReLU (带泄漏的 ReLU)</strong></p>
+<script type="math/tex; mode=display">
+a = max(0.01z,z)</script><p>Leaky Relu 保证在 z &lt; 0 的时候，梯度仍然不为 0。理论上来说，Leaky ReLU 有 ReLU 的所有优点，但在实际操作中没有证明总是好于 ReLU，因此不常用。</p>
+</li>
+</ul>
+<p><img src="/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）-- 浅层神经网络/figure4.PNG" alt="figure4"></p>
+<p><strong>总结：</strong></p>
+<ul>
+<li><strong>sigmoid</strong> 激活函数：除了输出层是一个二分类问题基本不会用它</li>
+<li><strong>tanh</strong> 激活函数：<strong>tanh</strong> 函数是非常优秀的，几乎适合所有场合</li>
+<li><strong>ReLu</strong> 激活函数：最常用的默认函数，如果不确定用哪个函数，就用 <strong>ReLu</strong> 函数或者 <strong>Leaky ReLu</strong></li>
+</ul>
+<hr>
+<h3 id="为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function"><a href="#为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function" class="headerlink" title="为什么需要非线性激活函数？(Why need a nonlinear activation function?)"></a>为什么需要非线性激活函数？(Why need a nonlinear activation function?)</h3><p><strong><font color="#0099ff">使用线性激活函数和不使用激活函数，直接使用 Logistic 回归没有区别，那么无论神经网络有多少层，输出都是线性组合，与没有隐藏层效果相当，就成了最原始的感知器了</font></strong></p>
+<hr>
+<h3 id="激活函数的导数-Derivatives-of-activation-functions"><a href="#激活函数的导数-Derivatives-of-activation-functions" class="headerlink" title="激活函数的导数 (Derivatives of activation functions)"></a>激活函数的导数 (Derivatives of activation functions)</h3><ul>
+<li><p><strong>Sigmoid</strong> 函数：</p>
+<script type="math/tex; mode=display">
+g(z) = \frac{1}{1+e^{-z}}\\
+g^{\prime}(z) = \frac{dg(z)}{dz} = \frac{1}{1+e^{-z}}(1-\frac{1}{1+e^{-z}}) = g(z)(1-g(z))</script></li>
+<li><p><strong>tanh</strong> 函数：</p>
+<script type="math/tex; mode=display">
+g(z) = tanh(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}} \\
+g^{\prime}(z) =\frac{dg(z)}{dz} = 1-(tanh(z))^2 = 1-(g(z))^2</script></li>
+</ul>
+<hr>
+<h3 id="神经网络的梯度下降-Gradient-descent-for-neural-networks"><a href="#神经网络的梯度下降-Gradient-descent-for-neural-networks" class="headerlink" title="神经网络的梯度下降 (Gradient descent for neural  networks)"></a>神经网络的梯度下降 (Gradient descent for neural  networks)</h3><h4 id="正向梯度下降"><a href="#正向梯度下降" class="headerlink" title="正向梯度下降"></a>正向梯度下降</h4><script type="math/tex; mode=display">
+\begin{align}
+Z^{[1]} &= (W^{[1]})^TX+b^{[1]}\\
+A^{[1]} &= g^{[1]}(Z^{[1]})\\
+Z^{[2]} &= (W^{[2]})^TA^{[1]}+b^{[2]}\\
+A^{[2]} &= g^{[2]}(Z^{[2]})\\
+\end {align}</script><h4 id="反向梯度下降"><a href="#反向梯度下降" class="headerlink" title="反向梯度下降"></a>反向梯度下降</h4><p>神经网络反向梯度下降公式 (左) 和其代码向量化 (右):</p>
+<p><img src="/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）-- 浅层神经网络/figure5.PNG" alt="figure5"></p>
+<hr>
+<h3 id="随机初始化-Random-Initialization"><a href="#随机初始化-Random-Initialization" class="headerlink" title="随机初始化 (Random Initialization)"></a>随机初始化 (Random Initialization)</h3><font color="#0099ff">如果在初始时将两个隐藏神经元的参数设置为相同的大小，那么两个隐藏神经元对输出单元的影响也是相同的，通过反向梯度下降去进行计算的时候，会得到同样的梯度大小，所以在经过多次迭代后，两个隐藏层单位仍然是对称的。无论设置多少个隐藏单元，其最终的影响都是相同的，那么多个隐藏神经元就没有了意义。</font>
+
+<p>在初始化的时候，W 参数要进行随机初始化，不可以设置为 0。而 b 因为不存在对称性的问题，可以设置为 0。</p>
+<p><strong>以 2 个输入，2 个隐藏层神经元为例：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">W = np.random.rand(<span class="number">2</span>,<span class="number">2</span>)*<span class="number">0.01</span></span><br><span class="line">b = np.zeros((<span class="number">2</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<p>这里将 W 的值乘以 0.01（或者其他的常数值）的原因是为了使得权重 W 初始化为较小的值，这是因为使用 sigmoid 函数或者 tanh 函数作为激活函数时，W 比较小，则 Z=WX+b 所得的值趋近于 0，梯度较大，能够提高算法的更新速度。而如果 W 设置的太大的话，得到的梯度较小，训练过程因此会变得很慢。</p>
+<p>ReLU 和 Leaky ReLU 作为激活函数时不存在这种问题，因为在大于 0 的时候，梯度均为 1。</p>
+
       
     </div>
     
@@ -732,7 +789,7 @@ A^{[2]} = \sigma(Z^{[2]})\\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#神经网络的表示-Neural-Network-Representation"><span class="nav-number">1.</span> <span class="nav-text">神经网络的表示 (Neural Network Representation)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算神经网络的输出-Computing-a-Neural-Network’s-output"><span class="nav-number">2.</span> <span class="nav-text">计算神经网络的输出 (Computing a Neural Network’s output)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多样本向量化-Vectorizing-across-multiple-examples"><span class="nav-number">3.</span> <span class="nav-text">多样本向量化 (Vectorizing across multiple examples)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量化实现的解释-Justification-for-vectorized-implementation"><span class="nav-number">4.</span> <span class="nav-text">向量化实现的解释 (Justification for vectorized implementation)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数-Activation-function"><span class="nav-number">5.</span> <span class="nav-text">激活函数 (Activation function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function"><span class="nav-number">6.</span> <span class="nav-text">为什么需要非线性激活函数？(Why need a nonlinear activation function?)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数的导数-Derivatives-of-activation-functions"><span class="nav-number">7.</span> <span class="nav-text">激活函数的导数 (Derivatives of activation functions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神经网络的梯度下降-Gradient-descent-for-neural-networks"><span class="nav-number">8.</span> <span class="nav-text">神经网络的梯度下降 (Gradient descent for neural  networks)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机初始化-Random-Initialization"><span class="nav-number">9.</span> <span class="nav-text">随机初始化 (Random Initialization)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#神经网络的表示-Neural-Network-Representation"><span class="nav-number">1.</span> <span class="nav-text">神经网络的表示 (Neural Network Representation)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算神经网络的输出-Computing-a-Neural-Network’s-output"><span class="nav-number">2.</span> <span class="nav-text">计算神经网络的输出 (Computing a Neural Network’s output)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多样本向量化-Vectorizing-across-multiple-examples"><span class="nav-number">3.</span> <span class="nav-text">多样本向量化 (Vectorizing across multiple examples)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量化实现的解释-Justification-for-vectorized-implementation"><span class="nav-number">4.</span> <span class="nav-text">向量化实现的解释 (Justification for vectorized implementation)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数-Activation-function"><span class="nav-number">5.</span> <span class="nav-text">激活函数 (Activation function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function"><span class="nav-number">6.</span> <span class="nav-text">为什么需要非线性激活函数？(Why need a nonlinear activation function?)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数的导数-Derivatives-of-activation-functions"><span class="nav-number">7.</span> <span class="nav-text">激活函数的导数 (Derivatives of activation functions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神经网络的梯度下降-Gradient-descent-for-neural-networks"><span class="nav-number">8.</span> <span class="nav-text">神经网络的梯度下降 (Gradient descent for neural  networks)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正向梯度下降"><span class="nav-number">8.1.</span> <span class="nav-text">正向梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向梯度下降"><span class="nav-number">8.2.</span> <span class="nav-text">反向梯度下降</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机初始化-Random-Initialization"><span class="nav-number">9.</span> <span class="nav-text">随机初始化 (Random Initialization)</span></a></li></ol></div>
             
 
           </div>
@@ -766,7 +823,7 @@ A^{[2]} = \sigma(Z^{[2]})\\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">37.4k</span>
+    <span title="Site words total count">38.3k</span>
   
 </div>
 
@@ -785,7 +842,7 @@ A^{[2]} = \sigma(Z^{[2]})\\
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共37.4k字</span>
+  <span class="post-count">博客全站共38.3k字</span>
 </div>
         
 
