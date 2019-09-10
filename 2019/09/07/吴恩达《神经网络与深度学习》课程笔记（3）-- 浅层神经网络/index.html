@@ -98,7 +98,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure1.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure2.PNG">
-<meta property="og:updated_time" content="2019-09-07T14:43:59.084Z">
+<meta property="og:image" content="http://sunfeng.online/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）--%20浅层神经网络/figure3.PNG">
+<meta property="og:updated_time" content="2019-09-10T03:19:26.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达《神经网络与深度学习》课程笔记（3）-- 浅层神经网络">
 <meta name="twitter:description" content="吴恩达《神经网络与深度学习》课程笔记（3） 浅层神经网络">
@@ -369,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  675
+                  764
                 </span>
               
 
@@ -479,9 +480,48 @@ x^{(1)} & x^{(2)} &\cdots & x^{(m)} \\
 \end {bmatrix}</script></li>
 </ul>
 <p><strong>矩阵 $Z$</strong></p>
-<p><strong>矩阵 $A$</strong></p>
+<script type="math/tex; mode=display">
+Z^{[1]} = 
+\begin {bmatrix}
+\vdots & \vdots & \vdots & \vdots\\
+z^{[1](1)} & z^{[1](2)} &\cdots & z^{[1](m)} \\
+\vdots & \vdots & \vdots & \vdots
+\end {bmatrix}</script><p><strong>矩阵 $A$</strong></p>
+<script type="math/tex; mode=display">
+A^{[1]} = 
+\begin {bmatrix}
+\vdots & \vdots & \vdots & \vdots\\
+\alpha^{[1](1)} & \alpha^{[1](2)} &\cdots & \alpha^{[1](m)} \\
+\vdots & \vdots & \vdots & \vdots
+\end {bmatrix}</script><p><strong>单个样本公式 $\Rightarrow$ 向量化公式</strong></p>
+<script type="math/tex; mode=display">
+\left. 
+\begin{array}{c}
+z^{[1](i)} = w^{[1](i)}x^{i}+b^{[1]} \\ 
+\alpha^{[1](i)} = \sigma(z^{[1](i)}) \\ 
+z^{[2](i)} = w^{[2](i)}\alpha^{[1](i)}+b^{[2]} \\ 
+\alpha^{[2](i)} = \sigma(z^{[2](i)})
+\end{array}
+\right\}
+\Rightarrow
+\left\{
+\begin{array}{c}
+Z^{[1]} = W^{[1]}X+b^{[1]}\\
+A^{[1]} = \sigma(Z^{[1]})\\
+Z^{[2]} = W^{[2]}A^{[1]} + b^{[2]} \\
+A^{[2]} = \sigma(Z^{[2]})\\
+\end{array}
+\right.</script><hr>
+<h3 id="向量化实现的解释-Justification-for-vectorized-implementation"><a href="#向量化实现的解释-Justification-for-vectorized-implementation" class="headerlink" title="向量化实现的解释 (Justification for vectorized implementation)"></a>向量化实现的解释 (Justification for vectorized implementation)</h3><p><strong>$Z^{[1]} = W^{[1]}X+b^{[1]}$ 的直观解释：</strong></p>
+<ul>
+<li>此处先忽略 $b^{[1]}$, 因为用 <strong>Python</strong> 的广播机制，很容易将 $b^{[1]}$ 加进来</li>
+<li>用图形直观的表示矩阵相乘：</li>
+</ul>
+<p><img src="/2019/09/07/吴恩达《神经网络与深度学习》课程笔记（3）-- 浅层神经网络/figure3.PNG" alt="figure3"></p>
+<ul>
+<li>从上图可以看出，当加入更多的样本时，只需向矩阵 $X$ 中加入更多列</li>
+</ul>
 <hr>
-<h3 id="向量化实现的解释-Justification-for-vectorized-implementation"><a href="#向量化实现的解释-Justification-for-vectorized-implementation" class="headerlink" title="向量化实现的解释 (Justification for vectorized implementation)"></a>向量化实现的解释 (Justification for vectorized implementation)</h3><hr>
 <h3 id="激活函数-Activation-function"><a href="#激活函数-Activation-function" class="headerlink" title="激活函数 (Activation function)"></a>激活函数 (Activation function)</h3><hr>
 <h3 id="为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function"><a href="#为什么需要非线性激活函数？-Why-need-a-nonlinear-activation-function" class="headerlink" title="为什么需要非线性激活函数？(Why need a nonlinear activation function?)"></a>为什么需要非线性激活函数？(Why need a nonlinear activation function?)</h3><hr>
 <h3 id="激活函数的导数-Derivatives-of-activation-functions"><a href="#激活函数的导数-Derivatives-of-activation-functions" class="headerlink" title="激活函数的导数 (Derivatives of activation functions)"></a>激活函数的导数 (Derivatives of activation functions)</h3><hr>
@@ -726,7 +766,7 @@ x^{(1)} & x^{(2)} &\cdots & x^{(m)} \\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">37.3k</span>
+    <span title="Site words total count">37.4k</span>
   
 </div>
 
@@ -745,7 +785,7 @@ x^{(1)} & x^{(2)} &\cdots & x^{(m)} \\
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共37.3k字</span>
+  <span class="post-count">博客全站共37.4k字</span>
 </div>
         
 
