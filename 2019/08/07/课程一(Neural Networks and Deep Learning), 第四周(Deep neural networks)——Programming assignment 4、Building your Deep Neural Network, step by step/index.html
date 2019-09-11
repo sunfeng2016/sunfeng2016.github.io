@@ -96,21 +96,17 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="Building your Deep Neural Network: Step by Step">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127165838722-72534730.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127200241753-1787058979.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127200327409-197353303.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127200424847-714067061.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127213245862-62967896.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127233429440-720852258.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127235155972-308393091.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127235506737-1259548081.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171128142511269-248723414.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171128164243597-30974158.png">
-<meta property="og:updated_time" content="2019-08-30T08:43:26.849Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/07/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第四周(Deep%20neural%20networks)——Programming%20assignment%204、Building%20your%20Deep%20Neural%20Network,%20step%20by%20step/figure1.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/08/07/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第四周(Deep%20neural%20networks)——Programming%20assignment%204、Building%20your%20Deep%20Neural%20Network,%20step%20by%20step/figure2.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/08/07/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第四周(Deep%20neural%20networks)——Programming%20assignment%204、Building%20your%20Deep%20Neural%20Network,%20step%20by%20step/figure3.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/08/07/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第四周(Deep%20neural%20networks)——Programming%20assignment%204、Building%20your%20Deep%20Neural%20Network,%20step%20by%20step/figure4.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/08/07/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第四周(Deep%20neural%20networks)——Programming%20assignment%204、Building%20your%20Deep%20Neural%20Network,%20step%20by%20step/figure5.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/08/07/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第四周(Deep%20neural%20networks)——Programming%20assignment%204、Building%20your%20Deep%20Neural%20Network,%20step%20by%20step/figure6.PNG">
+<meta property="og:updated_time" content="2019-09-11T06:11:56.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step">
 <meta name="twitter:description" content="Building your Deep Neural Network: Step by Step">
-<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127165838722-72534730.png">
+<meta name="twitter:image" content="http://sunfeng.online/2019/08/07/课程一(Neural%20Networks%20and%20Deep%20Learning),%20第四周(Deep%20neural%20networks)——Programming%20assignment%204、Building%20your%20Deep%20Neural%20Network,%20step%20by%20step/figure1.PNG">
 
 
 
@@ -429,7 +425,7 @@
 <p><strong>Notation:</strong></p>
 <ul>
 <li>Superscript [I] denotes a quantity associated with the $1^{th}$ layer.<ul>
-<li>Example: $a^{[L]}$is the $L^{th}$ layer activation. $W^{[L]}$ and  $b^{[L]}$ are the $L^{th}$  layer parameters.</li>
+<li>Example: $a^{[L]}$ is the $L^{th}$ layer activation. $W^{[L]}$ and  $b^{[L]}$ are the $L^{th}$  layer parameters.</li>
 </ul>
 </li>
 <li>Superscript (i) denotes a quantity associated with the $i^{th}$ example.<ul>
@@ -474,7 +470,7 @@
 </li>
 <li>Finally update the parameters.</li>
 </ul>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127165838722-72534730.png" alt="img"></p>
+<p><img src="/2019/08/07/课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step/figure1.PNG" alt="figure1"></p>
 <p><strong>Note</strong> that for every forward function, there is a corresponding backward function. That is why at every step of your forward module you will be storing some values in a cache. The cached values are useful for computing gradients. In the backward propagation module you will then use the cache to calculate the gradients. This assignment will show you exactly how to carry out each of these steps. </p>
 <hr>
 <h3 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h3><p>You will write two helper functions that will initialize the parameters for your model. The first function will be used to initialize parameters for a two layer model. The second one will generalize this initialization process to L layers.</p>
@@ -493,12 +489,36 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">W1 = [[ <span class="number">0.01624345</span> <span class="number">-0.00611756</span> <span class="number">-0.00528172</span>]</span><br><span class="line"> [<span class="number">-0.01072969</span>  <span class="number">0.00865408</span> <span class="number">-0.02301539</span>]]</span><br><span class="line">b1 = [[ <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>]]</span><br><span class="line">W2 = [[ <span class="number">0.01744812</span> <span class="number">-0.00761207</span>]]</span><br><span class="line">b2 = [[ <span class="number">0.</span>]]</span><br></pre></td></tr></table></figure>
 <h4 id="L-layer-Neural-Network"><a href="#L-layer-Neural-Network" class="headerlink" title="L-layer Neural Network"></a>L-layer Neural Network</h4><p>The initialization for a deeper L-layer neural network is more complicated because there are many more weight matrices and bias vectors. When completing the <code>initialize_parameters_deep</code>, you should make sure that your dimensions match between each layer. Recall that $n^{[l]}$ is the number of units of layer l.</p>
 <p>Thus for example if the size of our input X is (12288, 209) (with m = 209 examples) then:</p>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127200241753-1787058979.png" alt="img"></p>
+<p><img src="/2019/08/07/课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step/figure2.PNG" alt="figure2"></p>
 <p>Remember that when we compute $WX + b$ in Python, it carries out broadcasting. For example, if:</p>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127200327409-197353303.png" alt="img"></p>
-<p>The $WX + b$ will be:</p>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127200424847-714067061.png" alt="img"></p>
-<p><strong>Exercise:</strong> Implement initialization for an L-layer Neural Network.</p>
+<script type="math/tex; mode=display">
+W = 
+\begin {bmatrix}
+j & k & l \\
+m & n & o \\
+p & q & r \\
+\end {bmatrix}
+X = 
+\begin {bmatrix}
+a & b & c \\
+d & e & f \\
+g & h & i \\
+\end {bmatrix}
+X = 
+\begin {bmatrix}
+s  \\
+t  \\
+u  \\
+\end {bmatrix}
+\tag{2}</script><p>The $WX + b$ will be:</p>
+<script type="math/tex; mode=display">
+WX + b = 
+\begin {bmatrix}
+(ja + kd + lg) + s & (jb + ke + lh) + s & (jc + kf + li) + s \\
+(ma + nd + og) + l & (mb + ne + oh) + l & (mc + nf + oi) + l \\
+(pa + qd + rg) + l & (pb + qe + rh) + l & (pc + qf + ri) + l \\
+\end {bmatrix}
+\tag{3}</script><p><strong>Exercise:</strong> Implement initialization for an L-layer Neural Network.</p>
 <p><strong>Instructions:</strong></p>
 <ul>
 <li>The model’s structure is <em>[LINEAR -&gt; RELU]</em> $\times$ <em>(L-1) -&gt; LINEAR -&gt; SIGMOID.</em> It has <em>L-1</em> layers using a ReLU activation function followed by an output layer with a sigmoid activation function.</li>
@@ -550,7 +570,7 @@ Z^{[l]} = W^{[l]}A^{[l-1]} + b^{[l]}</script><p>where $A^{[0]} = X$.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">With sigmoid: A = [[ <span class="number">0.96890023</span>  <span class="number">0.11013289</span>]]</span><br><span class="line">With ReLU: A = [[ <span class="number">3.43896131</span>  <span class="number">0.</span>        ]]</span><br></pre></td></tr></table></figure>
 <p><strong>Note:</strong> In deep learning, the “[LINEAR-&gt;ACTIVATION]” computation is counted as a single layer in the neural network, not two layers.</p>
 <h4 id="L-Layer-Model"><a href="#L-Layer-Model" class="headerlink" title="L-Layer Model"></a>L-Layer Model</h4><p>For even convenience when implementing the L-layer Neural Network, you will need a function that replicates the previous one <code>linear_activation_forward</code> with ReLU L-1 times, then follows that with one <code>linear_activation_forward</code>with SIGMOID.</p>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127213245862-62967896.png" alt="img"></p>
+<p><img src="/2019/08/07/课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step/figure3.PNG" alt="figure3"></p>
 <p><strong>Exercise:</strong> Implement the forward propagation of the above model. </p>
 <p><strong>Instruction:</strong> In the code below, the variable AL will denote </p>
 <p>$A^{[L]} = \sigma(Z^{[L]}) = \sigma(W^{[L]}A^{[L-1]} + b^{[L]})$.</p>
@@ -580,7 +600,7 @@ J = -\frac{1}{m} \sum\limits_{i = 1}^{m} (y^{(i)}\log\left(a^{[L] (i)}\right) + 
 <hr>
 <h3 id="Backward-propagation-module"><a href="#Backward-propagation-module" class="headerlink" title="Backward propagation module"></a>Backward propagation module</h3><p>Just like with forward propagation, you will implement helper functions for backward propagation. Remember that backward propagation is used to calculate the gradient of the loss function with respect to the parameters.</p>
 <p><strong>Reminder:</strong></p>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127233429440-720852258.png" alt="img"></p>
+<p><img src="/2019/08/07/课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step/figure4.PNG" alt="figure4"></p>
 <p><em>The purple blocks represent the forward propagation, and the red blocks represent the backward propagation.</em></p>
 <p>Now, similar to forward propagation, you are going to build the backward propagation in three steps:</p>
 <ul>
@@ -590,10 +610,14 @@ J = -\frac{1}{m} \sum\limits_{i = 1}^{m} (y^{(i)}\log\left(a^{[L] (i)}\right) + 
 </ul>
 <h4 id="Linear-backward"><a href="#Linear-backward" class="headerlink" title="Linear backward"></a>Linear backward</h4><p>For layer l, the linear part is: $Z^{[l]} = W^{[l]}A^{[l-1]} + b^{[l]}$ (followed by an activation). </p>
 <p>Suppose you have already calculated the derivative $dZ^{[l]} = \frac{\partial J}{\partial Z^{[l]}}$ . You want to get ($dW^{[l]}$, $db^{[l]}$, $dA^{[l]}$).</p>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127235155972-308393091.png" alt="img"></p>
+<p><img src="/2019/08/07/课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step/figure5.PNG" alt="figure5"></p>
 <p>The three output ($dW^{[l]}$, $db^{[l]}$, $dA^{[l-1]}$) are computed using the input $dZ^{[l]}$. Here are the formulas you need:</p>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171127235506737-1259548081.png" alt="img"></p>
-<p><strong>Exercise：</strong> Use the 3 formulas above to implement <code>linear_backward().</code></p>
+<script type="math/tex; mode=display">
+\begin {align}
+dW^{[l]} &= \frac{\partial{\cal L}}{\partial W^{[l]}} = \frac{1}{m}dZ^{[l]}A^{[l-1]T}\tag{8}\\
+db^{[l]} &= \frac{\partial{\cal L}}{\partial b^{[l]}} = \frac{1}{m}\sum_{i=1}^{m} dZ^{[l]}\tag{9}\\
+dA^{[l-1]} &= \frac{\partial{\cal L}}{\partial A^{[l-1]}} = W^{[l-1]T}dZ^{[l]}\tag{10}
+\end {align}</script><p><strong>Exercise：</strong> Use the 3 formulas above to implement <code>linear_backward().</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. Linear backward</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">linear_backward</span><span class="params">(dZ, cache)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Implement the linear portion of backward propagation for a single layer (layer l)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">        dZ -- Gradient of the cost with respect to the linear output (of current layer l)</span></span><br><span class="line"><span class="string">        cache -- tuple of values (A_prev, W, b) coming from the forward propagation in the current layer</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        dA -- Gradient of the cost with respect to the activation (of the prevous layer l-1), same shape as A_prev</span></span><br><span class="line"><span class="string">        dW -- Gradient of the cost with respect to the W (current layer l), same shape as W</span></span><br><span class="line"><span class="string">        db -- Gradient of the cost with respect to the b (current layer l), same shape as b</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    A_prev, W, b = cache</span><br><span class="line">    m = A_prev.shape[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    dW = np.dot(dZ, A_prev.T) / m</span><br><span class="line">    db = np.sum(dZ, axis = <span class="number">1</span>, keepdims=<span class="literal">True</span>) / m</span><br><span class="line">    dA_prev = np.dot(W.T, dZ)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span>(dA_prev.shape == A_prev.shape)</span><br><span class="line">    <span class="keyword">assert</span>(dW.shape == W.shape)</span><br><span class="line">    <span class="keyword">assert</span>(db.shape == b.shape)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dA_prev, dW, db</span><br></pre></td></tr></table></figure>
 <p><strong>Test:</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set up some test inputs</span></span><br><span class="line">dZ, linear_cache = linear_backward_test_case()</span><br><span class="line"></span><br><span class="line">dA_prev, dW, db = linear_backward(dZ, linear_cache)    </span><br><span class="line"><span class="keyword">print</span> (<span class="string">"dA_prev = "</span>+ str(dA_prev))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"dW = "</span> + str(dW))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"db = "</span> + str(db))</span><br></pre></td></tr></table></figure>
@@ -617,7 +641,7 @@ J = -\frac{1}{m} \sum\limits_{i = 1}^{m} (y^{(i)}\log\left(a^{[L] (i)}\right) + 
 <p><strong>Result:</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sigmoid:</span><br><span class="line">dA_prev = [[ <span class="number">0.11017994</span>  <span class="number">0.01105339</span>]</span><br><span class="line"> [ <span class="number">0.09466817</span>  <span class="number">0.00949723</span>]</span><br><span class="line"> [<span class="number">-0.05743092</span> <span class="number">-0.00576154</span>]]</span><br><span class="line">dW = [[ <span class="number">0.10266786</span>  <span class="number">0.09778551</span> <span class="number">-0.01968084</span>]]</span><br><span class="line">db = [[<span class="number">-0.05729622</span>]]</span><br><span class="line"></span><br><span class="line">relu:</span><br><span class="line">dA_prev = [[ <span class="number">0.44090989</span>  <span class="number">0.</span>        ]</span><br><span class="line"> [ <span class="number">0.37883606</span>  <span class="number">0.</span>        ]</span><br><span class="line"> [<span class="number">-0.2298228</span>   <span class="number">0.</span>        ]]</span><br><span class="line">dW = [[ <span class="number">0.44513824</span>  <span class="number">0.37371418</span> <span class="number">-0.10478989</span>]]</span><br><span class="line">db = [[<span class="number">-0.20837892</span>]]</span><br></pre></td></tr></table></figure>
 <h4 id="L-Model-Backward"><a href="#L-Model-Backward" class="headerlink" title="L-Model Backward"></a>L-Model Backward</h4><p>Now you will implement the backward function for the whole network. Recall that when you implemented the <code>L_model_forward</code> function, at each iteration, you stored a cache which contains (X,W,b, and z). In the back propagation module, you will use those variables to compute the gradients. Therefore, in the <code>L_model_backward</code> function, you will iterate through all the hidden layers backward, starting from layer L. On each step, you will use the cached values for layer l to backward propagate through layer l. Figure 5 below shows the backward pass.</p>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171128142511269-248723414.png" alt="img"></p>
+<p><img src="/2019/08/07/课程一(Neural Networks and Deep Learning), 第四周(Deep neural networks)——Programming assignment 4、Building your Deep Neural Network, step by step/figure6.PNG" alt="figure6"></p>
 <p><strong>Initializing backward propagation:</strong>  To implement backward propagate through this network, we know that output is, $A^{[L]} = \sigma(Z^{[L]}) $ . Your code thus need to compute $dAL = \frac{\partial J}{\partial A^{[L]}}$. To do so, use this formula (derived using calculus which you don’t need in-depth knowledge of):</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dAL = - (np.divide(Y, AL) - np.divide(<span class="number">1</span> - Y, <span class="number">1</span> - AL)) <span class="comment"># derivative of cost with respect to AL</span></span><br></pre></td></tr></table></figure>
 <p>You can then use this post-activation gradient <code>dAL</code> to keep going backward. As seen in Figure 5, you can now feed in <code>dAL</code> into the LINEAR-&gt;SIGMOID backward function you implemented (which will use the cached values stored by the L_model_forward function). After that, you will have to use a <code>for</code> loop to iterate through all the other layers using the LINEAR-&gt;RELU backward function. You should store each dA, dW, and db in the grads dictionary. To do so, use this formula: grads[“dW” + str(l)] = $dW^{[l]}$</p>
@@ -630,8 +654,11 @@ J = -\frac{1}{m} \sum\limits_{i = 1}^{m} (y^{(i)}\log\left(a^{[L] (i)}\right) + 
 <p><strong>Result:</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dW1 = [[ <span class="number">0.41010002</span>  <span class="number">0.07807203</span>  <span class="number">0.13798444</span>  <span class="number">0.10502167</span>]</span><br><span class="line"> [ <span class="number">0.</span>          <span class="number">0.</span>          <span class="number">0.</span>          <span class="number">0.</span>        ]</span><br><span class="line"> [ <span class="number">0.05283652</span>  <span class="number">0.01005865</span>  <span class="number">0.01777766</span>  <span class="number">0.0135308</span> ]]</span><br><span class="line">db1 = [[<span class="number">-0.22007063</span>]</span><br><span class="line"> [ <span class="number">0.</span>        ]</span><br><span class="line"> [<span class="number">-0.02835349</span>]]</span><br><span class="line">dA1 = [[ <span class="number">0.12913162</span> <span class="number">-0.44014127</span>]</span><br><span class="line"> [<span class="number">-0.14175655</span>  <span class="number">0.48317296</span>]</span><br><span class="line"> [ <span class="number">0.01663708</span> <span class="number">-0.05670698</span>]]</span><br></pre></td></tr></table></figure>
 <h4 id="Update-Parameters"><a href="#Update-Parameters" class="headerlink" title="Update Parameters"></a>Update Parameters</h4><p>In this section you will update the parameters of the model, using gradient descent:</p>
-<p><img src="https://images2018.cnblogs.com/blog/937910/201711/937910-20171128164243597-30974158.png" alt="img"></p>
-<p>where $\alpha$ is the learning rate. After computing the updated parameters, store them in the parameters dictionary.</p>
+<script type="math/tex; mode=display">
+\begin {align}
+W^{[l]} &= W^{[l]} - \alpha dW^{[l]} \tag{16}\\
+b^{[l]} &= b^{[l]} - \alpha db^{[l]} \tag{17}
+\end {align}</script><p>where $\alpha$ is the learning rate. After computing the updated parameters, store them in the parameters dictionary.</p>
 <p><strong>Exercise:</strong> Implement <code>update_parameters()</code> to update your parameters using gradient descent.</p>
 <p><strong>Instructions:</strong> Update parameters using gradient descent on every $W^{[l]}$ and $b^{[l]}$ for l = 1, 2, … L.</p>
 <p><strong>Code:</strong></p>
