@@ -97,7 +97,9 @@
 <meta property="og:description" content="吴恩达《神经网络与深度学习》课程笔记（4） 深层神经网络">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/09/10/吴恩达《神经网络与深度学习》课程笔记（4）--%20深层神经网络/figure1.PNG">
-<meta property="og:updated_time" content="2019-09-11T13:18:03.221Z">
+<meta property="og:image" content="http://sunfeng.online/2019/09/10/吴恩达《神经网络与深度学习》课程笔记（4）--%20深层神经网络/figure2.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/10/吴恩达《神经网络与深度学习》课程笔记（4）--%20深层神经网络/figure3.PNG">
+<meta property="og:updated_time" content="2019-09-12T09:41:20.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达《神经网络与深度学习》课程笔记（4）-- 深层神经网络">
 <meta name="twitter:description" content="吴恩达《神经网络与深度学习》课程笔记（4） 深层神经网络">
@@ -368,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  340
+                  455
                 </span>
               
 
@@ -384,7 +386,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -443,7 +445,12 @@ dW^{[l]} &= dZ^{[l]}\cdot a^{[l-1]}\\
 db^{[l]} &= dZ^{[l]}\\
 da^{[l-1]} &= W^{[l]T}\cdot dZ^{[l]}
 \end {align}</script><hr>
-<h3 id="深层网络中的前向传播-Forward-propagation-in-a-Deep-Network"><a href="#深层网络中的前向传播-Forward-propagation-in-a-Deep-Network" class="headerlink" title="深层网络中的前向传播 (Forward propagation in a Deep Network)"></a>深层网络中的前向传播 (Forward propagation in a Deep Network)</h3><hr>
+<h3 id="搭建神经网络模块-Building-Neural-Network-Modules"><a href="#搭建神经网络模块-Building-Neural-Network-Modules" class="headerlink" title="搭建神经网络模块 (Building Neural Network Modules)"></a>搭建神经网络模块 (Building Neural Network Modules)</h3><p><img src="/2019/09/10/吴恩达《神经网络与深度学习》课程笔记（4）-- 深层神经网络/figure2.PNG" alt="figure2"></p>
+<p>神经网络的一步训练 (一个梯度下降循环)，包含了从 $a^{[0]}$ (即 $X$) 经过一系列正向传播计算得到 $\hat y$ ( 即 $a^{[l]}$ ). 然后计算 $da^{[l]}$, 开始实现反向传播，用 <strong>链式法则</strong>得到所有的导数项, $W$ 和 $b$ 也会在每一层被更新。</p>
+<font color="#0099ff">在代码实现时，可以将正向传播过程计算出来的z值缓存下来，待到反向传播计算时使用</font>
+
+<p><img src="/2019/09/10/吴恩达《神经网络与深度学习》课程笔记（4）-- 深层神经网络/figure3.PNG" alt="figure3"></p>
+<hr>
 <h3 id="核对矩阵的维数-Getting-your-matrix-dimensions-right"><a href="#核对矩阵的维数-Getting-your-matrix-dimensions-right" class="headerlink" title="核对矩阵的维数 (Getting your matrix dimensions right)"></a>核对矩阵的维数 (Getting your matrix dimensions right)</h3><hr>
 <h3 id="为什么使用深层表示？-Why-deep-representations"><a href="#为什么使用深层表示？-Why-deep-representations" class="headerlink" title="为什么使用深层表示？ (Why deep representations?)"></a>为什么使用深层表示？ (Why deep representations?)</h3><hr>
 <h3 id="参数-VS-超参数-Parameters-VS-Hyperparameters"><a href="#参数-VS-超参数-Parameters-VS-Hyperparameters" class="headerlink" title="参数 VS 超参数 (Parameters VS Hyperparameters)"></a>参数 VS 超参数 (Parameters VS Hyperparameters)</h3><hr>
@@ -653,7 +660,7 @@ da^{[l-1]} &= W^{[l]T}\cdot dZ^{[l]}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#深层神经网络-Deep-L-layer-neural-network"><span class="nav-number">1.</span> <span class="nav-text">深层神经网络 (Deep L-layer neural network)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前向传播和反向传播-Forward-and-backward-propagation"><span class="nav-number">2.</span> <span class="nav-text">前向传播和反向传播 (Forward and backward propagation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前向传播"><span class="nav-number">2.1.</span> <span class="nav-text">前向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向传播"><span class="nav-number">2.2.</span> <span class="nav-text">反向传播</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深层网络中的前向传播-Forward-propagation-in-a-Deep-Network"><span class="nav-number">3.</span> <span class="nav-text">深层网络中的前向传播 (Forward propagation in a Deep Network)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核对矩阵的维数-Getting-your-matrix-dimensions-right"><span class="nav-number">4.</span> <span class="nav-text">核对矩阵的维数 (Getting your matrix dimensions right)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用深层表示？-Why-deep-representations"><span class="nav-number">5.</span> <span class="nav-text">为什么使用深层表示？ (Why deep representations?)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-VS-超参数-Parameters-VS-Hyperparameters"><span class="nav-number">6.</span> <span class="nav-text">参数 VS 超参数 (Parameters VS Hyperparameters)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#深层神经网络-Deep-L-layer-neural-network"><span class="nav-number">1.</span> <span class="nav-text">深层神经网络 (Deep L-layer neural network)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前向传播和反向传播-Forward-and-backward-propagation"><span class="nav-number">2.</span> <span class="nav-text">前向传播和反向传播 (Forward and backward propagation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前向传播"><span class="nav-number">2.1.</span> <span class="nav-text">前向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向传播"><span class="nav-number">2.2.</span> <span class="nav-text">反向传播</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建神经网络模块-Building-Neural-Network-Modules"><span class="nav-number">3.</span> <span class="nav-text">搭建神经网络模块 (Building Neural Network Modules)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核对矩阵的维数-Getting-your-matrix-dimensions-right"><span class="nav-number">4.</span> <span class="nav-text">核对矩阵的维数 (Getting your matrix dimensions right)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用深层表示？-Why-deep-representations"><span class="nav-number">5.</span> <span class="nav-text">为什么使用深层表示？ (Why deep representations?)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-VS-超参数-Parameters-VS-Hyperparameters"><span class="nav-number">6.</span> <span class="nav-text">参数 VS 超参数 (Parameters VS Hyperparameters)</span></a></li></ol></div>
             
 
           </div>
@@ -687,7 +694,7 @@ da^{[l-1]} &= W^{[l]T}\cdot dZ^{[l]}
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.6k</span>
+    <span title="Site words total count">38.7k</span>
   
 </div>
 
@@ -706,7 +713,7 @@ da^{[l-1]} &= W^{[l]T}\cdot dZ^{[l]}
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共38.6k字</span>
+  <span class="post-count">博客全站共38.7k字</span>
 </div>
         
 
