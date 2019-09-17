@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[机器学习的数学基础]]></title>
+    <url>%2F2019%2F09%2F17%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[机器学习的数学基础 概述机器学习的特点机器学习涉及的学科 线性代数标量向量矩阵张量范数特征分解奇异值分解几种常用的距离曼哈顿距离欧式距离闵可夫斯基距离切比雪夫距离夹角余弦汉明距离杰卡德相似系数杰卡德距离 概率为什么使用概率？随机变量概率分布条件概率贝叶斯公式期望方差协方差常见的函数分布0-1分布几何分布二项分布指数分布高斯分布泊松分布拉格朗日乘子法最大似然估计信息论熵联合熵条件熵相对熵互信息最大熵模型 数值计算上溢和下溢计算复杂性和 NP 问题算法复杂性确定性和非确定性NP问题数值计算 最优化最优化理论最优化问题和数学描述凸集和凸集分离定理凸集超平面和空间凸集分离定理凸函数梯度下降算法引入梯度下降法随机梯度下降法牛顿法牛顿法介绍牛顿法推导牛顿法过程阻尼牛顿法引入算法过程拟牛顿法概述拟牛顿法推导]]></content>
+      <categories>
+        <category>数学方法整理</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[吴恩达《改善神经网络》课程笔记（1）-- 深度学习的实践层面]]></title>
     <url>%2F2019%2F09%2F15%2F%E5%90%B4%E6%81%A9%E8%BE%BE%E3%80%8A%E6%94%B9%E5%96%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E3%80%8B%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89--%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%AE%9E%E8%B7%B5%E5%B1%82%E9%9D%A2%2F</url>
     <content type="text"><![CDATA[吴恩达《改善神经网络》课程笔记（1） 深度学习的实践层面 训练，验证，测试集 (Train / Dev / Test sets)偏差，方差 (Bias / Variance)机器学习基础 (Basic Recipe for Machine Learning)正则化 (Regularization)为什么正则化有利于过拟合 (Why regularization reduces overfitting ?)Dropout 正则化]]></content>
