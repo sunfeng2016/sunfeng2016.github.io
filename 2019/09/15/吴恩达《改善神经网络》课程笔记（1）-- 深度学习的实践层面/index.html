@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
 <meta property="og:description" content="吴恩达《改善神经网络》课程笔记（1） 深度学习的实践层面">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-15T09:44:23.838Z">
+<meta property="og:updated_time" content="2019-09-19T14:38:49.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达《改善神经网络》课程笔记（1）-- 深度学习的实践层面">
 <meta name="twitter:description" content="吴恩达《改善神经网络》课程笔记（1） 深度学习的实践层面">
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  75
+                  515
                 </span>
               
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -405,7 +405,30 @@
       
         <p><strong><font size="4">吴恩达《改善神经网络》课程笔记（1） 深度学习的实践层面</font></strong></p>
 <a id="more"></a>
-<h3 id="训练，验证，测试集-Train-Dev-Test-sets"><a href="#训练，验证，测试集-Train-Dev-Test-sets" class="headerlink" title="训练，验证，测试集 (Train / Dev / Test sets)"></a>训练，验证，测试集 (Train / Dev / Test sets)</h3><h3 id="偏差，方差-Bias-Variance"><a href="#偏差，方差-Bias-Variance" class="headerlink" title="偏差，方差 (Bias / Variance)"></a>偏差，方差 (Bias / Variance)</h3><h3 id="机器学习基础-Basic-Recipe-for-Machine-Learning"><a href="#机器学习基础-Basic-Recipe-for-Machine-Learning" class="headerlink" title="机器学习基础 (Basic Recipe for Machine Learning)"></a>机器学习基础 (Basic Recipe for Machine Learning)</h3><h3 id="正则化-Regularization"><a href="#正则化-Regularization" class="headerlink" title="正则化 (Regularization)"></a>正则化 (Regularization)</h3><h3 id="为什么正则化有利于过拟合-Why-regularization-reduces-overfitting"><a href="#为什么正则化有利于过拟合-Why-regularization-reduces-overfitting" class="headerlink" title="为什么正则化有利于过拟合 (Why regularization reduces overfitting ?)"></a>为什么正则化有利于过拟合 (Why regularization reduces overfitting ?)</h3><h3 id="Dropout-正则化"><a href="#Dropout-正则化" class="headerlink" title="Dropout 正则化"></a>Dropout 正则化</h3>
+<h3 id="训练，验证，测试集-Train-Dev-Test-sets"><a href="#训练，验证，测试集-Train-Dev-Test-sets" class="headerlink" title="训练，验证，测试集 (Train / Dev / Test sets)"></a>训练，验证，测试集 (Train / Dev / Test sets)</h3><p>应用深度学习是一个典型的迭代过程</p>
+<p>对于一个需要解决的问题的样本数据，在建立模型的过程中，数据会被划分为以下几个部分：</p>
+<ul>
+<li><strong>训练集</strong> (training set)：用训练集对算法或模型进行<strong>训练</strong>过程</li>
+<li><strong>验证集</strong> (development set)：利用验证集进行<strong>交叉验证</strong>，选出最好的模型</li>
+<li><strong>测试集</strong> (test set)：最后利用测试集对模型进行测试，<strong>获取模型运行的无偏估计</strong></li>
+</ul>
+<p>在<strong>小数据量</strong>的时代，如100,1000,10000，的数据量大小，可以将数据集按照以下比例进行划分：</p>
+<ul>
+<li>无验证集的情况：70%/30%</li>
+<li>有验证集的情况：60%/20%/20%</li>
+</ul>
+<p>如今在<strong>大数据时代</strong>，对于一个问题，我们拥有的数据集的规模可能是百万级别的，所以验证集和测试集所占的比重会趋向于变得更小。</p>
+<p><strong>验证集的目的</strong>是验证不同算法哪种更有效果，所以验证集只要足够大到能够验证大约2~10种算法哪种更好，而不需要使用20%的数据作为验证集，如百万数据中抽取1万的数据作为验证集就可以了。</p>
+<p><strong>测试集的目的</strong>是评估模型的效果，如在单个分类器中，往往在百万级别的数据中，我们选择其中1000条数据足以评估单个模型的效果。</p>
+<ul>
+<li>100万数据量：98%/1%/1%</li>
+<li>超百万数据量：99.5%/0.25%/0.25%</li>
+</ul>
+<p><strong><font size="4,font" color="#FF00">建议：</font></strong></p>
+<p>建议<strong>确保验证集和测试集的数据来自同一分布</strong></p>
+<p>如果不需要<strong>无偏估计</strong>来评估模型的性能，则可以不需要测试集</p>
+<hr>
+<h3 id="偏差，方差-Bias-Variance"><a href="#偏差，方差-Bias-Variance" class="headerlink" title="偏差，方差 (Bias / Variance)"></a>偏差，方差 (Bias / Variance)</h3><h3 id="机器学习基础-Basic-Recipe-for-Machine-Learning"><a href="#机器学习基础-Basic-Recipe-for-Machine-Learning" class="headerlink" title="机器学习基础 (Basic Recipe for Machine Learning)"></a>机器学习基础 (Basic Recipe for Machine Learning)</h3><h3 id="正则化-Regularization"><a href="#正则化-Regularization" class="headerlink" title="正则化 (Regularization)"></a>正则化 (Regularization)</h3><h3 id="为什么正则化有利于过拟合-Why-regularization-reduces-overfitting"><a href="#为什么正则化有利于过拟合-Why-regularization-reduces-overfitting" class="headerlink" title="为什么正则化有利于过拟合 (Why regularization reduces overfitting ?)"></a>为什么正则化有利于过拟合 (Why regularization reduces overfitting ?)</h3><h3 id="Dropout-正则化"><a href="#Dropout-正则化" class="headerlink" title="Dropout 正则化"></a>Dropout 正则化</h3>
       
     </div>
     
@@ -537,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -548,7 +571,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -559,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -649,7 +672,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.9k</span>
+    <span title="Site words total count">43.4k</span>
   
 </div>
 
@@ -668,7 +691,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共41.9k字</span>
+  <span class="post-count">博客全站共43.4k字</span>
 </div>
         
 

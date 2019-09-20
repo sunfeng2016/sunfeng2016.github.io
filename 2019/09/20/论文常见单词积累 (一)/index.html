@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="machine learning,">
+  <meta name="keywords" content="paper,word,">
 
 
 
@@ -88,20 +88,18 @@
 
 
 
-<meta name="description" content="《机器学习》西瓜书学习笔记（十）降维与度量学习">
-<meta name="keywords" content="machine learning">
+<meta name="description" content="论文常见单词积累 (一)">
+<meta name="keywords" content="paper,word">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《机器学习》西瓜书学习笔记（十）-- 降维与度量学习">
-<meta property="og:url" content="http://sunfeng.online/2019/08/22/《机器学习》西瓜书学习笔记（十）-- 降维与度量学习/index.html">
+<meta property="og:title" content="论文常见单词积累 (一)">
+<meta property="og:url" content="http://sunfeng.online/2019/09/20/论文常见单词积累 (一)/index.html">
 <meta property="og:site_name" content="SunFeng&#39;s Blog">
-<meta property="og:description" content="《机器学习》西瓜书学习笔记（十）降维与度量学习">
+<meta property="og:description" content="论文常见单词积累 (一)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://sunfeng.online/2019/08/22/《机器学习》西瓜书学习笔记（十）--%20降维与度量学习/figure1.PNG">
-<meta property="og:updated_time" content="2019-08-23T08:11:35.276Z">
+<meta property="og:updated_time" content="2019-09-20T06:26:15.158Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《机器学习》西瓜书学习笔记（十）-- 降维与度量学习">
-<meta name="twitter:description" content="《机器学习》西瓜书学习笔记（十）降维与度量学习">
-<meta name="twitter:image" content="http://sunfeng.online/2019/08/22/《机器学习》西瓜书学习笔记（十）--%20降维与度量学习/figure1.PNG">
+<meta name="twitter:title" content="论文常见单词积累 (一)">
+<meta name="twitter:description" content="论文常见单词积累 (一)">
 
 
 
@@ -131,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://sunfeng.online/2019/08/22/《机器学习》西瓜书学习笔记（十）-- 降维与度量学习/">
+  <link rel="canonical" href="http://sunfeng.online/2019/09/20/论文常见单词积累 (一)/">
 
 
 
 
 
-  <title>《机器学习》西瓜书学习笔记（十）-- 降维与度量学习 | SunFeng's Blog</title>
+  <title>论文常见单词积累 (一) | SunFeng's Blog</title>
   
 
 
@@ -274,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sunfeng.online/2019/08/22/《机器学习》西瓜书学习笔记（十）-- 降维与度量学习/">
+    <link itemprop="mainEntityOfPage" href="http://sunfeng.online/2019/09/20/论文常见单词积累 (一)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SunFeng">
@@ -291,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《机器学习》西瓜书学习笔记（十）-- 降维与度量学习</h1>
+          <h1 class="post-title" itemprop="name headline">论文常见单词积累 (一)</h1>
         
 
         <div class="post-meta">
@@ -303,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T15:49:17+08:00">
-                2019-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T14:21:32+08:00">
+                2019-09-20
               </time>
             
 
@@ -326,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/《机器学习》西瓜书学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">《机器学习》西瓜书学习笔记</span>
+                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读笔记</span>
                   </a>
                 </span>
 
@@ -357,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  782
+                  1,032
                 </span>
               
 
@@ -373,7 +371,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -394,143 +392,84 @@
       
 
       
-        <h2 id="《机器学习》西瓜书学习笔记（十）降维与度量学习"><a href="#《机器学习》西瓜书学习笔记（十）降维与度量学习" class="headerlink" title="《机器学习》西瓜书学习笔记（十）降维与度量学习"></a>《机器学习》西瓜书学习笔记（十）降维与度量学习</h2><a id="more"></a>
-<h3 id="k-近邻学习"><a href="#k-近邻学习" class="headerlink" title="k 近邻学习"></a>k 近邻学习</h3><p><strong>k 近邻简介：</strong></p>
-<ul>
-<li>k 近邻 (k-Nearest Neighbor, 简称KNN)</li>
-<li>一种常用的监督学习方法</li>
-</ul>
-<p><strong>k 近邻思想：</strong></p>
-<ul>
-<li>给定测试样本，基于某种距离度量找出训练集中与其最靠近的 $k$ 个训练样本</li>
-<li>然后基于这 $k$ 个邻居的信息来进行预测</li>
-<li>在分类任务中，可采用 “投票法”<ul>
-<li>即选择 $k$ 个样本中出现最多的类别标记作为预测结果</li>
-</ul>
-</li>
-<li>在回归任务中，可采用 “平均法”<ul>
-<li>即将这 $k$ 个样本的实值输出标记的平均值作为预测结果</li>
-</ul>
-</li>
-</ul>
-<p><strong>k 近邻特点：</strong> </p>
-<ul>
-<li>没有显式的训练过程</li>
-</ul>
-<hr>
-<h3 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h3><h4 id="维数灾难-curse-of-dimensionality"><a href="#维数灾难-curse-of-dimensionality" class="headerlink" title="维数灾难 (curse of dimensionality)"></a>维数灾难 (curse of dimensionality)</h4><ul>
-<li>在高维情形下出现的数据样本稀疏、距离计算困难等问题</li>
-</ul>
-<h4 id="降维-dimension-reduction"><a href="#降维-dimension-reduction" class="headerlink" title="降维 (dimension reduction)"></a>降维 (dimension reduction)</h4><ul>
-<li>缓解维数灾难的一个重要途径</li>
-<li>通过某种数学变换将原始高维属性空间转变为一个低维 “子空间” </li>
-<li>在子空间中样本密度大幅提高，距离计算也变得更为容易</li>
-</ul>
-<h4 id="多维缩放-Multiple-Dimensional-Scaling，简称-MDS"><a href="#多维缩放-Multiple-Dimensional-Scaling，简称-MDS" class="headerlink" title="多维缩放 (Multiple Dimensional Scaling，简称 MDS)"></a>多维缩放 (Multiple Dimensional Scaling，简称 MDS)</h4><ul>
-<li><p>设 $m$ 个样本在原始空间的距离矩阵为 $\boldsymbol D\in {\Bbb R}^{m\times m}$</p>
-</li>
-<li><p>其第 $i$ 行 $j$ 列元素 $dist_{ij}$ 为样本 $\boldsymbol x_i$ 到 $\boldsymbol x_j$ 的距离</p>
-</li>
-<li><p>目标是获得样本在 $d\prime$ 维空间的表示 $\boldsymbol Z\in {\Bbb R}^{d\prime\times m}$, $d\prime \le d$</p>
-</li>
-<li><p>且任意两个样本在 $d\prime$ 维空间中欧式距离等于在原始空间中的距离，即 $\left|z_i-z_j \right| = dist_{ij}$</p>
-</li>
-<li><p>令 $\boldsymbol B$ 为降维后样本的内积矩阵，即 $\boldsymbol B = \boldsymbol Z^T\boldsymbol Z \in {\Bbb R}^{m\times m}$,  其中，$b_{ij} = z_i^Tz_j$</p>
-</li>
-<li><p>则：</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{split}
-dist_{ij}^2 &= \left\| z_i\right\|^2 +\left\| z_j\right\|^2 -2z_i^Tz_j\\
-&=b_{ii} + b_{jj}-2b_{ij}
-\end{split}\tag{1}
-\end{equation}</script></li>
-<li></li>
-<li><p>则矩阵 $\boldsymbol B$ 的行和列之和为零：</p>
-<script type="math/tex; mode=display">
-\begin {equation}
-\begin {split}
-\sum_{i=1}^{m} b_{ij} &= \sum_{i=1}^{m}(z_i^Tz_j) \\
-&=z_j\sum_{i=1}^{m}z_i^T\\
-&= 0\\
-\sum_{j=1}^{m} b_{ij} &= \sum_{j=1}^{m}(z_i^Tz_j) \\
-&= z_i\sum_{j=1}^{m}z_j^T\\
-&= 0
-\end {split}
-\end {equation}</script></li>
-<li><p>易知：</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^{m}dist_{ij}^2 = \text tr(\boldsymbol B) + mb_{jj}\tag{2}</script><script type="math/tex; mode=display">
-\sum_{j=1}^{m}dist_{ij}^2 = \text tr(\boldsymbol B) + mb_{ii}\tag{3}</script><script type="math/tex; mode=display">
-\sum_{i=1}^{m}\sum_{j=1}^{m}dist_{ij}^2 = 2m \ \text tr(\boldsymbol B)\tag{4}</script><p>其中，$\text{tr} (\cdot)$ 表示矩阵的迹，$\text{tr} = \sum_{i=1}^{m}{\left|z_i \right|}$</p>
-</li>
-<li><p>令：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-dist_{i \cdot}^2 &= \frac{1}{m}\sum_{j=1}^{m}dist_{ij}^2 \tag{5} \\
-dist_{\cdot j}^2 &= \frac{1}{m}\sum_{i=1}^{m}dist_{ij}^2 \tag{6} \\
-dist_{\cdot \cdot}^2 &= \frac{1}{m^2}\sum_{i=1}^{m}\sum_{j=1}^{m}dist_{ij}^2 \tag{7}\\
-\end{align}</script></li>
-<li><p>由式(1)和(2)~(7)可得：</p>
-<script type="math/tex; mode=display">
-b_{ij} = -\frac{1}{2}(dist_{ij}^2 - dist_{i\cdot}^2-dist_{\cdot j}^2+dist_{\cdot\cdot}^2)\tag{8}</script><p>推导过程如下：</p>
-<p>由式(1)得：</p>
-<script type="math/tex; mode=display">
-b_{ij} = -\frac{1}{2}(dist_{ij}-b_{ii}-b_{jj})</script><p>由式(4)和(7)得：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\text tr(\boldsymbol B) &= \frac{1}{2m}\sum_{i=1}^{m}\sum_{j=1}^{m}dist_{ij}^2\\
-&=\frac{1}{2m} \cdot m^2 dist_{\cdot \cdot}^2 \\
-&=\frac{m}{2}dist_{\cdot \cdot}^2
-\end{align}</script><p>由式(2)和(6)得：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-b_{jj} &= \frac{1}{m}\sum_{i=1}^{m}dist_{ij}^2 - \frac{1}{m}\text tr(\boldsymbol B)\\
-&=dist_{\cdot j}^2 - \frac{1}{2}dist_{\cdot \cdot}^2
-\end{align}</script><p>由式(3)和(5)得:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-b_{jj} &= \frac{1}{m}\sum_{j=1}^{m}dist_{ij}^2 - \frac{1}{m}\text tr(\boldsymbol B)\\
-&=dist_{i\cdot}^2 - \frac{1}{2}dist_{\cdot \cdot}^2
-\end{align}</script><p>综上得：</p>
-<script type="math/tex; mode=display">
-b_{ij} = -\frac{1}{2}(dist_{ij}^2 - dist_{i\cdot}^2-dist_{\cdot j}^2+dist_{\cdot\cdot}^2)</script></li>
-<li><p><strong>由此可通过降维前后保持不变的距离矩阵 $\boldsymbol D$ 求得内积矩阵 $\boldsymbol B$ </strong></p>
-</li>
-<li><p>对矩阵 $\boldsymbol B$ 做特征值分解 $\boldsymbol B = \boldsymbol V \boldsymbol \Lambda \boldsymbol V^T$</p>
-</li>
-<li><p>其中 $\Lambda = \text{diag}(\lambda_1,\lambda_2,….,\lambda_d)$ 为特征值构成的特征矩阵，$\lambda_1\ge\lambda_2\ge…\ge\lambda_d$ </p>
-</li>
-<li><p>$\boldsymbol V $ 为特征向量矩阵</p>
-</li>
-<li><p>取 $d\prime &lt;&lt; d$ 个最大特征值构成对角矩阵 $\tilde{\Lambda} = \text{diag}(\lambda_1,\lambda_2,….,\lambda_{d\prime})$ </p>
-</li>
-<li><p>令 $\tilde{\boldsymbol V }$ 为相应的特征向量矩阵</p>
-</li>
-<li><p>则 $\boldsymbol Z$ 可表达为:</p>
-<script type="math/tex; mode=display">
-\boldsymbol Z = \tilde{\Lambda}^{\frac{1}{2}}\tilde{\boldsymbol V }^T\ \in {\Bbb R}^{d\prime \times m}\tag{9}</script></li>
-</ul>
-<p><strong>MDS 算法描述：</strong></p>
-<p><img src="/2019/08/22/《机器学习》西瓜书学习笔记（十）-- 降维与度量学习/figure1.PNG" alt="figure1"></p>
-<h4 id="线性降维"><a href="#线性降维" class="headerlink" title="线性降维"></a>线性降维</h4><ul>
-<li><p>对原始高维空间进行线性变换，得到低维子空间</p>
-</li>
-<li><p>给定 $d$ 维空间中的样本 $\boldsymbol X = (\boldsymbol x_1, \boldsymbol x_2,…, \boldsymbol x_m ) \in {\Bbb R}^{d\times m}$</p>
-</li>
-<li><p>变换之后得到 $d\prime \le d$ 维空间中的样本</p>
-<script type="math/tex; mode=display">
-\boldsymbol Z = \boldsymbol W^T\boldsymbol X\tag{10}</script></li>
-<li><p>$\boldsymbol W \in {\Bbb R}^{d\times d\prime}$ 是变换矩阵</p>
-</li>
-<li><p>$\boldsymbol Z \in {\Bbb R}^{d\times m}$ 是样本在新空间中的表达</p>
-</li>
-</ul>
-<hr>
-<h3 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h3><hr>
-<h3 id="核化线性降维"><a href="#核化线性降维" class="headerlink" title="核化线性降维"></a>核化线性降维</h3><hr>
-<h3 id="流形学习"><a href="#流形学习" class="headerlink" title="流形学习"></a>流形学习</h3><h4 id="等度量映射"><a href="#等度量映射" class="headerlink" title="等度量映射"></a>等度量映射</h4><h4 id="局部线性嵌入"><a href="#局部线性嵌入" class="headerlink" title="局部线性嵌入"></a>局部线性嵌入</h4><hr>
-<h3 id="度量学习"><a href="#度量学习" class="headerlink" title="度量学习"></a>度量学习</h3><hr>
+        <p><strong><font size="4">论文常见单词积累 (一)</font></strong></p>
+<a id="more"></a>
+<p><strong><font size="5">常见单词积累</font></strong></p>
+<h3 id="2019-09-18"><a href="#2019-09-18" class="headerlink" title="2019/09/18"></a>2019/09/18</h3><p>representative [reprɪ’zentətɪv] adj. 典型的，有代表性的</p>
+<p>representativeness n. 代表性，典型性</p>
+<p>informative [ɪn’fɔːmətɪv] adj. 提供有用信息的，教育性的</p>
+<p>informativeness n. 信息量，忠实度</p>
+<p>collaborative [kə’læbəretɪv] adj. 合作的，协作的</p>
+<p>distinctiveness [di’stiŋktivnis] n. 特殊性，区别性，辨别性</p>
+<p>distinct [dɪ’stɪŋ(k)t]  adj. 明显的，独特的，清楚的，有区别的</p>
+<p>distinguish [dɪ’stɪŋgwɪʃ] vt. 区分，辨别，使杰出</p>
+<p>distinguished [dɪ’stɪŋgwɪʃt] adj. 卓越的，著名的，高贵的</p>
+<p>distinguishing [dɪ’stɪŋgwɪʃɪŋ] adj. 有区别的</p>
+<p>distinguishable [dɪ’stɪŋgwɪʃəbl] adj. 可区分的</p>
+<p>segment [‘segm(ə)nt] n. 段，节；v. 分割</p>
+<p>segmentation [,seɡmən’teɪʃən] n. 分割，割断，细胞分裂</p>
+<p>critical [‘krɪtɪk(ə)l]  adj. 关键的，决定性的，批评的，临界的</p>
+<p>alleviate [ə’liːvɪeɪt] vt. 减轻，缓和</p>
+<p>specifically [spɪ’sɪfɪkəlɪ] adv. 特别地，明确地</p>
+<p>specific [spɪ’sɪfɪk] adj. 特殊的，特定的，明确的，详细的 n. 特性，细节</p>
+<p>compact [kəm’pækt] adj. 紧凑的，坚实的，简洁的</p>
+<p>consistent [kən’sɪst(ə)nt] adj, 一致的，始终如一的</p>
+<p>batch [bætʃ] n. 一批 vt. 分批处理</p>
+<p>strategy [ˈstrætədʒɪ] n. 战略，策略</p>
+<p>extract [ˈekstrækt; ɪkˈstrækt] v. 提取，选取</p>
+<p>ensemble [ɒn’sɒmb(ə)l]  n. 全体，总效果</p>
+<p>available [ə’veɪləb(ə)l] adj. 可获得的，可购得的，可找到的，有空的</p>
+<p>comparable [‘kɒmp(ə)rəb(ə)l] adj. 类似的，可比较的，同等的，相当的</p>
+<p>feasible [‘fiːzɪb(ə)l] adj. 可行的，可实施的，可实行的</p>
+<p>excessive  [ɪkˈsesɪv] adj. 过多的，极度的，过分的</p>
+<p>geometric [,dʒɪə’metrɪk] adj. 几何学的，</p>
+<p>morphology [mɔː’fɒlədʒɪ] adj. 形态学，形态论</p>
+<p>refinement [rɪ’faɪnm(ə)nt] n. 改进，改善，有教养，文雅</p>
+<p>scheme [skiːm] n. 计划，组合，体制</p>
+<p>optimal [‘ɒptɪm(ə)l] adj. 最佳的，最理想的</p>
+<p>optimally [‘ɒptɪm(ə)lɪ] adv. 最佳，最适宜</p>
+<p>optimize [‘ɒptɪmaɪz] v. 最优化，优化</p>
+<p>optimization [,ɒptɪmaɪ’zeɪʃən] n. 最佳化，最优化</p>
+<p>circular [‘sɜːkjʊlə]  adj. 循环的，圆形的 </p>
+<p>regular [ˈreɡjələr] adj. 定期的，有规律的，合格的</p>
+<p>regularize [‘regjʊləraɪz] vt. 调整，使有秩序，是合法化, 正则化</p>
+<p>regularization [,rɛɡjʊlərɪ’zeʃən] n. 规则化，调整，合法化</p>
+<p>underlying [ʌndə’laɪɪŋ] adj. 潜在的；根本的；在下面的；优先的</p>
+<p>potential [pəˈtenʃl] adj. 潜在的，可能的 </p>
+<p>hierarchical [ˌhaɪəˈrɑːkɪ.kəl] adj. 分层的，分等级体系的</p>
+<h3 id="2019-9-19"><a href="#2019-9-19" class="headerlink" title="2019/9/19"></a>2019/9/19</h3><p>precise [prɪ’saɪs] adj. 精确的，明确的，严格的</p>
+<p>precisely [prɪ’saɪsIɪ] adv. 精确地，恰恰</p>
+<p>precision [prɪ’sɪʒ(ə)n] n. 精度，精密度，精确</p>
+<p>situation [sɪtjʊ’eɪʃ(ə)n] n. 情况，形式，处境，位置</p>
+<p>interactive [ɪntər’æktɪv] adj. 交互式的，相互作用的</p>
+<p>interact [ɪntər’ækt]  v.相互影响，相互作用</p>
+<p>criterion [kraɪ’tɪərɪən] n.标准，准则，规范 (单数)</p>
+<p>criteria [kraɪ’tɪərɪə] n. 标准，条件 (复数)</p>
+<p>committee [kə’mɪtɪ] n. 委员会</p>
+<p>overall [‘əʊvərɔːl] adj. 全部的，全体的，一切在内的 adv. 全部地，总得来说</p>
+<p>aggregate [‘ægrɪgət; (for v.) ˈægrɪgeɪt] n. 合计，集合体；v. 集合，聚集，合计 </p>
+<p>represent [reprɪ’zent] v. 代表，表现</p>
+<p>representation [,reprɪzen’teɪʃ(ə)n] n. 代表，表现</p>
+<p>representative [reprɪ’zentətɪv] adj. 典型的，有代表性的 n. 代表，典型</p>
+<p>representativeness n. 代表性，典型性</p>
+<p>neglect [nɪ’glekt] v. 忽略，忽视 n. 忽略，忽视，未被重视</p>
+<p>exploit [ˈeksplɔɪt;ɪkˈsplɔɪt] vt. 开发，开拓，剥削</p>
+<p>abundance [ə’bʌnd(ə)ns] n. 充裕，丰富</p>
+<p>abundant [ə’bʌnd(ə)nt] adj. 丰富的，充裕的</p>
+<p>solely [‘səʊllɪ] adv. 单独地，仅仅</p>
+<p>outperform [aʊtpə’fɔːm] vt. 胜过，做得比……好</p>
+<p>outperformance [,autpə’fɔ:məns] n. 优胜，业绩出色</p>
+<p>material [mə’tɪərɪəl] n. 材料，用具，人才，素材; adj. 物质的，身体需要的</p>
+<p>schematic [skiː’mætɪk; skɪ-] adj. 图解的，概要的 n. 原理图</p>
+<p>diagram [‘daɪəgræm] n. 图表，图解</p>
+<p>sensitive [‘sensɪtɪv] adj. 敏感的，感觉的，灵敏的 n. 敏感的人</p>
+<p>interval [‘ɪntəv(ə)l] n. 间隔，间距</p>
+<p>connectivity [kɒnek’tɪvɪtɪ] n. 连通 (性)，联结 (度)</p>
+<p>appropriate [əˈprəʊprɪət;(for v.)əˈprəʊprɪeɪt] adj. 适当的，合适的 vt. 占用</p>
+<p>appropriately [əˈprəʊpriətli] adv. 适当地，合适地</p>
+<p>discriminate [dɪ’skrɪmɪneɪt] vt. 歧视，区别，辨别 vi. 区别</p>
+<p>discrimination [dɪ,skrɪmɪ’neɪʃ(ə)n] n. 歧视，区别，辨别，识别力</p>
+<h3 id="2019-09-20"><a href="#2019-09-20" class="headerlink" title="2019/09/20"></a>2019/09/20</h3><p>intutive </p>
 
       
     </div>
@@ -559,7 +498,9 @@ b_{ij} = -\frac{1}{2}(dist_{ij}^2 - dist_{i\cdot}^2-dist_{\cdot j}^2+dist_{\cdot
       
         <div class="post-tags">
           
-            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+            <a href="/tags/paper/" rel="tag"># paper</a>
+          
+            <a href="/tags/word/" rel="tag"># word</a>
           
         </div>
       
@@ -572,8 +513,8 @@ b_{ij} = -\frac{1}{2}(dist_{ij}^2 - dist_{i\cdot}^2-dist_{\cdot j}^2+dist_{\cdot
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/19/《机器学习》西瓜书学习笔记（九）-- 聚类/" rel="next" title="《机器学习》西瓜书学习笔记（九）-- 聚类">
-                <i class="fa fa-chevron-left"></i> 《机器学习》西瓜书学习笔记（九）-- 聚类
+              <a href="/2019/09/17/机器学习的数学基础/" rel="next" title="机器学习的数学基础">
+                <i class="fa fa-chevron-left"></i> 机器学习的数学基础
               </a>
             
           </div>
@@ -581,10 +522,6 @@ b_{ij} = -\frac{1}{2}(dist_{ij}^2 - dist_{i\cdot}^2-dist_{\cdot j}^2+dist_{\cdot
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/26/拉格朗日乘子法(Lagrange Multiplier)和KKT条件/" rel="prev" title="拉格朗日乘子法(Lagrange Multiplier)和KKT条件">
-                拉格朗日乘子法(Lagrange Multiplier)和KKT条件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -741,7 +678,7 @@ b_{ij} = -\frac{1}{2}(dist_{ij}^2 - dist_{i\cdot}^2-dist_{\cdot j}^2+dist_{\cdot
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《机器学习》西瓜书学习笔记（十）降维与度量学习"><span class="nav-number">1.</span> <span class="nav-text">《机器学习》西瓜书学习笔记（十）降维与度量学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#k-近邻学习"><span class="nav-number">1.1.</span> <span class="nav-text">k 近邻学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低维嵌入"><span class="nav-number">1.2.</span> <span class="nav-text">低维嵌入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#维数灾难-curse-of-dimensionality"><span class="nav-number">1.2.1.</span> <span class="nav-text">维数灾难 (curse of dimensionality)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降维-dimension-reduction"><span class="nav-number">1.2.2.</span> <span class="nav-text">降维 (dimension reduction)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多维缩放-Multiple-Dimensional-Scaling，简称-MDS"><span class="nav-number">1.2.3.</span> <span class="nav-text">多维缩放 (Multiple Dimensional Scaling，简称 MDS)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性降维"><span class="nav-number">1.2.4.</span> <span class="nav-text">线性降维</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主成分分析"><span class="nav-number">1.3.</span> <span class="nav-text">主成分分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核化线性降维"><span class="nav-number">1.4.</span> <span class="nav-text">核化线性降维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流形学习"><span class="nav-number">1.5.</span> <span class="nav-text">流形学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#等度量映射"><span class="nav-number">1.5.1.</span> <span class="nav-text">等度量映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部线性嵌入"><span class="nav-number">1.5.2.</span> <span class="nav-text">局部线性嵌入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#度量学习"><span class="nav-number">1.6.</span> <span class="nav-text">度量学习</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-18"><span class="nav-number">1.</span> <span class="nav-text">2019/09/18</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-9-19"><span class="nav-number">2.</span> <span class="nav-text">2019/9/19</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-20"><span class="nav-number">3.</span> <span class="nav-text">2019/09/20</span></a></li></ol></div>
             
 
           </div>
