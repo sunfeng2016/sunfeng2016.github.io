@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="transfer learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="SunFeng's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="迁移学习简介">
+<meta name="keywords" content="transfer learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="迁移学习简介">
+<meta property="og:url" content="http://sunfeng.online/2019/09/27/迁移学习简介/index.html">
+<meta property="og:site_name" content="SunFeng&#39;s Blog">
+<meta property="og:description" content="迁移学习简介">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure1.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure3.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure2.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/Blog/blog/source/_posts/2019/09/27/transfer-learning/figure4.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure5.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure7.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure6.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure8.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure9.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure10.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure11.PNG">
+<meta property="og:updated_time" content="2019-09-27T08:14:24.604Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="迁移学习简介">
+<meta name="twitter:description" content="迁移学习简介">
+<meta name="twitter:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://sunfeng.online/2019/09/27/迁移学习简介/">
+
+
+
+
+
+  <title>迁移学习简介 | SunFeng's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SunFeng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学习，敲码，孤独终老！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sunfeng.online/2019/09/27/迁移学习简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SunFeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sun.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SunFeng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">迁移学习简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-27T15:55:42+08:00">
+                2019-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/迁移学习/" itemprop="url" rel="index">
+                    <span itemprop="name">迁移学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,363
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong><font size="4">迁移学习简介</font></strong></p>
+<a id="more"></a>
+<h2 id="迁移学习简介"><a href="#迁移学习简介" class="headerlink" title="迁移学习简介"></a>迁移学习简介</h2><h3 id="定义与概念"><a href="#定义与概念" class="headerlink" title="定义与概念"></a>定义与概念</h3><h4 id="什么是迁移学习？"><a href="#什么是迁移学习？" class="headerlink" title="什么是迁移学习？"></a>什么是迁移学习？</h4><ul>
+<li><p><strong>心理学角度</strong>：人们利用之前的经验和知识进行推理和学习的能力</p>
+</li>
+<li><p><strong>机器学习角度：</strong> 一个系统将别的相关领域中的知识应用到本应用中的学习模式</p>
+<p><strong>举例：</strong> C++ $\rightarrow$ Java；骑自行车 $\rightarrow$ 骑摩托车</p>
+<p><strong>关键词：</strong>举一反三</p>
+</li>
+</ul>
+<hr>
+<h4 id="迁移学习需要解决的问题"><a href="#迁移学习需要解决的问题" class="headerlink" title="迁移学习需要解决的问题"></a>迁移学习需要解决的问题</h4><ul>
+<li>给定一个研究领域和任务，如何利用相似领域进行知识的迁移，从而达成目标？</li>
+</ul>
+<hr>
+<h4 id="为什么要进行迁移学习？"><a href="#为什么要进行迁移学习？" class="headerlink" title="为什么要进行迁移学习？"></a>为什么要进行迁移学习？</h4><ul>
+<li>数据的标签很难获取</li>
+<li>从头建立模型是复杂和耗时的</li>
+</ul>
+<p><img src="/2019/09/27/迁移学习简介/figure1.PNG" alt="figure1"></p>
+<hr>
+<h3 id="迁移学习-VS-传统机器学习"><a href="#迁移学习-VS-传统机器学习" class="headerlink" title="迁移学习 VS 传统机器学习"></a>迁移学习 VS 传统机器学习</h3><p><img src="/2019/09/27/迁移学习简介/figure3.PNG" alt="figure3"></p>
+<p><img src="/2019/09/27/迁移学习简介/figure2.PNG" alt="figure2"></p>
+<hr>
+<h3 id="与其他概念的对比"><a href="#与其他概念的对比" class="headerlink" title="与其他概念的对比"></a>与其他概念的对比</h3><ul>
+<li><strong>终身学习</strong> (Life-long learning): 连续不断地在一个域上学习</li>
+<li><strong>多任务学习</strong> (Multi-task learning): 两个任务同时完成</li>
+<li><strong>域适配</strong> (Domain adaptation): 迁移学习的子类</li>
+<li><strong>增量学习</strong> (Incremental learning): 一个域上的不断学习</li>
+<li><strong>自我学习</strong> (Self-taught learning): 从自身数据中学习</li>
+<li><strong>协方差漂移</strong> (Covariance shift): 迁移学习的子类</li>
+<li>……</li>
+</ul>
+<p>迁移学习与其他已有概念相比，着重强调学习任务之间的<strong>相关性</strong>，并利用这种相关性完成知识之间的迁移。</p>
+<hr>
+<h4 id="迁移学习的形式化概念"><a href="#迁移学习的形式化概念" class="headerlink" title="迁移学习的形式化概念"></a>迁移学习的形式化概念</h4><h5 id="迁移学习常用概念"><a href="#迁移学习常用概念" class="headerlink" title="迁移学习常用概念"></a>迁移学习常用概念</h5><ul>
+<li><strong>Domain (域)</strong>：由数据特征和特征分布组成，是学习的主体<ul>
+<li>Source domain (源域)：已有知识的域</li>
+<li>Target domain (目标域)：要进行学习的域</li>
+</ul>
+</li>
+<li><strong>Task (任务)</strong> ：由目标函数和学习结果组成，是学习的结果</li>
+</ul>
+<h5 id="迁移学习的形式化定义"><a href="#迁移学习的形式化定义" class="headerlink" title="迁移学习的形式化定义"></a>迁移学习的形式化定义</h5><ul>
+<li><strong>条件</strong>：给定一个源域 ${\cal D}_S$ 和源域上的学习任务 ${\cal T}_{S}$, 以及目标域 ${\cal D}_T$ 和目标域上的学习任务 ${\cal T}_T$</li>
+<li><strong>目标</strong>：利用 ${\cal D}_S$ 和 ${\cal T}_S$ 学习在目标域上的预测函数 $f(\cdot)$</li>
+<li><strong>限制条件</strong>：${\cal D}_S \ne {\cal D}_T$ 或 ${\cal T}_S \ne {\cal T}_T$</li>
+</ul>
+<hr>
+<h4 id="迁移学习的应用领域"><a href="#迁移学习的应用领域" class="headerlink" title="迁移学习的应用领域"></a>迁移学习的应用领域</h4><p><img src="/2019/09/27/迁移学习简介/Blog\blog\source\_posts\2019\09\27\transfer-learning\figure4.PNG" alt="figure4"></p>
+<hr>
+<h2 id="迁移学习的分类方法"><a href="#迁移学习的分类方法" class="headerlink" title="迁移学习的分类方法"></a>迁移学习的分类方法</h2><p><strong>常用的迁移学习分类方法</strong></p>
+<ul>
+<li>按迁移情景</li>
+<li>按迁移方法</li>
+<li>按特征空间</li>
+</ul>
+<h3 id="按迁移情景分类"><a href="#按迁移情景分类" class="headerlink" title="按迁移情景分类"></a>按迁移情景分类</h3><ul>
+<li><strong>归纳式迁移学习</strong> (inductive transfer learning)：源域和目标域的学习任务不同</li>
+<li><strong>直推式迁移学习</strong> (transductive transfer learning)：源域和目标域不同，学习任务相同</li>
+<li><strong>无监督迁移学习</strong> (unsupervised transfer learning)：源域和目标域均没有标签</li>
+</ul>
+<p><img src="/2019/09/27/迁移学习简介/figure5.PNG" alt="figure5"></p>
+<hr>
+<h3 id="按特征空间分类"><a href="#按特征空间分类" class="headerlink" title="按特征空间分类"></a>按特征空间分类</h3><ul>
+<li><strong>同构迁移学习</strong> (Homogeneous TL)：特征维度相同分布不同</li>
+<li><strong>异构迁移学习</strong> (Heterogeneous TL)：特征维度不同</li>
+</ul>
+<p><img src="/2019/09/27/迁移学习简介/figure7.PNG" alt="figure7"></p>
+<hr>
+<h3 id="按迁移方法分类"><a href="#按迁移方法分类" class="headerlink" title="按迁移方法分类"></a>按迁移方法分类</h3><ul>
+<li><strong>基于实例的迁移</strong> (instance based TL)：通过权重重用源域和目标域的样例进行迁移</li>
+<li><strong>基于特征的迁移</strong> (feature based TL)：将源域和目标域的特征变换到相同空间</li>
+<li><strong>基于模型的迁移</strong> (parameter based TL)：利用源域和目标域的参数共享模型</li>
+<li><strong>基于关系的迁移</strong> (relation based TL)：利用源域中的逻辑网络关系进行迁移</li>
+</ul>
+<p><img src="/2019/09/27/迁移学习简介/figure6.PNG" alt="figure6"></p>
+<hr>
+<h4 id="基于实例的迁移学习方法"><a href="#基于实例的迁移学习方法" class="headerlink" title="基于实例的迁移学习方法"></a>基于实例的迁移学习方法</h4><ul>
+<li><p><strong>假设</strong>：源域中的一些数据和目标域会共享很多共同的特征</p>
+</li>
+<li><p><strong>方法</strong>：对源域进行 instance reweighting, 筛选出与目标域数据相似度的数据，然后进行训练学习</p>
+</li>
+<li><p><strong>代表工作</strong>：</p>
+<ul>
+<li>TrAdaBoost [Dal, ICML-07]</li>
+<li>Kemel Mean Matching (KMM) [Smola, ICML-08]</li>
+<li>Density ratio estimation [Suglyama, NIPS-07]</li>
+</ul>
+</li>
+<li><p><strong>优点</strong>:</p>
+<ul>
+<li>方法较简单，实现容易</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong>:</p>
+<ul>
+<li>权重选择与相似度度量依赖经验</li>
+<li>源域和目标域的数据分布往往不同</li>
+</ul>
+</li>
+<li><p>图示：</p>
+<p><img src="/2019/09/27/迁移学习简介/figure8.PNG" alt="figure8"></p>
+</li>
+</ul>
+<hr>
+<h4 id="基于特征的迁移学习方法"><a href="#基于特征的迁移学习方法" class="headerlink" title="基于特征的迁移学习方法"></a>基于特征的迁移学习方法</h4><ul>
+<li><p><strong>假设：</strong>源域和目标域仅仅有一些交叉特征</p>
+</li>
+<li><p><strong>方法：</strong>通过特征变化，将两个域的数据变化到同一特征空间，然后进行传统的机器学习</p>
+</li>
+<li><p><strong>代表工作：</strong></p>
+<ul>
+<li>Transfer component analysis (TCA) [Pan, TKDE-11]</li>
+<li>Spectral Feature Alignment (SFA) [Pan, WWW-10]</li>
+<li>Geodesic flow kernel (GFK) [Duan, CVPR-12]</li>
+<li>Transfer kernel learning (TKL) [Long, TKDE-15]</li>
+</ul>
+</li>
+<li><p><strong>优点：</strong></p>
+<ul>
+<li>大多数方法采用</li>
+<li>特征选择与变换可以取得好效果</li>
+</ul>
+</li>
+<li><p><strong>缺点：</strong></p>
+<ul>
+<li>往往是一个优化问题，难求解</li>
+<li>容易发生过适配</li>
+</ul>
+</li>
+<li><p>图示</p>
+<p><img src="/2019/09/27/迁移学习简介/figure9.PNG" alt="figure9"></p>
+</li>
+</ul>
+<hr>
+<h4 id="基于模型的迁移学习方法"><a href="#基于模型的迁移学习方法" class="headerlink" title="基于模型的迁移学习方法"></a>基于模型的迁移学习方法</h4><ul>
+<li><strong>假设：</strong> 源域和目标域可以共享一些模型参数</li>
+<li><strong>方法：</strong> 由源域学习到的模型运用到目标域上，再根据目标域学习新的模型</li>
+<li><strong>代表工作：</strong><ul>
+<li>TransEMDT [Zhao, IJCAI-11]</li>
+<li>TRCNN [Oquab, CVPR-14]</li>
+<li>TaskTrAdaBoost [Yao, CVPR-10]</li>
+</ul>
+</li>
+<li><strong>优点：</strong><ul>
+<li>模型间存在相似性，可以被利用</li>
+</ul>
+</li>
+<li><strong>缺点：</strong><ul>
+<li>模型参数不易收敛</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="基于关系的迁移学习方法"><a href="#基于关系的迁移学习方法" class="headerlink" title="基于关系的迁移学习方法"></a>基于关系的迁移学习方法</h4><ul>
+<li><p><strong>假设：</strong>如果两个域是相似的，那么它们会共享某种相似关系</p>
+</li>
+<li><p><strong>方法：</strong>利用源域学习逻辑关系网络，再应用到目标域上</p>
+</li>
+<li><p><strong>代表工作：</strong></p>
+<ul>
+<li>Predicates mapping and revising [Mihalkova, AAAI-07]</li>
+<li>Second-order Markov Logic [Davis, ICML-09]</li>
+</ul>
+</li>
+<li><p>图示：</p>
+<p><img src="/2019/09/27/迁移学习简介/figure10.PNG" alt="figure10"></p>
+</li>
+</ul>
+<hr>
+<h2 id="代表性研究工作"><a href="#代表性研究工作" class="headerlink" title="代表性研究工作"></a>代表性研究工作</h2><h3 id="迁移学习的热门研究领域"><a href="#迁移学习的热门研究领域" class="headerlink" title="迁移学习的热门研究领域"></a>迁移学习的热门研究领域</h3><ul>
+<li><strong>域适配问题</strong> (domain adaptation)</li>
+<li><strong>多源迁移学习</strong> (multi-source TL)</li>
+<li><strong>深度迁移学习</strong> (deep TL)</li>
+<li><strong>异构迁移学习</strong> (heterogeneous TL)</li>
+</ul>
+<p><img src="/2019/09/27/迁移学习简介/figure11.PNG" alt="figure11"></p>
+<hr>
+<h3 id="域适配问题-Domain-adaptation"><a href="#域适配问题-Domain-adaptation" class="headerlink" title="域适配问题 (Domain adaptation)"></a>域适配问题 (Domain adaptation)</h3><h4 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h4><ul>
+<li>有标签的源域和无标签的目标域共享相同的特征和模型，但是特征分布不同，如何利用源域标定目标域</li>
+</ul>
+<h3 id="多源迁移学习"><a href="#多源迁移学习" class="headerlink" title="多源迁移学习"></a>多源迁移学习</h3><h3 id="深度迁移学习"><a href="#深度迁移学习" class="headerlink" title="深度迁移学习"></a>深度迁移学习</h3><h2 id="问题与展望"><a href="#问题与展望" class="headerlink" title="问题与展望"></a>问题与展望</h2><h2 id="迁移学习资源"><a href="#迁移学习资源" class="headerlink" title="迁移学习资源"></a>迁移学习资源</h2>
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+      <div>
+    
+    <div style="text-align:center;color:#ccc;font-size:14px;">
+        -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+    </div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/transfer-learning/" rel="tag"># transfer learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/20/论文常见单词积累 (一)/" rel="next" title="论文常见单词积累 (一)">
+                <i class="fa fa-chevron-left"></i> 论文常见单词积累 (一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/sun.jpg" alt="SunFeng">
+            
+              <p class="site-author-name" itemprop="name">SunFeng</p>
+              <p class="site-description motion-element" itemprop="description">南京航空航天大学 | 计算机科学与技术学院 | 物联网工程专业</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/sunfeng2016" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:SunFeng@nuaa.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习简介"><span class="nav-number">1.</span> <span class="nav-text">迁移学习简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义与概念"><span class="nav-number">1.1.</span> <span class="nav-text">定义与概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是迁移学习？"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是迁移学习？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移学习需要解决的问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">迁移学习需要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要进行迁移学习？"><span class="nav-number">1.1.3.</span> <span class="nav-text">为什么要进行迁移学习？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迁移学习-VS-传统机器学习"><span class="nav-number">1.2.</span> <span class="nav-text">迁移学习 VS 传统机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与其他概念的对比"><span class="nav-number">1.3.</span> <span class="nav-text">与其他概念的对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移学习的形式化概念"><span class="nav-number">1.3.1.</span> <span class="nav-text">迁移学习的形式化概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#迁移学习常用概念"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">迁移学习常用概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迁移学习的形式化定义"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">迁移学习的形式化定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移学习的应用领域"><span class="nav-number">1.3.2.</span> <span class="nav-text">迁移学习的应用领域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习的分类方法"><span class="nav-number">2.</span> <span class="nav-text">迁移学习的分类方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按迁移情景分类"><span class="nav-number">2.1.</span> <span class="nav-text">按迁移情景分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按特征空间分类"><span class="nav-number">2.2.</span> <span class="nav-text">按特征空间分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按迁移方法分类"><span class="nav-number">2.3.</span> <span class="nav-text">按迁移方法分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于实例的迁移学习方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">基于实例的迁移学习方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于特征的迁移学习方法"><span class="nav-number">2.3.2.</span> <span class="nav-text">基于特征的迁移学习方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于模型的迁移学习方法"><span class="nav-number">2.3.3.</span> <span class="nav-text">基于模型的迁移学习方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于关系的迁移学习方法"><span class="nav-number">2.3.4.</span> <span class="nav-text">基于关系的迁移学习方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代表性研究工作"><span class="nav-number">3.</span> <span class="nav-text">代表性研究工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迁移学习的热门研究领域"><span class="nav-number">3.1.</span> <span class="nav-text">迁移学习的热门研究领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域适配问题-Domain-adaptation"><span class="nav-number">3.2.</span> <span class="nav-text">域适配问题 (Domain adaptation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题定义"><span class="nav-number">3.2.1.</span> <span class="nav-text">问题定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多源迁移学习"><span class="nav-number">3.3.</span> <span class="nav-text">多源迁移学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度迁移学习"><span class="nav-number">3.4.</span> <span class="nav-text">深度迁移学习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题与展望"><span class="nav-number">4.</span> <span class="nav-text">问题与展望</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习资源"><span class="nav-number">5.</span> <span class="nav-text">迁移学习资源</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SunFeng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">47.2k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共47.2k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

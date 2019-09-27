@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[transfer-learning]]></title>
-    <url>%2F2019%2F09%2F27%2Ftransfer-learning%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[迁移学习简介]]></title>
+    <url>%2F2019%2F09%2F27%2F%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"><![CDATA[迁移学习简介 迁移学习简介定义与概念什么是迁移学习？ 心理学角度：人们利用之前的经验和知识进行推理和学习的能力 机器学习角度： 一个系统将别的相关领域中的知识应用到本应用中的学习模式 举例： C++ $\rightarrow$ Java；骑自行车 $\rightarrow$ 骑摩托车 关键词：举一反三 迁移学习需要解决的问题 给定一个研究领域和任务，如何利用相似领域进行知识的迁移，从而达成目标？ 为什么要进行迁移学习？ 数据的标签很难获取 从头建立模型是复杂和耗时的 迁移学习 VS 传统机器学习 与其他概念的对比 终身学习 (Life-long learning): 连续不断地在一个域上学习 多任务学习 (Multi-task learning): 两个任务同时完成 域适配 (Domain adaptation): 迁移学习的子类 增量学习 (Incremental learning): 一个域上的不断学习 自我学习 (Self-taught learning): 从自身数据中学习 协方差漂移 (Covariance shift): 迁移学习的子类 …… 迁移学习与其他已有概念相比，着重强调学习任务之间的相关性，并利用这种相关性完成知识之间的迁移。 迁移学习的形式化概念迁移学习常用概念 Domain (域)：由数据特征和特征分布组成，是学习的主体 Source domain (源域)：已有知识的域 Target domain (目标域)：要进行学习的域 Task (任务) ：由目标函数和学习结果组成，是学习的结果 迁移学习的形式化定义 条件：给定一个源域 ${\cal D}_S$ 和源域上的学习任务 ${\cal T}_{S}$, 以及目标域 ${\cal D}_T$ 和目标域上的学习任务 ${\cal T}_T$ 目标：利用 ${\cal D}_S$ 和 ${\cal T}_S$ 学习在目标域上的预测函数 $f(\cdot)$ 限制条件：${\cal D}_S \ne {\cal D}_T$ 或 ${\cal T}_S \ne {\cal T}_T$ 迁移学习的应用领域 迁移学习的分类方法常用的迁移学习分类方法 按迁移情景 按迁移方法 按特征空间 按迁移情景分类 归纳式迁移学习 (inductive transfer learning)：源域和目标域的学习任务不同 直推式迁移学习 (transductive transfer learning)：源域和目标域不同，学习任务相同 无监督迁移学习 (unsupervised transfer learning)：源域和目标域均没有标签 按特征空间分类 同构迁移学习 (Homogeneous TL)：特征维度相同分布不同 异构迁移学习 (Heterogeneous TL)：特征维度不同 按迁移方法分类 基于实例的迁移 (instance based TL)：通过权重重用源域和目标域的样例进行迁移 基于特征的迁移 (feature based TL)：将源域和目标域的特征变换到相同空间 基于模型的迁移 (parameter based TL)：利用源域和目标域的参数共享模型 基于关系的迁移 (relation based TL)：利用源域中的逻辑网络关系进行迁移 基于实例的迁移学习方法 假设：源域中的一些数据和目标域会共享很多共同的特征 方法：对源域进行 instance reweighting, 筛选出与目标域数据相似度的数据，然后进行训练学习 代表工作： TrAdaBoost [Dal, ICML-07] Kemel Mean Matching (KMM) [Smola, ICML-08] Density ratio estimation [Suglyama, NIPS-07] 优点: 方法较简单，实现容易 缺点: 权重选择与相似度度量依赖经验 源域和目标域的数据分布往往不同 图示： 基于特征的迁移学习方法 假设：源域和目标域仅仅有一些交叉特征 方法：通过特征变化，将两个域的数据变化到同一特征空间，然后进行传统的机器学习 代表工作： Transfer component analysis (TCA) [Pan, TKDE-11] Spectral Feature Alignment (SFA) [Pan, WWW-10] Geodesic flow kernel (GFK) [Duan, CVPR-12] Transfer kernel learning (TKL) [Long, TKDE-15] 优点： 大多数方法采用 特征选择与变换可以取得好效果 缺点： 往往是一个优化问题，难求解 容易发生过适配 图示 基于模型的迁移学习方法 假设： 源域和目标域可以共享一些模型参数 方法： 由源域学习到的模型运用到目标域上，再根据目标域学习新的模型 代表工作： TransEMDT [Zhao, IJCAI-11] TRCNN [Oquab, CVPR-14] TaskTrAdaBoost [Yao, CVPR-10] 优点： 模型间存在相似性，可以被利用 缺点： 模型参数不易收敛 基于关系的迁移学习方法 假设：如果两个域是相似的，那么它们会共享某种相似关系 方法：利用源域学习逻辑关系网络，再应用到目标域上 代表工作： Predicates mapping and revising [Mihalkova, AAAI-07] Second-order Markov Logic [Davis, ICML-09] 图示： 代表性研究工作迁移学习的热门研究领域 域适配问题 (domain adaptation) 多源迁移学习 (multi-source TL) 深度迁移学习 (deep TL) 异构迁移学习 (heterogeneous TL) 域适配问题 (Domain adaptation)问题定义 有标签的源域和无标签的目标域共享相同的特征和模型，但是特征分布不同，如何利用源域标定目标域 多源迁移学习深度迁移学习问题与展望迁移学习资源]]></content>
+      <categories>
+        <category>迁移学习</category>
+      </categories>
+      <tags>
+        <tag>transfer learning</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[论文常见单词积累 (一)]]></title>
