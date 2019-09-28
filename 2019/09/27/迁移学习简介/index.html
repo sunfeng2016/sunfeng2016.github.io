@@ -107,7 +107,12 @@
 <meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure9.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure10.PNG">
 <meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure11.PNG">
-<meta property="og:updated_time" content="2019-09-27T08:23:52.874Z">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure12.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure13.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure14.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure15.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/09/27/迁移学习简介/figure16.PNG">
+<meta property="og:updated_time" content="2019-09-27T16:58:59.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="迁移学习简介">
 <meta name="twitter:description" content="迁移学习简介">
@@ -367,7 +372,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,363
+                  1,615
                 </span>
               
 
@@ -383,7 +388,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -485,7 +490,7 @@
 <h4 id="基于实例的迁移学习方法"><a href="#基于实例的迁移学习方法" class="headerlink" title="基于实例的迁移学习方法"></a>基于实例的迁移学习方法</h4><ul>
 <li><p><strong>假设</strong>：源域中的一些数据和目标域会共享很多共同的特征</p>
 </li>
-<li><p><strong>方法</strong>：对源域进行 instance reweighting, 筛选出与目标域数据相似度的数据，然后进行训练学习</p>
+<li><p><strong>方法</strong>：对源域进行 instance reweighting, 筛选出与目标域数据相似度高的数据，然后进行训练学习</p>
 </li>
 <li><p><strong>代表工作</strong>：</p>
 <ul>
@@ -584,9 +589,84 @@
 <p><img src="/2019/09/27/迁移学习简介/figure11.PNG" alt="figure11"></p>
 <hr>
 <h3 id="域适配问题-Domain-adaptation"><a href="#域适配问题-Domain-adaptation" class="headerlink" title="域适配问题 (Domain adaptation)"></a>域适配问题 (Domain adaptation)</h3><h4 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h4><ul>
-<li>有标签的源域和无标签的目标域共享相同的特征和模型，但是特征分布不同，如何利用源域标定目标域</li>
+<li><p>有标签的源域和无标签的目标域共享相同的特征和模型，但是特征分布不同，如何利用源域标定目标域</p>
+<p>${\cal D}_S \ne {\cal D}_T$ : $P_S(X) \ne P_T(X)$</p>
+</li>
 </ul>
-<h3 id="多源迁移学习"><a href="#多源迁移学习" class="headerlink" title="多源迁移学习"></a>多源迁移学习</h3><h3 id="深度迁移学习"><a href="#深度迁移学习" class="headerlink" title="深度迁移学习"></a>深度迁移学习</h3><h2 id="问题与展望"><a href="#问题与展望" class="headerlink" title="问题与展望"></a>问题与展望</h2><h2 id="迁移学习资源"><a href="#迁移学习资源" class="headerlink" title="迁移学习资源"></a>迁移学习资源</h2>
+<h4 id="域适配问题的迁移方法"><a href="#域适配问题的迁移方法" class="headerlink" title="域适配问题的迁移方法"></a>域适配问题的迁移方法</h4><ul>
+<li><p><strong>基于特征的迁移方法：</strong></p>
+<ul>
+<li><p>Transfer component analysis [Pan, TKDE-11]</p>
+</li>
+<li><p>Geodesic flow kernel [Duan, CVPR-12]</p>
+</li>
+<li><p>Transfer kernel learning [Long, TKDE-15]</p>
+</li>
+<li><p>TransEMDT [Zhao, IJCAI-11]</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>基于实例的迁移方法：</strong></p>
+<ul>
+<li><p>Kernel mean matching [Huang, NIPS-06]</p>
+</li>
+<li><p>Covariate Shift Adaptation [Sugiyama, JMLR-07]</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>基于模型的迁移方法：</strong></p>
+<ul>
+<li>Adaptive SVM (ASVM) [Yang et al, ACM Multimedia-07]</li>
+<li>Multiple Convex Combination (MCC) [Schweikert, NIPS-09]</li>
+<li>Domain Adaptation Machine (DAM) [Duan, TNNLS-12]</li>
+</ul>
+</li>
+</ul>
+<h4 id="迁移成分分析-TCA-transfer-component-analysis-Pan-TKDE-11"><a href="#迁移成分分析-TCA-transfer-component-analysis-Pan-TKDE-11" class="headerlink" title="迁移成分分析 (TCA, transfer component analysis) [Pan, TKDE-11]"></a>迁移成分分析 (TCA, transfer component analysis) [Pan, TKDE-11]</h4><ul>
+<li>将源域和目标域变换到相同空间，最小化它们的距离</li>
+</ul>
+<p><img src="/2019/09/27/迁移学习简介/figure12.PNG" alt="figure12"></p>
+<ul>
+<li><p>优化目标</p>
+<script type="math/tex; mode=display">
+\begin {align}
+&\mathop \min_{\varphi} \ \ {\text {Dist}}(\varphi(\boldsymbol X_S),\varphi(\boldsymbol X_T))+\lambda\Omega(\varphi)\\
+&{\text {s.t.}} \ \ {\text {constraints on}} \ \varphi(\boldsymbol X_S) \ {\text {and}}\ \varphi(\boldsymbol X_S) 
+\end {align}</script></li>
+<li><p>Maximum mean discrepancy (MMD)</p>
+<script type="math/tex; mode=display">
+{\text {Dist}}(P(\boldsymbol X_S),P(\boldsymbol X_T)) = \left\|\frac{1}{n_S}\sum_{i=1}^{n_S}\Phi(x_{S_i}) -\frac{1}{n_T}\sum_{i=1}^{n_T}\Phi(x_{T_i}) \right\|_{\cal H}</script></li>
+</ul>
+<ul>
+<li><p>Original feature</p>
+<p><img src="/2019/09/27/迁移学习简介/figure13.PNG" alt="figure13"></p>
+</li>
+<li><p>PCA</p>
+<p><img src="/2019/09/27/迁移学习简介/figure14.PNG" alt="figure14"></p>
+</li>
+<li><p>TCA</p>
+<p><img src="/2019/09/27/迁移学习简介/figure15.PNG" alt="figure15"></p>
+</li>
+</ul>
+<h4 id="GFK-geodesic-flow-kernel-Duan-CVPR-12"><a href="#GFK-geodesic-flow-kernel-Duan-CVPR-12" class="headerlink" title="GFK (geodesic flow kernel) [Duan, CVPR-12]"></a>GFK (geodesic flow kernel) [Duan, CVPR-12]</h4><ul>
+<li><p>利用流行学习，将数据映射到高维空间中，然后测量其距离，使得源域和目标域差异最大</p>
+</li>
+<li><p><strong>优化目标：</strong></p>
+<script type="math/tex; mode=display">
+\begin {align}
+&\Phi(t) = P_SU_1\Gamma(t)-R_sU_2\Sigma(t)\\
+&P_S^TP_T = U_1\Gamma V^T,\ \ R_S^TP_T = -U_2\Sigma V^T
+\end {align}</script></li>
+<li><p><strong>流形正则项：</strong></p>
+<script type="math/tex; mode=display">
+{\cal R}({\cal S},{\cal T}) = \frac{1}{d^*}\sum_{i}^{d^*}\theta_t\left|KL({\cal S}_i||{\cal T}_i)+KL({\cal T}_i||{\cal S}_i) \right|</script><p><img src="/2019/09/27/迁移学习简介/figure16.PNG" alt="figure16"></p>
+</li>
+</ul>
+<h4 id="Transfer-Kernel-Learning-TKL-Long-TKDE-15"><a href="#Transfer-Kernel-Learning-TKL-Long-TKDE-15" class="headerlink" title="Transfer Kernel Learning (TKL) [Long, TKDE-15]"></a>Transfer Kernel Learning (TKL) [Long, TKDE-15]</h4><h4 id="嵌入决策树算法-TransEMDT-Zhao-IJCAI-11"><a href="#嵌入决策树算法-TransEMDT-Zhao-IJCAI-11" class="headerlink" title="嵌入决策树算法(TransEMDT) [Zhao, IJCAI-11]"></a>嵌入决策树算法(TransEMDT) [Zhao, IJCAI-11]</h4><h4 id="Kernel-mean-matching-Huang-NIPS-06"><a href="#Kernel-mean-matching-Huang-NIPS-06" class="headerlink" title="Kernel mean matching [Huang, NIPS-06]"></a>Kernel mean matching [Huang, NIPS-06]</h4><h4 id="Covariate-Shift-Adaptation-Sugiyama-JMLR-07"><a href="#Covariate-Shift-Adaptation-Sugiyama-JMLR-07" class="headerlink" title="Covariate Shift Adaptation [Sugiyama, JMLR-07]"></a>Covariate Shift Adaptation [Sugiyama, JMLR-07]</h4><h4 id="Adaptive-SVM-ASVM-Yang-et-al-ACM-Multimedia-07"><a href="#Adaptive-SVM-ASVM-Yang-et-al-ACM-Multimedia-07" class="headerlink" title="Adaptive SVM (ASVM) [Yang et al, ACM Multimedia-07]"></a>Adaptive SVM (ASVM) [Yang et al, ACM Multimedia-07]</h4><h4 id="Multiple-Convex-Combination-MCC-Schweikert-NIPS-09"><a href="#Multiple-Convex-Combination-MCC-Schweikert-NIPS-09" class="headerlink" title="Multiple Convex Combination (MCC) [Schweikert, NIPS-09]"></a>Multiple Convex Combination (MCC) [Schweikert, NIPS-09]</h4><h3 id="多源迁移学习"><a href="#多源迁移学习" class="headerlink" title="多源迁移学习"></a>多源迁移学习</h3><h3 id="深度迁移学习"><a href="#深度迁移学习" class="headerlink" title="深度迁移学习"></a>深度迁移学习</h3><h2 id="问题与展望"><a href="#问题与展望" class="headerlink" title="问题与展望"></a>问题与展望</h2><h2 id="迁移学习资源"><a href="#迁移学习资源" class="headerlink" title="迁移学习资源"></a>迁移学习资源</h2>
       
     </div>
     
@@ -792,7 +872,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习简介"><span class="nav-number">1.</span> <span class="nav-text">迁移学习简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义与概念"><span class="nav-number">1.1.</span> <span class="nav-text">定义与概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是迁移学习？"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是迁移学习？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移学习需要解决的问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">迁移学习需要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要进行迁移学习？"><span class="nav-number">1.1.3.</span> <span class="nav-text">为什么要进行迁移学习？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迁移学习-VS-传统机器学习"><span class="nav-number">1.2.</span> <span class="nav-text">迁移学习 VS 传统机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与其他概念的对比"><span class="nav-number">1.3.</span> <span class="nav-text">与其他概念的对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移学习的形式化概念"><span class="nav-number">1.3.1.</span> <span class="nav-text">迁移学习的形式化概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#迁移学习常用概念"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">迁移学习常用概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迁移学习的形式化定义"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">迁移学习的形式化定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移学习的应用领域"><span class="nav-number">1.3.2.</span> <span class="nav-text">迁移学习的应用领域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习的分类方法"><span class="nav-number">2.</span> <span class="nav-text">迁移学习的分类方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按迁移情景分类"><span class="nav-number">2.1.</span> <span class="nav-text">按迁移情景分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按特征空间分类"><span class="nav-number">2.2.</span> <span class="nav-text">按特征空间分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按迁移方法分类"><span class="nav-number">2.3.</span> <span class="nav-text">按迁移方法分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于实例的迁移学习方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">基于实例的迁移学习方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于特征的迁移学习方法"><span class="nav-number">2.3.2.</span> <span class="nav-text">基于特征的迁移学习方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于模型的迁移学习方法"><span class="nav-number">2.3.3.</span> <span class="nav-text">基于模型的迁移学习方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于关系的迁移学习方法"><span class="nav-number">2.3.4.</span> <span class="nav-text">基于关系的迁移学习方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代表性研究工作"><span class="nav-number">3.</span> <span class="nav-text">代表性研究工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迁移学习的热门研究领域"><span class="nav-number">3.1.</span> <span class="nav-text">迁移学习的热门研究领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域适配问题-Domain-adaptation"><span class="nav-number">3.2.</span> <span class="nav-text">域适配问题 (Domain adaptation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题定义"><span class="nav-number">3.2.1.</span> <span class="nav-text">问题定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多源迁移学习"><span class="nav-number">3.3.</span> <span class="nav-text">多源迁移学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度迁移学习"><span class="nav-number">3.4.</span> <span class="nav-text">深度迁移学习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题与展望"><span class="nav-number">4.</span> <span class="nav-text">问题与展望</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习资源"><span class="nav-number">5.</span> <span class="nav-text">迁移学习资源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习简介"><span class="nav-number">1.</span> <span class="nav-text">迁移学习简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义与概念"><span class="nav-number">1.1.</span> <span class="nav-text">定义与概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是迁移学习？"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是迁移学习？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移学习需要解决的问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">迁移学习需要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要进行迁移学习？"><span class="nav-number">1.1.3.</span> <span class="nav-text">为什么要进行迁移学习？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迁移学习-VS-传统机器学习"><span class="nav-number">1.2.</span> <span class="nav-text">迁移学习 VS 传统机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与其他概念的对比"><span class="nav-number">1.3.</span> <span class="nav-text">与其他概念的对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移学习的形式化概念"><span class="nav-number">1.3.1.</span> <span class="nav-text">迁移学习的形式化概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#迁移学习常用概念"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">迁移学习常用概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迁移学习的形式化定义"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">迁移学习的形式化定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移学习的应用领域"><span class="nav-number">1.3.2.</span> <span class="nav-text">迁移学习的应用领域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习的分类方法"><span class="nav-number">2.</span> <span class="nav-text">迁移学习的分类方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按迁移情景分类"><span class="nav-number">2.1.</span> <span class="nav-text">按迁移情景分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按特征空间分类"><span class="nav-number">2.2.</span> <span class="nav-text">按特征空间分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按迁移方法分类"><span class="nav-number">2.3.</span> <span class="nav-text">按迁移方法分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于实例的迁移学习方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">基于实例的迁移学习方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于特征的迁移学习方法"><span class="nav-number">2.3.2.</span> <span class="nav-text">基于特征的迁移学习方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于模型的迁移学习方法"><span class="nav-number">2.3.3.</span> <span class="nav-text">基于模型的迁移学习方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于关系的迁移学习方法"><span class="nav-number">2.3.4.</span> <span class="nav-text">基于关系的迁移学习方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代表性研究工作"><span class="nav-number">3.</span> <span class="nav-text">代表性研究工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迁移学习的热门研究领域"><span class="nav-number">3.1.</span> <span class="nav-text">迁移学习的热门研究领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域适配问题-Domain-adaptation"><span class="nav-number">3.2.</span> <span class="nav-text">域适配问题 (Domain adaptation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题定义"><span class="nav-number">3.2.1.</span> <span class="nav-text">问题定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#域适配问题的迁移方法"><span class="nav-number">3.2.2.</span> <span class="nav-text">域适配问题的迁移方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迁移成分分析-TCA-transfer-component-analysis-Pan-TKDE-11"><span class="nav-number">3.2.3.</span> <span class="nav-text">迁移成分分析 (TCA, transfer component analysis) [Pan, TKDE-11]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GFK-geodesic-flow-kernel-Duan-CVPR-12"><span class="nav-number">3.2.4.</span> <span class="nav-text">GFK (geodesic flow kernel) [Duan, CVPR-12]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Transfer-Kernel-Learning-TKL-Long-TKDE-15"><span class="nav-number">3.2.5.</span> <span class="nav-text">Transfer Kernel Learning (TKL) [Long, TKDE-15]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌入决策树算法-TransEMDT-Zhao-IJCAI-11"><span class="nav-number">3.2.6.</span> <span class="nav-text">嵌入决策树算法(TransEMDT) [Zhao, IJCAI-11]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kernel-mean-matching-Huang-NIPS-06"><span class="nav-number">3.2.7.</span> <span class="nav-text">Kernel mean matching [Huang, NIPS-06]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Covariate-Shift-Adaptation-Sugiyama-JMLR-07"><span class="nav-number">3.2.8.</span> <span class="nav-text">Covariate Shift Adaptation [Sugiyama, JMLR-07]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adaptive-SVM-ASVM-Yang-et-al-ACM-Multimedia-07"><span class="nav-number">3.2.9.</span> <span class="nav-text">Adaptive SVM (ASVM) [Yang et al, ACM Multimedia-07]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiple-Convex-Combination-MCC-Schweikert-NIPS-09"><span class="nav-number">3.2.10.</span> <span class="nav-text">Multiple Convex Combination (MCC) [Schweikert, NIPS-09]</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多源迁移学习"><span class="nav-number">3.3.</span> <span class="nav-text">多源迁移学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度迁移学习"><span class="nav-number">3.4.</span> <span class="nav-text">深度迁移学习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题与展望"><span class="nav-number">4.</span> <span class="nav-text">问题与展望</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习资源"><span class="nav-number">5.</span> <span class="nav-text">迁移学习资源</span></a></li></ol></div>
             
 
           </div>
@@ -826,7 +906,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.2k</span>
+    <span title="Site words total count">47.5k</span>
   
 </div>
 
@@ -845,7 +925,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.2k字</span>
+  <span class="post-count">博客全站共47.5k字</span>
 </div>
         
 
