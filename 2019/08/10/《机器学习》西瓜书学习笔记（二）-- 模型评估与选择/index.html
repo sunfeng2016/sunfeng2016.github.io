@@ -97,11 +97,11 @@
 <meta property="og:description" content="《机器学习》西瓜书学习笔记（三）线性模型">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://sunfeng.online/2019/08/10/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure.PNG">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-433cdde5a09ff2450cb99383ad8211b8_hd.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-cdae5065290f57c9fc387b7d05b5b68a_hd.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-437db32129fdc1d411ac560bfa0f8842_hd.jpg">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-2c27bcec29d2a98b0a4725775cb8b2c4_hd.jpg">
-<meta property="og:updated_time" content="2019-08-27T03:16:35.974Z">
+<meta property="og:image" content="http://sunfeng.online/2019/08/10/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/Figure2.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/08/10/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/figure3.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/08/10/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/figure4.PNG">
+<meta property="og:image" content="http://sunfeng.online/2019/08/10/《机器学习》西瓜书学习笔记（二）--%20模型评估与选择/figure5.PNG">
+<meta property="og:updated_time" content="2019-10-06T12:25:52.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》西瓜书学习笔记（三）-- 线性模型">
 <meta name="twitter:description" content="《机器学习》西瓜书学习笔记（三）线性模型">
@@ -554,7 +554,7 @@ y =
 \end {equation}</script><p><img src="/2019/08/10/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure.PNG" alt="Figure1"></p>
 <h4 id="2-对数几率函数-logistic-function"><a href="#2-对数几率函数-logistic-function" class="headerlink" title="2. 对数几率函数 (logistic function)"></a>2. 对数几率函数 (logistic function)</h4><p>单位阶跃函数虽好，但是不可微，不是理想的联系函数 $g(.)$ , 我们希望找到一个在形态上趋近于单位阶跃函数的连续函数，并且是单调可微的。对数几率函数正是这样的一个函数：</p>
 <script type="math/tex; mode=display">
-y = \frac {1}{1 + e^{-z}}</script><p><img src="https://pic1.zhimg.com/80/v2-433cdde5a09ff2450cb99383ad8211b8_hd.jpg" alt="img"></p>
+y = \frac {1}{1 + e^{-z}}</script><p><img src="/2019/08/10/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/Figure2.PNG" alt="figure2"></p>
 <p>将 $ z = \boldsymbol w^T \boldsymbol x + b$ 带入可得 $y = \frac {1}{1 + e^{-(  \boldsymbol w^T \boldsymbol x + b)}}$ , 亦即 $\ln \frac{y}{1-y} =   \boldsymbol w^T \boldsymbol x + b$. </p>
 <p>如果说将 $y$ 看作样本 $x$ 作为正例的可能性，那么 $1-y$ 就是其成反例的可能性。</p>
 <p><strong>几率：</strong> 两者的比值即为 “几率”，反映了样本作为正例的相对可能性</p>
@@ -570,7 +570,7 @@ y = \frac {1}{1 + e^{-z}}</script><p><img src="https://pic1.zhimg.com/80/v2-433c
 <li>寻找一条满足 “同类近，异类远”的投影直线</li>
 <li>新样本的分类依靠投影后点的位置来确定</li>
 </ul>
-<p><img src="https://pic3.zhimg.com/80/v2-cdae5065290f57c9fc387b7d05b5b68a_hd.jpg" alt="img"></p>
+<p><img src="/2019/08/10/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/figure3.PNG" alt="figure3"></p>
 <p><strong>第一步：给定样例：</strong></p>
 <p>给定数据集 $D = \{(\boldsymbol x_i, y_i)\}_{i = 1}^{m},  y_i \in \{0, 1\}$, 令 $\boldsymbol X_j$、$\boldsymbol \mu_j$、$\boldsymbol \sum_j$ 分别表示第 $j \in \{0, 1\}$ 类示例的集合、均值向量、协方差矩阵。将数据投影到直线 $\boldsymbol w$ 上，则两类样本的 <strong>样本中心</strong> 在直线上的投影分别为 $\boldsymbol w^T \boldsymbol \mu_0$ 和$\boldsymbol w^T \boldsymbol \mu_1$，两类样本的协方差矩阵分别为 $\boldsymbol w^T \boldsymbol \sum_0 \boldsymbol w$ 和 $\boldsymbol w^T \boldsymbol \sum_1 \boldsymbol w$，由于直线是一维空间，因此 $\boldsymbol w^T \boldsymbol \mu_0$ 、$\boldsymbol w^T \boldsymbol \mu_1$、 $\boldsymbol w^T \boldsymbol \sum_0 \boldsymbol w$ 和、$\boldsymbol w^T \boldsymbol \sum_1 \boldsymbol w$均为实数。</p>
 <font color="#0099ff">顺便一提，如上图，横轴坐标分别为 x1 和 x2，代表样本的两个属性，此图代表属性个数为2时张成的二维空间。但当属性个数为n时，属性空间也为n维，只不过无法在图中体现了。 </font>
@@ -632,7 +632,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
 <li><strong>【训练】</strong> 得到 $N$ 个分类器</li>
 <li><strong>【集成】</strong> 的方法是考虑各被判为正例的分类器的置信度，选择置信度大的类别标记作为分类的结果</li>
 </ul>
-<p><img src="https://pic3.zhimg.com/80/v2-437db32129fdc1d411ac560bfa0f8842_hd.jpg" alt="img"></p>
+<p><img src="/2019/08/10/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/figure4.PNG" alt="figure4"></p>
 <h5 id="MvM"><a href="#MvM" class="headerlink" title="MvM:"></a>MvM:</h5><p>MvM是OvO和OvR的一般形式，反过来说，OvO和OvR是MvM的特例。</p>
 <p>MvM每次将若干个类作为正类，若干个其他类作为反类。但其构造必须有特殊的设计，不能随意选取。常用的一种MvM技术是“纠错输出码”（ECOC）技术。</p>
 <h4 id="“纠错输出码”-ECOC-技术"><a href="#“纠错输出码”-ECOC-技术" class="headerlink" title="“纠错输出码” (ECOC) 技术"></a>“纠错输出码” (ECOC) 技术</h4><p><strong>ECOC过程主要分为两步：</strong></p>
@@ -647,7 +647,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
 </ul>
 <p>以二元 ECOC 码为例：如下图，首先，将 $N (N = 4)$ 个类提供设计构造成 $M (M = 5)$ 个分类器 $(f_1, f_2,f_3,f_4,f_5)$, 每个分类器为每个类分别配了一个标记结果 (-1或+1)，从而，每一个类 $C_i, i\in \{1, N\}$ 都获得了一个 $M$ 位的编码，这个编码就是 <strong>【各类所对应的编码】</strong></p>
 <p>当有一个测试示例 $A$ 时，先将 $A$ 依照次序放入 $M$ 个分类器中，得到了 $M$ 个分类标记结果 $(-1,-1,+1,-1,+1);$ 再将这 $M$ 个标记结果编成一个纠错输出码 $(-1-1+1-1+1);$ 最后去和<strong>【各类所对应的编码】</strong>进行比较海明距离或欧式距离，距离最短的编码对应的分类就是结果。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-2c27bcec29d2a98b0a4725775cb8b2c4_hd.jpg" alt="img"></p>
+<p><img src="/2019/08/10/《机器学习》西瓜书学习笔记（二）-- 模型评估与选择/figure5.PNG" alt="figure5"></p>
 <hr>
 <h3 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h3><p><strong>类别不平衡(class-imbalance)</strong> 就是指分类任务中不同类别的训练样例数目差别很大的情况</p>
 <p>以二分类问题为例，该问题一般指的是训练集中正负样本数比例相差过大（比如正例9998个，负例2个），其一般会造成以下的一些情况：</p>
@@ -912,7 +912,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">49.9k</span>
+    <span title="Site words total count">50.0k</span>
   
 </div>
 
@@ -931,7 +931,7 @@ J = \frac{\boldsymbol w^T \boldsymbol S_b \boldsymbol w}{\boldsymbol w^T \boldsy
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共49.9k字</span>
+  <span class="post-count">博客全站共50.0k字</span>
 </div>
         
 
