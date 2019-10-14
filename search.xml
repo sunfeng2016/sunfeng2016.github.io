@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[word_3]]></title>
-    <url>%2F2019%2F10%2F14%2Fword_3%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[《Python Machine Learning》学习笔记 chapter-2]]></title>
+    <url>%2F2019%2F10%2F14%2F%E3%80%8APython%20Machine%20Learning%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20chapter-2%2F</url>
+    <content type="text"><![CDATA[《Python Machine Learning》学习笔记 Chapter 2: Training Simple Machine Learning Algorithms for Classification]]></content>
+      <categories>
+        <category>《Python Machine Learning》学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Machine Learning</tag>
+        <tag>Perceptron</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[论文常见单词积累（三）]]></title>
+    <url>%2F2019%2F10%2F14%2F%E8%AE%BA%E6%96%87%E5%B8%B8%E8%A7%81%E5%8D%95%E8%AF%8D%E7%A7%AF%E7%B4%AF%EF%BC%88%E4%B8%89%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[论文常见单词积累（三） 2019/10/14simultaneous [ˌsɪmlˈteɪniəs] adj. 同时的，联立的，同时发生的 n. 同时译员 proportional [prəˈpɔːʃənl] adj. 比例的，成比例的，相称的，均衡的 n. 比例项]]></content>
+      <categories>
+        <category>论文阅读笔记</category>
+      </categories>
+      <tags>
+        <tag>paper</tag>
+        <tag>word</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[论文常见单词积累 (二)]]></title>
