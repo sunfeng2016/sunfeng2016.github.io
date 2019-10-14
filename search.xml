@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[《Python Machine Learning》学习笔记 chapter-2]]></title>
     <url>%2F2019%2F10%2F14%2F%E3%80%8APython%20Machine%20Learning%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20chapter-2%2F</url>
-    <content type="text"><![CDATA[《Python Machine Learning》学习笔记 Chapter 2: Training Simple Machine Learning Algorithms for Classification The topics that we will cover in this chapter are as follows: Building an intuition for machine learning algorithms Using pandas, Numpy, and matplotlib to read in, process, and visualize data Implementing linear classification algorithm in Python Artificial neurons - a brief glimpse into the early history of machine learningThe formal definition of an artificial neuronThe perceptron learning ruleImplementing a perceptron learning algorithm in PythonAn object-oriented perceptron APITraining a perceptron model on the Iris dataset]]></content>
+    <content type="text"><![CDATA[Chapter 2: Training Simple Machine Learning Algorithms for Classification The topics that we will cover in this chapter are as follows: Building an intuition for machine learning algorithms Using pandas, Numpy, and matplotlib to read in, process, and visualize data Implementing linear classification algorithm in Python Artificial neurons - a brief glimpse into the early history of machine learningThe formal definition of an artificial neuronThe perceptron learning ruleImplementing a perceptron learning algorithm in PythonAn object-oriented perceptron APITraining a perceptron model on the Iris dataset]]></content>
       <categories>
         <category>《Python Machine Learning》学习笔记</category>
       </categories>

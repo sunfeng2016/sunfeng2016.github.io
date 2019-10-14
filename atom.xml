@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sunfeng.online/"/>
-  <updated>2019-10-14T10:24:12.852Z</updated>
+  <updated>2019-10-14T11:04:06.590Z</updated>
   <id>http://sunfeng.online/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="http://sunfeng.online/2019/10/14/%E3%80%8APython%20Machine%20Learning%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20chapter-2/"/>
     <id>http://sunfeng.online/2019/10/14/《Python Machine Learning》学习笔记 chapter-2/</id>
     <published>2019-10-14T10:08:02.000Z</published>
-    <updated>2019-10-14T10:24:12.852Z</updated>
+    <updated>2019-10-14T11:04:06.590Z</updated>
     
-    <content type="html"><![CDATA[<p><strong><font size="4">《Python Machine Learning》学习笔记 Chapter 2: Training Simple Machine Learning Algorithms for Classification</font></strong></p><a id="more"></a><font color="#0099ff">The topics that we will cover in this chapter are as follows:</font><ul><li>Building an intuition for machine learning algorithms</li><li>Using pandas, Numpy, and matplotlib to read in, process, and visualize data</li><li>Implementing linear classification algorithm in Python</li></ul><h3 id="Artificial-neurons-a-brief-glimpse-into-the-early-history-of-machine-learning"><a href="#Artificial-neurons-a-brief-glimpse-into-the-early-history-of-machine-learning" class="headerlink" title="Artificial neurons - a brief glimpse into the early history of machine learning"></a>Artificial neurons - a brief glimpse into the early history of machine learning</h3><h4 id="The-formal-definition-of-an-artificial-neuron"><a href="#The-formal-definition-of-an-artificial-neuron" class="headerlink" title="The formal definition of an artificial neuron"></a>The formal definition of an artificial neuron</h4><h4 id="The-perceptron-learning-rule"><a href="#The-perceptron-learning-rule" class="headerlink" title="The perceptron learning rule"></a>The perceptron learning rule</h4><h3 id="Implementing-a-perceptron-learning-algorithm-in-Python"><a href="#Implementing-a-perceptron-learning-algorithm-in-Python" class="headerlink" title="Implementing a perceptron learning algorithm in Python"></a>Implementing a perceptron learning algorithm in Python</h3><h4 id="An-object-oriented-perceptron-API"><a href="#An-object-oriented-perceptron-API" class="headerlink" title="An object-oriented perceptron API"></a>An object-oriented perceptron API</h4><h4 id="Training-a-perceptron-model-on-the-Iris-dataset"><a href="#Training-a-perceptron-model-on-the-Iris-dataset" class="headerlink" title="Training a perceptron model on the Iris dataset"></a>Training a perceptron model on the Iris dataset</h4>]]></content>
+    <content type="html"><![CDATA[<p><strong><font size="4">Chapter 2: Training Simple Machine Learning Algorithms for Classification</font></strong></p><a id="more"></a><font color="#0099ff">The topics that we will cover in this chapter are as follows:</font><ul><li>Building an intuition for machine learning algorithms</li><li>Using pandas, Numpy, and matplotlib to read in, process, and visualize data</li><li>Implementing linear classification algorithm in Python</li></ul><h3 id="Artificial-neurons-a-brief-glimpse-into-the-early-history-of-machine-learning"><a href="#Artificial-neurons-a-brief-glimpse-into-the-early-history-of-machine-learning" class="headerlink" title="Artificial neurons - a brief glimpse into the early history of machine learning"></a>Artificial neurons - a brief glimpse into the early history of machine learning</h3><h4 id="The-formal-definition-of-an-artificial-neuron"><a href="#The-formal-definition-of-an-artificial-neuron" class="headerlink" title="The formal definition of an artificial neuron"></a>The formal definition of an artificial neuron</h4><h4 id="The-perceptron-learning-rule"><a href="#The-perceptron-learning-rule" class="headerlink" title="The perceptron learning rule"></a>The perceptron learning rule</h4><h3 id="Implementing-a-perceptron-learning-algorithm-in-Python"><a href="#Implementing-a-perceptron-learning-algorithm-in-Python" class="headerlink" title="Implementing a perceptron learning algorithm in Python"></a>Implementing a perceptron learning algorithm in Python</h3><h4 id="An-object-oriented-perceptron-API"><a href="#An-object-oriented-perceptron-API" class="headerlink" title="An object-oriented perceptron API"></a>An object-oriented perceptron API</h4><h4 id="Training-a-perceptron-model-on-the-Iris-dataset"><a href="#Training-a-perceptron-model-on-the-Iris-dataset" class="headerlink" title="Training a perceptron model on the Iris dataset"></a>Training a perceptron model on the Iris dataset</h4>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;strong&gt;&lt;font size=&quot;4&quot;&gt;《Python Machine Learning》学习笔记 Chapter 2: Training Simple Machine Learning Algorithms for Classification&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;&lt;font size=&quot;4&quot;&gt;Chapter 2: Training Simple Machine Learning Algorithms for Classification&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
